@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>GuiRichEdit user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;GuiRichEdit.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_AppendText.htm">_GUICtrlRichEdit_AppendText</a></td>
+<td>クライアント領域の末端にテキストを追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_AutoDetectURL.htm">_GUICtrlRichEdit_AutoDetectURL</a></td>
+<td>URLSの自動検出を有効または無効にします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_CanPaste.htm">_GUICtrlRichEdit_CanPaste</a></td>
+<td>クリップボードの内容がコントロールに貼り付け可能かどうか。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_CanPasteSpecial.htm">_GUICtrlRichEdit_CanPasteSpecial</a></td>
+<td>クリップボードの内容が両方の形式でコントロールに貼り付け可能かどうか。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_CanRedo.htm">_GUICtrlRichEdit_CanRedo</a></td>
+<td>アンドゥ操作をリドゥできるかどうか。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_CanUndo.htm">_GUICtrlRichEdit_CanUndo</a></td>
+<td>操作をアンドゥできるかどうか。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_ChangeFontSize.htm">_GUICtrlRichEdit_ChangeFontSize</a></td>
+<td>選択されたテキストのフォントサイズを拡大・縮小します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_Copy.htm">_GUICtrlRichEdit_Copy</a></td>
+<td>テキストをクリップボードにコピーします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_Create.htm">_GUICtrlRichEdit_Create</a></td>
+<td>エディットコントロールを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_Cut.htm">_GUICtrlRichEdit_Cut</a></td>
+<td>テキストをクリップボードに切り取ります。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_Deselect.htm">_GUICtrlRichEdit_Deselect</a></td>
+<td>テキスト洗濯を解除し、非選択状態にします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_Destroy.htm">_GUICtrlRichEdit_Destroy</a></td>
+<td>リッチエディットコントロールを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_EmptyUndoBuffer.htm">_GUICtrlRichEdit_EmptyUndoBuffer</a></td>
+<td>コントロールのアンドゥフラグをリセットします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_FindText.htm">_GUICtrlRichEdit_FindText</a></td>
+<td>挿入位置または選択部分の末尾位置から開始するテキストを検索します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_FindTextInRange.htm">_GUICtrlRichEdit_FindTextInRange</a></td>
+<td>範囲内のテキストを検索します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetBkColor.htm">_GUICtrlRichEdit_GetBkColor</a></td>
+<td>コントロールの背景色を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetCharAttributes.htm">_GUICtrlRichEdit_GetCharAttributes</a></td>
+<td>選択されたテキストの属性を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetCharBkColor.htm">_GUICtrlRichEdit_GetCharBkColor</a></td>
+<td>選択されたテキストの背景色を取得します。テキストが選択されていない場合、挿入位置の右側の文字の背景色を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetCharColor.htm">_GUICtrlRichEdit_GetCharColor</a></td>
+<td>選択されたテキストの色を取得します。テキストが選択されていない場合、挿入位置の右側の文字の色を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetCharPosFromXY.htm">_GUICtrlRichEdit_GetCharPosFromXY</a></td>
+<td>クライアント領域の指定位置から最も近い文字間位置を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetCharPosOfNextWord.htm">_GUICtrlRichEdit_GetCharPosOfNextWord</a></td>
+<td>次の語の直前の文字間位置を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetCharPosOfPreviousWord.htm">_GUICtrlRichEdit_GetCharPosOfPreviousWord</a></td>
+<td>前の語の直前の文字間位置を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetCharWordBreakInfo.htm">_GUICtrlRichEdit_GetCharWordBreakInfo</a></td>
+<td>語の改行情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetFirstCharPosOnLine.htm">_GUICtrlRichEdit_GetFirstCharPosOnLine</a></td>
+<td>行の一文字目の文字間位置を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetFont.htm">_GUICtrlRichEdit_GetFont</a></td>
+<td>選択部のフォント属性を取得します。選択されていない場合は挿入位置のフォント属性を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetLineCount.htm">_GUICtrlRichEdit_GetLineCount</a></td>
+<td>複数行のエディットコントロールの行数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetLineLength.htm">_GUICtrlRichEdit_GetLineLength</a></td>
+<td>行の長さを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetLineNumberFromCharPos.htm">_GUICtrlRichEdit_GetLineNumberFromCharPos</a></td>
+<td>指定文字間位置の行の行番号を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetNextRedo.htm">_GUICtrlRichEdit_GetNextRedo</a></td>
+<td>次に可能なリドゥ操作の名前、またはタイプIDを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetNextUndo.htm">_GUICtrlRichEdit_GetNextUndo</a></td>
+<td>次に可能なアンドゥ操作の名前、またはタイプIDを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetNumberOfFirstVisibleLine.htm">_GUICtrlRichEdit_GetNumberOfFirstVisibleLine</a></td>
+<td>コントロール内に表示されている最初の行の番号を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetParaAlignment.htm">_GUICtrlRichEdit_GetParaAlignment</a></td>
+<td>選択された段落または(選択されていない場合は)現在の段落の配置を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetParaAttributes.htm">_GUICtrlRichEdit_GetParaAttributes</a></td>
+<td>(最初の)段落または(選択されていない場合は)現在の段落の属性を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetParaBorder.htm">_GUICtrlRichEdit_GetParaBorder</a></td>
+<td>(最初の)選択された段落、または(選択されていない場合)現在の段落の枠線設定を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetParaIndents.htm">_GUICtrlRichEdit_GetParaIndents</a></td>
+<td>(最初の)選択された段落、または(選択されていない場合)現在の段落のインデント設定を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetParaNumbering.htm">_GUICtrlRichEdit_GetParaNumbering</a></td>
+<td>(最初の)選択された段落、または(選択されていない場合)現在の段落の番号付けスタイルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetParaShading.htm">_GUICtrlRichEdit_GetParaShading</a></td>
+<td>(最初の)選択された段落、または(選択されていない場合)現在の段落の影の設定を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetParaSpacing.htm">_GUICtrlRichEdit_GetParaSpacing</a></td>
+<td>(最初の)選択された段落、または(選択されていない場合)現在の段落のスペース設定を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetParaTabStops.htm">_GUICtrlRichEdit_GetParaTabStops</a></td>
+<td>(最初の)選択された段落、または(選択されていない場合)現在の段落のタブストップを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetPasswordChar.htm">_GUICtrlRichEdit_GetPasswordChar</a></td>
+<td>ユーザーがテキストを入力した際にリッチエディットコントロールが表示するパスワード文字を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetRECT.htm">_GUICtrlRichEdit_GetRECT</a></td>
+<td>コントロールのフォーマット長方形を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetScrollPos.htm">_GUICtrlRichEdit_GetScrollPos</a></td>
+<td>コントロールのスクロール位置を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetSel.htm">_GUICtrlRichEdit_GetSel</a></td>
+<td>選択範囲の最大文字間位置、最小文字間位置を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetSelAA.htm">_GUICtrlRichEdit_GetSelAA</a></td>
+<td>選択の開始位置と終了位置を順に取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetSelText.htm">_GUICtrlRichEdit_GetSelText</a></td>
+<td>現在選択されているテキストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetSpaceUnit.htm">_GUICtrlRichEdit_GetSpaceUnit</a></td>
+<td>_GUICtrlRichEdit系の関数のパラメータとして使用される水平スペース、垂直スペースの単位を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetText.htm">_GUICtrlRichEdit_GetText</a></td>
+<td>コントロール内の全テキストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetTextinLine.htm">_GUICtrlRichEdit_GetTextInLine</a></td>
+<td>テキストの指定行を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetTextInRange.htm">_GUICtrlRichEdit_GetTextInRange</a></td>
+<td>2つの指定文字の間のテキストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetTextLength.htm">_GUICtrlRichEdit_GetTextLength</a></td>
+<td>コントロール内のテキスト全体の長さを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetVersion.htm">_GUICtrlRichEdit_GetVersion</a></td>
+<td>リッチエディットのヴァージョンを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetXYFromCharPos.htm">_GUICtrlRichEdit_GetXYFromCharPos</a></td>
+<td>文字間位置のXY座標を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GetZoom.htm">_GUICtrlRichEdit_GetZoom</a></td>
+<td>コントロールの拡大率を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_GotoCharPos.htm">_GUICtrlRichEdit_GotoCharPos</a></td>
+<td>挿入位置を特定の文字間位置に移動します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_HideSelection.htm">_GUICtrlRichEdit_HideSelection</a></td>
+<td>選択を非表示状態(または表示状態)にします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_InsertText.htm">_GUICtrlRichEdit_InsertText</a></td>
+<td>挿入位置または選択部の末尾にテキストを挿入します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_IsModified.htm">_GUICtrlRichEdit_IsModified</a></td>
+<td>リッチエディットコントロールの変更フラグの状態を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_IsTextSelected.htm">_GUICtrlRichEdit_IsTextSelected</a></td>
+<td>テキストが選択されているかどうかを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_Paste.htm">_GUICtrlRichEdit_Paste</a></td>
+<td>RTFまたはオブジェクトに付随したRTFをクリップボードから貼り付けます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_PasteSpecial.htm">_GUICtrlRichEdit_PasteSpecial</a></td>
+<td>RTFまたはRTFとオブジェクトをクリップボードから貼り付けます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_PauseRedraw.htm">_GUICtrlRichEdit_PauseRedraw</a></td>
+<td>コントロールの再描画を一時停止します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_Redo.htm">_GUICtrlRichEdit_Redo</a></td>
+<td>最後にアンドゥした操作をリドゥします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_ReplaceText.htm">_GUICtrlRichEdit_ReplaceText</a></td>
+<td>選択されたテキストを置換します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_ResumeRedraw.htm">_GUICtrlRichEdit_ResumeRedraw</a></td>
+<td>コントロールの再描画を再開します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_ScrollLineOrPage.htm">_GUICtrlRichEdit_ScrollLineOrPage</a></td>
+<td>1行分、または1ページ分、テキストをスクロールします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_ScrollLines.htm">_GUICtrlRichEdit_ScrollLines</a></td>
+<td>指定行数分、テキストをスクロールします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_ScrollToCaret.htm">_GUICtrlRichEdit_ScrollToCaret</a></td>
+<td>キャレット(挿入位置)がある行が表示されるまでスクロールします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetBkColor.htm">_GUICtrlRichEdit_SetBkColor</a></td>
+<td>コントロールの背景色を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetCharAttributes.htm">_GUICtrlRichEdit_SetCharAttributes</a></td>
+<td>選択されたテキストの属性のオン・オフを切り換えます。選択されていない場合はその挿入位置に挿入されるテキストの属性が切り換えられます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetCharBkColor.htm">_GUICtrlRichEdit_SetCharBkColor</a></td>
+<td>選択されたテキストの背景色を設定します。選択されていない場合は挿入位置に挿入されるテキストの背景色を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetCharColor.htm">_GUICtrlRichEdit_SetCharColor</a></td>
+<td>選択されたテキストの色を設定します。選択されていない場合は挿入位置に挿入されるテキストの色を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetEventMask.htm">_GUICtrlRichEdit_SetEventMask</a></td>
+<td>親ウィンドウにどの通知メッセージが送信されるかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetFont.htm">_GUICtrlRichEdit_SetFont</a></td>
+<td>選択されたテキストのフォント属性を設定します。選択されていない場合は挿入位置に挿入されるテキストのフォント属性を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetLimitOnText.htm">_GUICtrlRichEdit_SetLimitOnText</a></td>
+<td>リッチテキスト形式としてタイプ、貼付け、入力できる文字数を変更します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetModified.htm">_GUICtrlRichEdit_SetModified</a></td>
+<td>変更フラグを設定、または初期化します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetParaAlignment.htm">_GUICtrlRichEdit_SetParaAlignment</a></td>
+<td>現在選択されているパラグラフの配置を設定します。選択されていない場合、挿入位置に挿入されるパラグラフの配置を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetParaAttributes.htm">_GUICtrlRichEdit_SetParaAttributes</a></td>
+<td>現在選択されている段落の属性を設定します。選択されていない場合、挿入位置に挿入される段落の属性を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetParaBorder.htm">_GUICtrlRichEdit_SetParaBorder</a></td>
+<td>現在選択されている段落の枠線を設定します。選択されていない場合、挿入位置に挿入される段落の枠線を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetParaIndents.htm">_GUICtrlRichEdit_SetParaIndents</a></td>
+<td>現在選択されている段落のインデントを設定します。選択されていない場合、挿入位置に挿入される段落のインデントを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetParaNumbering.htm">_GUICtrlRichEdit_SetParaNumbering</a></td>
+<td>現在選択されている段落の番号付けスタイルを設定します。選択されていない場合、挿入位置に挿入される段落の番号付けスタイルを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetParaShading.htm">_GUICtrlRichEdit_SetParaShading</a></td>
+<td>現在選択されている段落の影を設定します。選択されていない場合、挿入位置に挿入される段落の影を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetParaSpacing.htm">_GUICtrlRichEdit_SetParaSpacing</a></td>
+<td>選択されているテキストのある段落のスペース設定を設定します。選択されていない場合、挿入位置に挿入されるテキストのスペース設定を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetParaTabStops.htm">_GUICtrlRichEdit_SetParaTabStops</a></td>
+<td>選択されているテキストのある段落のタブストップを設定します。選択されていない場合、挿入位置に挿入される段落のタブストップを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetPasswordChar.htm">_GUICtrlRichEdit_SetPasswordChar</a></td>
+<td>入力された文字の代わりに表示される文字の設定、取り消しをおこないます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetReadOnly.htm">_GUICtrlRichEdit_SetReadOnly</a></td>
+<td>読み取り専用設定の切り換えをおこないます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetRECT.htm">_GUICtrlRichEdit_SetRECT</a></td>
+<td>コントロールのフォーマット長方形を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetScrollPos.htm">_GUICtrlRichEdit_SetScrollPos</a></td>
+<td>($ix,$iY)がコントロールの左上隅になるように表示をスクロールします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetSel.htm">_GUICtrlRichEdit_SetSel</a></td>
+<td>選択範囲の最小文字位置、最大文字位置を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetSpaceUnit.htm">_GUICtrlRichEdit_SetSpaceUnit</a></td>
+<td>_GUICtrlRichEdit系の関数のパラメータとして使用される水平スペース、垂直スペースの単位を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetTabStops.htm">_GUICtrlRichEdit_SetTabStops</a></td>
+<td>コントロールのタブストップを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetText.htm">_GUICtrlRichEdit_SetText</a></td>
+<td>コントロールのテキストを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetUndoLimit.htm">_GUICtrlRichEdit_SetUndoLimit</a></td>
+<td>アンドゥ用キューに保持できる操作の最大数を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_SetZoom.htm">_GUICtrlRichEdit_SetZoom</a></td>
+<td>コントロールの拡大率を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_StreamFromFile.htm">_GUICtrlRichEdit_StreamFromFile</a></td>
+<td>ファイルの内容をコントロールのテキストに設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_StreamFromVar.htm">_GUICtrlRichEdit_StreamFromVar</a></td>
+<td>変数の内容をコントロールのテキストに設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_StreamToFile.htm">_GUICtrlRichEdit_StreamToFile</a></td>
+<td>コントロールの内容をファイルに書き出します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_StreamToVar.htm">_GUICtrlRichEdit_StreamToVar</a></td>
+<td>コントロールの内容を変数に書き出します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRichEdit_Undo.htm">_GUICtrlRichEdit_Undo</a></td>
+<td>コントロールのアンドゥ用キュー内の最後のエディットコントロール操作をアンドゥします。<br></td>
+</tr>
+</table>
+</body>

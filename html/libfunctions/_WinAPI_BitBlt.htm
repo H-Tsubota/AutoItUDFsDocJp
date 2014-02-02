@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_BitBlt</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_BitBlt</font>
+<hr size="2">
+<p>色データのビットブロックの転送をおこないます。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_BitBlt($hDestDC, $iXDest, $iYDest, $iWidth, $iHeight, $hSrcDC, $iXSrc, $iYSrc, $iROP)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hDestDC</td>
+    <td width="85%">転送先デバイスコンテキストのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iXDest</td>
+   <td>転送先長方形の左上隅のX座標値</td>
+  </tr>
+  <tr>
+   <td>$iYDest</td>
+   <td>転送先長方形の左上隅のY座標値</td>
+  </tr>
+  <tr>
+   <td>$iWidth</td>
+   <td>転送元、転送先長方形の幅</td>
+  </tr>
+  <tr>
+   <td>$iHeight</td>
+   <td>転送元、転送先長方形の高さ</td>
+  </tr>
+  <tr>
+   <td>$hSrcDC</td>
+   <td>転送元デバイスコンテキストのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iXSrc</td>
+   <td>転送元長方形の左上隅のX座標値</td>
+  </tr>
+  <tr>
+   <td>$iYSrc</td>
+   <td>転送元長方形の左上隅のY座標値</td>
+  </tr>
+  <tr>
+   <td>$iROP</td>
+   <td>ラスタオペレーションコードを指定します。<br>これらのコードはどのように転送元長方形の色データを転送先長方形の色データと組み合わせて最終的な色を得るかを定義します:<br>
+       $BLACKNESS - パレットのインデックス0に関連付けられた色を使用して転送先長方形を塗りつぶします<br>
+       $CAPTUREBLT - 使用するウィンドウに重なっているウィンドウを結果の画像に含めます<br>
+       $DSTINVERT - 転送先長方形を反転します<br>
+       $MERGECOPY - AND演算を使用して転送元長方形の色とhDestで現在選択されているブラシを結合します<br>
+       $MERGEPAINT - OR演算を使用して反転させた転送元長方形の色と転送先長方形の色を結合します<br>
+       $NOMIRRORBITMAP - ビットマップがミラーされないようにします<br>
+       $NOTSRCCOPY - 反転させた転送元長方形を転送先にコピーします<br>
+       $NOTSRCERASE - OR演算を使用して転送元長方形と転送先長方形の色を結合し、その後に結果の色を反転します<br>
+       $PATCOPY - hdcDestで選択されたブラシを転送先ビットマップにコピーします<br>
+       $PATINVERT - XOR演算を使用してhDestで現在選択されているブラシの色と転送先長方形の色を結合します<br>
+       $PATPAINT - OR演算を使用してhDestで現在選択されているブラシの色と反転させた転送元長方形の色を結合します。<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;その演算結果をOR演算を使用して転送元長方形の色と結合します。<br>
+       $SRCAND - AND演算を使用して転送元長方形と転送先長方形の色を結合します<br>
+       $SRCCOPY - 転送元長方形を転送先長方形に直接コピーします<br>
+       $SRCERASE - AND演算を使用して反転させた転送先長方形と転送元長方形の色を結合します<br>
+       $SRCINVERT - XOR演算を使用して転送元長方形と転送先長方形の色を結合します<br>
+       $SRCPAINT - OR演算を使用して転送元長方形と転送先長方形の色を結合します<br>
+       $WHITENESS - 物理パレットのインデックス1に関連付けられた色を使用して転送先長方形を塗りつぶします</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=BitBlt">BitBlt</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

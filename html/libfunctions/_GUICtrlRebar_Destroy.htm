@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlRebar_Destroy</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlRebar_Destroy</font>
+<hr size="2">
+<p>コントロールを破棄します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiRebar.au3&gt;<br>
+_GUICtrlRebar_Destroy(ByRef $hWnd)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True、ハンドルが0に設定されます</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+_GUICtrlRebar_Createで作成されたコントロールにのみ使用できます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlRebar_Create.htm">_GUICtrlRebar_Create</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiReBar.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiToolBar.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Constants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">"MustDeclareVars"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_RB</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hgui</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$btnExit</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hReBar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hInput</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S5">Enum</span><span class="S0"> </span><span class="S9">$idNew</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1000</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idOpen</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idSave</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idHelp</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hgui</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Rebar"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">396</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$WS_MINIMIZEBOX</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_CAPTION</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_POPUP</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_SYSMENU</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_MAXIMIZEBOX</span><span class="S8">))</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; レバーコントロールを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hReBar</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlReBar_Create</span><span class="S8">(</span><span class="S9">$hgui</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$CCS_TOP</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_BORDER</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$RBS_VARHEIGHT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$RBS_AUTOSIZE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$RBS_BANDBORDERS</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; レバーに挿入するツールバーを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hToolbar</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlToolBar_Create</span><span class="S8">(</span><span class="S9">$hgui</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$TBSTYLE_FLAT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$CCS_NORESIZE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$CCS_NOPARENTALIGN</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 標準システムビットマップを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S15">_GUICtrlToolbar_GetBitmapFlags</span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S3">0</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddBitmap</span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$IDB_STD_SMALL_COLOR</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S3">2</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddBitmap</span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$IDB_STD_LARGE_COLOR</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ボタンを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idNew</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_FILENEW</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idOpen</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_FILEOPEN</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idSave</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_FILESAVE</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButtonSep</span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idHelp</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_HELP</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; レバーに挿入する入力ボックスを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hInput</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateInput</span><span class="S8">(</span><span class="S7">"Input control"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">120</span><span class="S8">,</span><span class="S0"> </span><span class="S3">20</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; コントロールを格納しているバンドを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlReBar_AddBand</span><span class="S8">(</span><span class="S9">$hReBar</span><span class="S8">,</span><span class="S0"> </span><span class="S4">GUICtrlGetHandle</span><span class="S8">(</span><span class="S9">$hInput</span><span class="S8">),</span><span class="S0"> </span><span class="S3">120</span><span class="S8">,</span><span class="S0"> </span><span class="S3">200</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Name:"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; コントロールを格納しているバンドをレバーの最初に追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlReBar_AddToolBarBand</span><span class="S8">(</span><span class="S9">$hReBar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$btnExit</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Exit"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">150</span><span class="S8">,</span><span class="S0"> </span><span class="S3">360</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">25</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">(</span><span class="S6">@SW_SHOW</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Information"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"About to Destroy the Rebar"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlRebar_Destroy</span><span class="S8">(</span><span class="S9">$hReBar</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$btnExit</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">WEnd</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlRebar_Destroy.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IEFormGetCollection</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IEFormGetCollection</font>
+<hr size="2">
+<p>ドキュメント内のフォームを格納したコレクションオブジェクト変数、またはインデックスと対応するフォームを返します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IEFormGetCollection ( ByRef $o_object [, $i_index = -1] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">InternetExplorer.Applicationのオブジェクト変数、ウィンドウ、フレーム、またはアイフレームオブジェクト</td>
+  </tr>
+  <tr>
+   <td>$i_index</td>
+   <td><b>[オプション]</b>コレクションを返すか、インデックスの要素を返すかを指定します<br>
+       0 または正の整数の場合、そのインデックスのインスタンスを返します<br>
+       -1 = (デフォルト) コレクションを返します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">ドキュメント内の全てのフォームのコレクションのオブジェクト変数を返します。@EXTENDED = フォームの数</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 ($_IEStatus_InvalidDataType) = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>5 ($_IEStatus_InvalidValue) = 無効な値</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>7 ($_IEStatus_NoMatch) = 一致するものがありません</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IEFormGetObjByName.htm">_IEFormGetObjByName</a>, <a href="_IEFormReset.htm">_IEFormReset</a>, <a href="_IEFormSubmit.htm">_IEFormSubmit</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - 0始まりのインデックスを使って指定したフォームへの参照を取得</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 今回はページの1番目のフォーム</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"http://www.google.com"</span><span class="S8">)</span><br>
+<span class="S9">$oForm</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEFormGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S9">$oQuery</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEFormElementGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oForm</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S15">_IEFormElementSetValue</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oQuery</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"AutoIt IE.au3"</span><span class="S8">)</span><br>
+<span class="S15">_IEFormSubmit</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oForm</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 2 - ページ上のフォームのコレクションへの参照を取得</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; それぞれの情報を表示しながらループ</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"http://www.autoitscript.com"</span><span class="S8">)</span><br>
+<span class="S9">$oForms</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEFormGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Forms Info"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"There are "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@extended</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" forms on this page"</span><span class="S8">)</span><br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$oForm</span><span class="S0"> </span><span class="S5">In</span><span class="S0"> </span><span class="S9">$oForms</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Form Info"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$oForm</span><span class="S8">.</span><span class="S14">name</span><span class="S8">)</span><br>
+<span class="S5">Next</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 3 - ページ上のフォームのコレクションへの参照を取得</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; それぞれの情報を表示しながらループ</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; インデックスの使用法をデモ</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"http://www.autoitscript.com"</span><span class="S8">)</span><br>
+<span class="S9">$oForms</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEFormGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">)</span><br>
+<span class="S9">$iNumForms</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S6">@extended</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Forms Info"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"There are "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iNumForms</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" forms on this page"</span><span class="S8">)</span><br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$i</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">to</span><span class="S0"> </span><span class="S9">$iNumForms</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$oForm</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEFormGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Form Info"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$oForm</span><span class="S8">.</span><span class="S14">name</span><span class="S8">)</span><br>
+<span class="S5">Next</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IEFormGetCollection.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

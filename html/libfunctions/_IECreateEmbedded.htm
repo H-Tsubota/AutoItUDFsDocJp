@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IECreateEmbedded</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IECreateEmbedded</font>
+<hr size="2">
+<p>GuiCtrlCreateObj()を使ってAutoIt GUIに埋め込むのに適したウェブブラウザオブジェクトを作成します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IECreateEmbedded ( )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+なし。<br>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">ウェブブラウザオブジェクトの参照を返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 ($_IEStatus_GeneralError) = 一般的なエラー</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+親アプリケーションに埋めこまれるまではこのオブジェクトは動作できません(例えば_IENavigateを実行できません)。この制限のために　ブラウザは_IECreateで作成したブラウザのように自動で'about:blank'に移動しません。従ってブラウザを親アプリケーションに埋め込んだ後やロードしたドキュメントに依存する処理(e.g. _IEBodyWriteHTML)をおこなおうとする前には_IENavigateを使って'about:blank'に移動しなければなりません。<br>
+<br>
+Internet Explorerオブジェクト(例えば_IECreateが返すもの)にはあって、このオブジェクトにはないプロパティがいくつかあります。例えばステータステキストやアドレスバーなどブラウザにはあって、埋め込みコントロールにはないものです。<br>
+<br>
+GUICreate()でWindowsスタイル$WS_CLIPCHILDRENを使用しない場合、オブジェクトの表示/非表示を自分で管理しなければなりません。<br>
+<br>
+このオブジェクトに対して_IEQuitを使うことはできません。オブジェクトは親GUIが破棄された際に破棄されます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="AutoIt3.chm::/html/functions/GUICreate.htm">GUICreate</a>, <a href="AutoIt3.chm::/html/functions/GUICtrlCreateObj.htm">GUICtrlCreateObj</a>, <a href="_IEAttach.htm">_IEAttach</a>, <a href="_IECreate.htm">_IECreate</a>, <a href="_IENavigate.htm">_IENavigate</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - 'Back'、'Forward'によって履歴境界外を参照しようとしても</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; スクリプトが中止しないようにCOMエラーを捕捉</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (予測済みのCOMエラーはコンソールに送信される)</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<br>
+<span class="S15">_IEErrorHandlerRegister</span><span class="S0"> </span><span class="S8">()</span><br>
+<br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreateEmbedded</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Embedded Web control Test"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">640</span><span class="S8">,</span><span class="S0"> </span><span class="S3">580</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S8">(</span><span class="S6">@DesktopWidth</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">640</span><span class="S8">)</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@DesktopHeight</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">580</span><span class="S8">)</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$WS_OVERLAPPEDWINDOW</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$WS_VISIBLE</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$WS_CLIPSIBLINGS</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$WS_CLIPCHILDREN</span><span class="S8">)</span><br>
+<span class="S9">$GUIActiveX</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateObj</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">40</span><span class="S8">,</span><span class="S0"> </span><span class="S3">600</span><span class="S8">,</span><span class="S0"> </span><span class="S3">360</span><span class="S8">)</span><br>
+<span class="S9">$GUI_Button_Back</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Back"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">420</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">30</span><span class="S8">)</span><br>
+<span class="S9">$GUI_Button_Forward</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Forward"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">120</span><span class="S8">,</span><span class="S0"> </span><span class="S3">420</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">30</span><span class="S8">)</span><br>
+<span class="S9">$GUI_Button_Home</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Home"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">230</span><span class="S8">,</span><span class="S0"> </span><span class="S3">420</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">30</span><span class="S8">)</span><br>
+<span class="S9">$GUI_Button_Stop</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Stop"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">340</span><span class="S8">,</span><span class="S0"> </span><span class="S3">420</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">30</span><span class="S8">)</span><br>
+<br>
+<span class="S4">GUISetState</span><span class="S8">()</span><span class="S0"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S1">;GUIを表示</span><br>
+<br>
+<span class="S15">_IENavigate</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"http://www.autoitscript.com"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">;ユーザーがウィンドウを閉じるまで待機</span><br>
+<span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Select</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_Button_Home</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_IENavigate</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"http://www.autoitscript.com"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_Button_Back</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_IEAction</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"back"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_Button_Forward</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_IEAction</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"forward"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_Button_Stop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_IEAction</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"stop"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndSelect</span><br>
+<span class="S5">WEnd</span><br>
+<br>
+<span class="S4">GUIDelete</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Exit</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IECreateEmbedded.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

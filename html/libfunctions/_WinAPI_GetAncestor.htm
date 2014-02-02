@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_GetAncestor</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_GetAncestor</font>
+<hr size="2">
+<p>指定したウィンドウの祖先のハンドルを取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_GetAncestor($hWnd [, $iFlags = 1])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">
+	祖先が取得されるウィンドウのハンドル。デスクトップウィンドウの場合、この関数は0を返します。</td>
+  </tr>
+  <tr>
+   <td>$iFlags</td>
+   <td><b>[オプション]</b>取得される祖先を指定します。このパラメータは次の値のいずれかです:<br>
+       $GA_PARENT - 親ウィンドウを取得します<br>
+       $GA_ROOT - 親ウィンドウのチェーンをたどってルートウィンドウを取得します<br>
+       $GA_ROOTOWNER - GetParentによって返されたオーナーウィンドウ、親ウィンドウのチェーンをたどって所有されているルートウィンドウを取得します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">祖先のウィンドウのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+定義済み定数用にWindowsConstants.au3が必要です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GetAncestor">GetAncestor</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_Au3Check_Parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hwnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hparent</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hwnd</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"test"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hparent</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetAncestor</span><span class="S8">(</span><span class="S9">$hwnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$GA_PARENT</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Parent"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Get Ancestor of "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hwnd</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">": "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hparent</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Root"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Get Ancestor of "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hparent</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">": "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_WinAPI_GetAncestor</span><span class="S8">(</span><span class="S9">$hwnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$GA_ROOT</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Root Owner"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Get Ancestor of "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hparent</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">": "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_WinAPI_GetAncestor</span><span class="S8">(</span><span class="S9">$hwnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$GA_ROOTOWNER</span><span class="S8">))</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WinAPI_GetAncestor.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

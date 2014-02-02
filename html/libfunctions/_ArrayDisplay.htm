@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ArrayDisplay</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ArrayDisplay</font>
+<hr size="2">
+<p>与えられた1次元または2次元の配列をリストビューに表示します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Array.au3&gt;<br>
+_ArrayDisplay(Const ByRef $avArray [, $sTitle = "Array: ListView Display" [, $iItemLimit = -1 [, $iTranspose = 0 [, $sSeparator = "" [, $sReplace = "|" [, $sHeader = ""]]]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$avArray</td>
+    <td width="85%">表示する配列</td>
+  </tr>
+  <tr>
+   <td>$sTitle</td>
+   <td><b>[オプション]</b>ウィンドウに使用するタイトル</td>
+  </tr>
+  <tr>
+   <td>$iItemLimit</td>
+   <td><b>[オプション]</b>表示するリストビューのアイテム(行)の最大数</td>
+  </tr>
+  <tr>
+   <td>$iTranspose</td>
+   <td><b>[オプション]</b>デフォルト値以外を設定すると、配列が2次元の場合に転置します</td>
+  </tr>
+  <tr>
+   <td>$sSeparator</td>
+   <td><b>[オプション]</b>Opt("GUIDataSeparatorChar")を動的に変更します</td>
+  </tr>
+  <tr>
+   <td>$sReplace</td>
+   <td><b>[オプション]</b>各配列要素内の$sSeparatorと置き換える文字列</td>
+  </tr>
+  <tr>
+   <td>$sHeader</td>
+   <td><b>[オプション]</b>ヘッダーの列名</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功::</td>
+    <td width="90%">1</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0。@errorを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>1 - $avArrayは配列ではありません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - $avArrayの次元が高すぎます(2次元までしかサポートしません)</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Array.au3&gt;</span><br>
+<br>
+<span class="S1">;===============================================================================</span><br>
+<span class="S1">例1</span><br>
+<span class="S1">;===============================================================================</span><br>
+<span class="S9">$asControls</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">StringSplit</span><span class="S8">(</span><span class="S4">WinGetClassList</span><span class="S8">(</span><span class="S7">"[active]"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">),</span><span class="S0"> </span><span class="S6">@LF</span><span class="S8">)</span><br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$asControls</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Class List of Active Window"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">;===============================================================================</span><br>
+<span class="S1">例2 (手動で定義した配列を使用)</span><br>
+<span class="S1">;===============================================================================</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$avArray</span><span class="S8">[</span><span class="S3">10</span><span class="S8">]</span><br>
+<br>
+<span class="S9">$avArray</span><span class="S8">[</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"JPM"</span><br>
+<span class="S9">$avArray</span><span class="S8">[</span><span class="S3">1</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"Holger"</span><br>
+<span class="S9">$avArray</span><span class="S8">[</span><span class="S3">2</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"Jon"</span><br>
+<span class="S9">$avArray</span><span class="S8">[</span><span class="S3">3</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"Larry"</span><br>
+<span class="S9">$avArray</span><span class="S8">[</span><span class="S3">4</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"Jeremy"</span><br>
+<span class="S9">$avArray</span><span class="S8">[</span><span class="S3">5</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"Valik"</span><br>
+<span class="S9">$avArray</span><span class="S8">[</span><span class="S3">6</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"Cyberslug"</span><br>
+<span class="S9">$avArray</span><span class="S8">[</span><span class="S3">7</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"Nutster"</span><br>
+<span class="S9">$avArray</span><span class="S8">[</span><span class="S3">8</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"JdeB"</span><br>
+<span class="S9">$avArray</span><span class="S8">[</span><span class="S3">9</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"Tylo"</span><br>
+<br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$avArray</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$avArray set manually 1D"</span><span class="S8">)</span><br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$avArray</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$avArray set manually 1D transposed"</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S1">;===============================================================================</span><br>
+<span class="S1">例3 (StringSplit()の返す配列を使用)</span><br>
+<span class="S1">;===============================================================================</span><br>
+<span class="S9">$avArray</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">StringSplit</span><span class="S8">(</span><span class="S4">WinGetClassList</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">),</span><span class="S0"> </span><span class="S6">@LF</span><span class="S8">)</span><br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$avArray</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$avArray as a list classes in window"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">;===============================================================================</span><br>
+<span class="S1">例4 (2次元配列)</span><br>
+<span class="S1">;===============================================================================</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$avArray</span><span class="S8">[</span><span class="S3">2</span><span class="S8">][</span><span class="S3">5</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[[</span><span class="S7">"JPM"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Holger"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Jon"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Larry"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Jeremy"</span><span class="S8">],</span><span class="S0"> </span><span class="S8">[</span><span class="S7">"Valik"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Cyberslug"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Nutster"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"JdeB"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Tylo"</span><span class="S8">]]</span><br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$avArray</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$avArray as a 2D array"</span><span class="S8">)</span><br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$avArray</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$avArray as a 2D array, transposed"</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ArrayDisplay.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

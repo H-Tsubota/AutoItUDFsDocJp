@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagNMDATETIMEFORMAT</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagNMDATETIMEFORMAT</font>
+<hr size="2">
+<p>日付ピッカー(DTP)コントロール内のコールバックフィールドを定義するフォーマット文字列部分の情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagNMDATETIMEFORMAT = $tagNMHDR & ";ptr Format;short Year;short Month;short DOW;short Day;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "short Hour;short Minute;short Second;short MSecond;ptr pDisplay;char Display[64]"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$tagNMHDR</td>
+    <td width="85%">通知メッセージの情報を格納します</td>
+  </tr>
+  <tr>
+   <td>Format</td>
+   <td>コントロールのコールバックフィールドを定義するNULL終端文字列へのポインタ。
+	文字列は1つ以上の"X"で構成されます。.</td>
+  </tr>
+  <tr>
+   <td>Year</td>
+   <td>年</td>
+  </tr>
+  <tr>
+   <td>Month</td>
+   <td>月</td>
+  </tr>
+  <tr>
+   <td>DOW</td>
+   <td>曜日</td>
+  </tr>
+  <tr>
+   <td>Day</td>
+   <td>日</td>
+  </tr>
+  <tr>
+   <td>Hour</td>
+   <td>時</td>
+  </tr>
+  <tr>
+   <td>Minute</td>
+   <td>分</td>
+  </tr>
+  <tr>
+   <td>Second</td>
+   <td>秒</td>
+  </tr>
+  <tr>
+   <td>MSecond</td>
+   <td>ミリ秒</td>
+  </tr>
+  <tr>
+   <td>pDisplay</td>
+   <td>
+   コントロールに表示されるテキストを格納したNULL終端文字列へのポインタ。
+   デフォルトではこの構造体のDisplayのアドレスです。
+	既存の文字列を保持することもできます。
+	その場合、Displayに値を代入する必要はありません。
+	ただしpDisplayが指す文字列は他の$DTN_FORMAT通知が送信されるか、
+	コントロールが破棄されるまでの間は有効なものでなければなりません。</td>
+  </tr>
+  <tr>
+   <td>Display</td>
+   <td>コントロールの表示するNULL終端文字列を受け取る64文字サイズの文字バッファ。
+   バッファ全体を埋める必要はありません。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+コールバックフィールドを定義する文字列とコールバックフィールドに表示される文字列を受け取るバッファを保持します。<br>
+この構造体は$DTN_FORMAT通知メッセージとともに使用されます。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

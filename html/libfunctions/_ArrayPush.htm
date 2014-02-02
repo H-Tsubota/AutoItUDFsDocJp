@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ArrayPush</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ArrayPush</font>
+<hr size="2">
+<p>末尾に新しい値を挿入し、1番目の要素を削除、または逆をおこなうことで配列サイズを増やさずに値を追加します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Array.au3&gt;<br>
+_ArrayPush(ByRef $avArray, $vValue [, $iDirection = 0])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$avArray</td>
+    <td width="85%">変更する配列</td>
+  </tr>
+  <tr>
+   <td>$vValue</td>
+   <td>追加する値(配列も可)</td>
+  </tr>
+  <tr>
+   <td>$iDirection</td>
+   <td><b>[オプション]</b> 既存の配列要素のプッシュ方向<br>
+       0 = 左に移動 (末尾に追加)<br>
+       1 = 右に移動 (頭に追加)</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0。@errorを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>1 - $avArrayは配列ではありません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - $vValueが$avArrayより大きい配列です (収まりません)</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 - $avArrayは1次元配列ではありません</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数は、この関数を使用しない場合、巨大なサイズの配列を作成しなければならないような配列内のデータを継続して更新する処理で使用されます。<br>
+選択方向に従って配列内の冒頭または末尾の1つを除く全ての値が(履歴のように)保持されます。<br>
+アッセンブリのpushコマンドのようなものです。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_ArrayAdd.htm">_ArrayAdd</a>, <a href="_ArrayConcatenate.htm">_ArrayConcatenate</a>, <a href="_ArrayDelete.htm">_ArrayDelete</a>, <a href="_ArrayInsert.htm">_ArrayInsert</a>, <a href="_ArrayPop.htm">_ArrayPop</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Array.au3&gt;</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$avArrayTarget</span><span class="S8">[</span><span class="S3">9</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">,</span><span class="S0"> </span><span class="S3">4</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">6</span><span class="S8">,</span><span class="S0"> </span><span class="S3">7</span><span class="S8">,</span><span class="S0"> </span><span class="S3">8</span><span class="S8">,</span><span class="S0"> </span><span class="S3">9</span><span class="S8">]</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$avArraySource</span><span class="S8">[</span><span class="S3">2</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[</span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">200</span><span class="S8">]</span><br>
+<br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$avArrayTarget</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$avArrayTarget BEFORE _ArrayPush()"</span><span class="S8">)</span><br>
+<span class="S15">_ArrayPush</span><span class="S8">(</span><span class="S9">$avArrayTarget</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$avArraySource</span><span class="S8">)</span><br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$avArrayTarget</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$avArrayTarget AFTER _ArrayPush() array to end"</span><span class="S8">)</span><br>
+<span class="S15">_ArrayPush</span><span class="S8">(</span><span class="S9">$avArrayTarget</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$avArraySource</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$avArrayTarget</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$avArrayTarget AFTER _ArrayPush() array to beginning"</span><span class="S8">)</span><br>
+<span class="S15">_ArrayPush</span><span class="S8">(</span><span class="S9">$avArrayTarget</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Hello world!"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$avArrayTarget</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$avArrayTarget AFTER _ArrayPush() string to beginning"</span><span class="S8">)</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ArrayPush.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

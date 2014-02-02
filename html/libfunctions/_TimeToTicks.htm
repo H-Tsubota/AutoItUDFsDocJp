@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _TimeToTicks</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_TimeToTicks</font>
+<hr size="2">
+<p>指定された時間、分および秒をミリ秒に変換します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Date.au3&gt;<br>
+_TimeToTicks([$iHours = @HOUR[, $iMins = @MIN[, $iSecs = @SEC]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iHours</td>
+    <td width="85%"><b>[オプション]</b>時間数。</td>
+  </tr>
+  <tr>
+   <td>$iMins</td>
+   <td><b>[オプション]</b>分数。</td>
+  </tr>
+  <tr>
+   <td>$iSecs</td>
+   <td><b>[オプション]</b>秒数。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">ミリ秒数を返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 - 正常終了。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - 指定された時間、分、秒は有効ではありません。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_TicksToTime.htm">_TicksToTime</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Date.au3&gt;</span><br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$Sec</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Min</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Hour</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Time</span><br>
+<span class="S1">; 時刻で計算</span><br>
+<span class="S9">$StartTicks</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_TimeToTicks</span><span class="S8">(</span><span class="S6">@HOUR</span><span class="S8">,</span><span class="S6">@MIN</span><span class="S8">,</span><span class="S6">@SEC</span><span class="S8">)</span><br>
+<span class="S1">; 45分後を計算</span><br>
+<span class="S9">$EndTicks</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$StartTicks</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">45</span><span class="S0"> </span><span class="S8">*</span><span class="S0"> </span><span class="S3">60</span><span class="S0"> </span><span class="S8">*</span><span class="S0"> </span><span class="S3">1000</span><br>
+<span class="S15">_TicksToTime</span><span class="S8">(</span><span class="S9">$EndTicks</span><span class="S8">,</span><span class="S9">$Hour</span><span class="S8">,</span><span class="S9">$Min</span><span class="S8">,</span><span class="S9">$Sec</span><span class="S8">)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">262144</span><span class="S8">,</span><span class="S7">''</span><span class="S0"> </span><span class="S8">,</span><span class="S0"> </span><span class="S7">'New Time:'</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> &nbsp;</span><span class="S9">$Hour</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">":"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$Min</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">":"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$Sec</span><span class="S8">)</span><span class="S0"> </span><br>
+<br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_TimeToTicks.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

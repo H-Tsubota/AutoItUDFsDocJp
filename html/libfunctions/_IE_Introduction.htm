@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IE_Introduction</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IE_Introduction</font>
+<hr size="2">
+<p>IE.au3に関する入門的な情報を新しいブラウザウィンドウに表示します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IE_Introduction ( [$s_module = "basic"] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$s_module</td>
+    <td width="85%"><b>[オプション]</b>どのモジュールを実行するかを指定します<br>
+       basic = (デフォルト) 基礎的な導入</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">InternetExplorer.Applicationオブジェクトを指すオブジェクト変数を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>5 ($_IEStatus_InvalidValue) = 無効な値</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+AutoItのヘルプファイルは現在、UDFドキュメンテーションが個々の関数について取り上げることを認める一方で、一連の関数をカバーする一般的なドキュメントを持つことを許可していません。この関数はそのような一般的なドキュメントを提供するためのもので、今後追加されていきます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IE_Example.htm">_IE_Example</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - 基礎的なIE.au3入門のテキストを表示しているブラウザを開く</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Introduction</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"basic"</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IE_Introduction.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

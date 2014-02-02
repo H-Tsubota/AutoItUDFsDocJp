@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinNet_AddConnection2</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinNet_AddConnection2</font>
+<hr size="2">
+<p>ローカルデバイスをネットワークリソースに接続します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinNet.au3&gt;<br>
+_WinNet_AddConnection2($sLocalName, $sRemoteName [, $sUserName = 0 [, $sPassword = 0 [, $iType = 1 [, $iOptions = 1]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sLocalName</td>
+    <td width="85%">"F:"や"LPT1"などリダイレクトされるローカルデバイスの名前。<br>
+	文字列内の大文字小文字は区別されません。<br>
+	0の場合、ネットワークリソースへの接続はローカルデバイスのリダイレクトなしに作成されます。</td>
+  </tr>
+  <tr>
+   <td>$sRemoteName</td>
+   <td>接続するネットワークリソース名</td>
+  </tr>
+  <tr>
+   <td>$sUsername</td>
+   <td><b>[オプション]</b>接続を作成する際に使用されるユーザー名。
+   0の場合、この関数はデフォルトのユーザー名を使用します。</td>
+  </tr>
+  <tr>
+   <td>$sPassword</td>
+      <td><b>[オプション]</b>接続を作成する際に使用されるパスワード。<br>
+   0の場合、デフォルトのパスワードが使用されます。<br>
+   文字列が空白の場合、パスワードは使用されません。</td>
+  </tr>
+  <tr>
+   <td>$iType</td>
+   <td><b>[オプション]</b>接続するネットワークリソースの種類を指定します:<br>
+       0 - 任意 ($sLocalNameが0の場合のみ)<br>
+       1 - ディスク<br>
+       2 - プリンタ</td>
+  </tr>
+  <tr>
+   <td>$iOptions</td>
+   <td><b>[オプション]</b>接続オプション。次の1つまたは組み合わせです:<br>
+       &nbsp;1 - ネットワークリソース接続を記憶します。<br>
+       &nbsp;2 - オペレーティングシステムは認証のためにユーザーと対話処理をおこないます。<br>
+       &nbsp;4 - 
+	   システムはユーザーに代替値の入力を求めずにはユーザー名、パスワードにデフォルト設定値を使用しません。
+		このフラグはビット2(対話処理)が設定されていない場合、無視されます。<br>
+       &nbsp;8 - 接続作成時に強制的にローカルデバイスのリダイレクトをおこないます。<br>
+       16 - オペレーティングシステムはGUIの代わりにコマンドラインを使用してユーザーに認証をプロンプトします。
+	   このフラグはビット2(対話処理)が設定されていない場合、無視されます。<br>
+       32 - このビットを設定するとオペレーティングシステムは資格情報をプロンプトし、この資格情報は資格情報マネージャによって保存されます。資格情報マネージャが呼び出し側のログオンセッションで無効であったり、ネットワークプロバイダが資格情報の保存をサポートしていない場合、このフラグは無視されます。またこのフラグはビット5(GUIの代わりにコマンドライン)が設定されていない場合も無視されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinNet_AddConnection.htm">_WinNet_AddConnection</a>, <a href="_WinNet_AddConnection3.htm">_WinNet_AddConnection3</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=WNetAddConnection2">WNetAddConnection2</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

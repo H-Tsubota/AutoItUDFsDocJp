@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinNet_GetConnectionPerformance</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinNet_GetConnectionPerformance</font>
+<hr size="2">
+<p>ネットワーク接続リソースのパフォーマンスの情報を返します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinNet.au3&gt;<br>
+_WinNet_GetConnectionPerformance($sLocalName, $sRemoteName)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sLocalName</td>
+    <td width="85%">"F:"や"LPT1"などの問い合わせたいネットワーク資源へリダイレクトされているローカルデバイスの名前。<br>
+       空白の場合、ネットワークリソースはsRemoteNameで指定されたものです。<br>
+	   このパラメータでローカルデバイスを指定するとsRemoteNameは無視されます。</td>
+  </tr>
+  <tr>
+   <td>$sRemoteName</td>
+   <td>
+	問い合わせるネットワークリソースの名前。リソースは現在確立されている接続をもっている必要があります。<br>
+	たとえばリソースがファイルサーバー上のファイルの場合、そのファイルを開くことで接続が保証されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">次のフォーマットの配列:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aInfo[0] - 接続の説明。次の1つまたは組み合わせ:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 1 - 返される情報はネットワークカードの性能に左右されます</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 2 - 接続がルーティングされていません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 4 - 接続が一般的に遅い媒体を介しています</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 8 - 返される情報の一部が動的に計算されます</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aInfo[1] - メディアのネットワークリソースへの100bps単位での速度</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aInfo[2] - 情報送信時に導入される片道遅延時間</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aInfo[3] - リソースへの要求を1つ作成する際にアプリケーションが使用するデータのサイズ</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=MultinetGetConnectionPerformanceA">MultinetGetConnectionPerformanceA</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

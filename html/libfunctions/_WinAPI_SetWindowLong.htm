@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_SetWindowLong</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_SetWindowLong</font>
+<hr size="2">
+<p>指定されたウィンドウの情報を設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_SetWindowLong($hWnd, $iIndex, $iValue)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iIndex</td>
+   <td>
+      設定される値のゼロ始まりのオフセットを指定します。有効な値はゼロから拡張ウィンドウメモリ数より4小さい値までです。<br>
+   例えば12バイト以上の拡張メモリを指定した場合、値8が3番目の32ビット整数のインデックスになります。<br>
+  拡張ウィンドウメモリ以外の値を設定するためには次の値のいずれかを指定してください:<br>
+	   $GWL_EXSTYLE - 拡張ウィンドウスタイルを設定します<br>
+       $GWL_STYLE - ウィンドウスタイルを設定します<br>
+       $GWL_WNDPROC - ウィンドウプロシージャのアドレスを設定します<br>
+       $GWL_HINSTANCE - アプリケーションインスタンスのハンドルを設定します<br>
+       $GWL_HWNDPARENT - 存在する場合は親ウィンドウのハンドルを設定します<br>
+       $GWL_ID - ウィンドウの識別子を設定します<br>
+       $GWL_USERDATA - ウィンドウに関連付けられた32ビット値を設定します</td>
+  </tr>
+  <tr>
+   <td>$iValue</td>
+   <td>置換用の値を指定します。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">以前の値</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+定義済み定数用にConstants.au3が必要です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_GetWindowLong.htm">_WinAPI_GetWindowLong</a>, <a href="_WinAPI_CallWindowProc.htm">_WinAPI_CallWindowProc</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=SetWindowLongPtr">SetWindowLongPtr</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ClipBoard_GetFormatName</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ClipBoard_GetFormatName</font>
+<hr size="2">
+<p>指定した登録形式の名前を取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Clipboard.au3&gt;<br>
+_ClipBoard_GetFormatName($iFormat)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iFormat</td>
+    <td width="85%">取得する形式の型を指定します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">形式名</td>
+  </tr>
+  <tr>
+    <td valign="top">Failure:</td>
+    <td>空文字列</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+$ iFormatパラメータには事前定義されたクリップボード形式を指定しないでください<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GetClipboardFormatNameA">GetClipboardFormatNameA</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;ClipBoard.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$iMemo</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iFormat</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUI作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Clipboard"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">600</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iMemo</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateEdit</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">596</span><span class="S8">,</span><span class="S0"> </span><span class="S3">396</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_VSCROLL</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetFont</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S3">9</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Courier New"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 新しいクリップボード形式を登録</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iFormat</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ClipBoard_RegisterFormat</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"AutoIt Library Text"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S9">$iFormat</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S15">_WinAPI_ShowError</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"_ClipBoard_RegisterFormat failed"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 新しい形式を表示</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S15">_ClipBoard_GetFormatName</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$iFormat</span><span class="S8">))</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了させるまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S1">; メモにメッセージを書き込む</span><br>
+<span class="S5">Func</span><span class="S0"> MemoWrite</span><span class="S8">(</span><span class="S9">$sMessage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">""</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sMessage</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;MemoWrite</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ClipBoard_GetFormatName.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

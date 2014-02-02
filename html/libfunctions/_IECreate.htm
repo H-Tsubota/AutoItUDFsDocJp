@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IECreate</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IECreate</font>
+<hr size="2">
+<p>Internet Explorerブラウザのウィンドウを作成します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IECreate ( [$s_Url = "about:blank" [, $f_tryAttach = 0 [, $f_visible = 1 [, $f_wait = 1 [, $f_takeFocus = 1]]]]] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$s_Url</td>
+    <td width="85%"><b>[オプション]</b>作成後に移動するURLを指定します</td>
+  </tr>
+  <tr>
+   <td>$f_tryAttach</td>
+   <td><b>[オプション]</b>既存のウィンドウに結合するかどうかを指定します<br>
+       0 = (デフォルト) 結合しません<br>
+       1 = 既存のウィンドウに結合します</td>
+  </tr>
+  <tr>
+   <td>$f_visible</td>
+   <td><b>[オプション]</b>ブラウザウィンドウを表示するかどうかを指定します<br>
+       0 = ブラウザウィンドウ非表示<br>
+       1 = (デフォルト) ブラウザウィンドウ表示</td>
+  </tr>
+  <tr>
+   <td>$f_wait</td>
+   <td><b>[オプション]</b>ページのロード中に待機するかどうかを指定します<br>
+       0 = 直ちに処理を返します。ページのロードを待ちません<br>
+       1 = (デフォルト) ページのロードが完了してから処理を返します</td>
+  </tr>
+  <tr>
+   <td>$f_takeFocus</td>
+   <td><b>[オプション]</b>結合したウィンドウにフォーカスをあわせるかどうかを指定します<br>
+       0 =  ウィンドウにフォーカスをあわせません<br>
+       1 = (デフォルト) ウィンドウにフォーカスをあわせます</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">InternetExplorer.Applicationオブジェクトを指すオブジェクト変数を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 ($_IEStatus_GeneralError) = 一般的なエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 ($_IEStatus_InvalidDataType) = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 ($_IEStatus_InvalidObjectType) = 無効なオブジェクト型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>6 ($_IEStatus_LoadWaitTimeout) = ロード待機タイムアウト</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>8 ($_IEStatus_AccessIsDenied) = アクセス拒否</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>9 ($_IEStatus_ClientDisconnected) = クライアント切断</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>$f_tryAttachが成功したかどうかに応じて成功(1)、失敗(0)が設定されます</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+結合設定使用時に結合可能なウィンドウが存在しない場合は_IEAttachによってコンソールにエラー表示がおこなわれます。これは_IEErrorNotifyを使って制御することが可能です。<br>
+<br>
+ローカルのハイパーテキストアプリケーション(.hta)ファイルを開く場合、Internet Explorerは_IECreateが返すオブジェクト変数からはアクセス不可能な新しいブラウザプロセスを開きます。この新しいブラウザを制御するためには"embedded"オプションで_IEAttachを使用する必要があります。<br>
+<br>
+Windows Vistaの新しいセキュリティーシステムではからブラウザに異なるセキュリティーゾーンのURLへの移動命令が出された場合、新しいブラウザウィンドウが作成されます。これは_IECreateを使ってはじめてウィンドウを作成して初期移動する場合でも同じです。新しいウィンドウは新しいブラウザのインスタンスであり、以前のブラウザのオブジェクト変数はもうそれを指していません。いくつかの回避策があります: 1)コードに#RequireAdminを追加 (これはアカウントが管理者グループの一部であっても必要です。必要に応じて証明プロンプトが表示されます)、2)_IEAttachを使って新しいブラウザウィンドウに接続、3)IEでターゲットサイトを信頼できるサイトセキュリティゾーンに追加、4)ＩＥで"保護モード"を解除、5)UACを無効にする。信頼できないサイトにアクセスする場合はIEのセキュリティー機能の無効化が及ばす影響についてよく理解するようにしてください。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IEAttach.htm">_IEAttach</a>, <a href="_IECreateEmbedded.htm">_IECreateEmbedded</a>, <a href="_IEQuit.htm">_IEQuit</a>, <a href="_IENavigate.htm">_IENavigate</a>, <a href="_IELoadWait.htm">_IELoadWait</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - ブラウザウィンドウを作成しウェブサイトに移動</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"www.autoitscript.com"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 2 - 既存のものがない場合3つの異なるURLで</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 新しいブラウザウィンドウを作成($f_tryAttach = 1)</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ページのロード完了を待たない($f_wait = 0)</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S15">_IECreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"www.autoitscript.com"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S15">_IECreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"my.yahoo.com"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S15">_IECreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"www.google.com"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 3 - あるウェブサイトのURLを開いている既存のブラウザに結合を試みる</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 既存のブラウザが存在しない場合、新しいブラウザを作成し、そのサイトに移動する</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"www.autoitscript.com"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S1">; 結合が成功したかどうか確認するため@extendedの返し値を調べる</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@extended</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Attached to Existing Browser"</span><span class="S8">)</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Created New Browser"</span><span class="S8">)</span><br>
+<span class="S5">EndIf</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 4 - 空のブラウザを作成し、作成したHTMLを表示させる</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S9">$sHTML</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"&lt;h1&gt;Hello World!&lt;/h1&gt;"</span><br>
+<span class="S15">_IEBodyWriteHTML</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sHTML</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 5 - 非表示のブラウザを作成し、ウェブサイトに移動</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 情報を取得し、終了</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"http://sourceforge.net"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S1">; ページ上の"sfmarquee"というnameの要素のinnerTextを表示</span><br>
+<span class="S9">$oMarquee</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEGetObjByName</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"sfmarquee"</span><span class="S8">)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"SourceForge Information"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$oMarquee</span><span class="S8">.</span><span class="S14">innerText</span><span class="S8">)</span><br>
+<span class="S15">_IEQuit</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 6 - 新しいiexplore.exeのインスタンスに結合するブラウザを作成</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; これは新しいセッションCookieコンテキストを取得するためにしばしば必要になる</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (セッションCookieは同じiexplore.exeを共有するほぼ全てのブラウザインスタンスで共有される)</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S4">ShellExecute</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"iexplore.exe"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"about:blank"</span><span class="S8">)</span><br>
+<span class="S4">WinWait</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"Blank Page"</span><span class="S8">)</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEAttach</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"about:blank"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"url"</span><span class="S8">)</span><br>
+<span class="S15">_IELoadWait</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">)</span><br>
+<span class="S15">_IENavigate</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"www.autoitscript.com"</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IECreate.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagWINDOWPLACEMENT</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagWINDOWPLACEMENT</font>
+<hr size="2">
+<p>スクリーン上でのウィンドウ配置の情報を格納したWINDOWPLACEMENT構造体。<br></p>
+
+<p class="codeheader">
+Global Const $tagWINDOWPLACEMENT = "UINT length; UINT flags; UINT showCmd; int ptMinPosition[2]; int ptMaxPosition[2]; int rcNormalPosition[4]"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">length</td>
+    <td width="85%">構造体の長さをバイト単位で指定します</td>
+  </tr>
+  <tr>
+   <td>flags</td>
+   <td>最小化されたウィンドウの位置とウィンドウの復元方法を制御するフラグを指定します。このメンバーは次のうちの1つまたは組み合わせです:<br>
+       $WPF_ASYNCWINDOWPLACEMENT - Windows 2000/XP: 
+	   呼び出し側スレッドとウィンドウを所有するスレッドが別の入力キューに接続された場合、
+	   システムはウィンドウを所有するスレッドにリクエストをポストします。<br>
+       $WPF_RESTORETOMAXIMIZED - 最小化前に最大化されていたかどうかによらず、復元ウィンドウを最大化するよう指定します。<br>
+	  &nbsp;&nbsp;この設定は次回のウィンドウ復元時のみ有効です。デフォルトの復元方法は変更しません。<br>
+       &nbsp;&nbsp;このフラグは@SW_SHOWMINIMIZEDがshowCmdに設定されている場合のみ有効です。<br>
+       $WPF_SETMINPOSITION - 指定される最小化されたウィンドウの座標を指定します。<br>
+       &nbsp;&nbsp;ptMinPositionに座標が設定されている場合、このフラグは必ず指定されていなければなりません。</td>
+  </tr>
+  <tr>
+   <td>showCmd</td>
+   <td>ウィンドウの現在の表示状態を指定します。このメンバーは次の値のいずれかです:<br>
+       @SW_HIDE - ウィンドウを非表示化し、別のウィンドウをアクティブ化します。<br>
+       @SW_MAXIMIZE - 指定されたウィンドウを最大化します。<br>
+       @SW_MINIMIZE - 指定されたウィンドウを最小化し、次のZオーダートップレベルのウィンドウをアクティブ化します。<br>
+       @SW_RESTORE - ウィンドウをアクティブ化し、表示します。ウィンドウが最小化、最大化されている場合、システムが元の位置、サイズに復元します。<br>
+       &nbsp;&nbsp;アプリケーションは最小化されたウィンドウを復元する際にこのフラグを指定しなければなりません。<br>
+       @SW_SHOW - ウィンドウをアクティブ化し、現在のサイズと位置に表示します。<br>
+       @SW_SHOWMAXIMIZED - ウィンドウをアクティブ化し、最大化して表示します。<br>
+       @SW_SHOWMINIMIZED - ウィンドウをアクティブ化し、最小化して表示します。<br>
+       @SW_SHOWMINNOACTIVE - ウィンドウを最小化して表示します。<br>
+       &nbsp;&nbsp;この値はウィンドウがアクティブ化されないことを除いて@SW_SHOWMINIMIZEDと同じです。<br>
+       @SW_SHOWNA - 現在のサイズと位置でウィンドウを表示します。<br>
+       &nbsp;&nbsp;この値はウィンドウがアクティブ化されないことを除いて@SW_SHOWと同じです。<br>
+       @SW_SHOWNOACTIVATE - ウィンドウを直近のサイズと位置で表示します。<br>
+       &nbsp;&nbsp;この値はウィンドウがアクティブ化されないことを除いて@SW_SHOWNORMALと同じです。<br>
+       @SW_SHOWNORMAL - ウィンドウをアクティブ化し、表示します。<br>
+       &nbsp;&nbsp;ウィンドウが最小化、最大化されている場合、システムが元の位置、サイズに復元します。<br>
+       &nbsp;&nbsp;アプリケーションははじめてウィンドウを表示する際にこのフラグを指定しなければなりません。</td>
+  </tr>
+  <tr>
+   <td>ptMinPosition</td>
+   <td>ウィンドウが最小化されている際のウィンドウの左上隅の座標を指定します。</td>
+  </tr>
+  <tr>
+   <td>ptMaxPosition</td>
+   <td>ウィンドウが最大化されている際のウィンドウの左上隅の座標を指定します。</td>
+  </tr>
+  <tr>
+   <td>rcNormalPosition</td>
+   <td>ウィンドウが復元位置にある際のウィンドウの座標を指定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

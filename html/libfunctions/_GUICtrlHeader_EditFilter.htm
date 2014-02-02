@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlHeader_EditFilter</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlHeader_EditFilter</font>
+<hr size="2">
+<p>指定されたフィルターの編集を開始します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiHeader.au3&gt;<br>
+_GUICtrlHeader_EditFilter($hWnd, $iIndex[, $fDiscard = True])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iIndex</td>
+   <td>ゼロ始まりのアイテムインデックス</td>
+  </tr>
+  <tr>
+   <td>$fDiscard</td>
+   <td><b>[オプション]</b>ユーザーの変更編集をどのように制御するのかを指定するフラグ。<br>
+   このフラグはメッセージが送信された際にユーザーがフィルター編集処理中の場合、どうするかを指定するために使用されます:<br>
+       &nbsp;True - ユーザーによる変更を破棄します<br>
+       False - ユーザーによる変更を受け入れます</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlHeader_ClearFilter.htm">_GUICtrlHeader_ClearFilter</a>, <a href="_GUICtrlHeader_ClearFilterAll.htm">_GUICtrlHeader_ClearFilterAll</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiHeader.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_HDR</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; 関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hHeader</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUIを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Header"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hHeader</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlHeader_Create</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 列を追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_AddItem</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_AddItem</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 2"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_AddItem</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 3"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_AddItem</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 4"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; フィルタを設定</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_EditFilter</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Send</span><span class="S8">(</span><span class="S7">"Filter 1"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Sleep</span><span class="S8">(</span><span class="S3">1000</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Send</span><span class="S8">(</span><span class="S7">"</span><span class="S10">{ENTER}</span><span class="S7">"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_EditFilter</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Send</span><span class="S8">(</span><span class="S7">"Filter 2"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Sleep</span><span class="S8">(</span><span class="S3">1000</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Send</span><span class="S8">(</span><span class="S7">"</span><span class="S10">{ENTER}</span><span class="S7">"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 最初のフィルタをクリア</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_ClearFilter</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlHeader_EditFilter.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

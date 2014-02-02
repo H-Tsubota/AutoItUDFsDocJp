@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_InvalidateRect</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_InvalidateRect</font>
+<hr size="2">
+<p>指定されたウィンドウの更新領域に長方形を追加します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_InvalidateRect($hWnd [, $tRect = 0 [, $fErase = True]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$tRect</td>
+   <td><b>[オプション]</b>
+   更新領域に追加される長方形のクライアント座標を格納している$tagRECT構造体<br>
+   このパラメータが0の場合、クライアント領域全体が更新領域へ追加されます。</td>
+  </tr>
+  <tr>
+   <td>$fErase</td>
+   <td><b>[オプション]</b>更新領域が処理される際に、更新領域の背景が消去されるかどうかを指定します。<br>
+   このパラメータがTrueの場合、BeginPaint関数が呼ばれた際に背景が消去されます。<br>
+   このパレメータがFalseの場合、背景は変更されないままになります。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagRECT.htm">$tagRECT</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=InvalidateRect">InvalidateRect</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

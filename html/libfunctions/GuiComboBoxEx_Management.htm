@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>GuiComboBoxEx user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;GuiComboBoxEx.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_AddDir.htm">_GUICtrlComboBoxEx_AddDir</a></td>
+<td>ディレクトリ、ファイルの名前を追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_AddString.htm">_GUICtrlComboBoxEx_AddString</a></td>
+<td>文字列を追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_BeginUpdate.htm">_GUICtrlComboBoxEx_BeginUpdate</a></td>
+<td>EndUpdate関数が呼ばれまでコントロールの更新を停止します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_Create.htm">_GUICtrlComboBoxEx_Create</a></td>
+<td>拡張コンボボックスコントロールを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_CreateSolidBitMap.htm">_GUICtrlComboBoxEx_CreateSolidBitMap</a></td>
+<td>ソリッドカラーのビットマップを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_DeleteString.htm">_GUICtrlComboBoxEx_DeleteString</a></td>
+<td>拡張コンボボックスコントロールからアイテムを取り除きます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_Destroy.htm">_GUICtrlComboBoxEx_Destroy</a></td>
+<td>コントロールを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_EndUpdate.htm">_GUICtrlComboBoxEx_EndUpdate</a></td>
+<td>BeginUpdate関数によってオフにされているスクリーン再描画を有効にします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_FindStringExact.htm">_GUICtrlComboBoxEx_FindStringExact</a></td>
+<td>文字列を検索します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetComboBoxInfo.htm">_GUICtrlComboBoxEx_GetComboBoxInfo</a></td>
+<td>指定されたコンボボックスの情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetComboControl.htm">_GUICtrlComboBoxEx_GetComboControl</a></td>
+<td>子-コンボボックスコントロールのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetCount.htm">_GUICtrlComboBoxEx_GetCount</a></td>
+<td>アイテムの数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetCurSel.htm">_GUICtrlComboBoxEx_GetCurSel</a></td>
+<td>現在選択されているアイテムのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetDroppedControlRect.htm">_GUICtrlComboBoxEx_GetDroppedControlRect</a></td>
+<td>ドロップダウン状態にあるコンボボックスのスクリーン座標を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetDroppedControlRectEx.htm">_GUICtrlComboBoxEx_GetDroppedControlRectEx</a></td>
+<td>ドロップダウン状態にあるコンボボックスのスクリーン座標を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetDroppedState.htm">_GUICtrlComboBoxEx_GetDroppedState</a></td>
+<td>コンボボックスのリストボックスがドロップダウンされているかどうかを調べます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetDroppedWidth.htm">_GUICtrlComboBoxEx_GetDroppedWidth</a></td>
+<td>コンボボックスのリストボックスの許容される最小幅を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetEditControl.htm">_GUICtrlComboBoxEx_GetEditControl</a></td>
+<td>拡張コンボボックスコントロールのエディットコントロール部分のハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetEditSel.htm">_GUICtrlComboBoxEx_GetEditSel</a></td>
+<td>コンボボックスのエディットコントロールの現在の選択値の開始、終了文字位置を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetEditText.htm">_GUICtrlComboBoxEx_GetEditText</a></td>
+<td>拡張コンボボックスのエディットコントロールからテキストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetExtendedStyle.htm">_GUICtrlComboBoxEx_GetExtendedStyle</a></td>
+<td>拡張コンボボックスコントロールで使用されている拡張スタイルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetExtendedUI.htm">_GUICtrlComboBoxEx_GetExtendedUI</a></td>
+<td>コンボボックスにデフォルトユーザーインターフェイス、拡張ユーザーインターフェイスのどちらが使用されいるかを調べます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetImageList.htm">_GUICtrlComboBoxEx_GetImageList</a></td>
+<td>拡張コンボボックスコントロールに割り当てられた画像リストのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetItem.htm">_GUICtrlComboBoxEx_GetItem</a></td>
+<td>アイテムの属性を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetItemEx.htm">_GUICtrlComboBoxEx_GetItemEx</a></td>
+<td>アイテムの属性の全て、または一部を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetItemHeight.htm">_GUICtrlComboBoxEx_GetItemHeight</a></td>
+<td>リストアイテムまたはコンボボックスの選択フィールドの高さを調べます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetItemImage.htm">_GUICtrlComboBoxEx_GetItemImage</a></td>
+<td>アイテムのアイコンのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetItemIndent.htm">_GUICtrlComboBoxEx_GetItemIndent</a></td>
+<td>アイテムがインデントされる画像幅数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetItemOverlayImage.htm">_GUICtrlComboBoxEx_GetItemOverlayImage</a></td>
+<td>アイテムのオーバーレイ画像アイコンのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetItemParam.htm">_GUICtrlComboBoxEx_GetItemParam</a></td>
+<td>アイテムのアプリケーション固有の値を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetItemSelectedImage.htm">_GUICtrlComboBoxEx_GetItemSelectedImage</a></td>
+<td>アイテムの選択画像アイコンのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetItemText.htm">_GUICtrlComboBoxEx_GetItemText</a></td>
+<td>コンボボックスのリストから文字列を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetItemTextLen.htm">_GUICtrlComboBoxEx_GetItemTextLen</a></td>
+<td>コンボボックスのリスト内の文字列の長さを文字数単位で取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetList.htm">_GUICtrlComboBoxEx_GetList</a></td>
+<td>コンボボックスコントロールのリスト部分から全てのアイテムを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetListArray.htm">_GUICtrlComboBoxEx_GetListArray</a></td>
+<td>コンボボックスコントロールのリスト部分から全てのアイテムを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetLocale.htm">_GUICtrlComboBoxEx_GetLocale</a></td>
+<td>現在のロケールを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetLocaleCountry.htm">_GUICtrlComboBoxEx_GetLocaleCountry</a></td>
+<td>現在の国コードを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetLocaleLang.htm">_GUICtrlComboBoxEx_GetLocaleLang</a></td>
+<td>現在の言語識別子を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetLocalePrimLang.htm">_GUICtrlComboBoxEx_GetLocalePrimLang</a></td>
+<td>言語IDからプライマリ言語IDを抽出します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetLocaleSubLang.htm">_GUICtrlComboBoxEx_GetLocaleSubLang</a></td>
+<td>言語IDからサブ言語IDを抽出します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetMinVisible.htm">_GUICtrlComboBoxEx_GetMinVisible</a></td>
+<td>コンボボックスのドロップダウンリストで表示されるアイテムの最小数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetTopIndex.htm">_GUICtrlComboBoxEx_GetTopIndex</a></td>
+<td>コンボボックスのリストボックス部分内の最初の表示アイテムのゼロ始まりのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_GetUnicode.htm">_GUICtrlComboBoxEx_GetUnicode</a></td>
+<td>コントロールがUnicodeを使用しているかどうかを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_InitStorage.htm">_GUICtrlComboBoxEx_InitStorage</a></td>
+<td>リストボックスのアイテムを格納するためのメモリを割り当てます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_InsertString.htm">_GUICtrlComboBoxEx_InsertString</a></td>
+<td>コントロールに新しいアイテムを挿入します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_LimitText.htm">_GUICtrlComboBoxEx_LimitText</a></td>
+<td>ユーザーがコンボボックスのエディットコントロールに入力できるテキストの長さを制限します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_ReplaceEditSel.htm">_GUICtrlComboBoxEx_ReplaceEditSel</a></td>
+<td>エディットボックス内の選択テキストを置換します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_ResetContent.htm">_GUICtrlComboBoxEx_ResetContent</a></td>
+<td>全てのアイテムを取り除きます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetCurSel.htm">_GUICtrlComboBoxEx_SetCurSel</a></td>
+<td>コンボボックスのリスト内の文字列を選択します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetDroppedWidth.htm">_GUICtrlComboBoxEx_SetDroppedWidth</a></td>
+<td>コンボボックスのリストボックスの許容される最大幅をピクセル単位で設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetEditSel.htm">_GUICtrlComboBoxEx_SetEditSel</a></td>
+<td>コンボボックスのエディットコントロールの文字を選択します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetEditText.htm">_GUICtrlComboBoxEx_SetEditText</a></td>
+<td>コンボボックスのエディットコントロールのテキストを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetExtendedStyle.htm">_GUICtrlComboBoxEx_SetExtendedStyle</a></td>
+<td>拡張コンボボックスコントロールに拡張スタイルを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetExtendedUI.htm">_GUICtrlComboBoxEx_SetExtendedUI</a></td>
+<td>デフォルトユーザーインターフェイスまたは拡張ユーザーインターフェイスのどちらかを選択します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetImageList.htm">_GUICtrlComboBoxEx_SetImageList</a></td>
+<td>拡張コンボボックスコントロールに画像リストを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetItem.htm">_GUICtrlComboBoxEx_SetItem</a></td>
+<td>アイテムの属性の一部または全てを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetItemEx.htm">_GUICtrlComboBoxEx_SetItemEx</a></td>
+<td>アイテムの属性の一部または全てを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetItemHeight.htm">_GUICtrlComboBoxEx_SetItemHeight</a></td>
+<td>リストアイテム、またはコンボボックスの選択フィールドの高さを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetItemImage.htm">_GUICtrlComboBoxEx_SetItemImage</a></td>
+<td>コントロールの画像リスト内のアイテムアイコンのインデックスを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetItemIndent.htm">_GUICtrlComboBoxEx_SetItemIndent</a></td>
+<td>アイテムをインデントする画像幅数を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetItemOverlayImage.htm">_GUICtrlComboBoxEx_SetItemOverlayImage</a></td>
+<td>画像リスト内のアイテムのオーバレイアイコンのインデックスを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetItemParam.htm">_GUICtrlComboBoxEx_SetItemParam</a></td>
+<td>アイテムに固有の値を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetItemSelectedImage.htm">_GUICtrlComboBoxEx_SetItemSelectedImage</a></td>
+<td>コントロールの画像リスト内のアイテムの選択アイコンのインデックスを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetMinVisible.htm">_GUICtrlComboBoxEx_SetMinVisible</a></td>
+<td>コンボボックスのドロップダウンリストで表示されるアイテムの最小数を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetTopIndex.htm">_GUICtrlComboBoxEx_SetTopIndex</a></td>
+<td>コンボボックスのリストボックス内の特定のアイテムが表示されていることを保証します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_SetUnicode.htm">_GUICtrlComboBoxEx_SetUnicode</a></td>
+<td>コントロールがUnicodeを使用するかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlComboBoxEx_ShowDropDown.htm">_GUICtrlComboBoxEx_ShowDropDown</a></td>
+<td>コンボボックスのリストボックスの表示/非表示を切り替えます。<br></td>
+</tr>
+</table>
+</body>

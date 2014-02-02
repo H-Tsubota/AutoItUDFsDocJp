@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _SQLite_Close</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_SQLite_Close</font>
+<hr size="2">
+<p>SQLiteデータベースを閉じます。<br></p>
+
+<p class="codeheader">
+#include &lt;SQLite.au3&gt;<br>
+_SQLite_Close ( [ $hDB ] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hDB</td>
+    <td width="85%"><b>[オプション]</b>データベースハンドル。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">$SQLITE_OKを返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>$SQLITE_* 定数と比較可能な値を返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>-1 - SQLiteがエラーを報告 (返し値を調べてください)</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - SQLite API 'sqlite3_close'の呼び出しエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - SafeModeによって呼び出しが阻止されました。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+データベースハンドルを与えらない場合、最後に開かれたデータベースが閉じられます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_SQLite_Open.htm">_SQLite_Open</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;SQLite.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;SQLite.dll.au3&gt;</span><br>
+<br>
+<span class="S15">_SQLite_Startup</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"SQLite Error"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"SQLite.dll Can't be Loaded!"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S5">EndIf</span><br>
+<span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"_SQLite_LibVersion="</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S15">_SQLite_LibVersion</span><span class="S8">()</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Open</span><span class="S0"> </span><span class="S8">()</span><span class="S0"> </span><span class="S1">; :メモリ: データベースを開く</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"SQLite Error"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Can't Load Database!"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S5">EndIf</span><br>
+<span class="S15">_SQLite_Close</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S15">_SQLite_Shutdown</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_SQLite_Close.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+</body>
+</html>

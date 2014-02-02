@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _Crypt_HashData</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_Crypt_HashData</font>
+<hr size="2">
+<p>指定されたアルゴリズムでデータをハッシュ化します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Crypt.au3&gt;<br>
+_Crypt_HashData($vData, $iALG_ID [, $fFinal = True [, $hCryptHash = 0]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$vData</td>
+    <td width="85%">ハッシュ化するデータ</td>
+  </tr>
+  <tr>
+   <td>$iALG_ID</td>
+   <td>使用するハッシュのID</td>
+  </tr>
+  <tr>
+   <td>$fFinal</td>
+   <td>	<b>[オプション]</b> データが全データの一部だけの場合はFalse。また関数はハッシュの代わりにハッシュオブジェクトを返します。</td>
+  </tr>
+  <tr>
+   <td>$hCryptHash</td>
+   <td>	<b>[オプション]</b> 直前の_Crypt_HashData呼び出しによって返されたハッシュオブジェクト</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">ハッシュを返します。$fFinal=Falseの場合はハッシュオブジェクトを返します。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>@errorを0に設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>-1を返し、@errorを設定します:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - ハッシュオブジェクトの作成に失敗</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - データのハッシュ化に失敗</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 - ハッシュサイズの取得に失敗</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 - ハッシュの取得に失敗</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+ハッシュ(ダイジェスト)はバイナリ列として返され、そのサイズはアルゴリズムによって決まります。データセットのセグメントと一緒に使用するには全ての非終了セグメント用にfFinalフラグをFalseに設定し、返されたハッシュオブジェクトを以降の全ての呼び出しで使用します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_Crypt_HashFile.htm">_Crypt_HashFile</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CryptHashData">CryptHashData</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> &nbsp;</span><span class="S7">&lt;Crypt.au3&gt;</span><br>
+<br>
+<span class="S1">; データのハッシュ化とそれを使用したパスワード認証の例</span><br>
+<br>
+<span class="S1">; 正しいパスワードでのMD5ハッシュ</span><br>
+<span class="S9">$bPasswordHash</span><span class="S8">=</span><span class="S7">"0xCE950A8D7D367B5CE038E636893B49DC"</span><br>
+<br>
+<span class="S9">$sPassword</span><span class="S8">=</span><span class="S4">InputBox</span><span class="S8">(</span><span class="S7">"Login"</span><span class="S8">,</span><span class="S7">"Please type the correct password."</span><span class="S8">,</span><span class="S7">"Yellow fruit that is popular among monkeys"</span><span class="S8">)</span><br>
+<br>
+<span class="S5">If</span><span class="S0"> </span><span class="S15">_Crypt_HashData</span><span class="S8">(</span><span class="S9">$sPassword</span><span class="S8">,</span><span class="S9">$CALG_MD5</span><span class="S8">)=</span><span class="S9">$bPasswordHash</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">64</span><span class="S8">,</span><span class="S7">"Access Granted"</span><span class="S8">,</span><span class="S7">"Password correct!"</span><span class="S8">)</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">16</span><span class="S8">,</span><span class="S7">"Access Denied"</span><span class="S8">,</span><span class="S7">"You entered the wrong password!"</span><span class="S8">)</span><br>
+<span class="S5">EndIf</span><br>
+<br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_Crypt_HashData.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

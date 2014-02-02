@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _NowDate</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_NowDate</font>
+<hr size="2">
+<p>現在の日付けをPCの形式で返します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Date.au3&gt;<br>
+_NowDate()<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+コンピューターの地域設定で指定された現在の日付けを返します。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+コンピューターの地域設定にアクセスできなかった場合、"M/d/yyyy"形式の日付けを返します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_DateTimeFormat.htm">_DateTimeFormat</a>, <a href="_Now.htm">_Now</a>, <a href="_NowCalc.htm">_NowCalc</a>, <a href="_NowCalcDate.htm">_NowCalcDate</a>, <a href="_NowTime.htm">_NowTime</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Date.au3&gt;</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">''</span><span class="S8">,</span><span class="S7">"The Date is:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_NowDate</span><span class="S8">())</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_NowDate.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

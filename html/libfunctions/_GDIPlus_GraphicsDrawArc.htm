@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GDIPlus_GraphicsDrawArc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GDIPlus_GraphicsDrawArc</font>
+<hr size="2">
+<p>円弧を描画します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GDIPlus.au3&gt;<br>
+_GDIPlus_GraphicsDrawArc($hGraphics, $iX, $iY, $iWidth, $iHeight, $fStartAngle, $fSweepAngle[, $hPen = 0])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hGraphics</td>
+    <td width="85%">Graphicsオブジェクトのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iX</td>
+   <td>描画する円弧を定義する楕円の外接長方形の左上隅のX座標</td>
+  </tr>
+  <tr>
+   <td>$iY</td>
+   <td>描画する円弧を定義する楕円の外接長方形の左上隅のY座標</td>
+  </tr>
+  <tr>
+   <td>$iWidth</td>
+   <td>描画する円弧を定義する楕円の外接長方形の幅</td>
+  </tr>
+  <tr>
+   <td>$iHeight</td>
+   <td>描画する円弧を定義する楕円の外接長方形の高さ</td>
+  </tr>
+  <tr>
+   <td>$fStartAngle</td>
+   <td>円弧の開始位置とX軸の成す角度</td>
+  </tr>
+  <tr>
+   <td>$fSweepAngle</td>
+   <td>円弧の開始位置と終了位置の成す角度</td>
+  </tr>
+  <tr>
+   <td>$hPen</td>
+   <td><b>[オプション]</b>円弧の描画に使用されるペンのハンドル。0の場合、幅1の黒いペンが使用されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GdipDrawArcI">GdipDrawArcI</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GDIPlus.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hGraphic</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUI作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"GDI+"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 円弧を描画</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_Startup</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGraphic</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_GraphicsCreateFromHWND</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_GraphicsDrawArc</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGraphic</span><span class="S8">,</span><span class="S0"> </span><span class="S3">160</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">180</span><span class="S8">,</span><span class="S0"> </span><span class="S3">360</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_GraphicsDrawArc</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGraphic</span><span class="S8">,</span><span class="S0"> </span><span class="S3">180</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">180</span><span class="S8">,</span><span class="S0"> </span><span class="S3">360</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_GraphicsDrawArc</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGraphic</span><span class="S8">,</span><span class="S0"> </span><span class="S3">160</span><span class="S8">,</span><span class="S0"> </span><span class="S3">104</span><span class="S8">,</span><span class="S0"> </span><span class="S3">30</span><span class="S8">,</span><span class="S0"> </span><span class="S3">30</span><span class="S8">,</span><span class="S0"> </span><span class="S3">160</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">140</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_GraphicsDrawArc</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGraphic</span><span class="S8">,</span><span class="S0"> </span><span class="S3">140</span><span class="S8">,</span><span class="S0"> </span><span class="S3">80</span><span class="S8">,</span><span class="S0"> </span><span class="S3">70</span><span class="S8">,</span><span class="S0"> </span><span class="S3">70</span><span class="S8">,</span><span class="S0"> </span><span class="S3">180</span><span class="S8">,</span><span class="S0"> </span><span class="S3">360</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; リソースを破棄</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_GraphicsDispose</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGraphic</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_Shutdown</span><span class="S0"> </span><span class="S8">()</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GDIPlus_GraphicsDrawArc.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

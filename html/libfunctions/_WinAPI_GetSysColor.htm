@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_GetSysColor</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_GetSysColor</font>
+<hr size="2">
+<p>指定された表示要素の現在の色を取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_GetSysColor($iIndex)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iIndex</td>
+    <td width="85%">色を取得される表示要素。次のうちのいずれかです:<br>
+       $COLOR_3DDKSHADOW - 立体表示要素の濃い影<br>
+       $COLOR_3DFACE - 立体表示要素とダイアログボックス背景の表面の色<br>
+       $COLOR_3DHIGHLIGHT - 立体表示要素のハイライト色(光源に面する縁)<br>
+       $COLOR_3DHILIGHT - 立体表示要素のハイライト色(光源に面する縁)<br>
+       $COLOR_3DLIGHT - 立体表示要素のライト色(光源に面する縁)<br>
+       $COLOR_3DSHADOW - 立体表示要素の影の色(光源の反対側に面する縁)<br>
+       $COLOR_ACTIVEBORDER - アクティブなウィンドウの縁<br>
+       $COLOR_ACTIVECAPTION - アクティブなウィンドウのタイトルバー<br>
+       &nbsp;&nbsp;グラデーション効果が有効な場合、アクティブなウィンドウのタイトルバーのカラーグラデーション左端の色を表します<br>
+       $COLOR_APPWORKSPACE - マルチドキュメントインターフェイス(MDI)アプリケーションの背景色<br>
+       $COLOR_BACKGROUND - デスクトップ<br>
+       $COLOR_BTNFACE - 立体表示要素とダイアログボックス背景の表面の色<br>
+       $COLOR_BTNHIGHLIGHT - 立体表示要素のハイライト色(光源に面する縁)<br>
+       $COLOR_BTNHILIGHT - 立体表示要素のハイライト色(光源に面する縁)<br>
+       $COLOR_BTNSHADOW - 立体表示要素の影の色(光源の反対側に面する縁)<br>
+       $COLOR_BTNTEXT - プッシュボタンのテキスト<br>
+       $COLOR_CAPTIONTEXT - キャプション、サイズボックス、スクロールバーの矢印ボックスのテキスト<br>
+       $COLOR_DESKTOP - デスクトップ<br>
+       $COLOR_GRADIENTACTIVECAPTION - アクティブなウィンドウのタイトルバーのカラーグラデーション右端の色<br>
+       &nbsp;&nbsp;$COLOR_ACTIVECAPTIONで左端の色を指定します<br>
+       &nbsp;&nbsp;グラデーション効果が有効かどうか判定するにははSPI_GETGRADIENTCAPTIONSをSystemParametersInfo関数で使用してください<br>
+       $COLOR_GRADIENTINACTIVECAPTION - 非アクティブなウィンドウのタイトルバーのカラーグラデーション右端の色<br>
+       &nbsp;&nbsp;$COLOR_INACTIVECAPTIONで左端の色を指定します<br>
+       $COLOR_GRAYTEXT - グレイアウトした(無効な)テキスト。現在のディスプレイドライバがソリッドな灰色をサポートしていない場合、この色は0に設定されます。<br>
+       $COLOR_HIGHLIGHT - コントロールで選択されているアイテム<br>
+       $COLOR_HIGHLIGHTTEXT - コントロールで選択されているアイテムのテキスト<br>
+       $COLOR_HOTLIGHT - ハイパーリンク、ホットトラックアイテムの色<br>
+       $COLOR_INACTIVEBORDER - 非アクティブなウィンドウの縁<br>
+       $COLOR_INACTIVECAPTION - 非アクティブなウィンドウのキャプション<br>
+       &nbsp;&nbsp;グラデーション効果が有効な場合、非アクティブなウィンドウのタイトルバーのカラーグラデーション左端の色を表します<br>
+       $COLOR_INACTIVECAPTIONTEXT - 非アクティブなキャプションのテキストの色<br>
+       $COLOR_INFOBK - ツールチップコントロールの背景色<br>
+       $COLOR_INFOTEXT - ツールチップコントロールのテキスト色<br>
+       $COLOR_MENU - メニュー背景<br>
+       $COLOR_MENUHILIGHT - メニューがフラットメニューとして表示される際のメニューアイテムのハイライトに使用される色<br>
+       &nbsp;&nbsp;ハイライトされたメニューアイテムは$COLOR_HIGHLIGHTで縁どりされます<br>
+       &nbsp;&nbsp;Windows 2000: この値はサポートされていません<br>
+       $COLOR_MENUBAR - メニューがフラットメニューとして表示される際のメニューバーの背景色<br>
+       &nbsp;&nbsp;ただし$COLOR_MENU はメニューポップアップの背景色を表し続けます<br>
+       &nbsp;&nbsp;Windows 2000: この値はサポートされていません<br>
+       $COLOR_MENUTEXT - メニューのテキスト<br>
+       $COLOR_SCROLLBAR - スクロールバーのグレイの領域<br>
+       $COLOR_WINDOW - ウィンドウ背景<br>
+       $COLOR_WINDOWFRAME - ウィンドウフレーム<br>
+       $COLOR_WINDOWTEXT - ウィンドウのテキスト</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+指定した要素の赤、緑、青(RGB)のカラー値を返します。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+上記の定数のためにWindowsConstants.au3が必要です。<br>
+<br>
+$iIndexパラメータが範囲外の場合、返し値はゼロです。ゼロは有効なRGB値でもあるのでシステムカラーが現在のプラットフォームでサポートされているかどうか調べるのにGetSysColorを使用することはできません。代わりにGetSysColor関数を使用して下さい。指定カラーがサポートされていない場合、この関数はNULLを返します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_SetSysColors.htm">_WinAPI_SetSysColors</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GetSysColor">GetSysColor</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_Au3Check_Parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$aElements</span><span class="S8">[</span><span class="S3">2</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[</span><span class="S9">$COLOR_ACTIVECAPTION</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$COLOR_GRADIENTACTIVECAPTION</span><span class="S8">]</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 赤と黄色</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$aColors</span><span class="S8">[</span><span class="S3">2</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[</span><span class="S3">255</span><span class="S8">,</span><span class="S0"> </span><span class="S3">65535</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$aSaveColors</span><span class="S8">[</span><span class="S3">2</span><span class="S8">]</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"My GUI"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">,</span><span class="S0"> </span><span class="S3">200</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$aSaveColors</span><span class="S8">[</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetSysColor</span><span class="S8">(</span><span class="S9">$COLOR_ACTIVECAPTION</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$aSaveColors</span><span class="S8">[</span><span class="S3">1</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetSysColor</span><span class="S8">(</span><span class="S9">$COLOR_GRADIENTACTIVECAPTION</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_SetSysColors</span><span class="S8">(</span><span class="S9">$aElements</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aColors</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">WEnd</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIDelete</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_SetSysColors</span><span class="S8">(</span><span class="S9">$aElements</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aSaveColors</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WinAPI_GetSysColor.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

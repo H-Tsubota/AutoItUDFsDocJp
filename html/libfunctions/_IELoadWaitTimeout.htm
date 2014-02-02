@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IELoadWaitTimeout</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IELoadWaitTimeout</font>
+<hr size="2">
+<p>_IELoadWaitのタイムアウト時間の現在の値をミリ秒単位で取得、または設定します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IELoadWaitTimeout ( [$i_timeout = -1] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$i_timeout</td>
+    <td width="85%"><b>[オプション]</b>ミリ秒数を取得するか設定するかのオプション<br>
+       0または正の整数の場合、この値をタイムアウト時間に設定します<br>
+       -1 = (デフォルト) 現在のタイムアウト時間(グローバル変数$__IELoadWaitTimeoutの値)を返します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">$i_timeout = -1の場合、現在のタイムアウト時間を返します。それ以外の場合、1を返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>なし。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+タイムアウト時間を完全に無効にする方法はありませんが、とても大きな正の整数を設定することで機能的にそれに近いことはできます。初期のタイムアウト時間は30000ms（5分）です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IELoadWait.htm">_IELoadWait</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - 現在のタイムアウト時間を取得</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$iCurrentTimeout</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IELoadWaitTimeout</span><span class="S0"> </span><span class="S8">()</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 2 - タイムアウト時間を1分(60000ミリ秒)に設定</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S15">_IELoadWaitTimeout</span><span class="S0"> </span><span class="S8">(</span><span class="S3">60000</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IELoadWaitTimeout.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

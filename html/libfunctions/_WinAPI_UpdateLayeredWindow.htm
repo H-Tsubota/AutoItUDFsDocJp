@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_UpdateLayeredWindow</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_UpdateLayeredWindow</font>
+<hr size="2">
+<p>レイヤード ウィンドウの位置、サイズ、形状、内容、透過度を更新します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_UpdateLayeredWindow($hWnd, $hDCDest, $pPTDest, $pSize, $hDCSrce, $pPTSrce, $iRGB, $pBlend, $iFlags)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">
+	レイヤードウィンドウのハンドル。<br>レイヤードウィンドウはウィンドウ作成時に$WS_EX_LAYEREDを指定することで作成されます。</td>
+  </tr>
+  <tr>
+   <td>$hDCDest</td>
+   <td>スクリーンのデバイスコンテキストハンドル。</td>
+  </tr>
+  <tr>
+   <td>$pPTDest</td>
+   <td>レイヤードウィンドウの新しい画面上位置を指定する$tagPOINT構造体へのポインタ。<br>
+   現在の位置を変更しない場合はゼロにします。</td>
+  </tr>
+  <tr>
+   <td>$pSize</td>
+   <td>レイヤードウィンドウの新しいサイズを指定する$tagSIZE構造体へのポインタ。<br>
+   現在のサイズを変更しない場合はゼロにします。</td>
+  </tr>
+  <tr>
+   <td>$hDCSrce</td>
+   <td>レイヤードウィンドウを定義する面のデバイスコンテキストハンドル。<br>
+   このハンドルは_WinAPI_CreateCompatibleDC関数を呼ぶことで取得できます。</td>
+  </tr>
+  <tr>
+   <td>$pPTSrce</td>
+   <td>デバイスコンテキスト内でのレイヤーの位置を指定する$tagPOINT構造体へのポインタ。</td>
+  </tr>
+  <tr>
+   <td>$iRGB</td>
+   <td>レイヤードウィンドウの構成時に使用されるカラーキー。</td>
+  </tr>
+  <tr>
+   <td>$pBlend</td>
+   <td>レイヤードウィンドウの構成時に使用される透過値を指定する$tagBLENDFUNCTION構造体へのポインタ。</td>
+  </tr>
+  <tr>
+   <td>$iFlags</td>
+   <td>このパラメータは次のいずれかです:<br>
+       $ULW_ALPHA - ブレンド関数として$tblendを使用します<br>
+       $ULW_COLORKEY - 透過色として$iRGBを使用します<br>
+       $ULW_OPAQUE - 不透明なレイヤードウィンドウを描画します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagBLENDFUNCTION.htm">$tagBLENDFUNCTION</a>, <a href="$tagPOINT.htm">$tagPOINT</a>, <a href="$tagSIZE.htm">$tagSIZE</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=UpdateLayeredWindow">UpdateLayeredWindow</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

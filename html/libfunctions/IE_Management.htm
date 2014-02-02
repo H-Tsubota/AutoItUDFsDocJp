@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>IE user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;IE.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="_IEAction.htm">_IEAction</a></td>
+<td>ブラウザ上で単純な一連の動作を実行します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEAttach.htm">_IEAttach</a></td>
+<td>(選択モードに基づいて)指定した検索文字列、部分文字列と一致するInternet Explorerのインスタンスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEBodyReadHTML.htm">_IEBodyReadHTML</a></td>
+<td>ドキュメントの&lt;body&gt;タグ内のHTMLを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEBodyReadText.htm">_IEBodyReadText</a></td>
+<td>ドキュメントの&lt;body&gt;タグ内のテキストを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEBodyWriteHTML.htm">_IEBodyWriteHTML</a></td>
+<td>ドキュメントの&lt;body&gt;タグ内のHTMLを置換します。<br></td>
+</tr>
+<tr>
+<td><a href="_IECreate.htm">_IECreate</a></td>
+<td>Internet Explorerブラウザのウィンドウを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_IECreateEmbedded.htm">_IECreateEmbedded</a></td>
+<td>GuiCtrlCreateObj()を使ってAutoIt GUIに埋め込むのに適したウェブブラウザオブジェクトを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEDocGetObj.htm">_IEDocGetObj</a></td>
+<td>任意のDOMオブジェクトを与えると、関連付けられたドキュメントオブジェクトへの参照が返されます。<br></td>
+</tr>
+<tr>
+<td><a href="_IEDocInsertHTML.htm">_IEDocInsertHTML</a></td>
+<td>要素の中または前後にHTMLテキストを挿入します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEDocInsertText.htm">_IEDocInsertText</a></td>
+<td>要素の中または前後にテキストを挿入します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEDocReadHTML.htm">_IEDocReadHTML</a></td>
+<td>ドキュメントの全HTMLソースを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEDocWriteHTML.htm">_IEDocWriteHTML</a></td>
+<td>ドキュメント全体のHTMLを置き換えます。<br></td>
+</tr>
+<tr>
+<td><a href="_IEErrorHandlerDeRegister.htm">_IEErrorHandlerDeRegister</a></td>
+<td>登録されたユーザーCOMエラーハンドラを無効にします。<br></td>
+</tr>
+<tr>
+<td><a href="_IEErrorHandlerRegister.htm">_IEErrorHandlerRegister</a></td>
+<td>ユーザーのCOMエラーハンドラを登録し、有効にします。<br></td>
+</tr>
+<tr>
+<td><a href="_IEErrorNotify.htm">_IEErrorNotify</a></td>
+<td>IE.au3が警告とエラーを(コンソールに)自動通知するかどうかを指定します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFormElementCheckboxSelect.htm">_IEFormElementCheckBoxSelect</a></td>
+<td>指定されたフォーム要素の値を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFormElementGetCollection.htm">_IEFormElementGetCollection</a></td>
+<td>与えられたフォーム内の全フォーム要素を持つコレクションオブジェクト変数を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFormElementGetObjByName.htm">_IEFormElementGetObjByName</a></td>
+<td>名前によってフォーム要素へのオブジェクト参照を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFormElementGetValue.htm">_IEFormElementGetValue</a></td>
+<td>与えられたフォーム要素の値を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFormElementOptionSelect.htm">_IEFormElementOptionSelect</a></td>
+<td>指定されたフォーム要素の値を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFormElementRadioSelect.htm">_IEFormElementRadioSelect</a></td>
+<td>指定されたフォーム要素の値を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFormElementSetValue.htm">_IEFormElementSetValue</a></td>
+<td>指定されたフォーム要素の値を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFormGetCollection.htm">_IEFormGetCollection</a></td>
+<td>ドキュメント内のフォームを格納したコレクションオブジェクト変数、またはインデックスと対応するフォームを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFormGetObjByName.htm">_IEFormGetObjByName</a></td>
+<td>名前によってフォームへのオブジェクト参照を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFormImageClick.htm">_IEFormImageClick</a></td>
+<td>&lt;input type=image&gt;に対するマウスクリックをシミュレートします。altテキスト、name、srcの部分文字列で指定します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFormReset.htm">_IEFormReset</a></td>
+<td>指定したフォームの設定をロード時のデフォルト値にリセットします。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFormSubmit.htm">_IEFormSubmit</a></td>
+<td>指定したフォームにサブミットします。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFrameGetCollection.htm">_IEFrameGetCollection</a></td>
+<td>フレームセット内のフレーム、通常のページ上のアイフレームを格納したコレクションオブジェクト、またはインデックスと対応するフレーム、アイフレームを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEFrameGetObjByName.htm">_IEFrameGetObjByName</a></td>
+<td>名前によってフレームまたはアイフレームへのオブジェクト参照を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEGetObjById.htm">_IEGetObjById</a></td>
+<td>IDまたは名前によってオブジェクト変数を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEGetObjByName.htm">_IEGetObjByName</a></td>
+<td>名前またはIDによってオブジェクト変数を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEHeadInsertEventScript.htm">_IEHeadInsertEventScript</a></td>
+<td>ドキュメントのHeadにJavaScriptを挿入します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEImgClick.htm">_IEImgClick</a></td>
+<td>画像のマウスクリックをシミュレートします。altテキスト、name、srcの部分文字列で指定します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEImgGetCollection.htm">_IEImgGetCollection</a></td>
+<td>ドキュメント内のIMGタグを格納したコレクションオブジェクト変数、またはインデックスと対応する画像を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEIsFrameSet.htm">_IEIsFrameSet</a></td>
+<td>指定されたウィンドウがフレームセットを持っているかどうかを調べます。<br></td>
+</tr>
+<tr>
+<td><a href="_IELinkClickByIndex.htm">_IELinkClickByIndex</a></td>
+<td>0始まりのインデックス(ソース順)によってリンクのマウスクリックをシミュレートします。<br></td>
+</tr>
+<tr>
+<td><a href="_IELinkClickByText.htm">_IELinkClickByText</a></td>
+<td>与えられた文字列と一致するテキストを含むリンクに対してマウスクリックをシミュレートします。<br></td>
+</tr>
+<tr>
+<td><a href="_IELinkGetCollection.htm">_IELinkGetCollection</a></td>
+<td>ドキュメント内の全てのリンクを格納したコレクションオブジェクト、またはインデックスと対応したリンクを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IELoadWait.htm">_IELoadWait</a></td>
+<td>ブラウザがページのロードを完了するまで待機します。<br></td>
+</tr>
+<tr>
+<td><a href="_IELoadWaitTimeout.htm">_IELoadWaitTimeout</a></td>
+<td>_IELoadWaitのタイムアウト時間の現在の値をミリ秒単位で取得、または設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_IENavigate.htm">_IENavigate</a></td>
+<td>既存のブラウザウィンドウに指定したURLに移動するよう指示します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEPropertyGet.htm">_IEPropertyGet</a></td>
+<td>ブラウザ、DOM要素の選択されたプロパティを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEPropertySet.htm">_IEPropertySet</a></td>
+<td>ブラウザ、DOM要素の選択されたプロパティを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_IEQuit.htm">_IEQuit</a></td>
+<td>ブラウザを閉じ、そのオブジェクト参照を削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_IETableGetCollection.htm">_IETableGetCollection</a></td>
+<td>ドキュメント内の全てのテーブルを持つコレクションオブジェクト、またはインデックスと対応するテーブルを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IETableWriteToArray.htm">_IETableWriteToArray</a></td>
+<td>テーブルの内容を配列に読み込みます。<br></td>
+</tr>
+<tr>
+<td><a href="_IETagNameAllGetCollection.htm">_IETagNameAllGetCollection</a></td>
+<td>ドキュメント内の全ての要素のコレクションオブジェクト、ソース内順でのドキュメント階層、またはインデックスと対応した要素を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IETagNameGetCollection.htm">_IETagNameGetCollection</a></td>
+<td>指定されたタグ名のついたオブジェクト内の全ての要素のコレクションオブジェクト、またはインデックスと対応した要素を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_IE_Example.htm">_IE_Example</a></td>
+<td>あなた自身のテスト、またはIE.au3のサンプル使用のためにあらかじめロードされているドキュメントを新しいブラウザウィンドウで表示します。<br></td>
+</tr>
+<tr>
+<td><a href="_IE_Introduction.htm">_IE_Introduction</a></td>
+<td>IE.au3に関する入門的な情報を新しいブラウザウィンドウに表示します。<br></td>
+</tr>
+<tr>
+<td><a href="_IE_VersionInfo.htm">_IE_VersionInfo</a></td>
+<td>IE.au3のバージョン情報を格納した配列を返します。<br></td>
+</tr>
+</table>
+</body>

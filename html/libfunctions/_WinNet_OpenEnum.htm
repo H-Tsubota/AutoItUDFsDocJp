@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinNet_OpenEnum</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinNet_OpenEnum</font>
+<hr size="2">
+<p>ネットワークリソース、既存の接続の列挙を開始します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinNet.au3&gt;<br>
+_WinNet_OpenEnum($iScope, $iType, $iUsage, $pResource, ByRef $hEnum)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iScope</td>
+    <td width="85%">列挙の範囲:<br>
+       0 - 現在接続されている全てのリソースを列挙します<br>
+       1 - ネットワーク上の全てリソースを列挙します<br>
+       2 - 記憶している(恒久的な)接続を全て列挙します<br>
+       3 - 呼び出し側のネットワークコンテキスト内のリソースのみ列挙します</td>
+  </tr>
+  <tr>
+   <td>$iType</td>
+   <td>リソースの種類:<br>
+       0 - 全てのリソース<br>
+       1 - ディスクリソース<br>
+       2 - プリンタリソース</td>
+  </tr>
+  <tr>
+   <td>$iUsage</td>
+   <td>リソースの使用法の種類:<br>
+       0 - 全てのリソース<br>
+       1 - 全ての接続可能なリソース<br>
+       2 - 全てのコンテナリソース<br>
+       4 - ユーザーが認証されていない場合、関数を失敗で終わらせます</td>
+  </tr>
+  <tr>
+   <td>$pResource</td>
+   <td>
+   列挙のコンテナを指定する$tagNETRESOURCE構造体へのポインタ。<br>
+   iScopeが1でない場合、0でなければなりません。0の場合、ネットワークのルートと見なされます。.</td>
+  </tr>
+  <tr>
+   <td>$hEnum</td>
+   <td>WNet_EnumResourceの呼び出しで使用されるハンドルが返されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinNet_EnumResource.htm">_WinNet_EnumResource</a>, <a href="_WinNet_CloseEnum.htm">_WinNet_CloseEnum</a>, <a href="$tagNETRESOURCE.htm">$tagNETRESOURCE</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=WNetOpenEnum">WNetOpenEnum</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

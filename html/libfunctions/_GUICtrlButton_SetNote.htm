@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlButton_SetNote</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlButton_SetNote</font>
+<hr size="2">
+<p>コマンドリンクボタンに関連付けられているノートのテキストを設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiButton.au3&gt;<br>
+_GUICtrlButton_SetNote($hWnd, $sNote)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$sNote</td>
+   <td>ノートを格納する文字列</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+最低限度のオペレーティングシステム: Windows Vista<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlButton_GetNote.htm">_GUICtrlButton_GetNote</a>, <a href="_GUICtrlButton_GetNoteLength.htm">_GUICtrlButton_GetNoteLength</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=BCM_SETNOTE">BCM_SETNOTE</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_Au3Check_Parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiButton.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiMenu.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">"MustDeclareVars"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$btn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iMemo</span><br>
+<br>
+<span class="S1">; これらボタンのコントロールIDはGuiCtrlReadでは読み取れないことに注意</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Buttons"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iMemo</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateEdit</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">65</span><span class="S8">,</span><span class="S0"> </span><span class="S3">390</span><span class="S8">,</span><span class="S0"> </span><span class="S3">325</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_VSCROLL</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetFont</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S3">9</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Courier New"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$btn</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlButton_Create</span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Button1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">160</span><span class="S8">,</span><span class="S0"> </span><span class="S3">40</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$BS_COMMANDLINK</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$BS_DEFPUSHBUTTON</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$BS_PUSHLIKE</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlButton_SetNote</span><span class="S8">(</span><span class="S9">$btn</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"This is a test of Vista"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Note: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_GUICtrlButton_GetNote</span><span class="S8">(</span><span class="S9">$btn</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Note Length: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_GUICtrlButton_GetNoteLength</span><span class="S8">(</span><span class="S9">$btn</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Button Text: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_GUICtrlButton_GetText</span><span class="S8">(</span><span class="S9">$btn</span><span class="S8">))</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">WEnd</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S1">; メモコントロールに1行書き込み</span><br>
+<span class="S5">Func</span><span class="S0"> MemoWrite</span><span class="S8">(</span><span class="S9">$sMessage</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sMessage</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;MemoWrite</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlButton_SetNote.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IETableWriteToArray</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IETableWriteToArray</font>
+<hr size="2">
+<p>テーブルの内容を配列に読み込みます。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IETableWriteToArray ( ByRef $o_object [, $f_transpose] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">InternetExplorer.Applicationのオブジェクト変数、テーブルオブジェクト</td>
+  </tr>
+  <tr>
+   <td>$f_transpose</td>
+   <td><b>[オプション]</b>出力配列の行と列を入れ換えるかどうか指定するブール値</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">テーブルの内容を格納した2次元配列を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 ($_IEStatus_InvalidDataType) = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 ($_IEStatus_InvalidObjectType) = 無効なオブジェクト型</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+テーブルのセルの幅が複数列または複数行の場合、結果が正しく整列するように空の配列要素が追加されます。セルにまたがるデータは左または最上部の配列要素に格納されます。<br>
+<br>
+HTMLドキュメントではテーブルはしばしば入れ子構造になります。全てのデータが思ったとおりに1つの配列要素に入って返されない場合、この関数でより深い階層のテーブルを参照する必要があります。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IETableGetCollection.htm">_IETableGetCollection</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - テーブルのサンプルをブラウザで開き、ページ上の2番目のテーブル(インデックス 1)への参照を取得。</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;その内容を2次元配列に読み込む</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Example</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"table"</span><span class="S8">)</span><br>
+<span class="S9">$oTable</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IETableGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S9">$aTableData</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IETableWriteToArray</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oTable</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 2 - 例 1と同じ。ただし出力配列を転置して結果を_ArrayDisplay()で表示</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Array.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Example</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"table"</span><span class="S8">)</span><br>
+<span class="S9">$oTable</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IETableGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S9">$aTableData</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IETableWriteToArray</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oTable</span><span class="S8">,</span><span class="S0"> </span><span class="S5">True</span><span class="S8">)</span><br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$aTableData</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IETableWriteToArray.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _FTP_Connect</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_FTP_Connect</font>
+<hr size="2">
+<p>FTPサーバーに接続します。<br></p>
+
+<p class="codeheader">
+#Include &lt;FTPEx.au3&gt;<br>
+_FTP_Connect($l_InternetSession, $s_ServerName, $s_Username, $s_Password [, $i_Passive = 0 [, $i_ServerPort = 0 [, $l_Service = 1 [, $l_Flags = 0 [, $l_Context = 0]]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$l_InternetSession</td>
+    <td width="85%">_FTP_Open()の返し値</td>
+  </tr>
+  <tr>
+   <td>$s_ServerName</td>
+   <td>サーバー名/IP</td>
+  </tr>
+  <tr>
+   <td>$s_Username</td>
+   <td>ユーザー名</td>
+  </tr>
+  <tr>
+   <td>$s_Password</td>
+   <td>パスワード</td>
+  </tr>
+  <tr>
+   <td>$i_Passive</td>
+   <td>	<b>[オプション]</b> パッシブモード</td>
+  </tr>
+  <tr>
+   <td>$i_ServerPort</td>
+   <td>	<b>[オプション]</b> サーバーポート ( 0 でデフォルト(21) )</td>
+  </tr>
+  <tr>
+   <td>$l_Service</td>
+   <td>	<b>[オプション]</b> 何に使用されるか不明</td>
+  </tr>
+  <tr>
+   <td>$l_Flags</td>
+   <td>	<b>[オプション]</b> 特殊フラグ</td>
+  </tr>
+  <tr>
+   <td>$l_Context</td>
+   <td>	<b>[オプション]</b> この検索と任意のアプリケーションデータを関連付けるアプリケーション定義の値を保持した変数。<br>
+       ステータスコールバック関数を設定するためにアプリケーションが既に_FTP_SetStatusCallback()を呼び終わっている場合のみ使用できます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">識別子を返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し、@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_FTP_Open.htm">_FTP_Open</a>, <a href="_FTP_SetStatusCallback.htm">_FTP_SetStatusCallback</a>, <a href="_FTP_Command.htm">_FTP_Command</a>, <a href="_FTP_DirCreate.htm">_FTP_DirCreate</a>, <a href="_FTP_DirDelete.htm">_FTP_DirDelete</a>, <a href="_FTP_DirGetCurrent.htm">_FTP_DirGetCurrent</a>, <a href="_FTP_DirPutContents.htm">_FTP_DirPutContents</a>, <a href="_FTP_DirSetCurrent.htm">_FTP_DirSetCurrent</a>, <a href="_FTP_FileDelete.htm">_FTP_FileDelete</a>, <a href="_FTP_FileGet.htm">_FTP_FileGet</a>, <a href="_FTP_FileGetSize.htm">_FTP_FileGetSize</a>, <a href="_FTP_FilePut.htm">_FTP_FilePut</a>, <a href="_FTP_FileRename.htm">_FTP_FileRename</a>, <a href="_FTP_ListToArray.htm">_FTP_ListToArray</a>, <a href="_FTP_ListToArray2D.htm">_FTP_ListToArray2D</a>, <a href="_FTP_ListToArrayEx.htm">_FTP_ListToArrayEx</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=InternetConnect">InternetConnect</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;FTPEx.au3&gt;</span><br>
+<br>
+<span class="S9">$server</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">'ftp.csx.cam.ac.uk'</span><br>
+<span class="S9">$username</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">''</span><br>
+<span class="S9">$pass</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">''</span><br>
+<br>
+<span class="S9">$Open</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_FTP_Open</span><span class="S8">(</span><span class="S7">'MyFTP Control'</span><span class="S8">)</span><br>
+<span class="S9">$Conn</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_FTP_Connect</span><span class="S8">(</span><span class="S9">$Open</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$server</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$username</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$pass</span><span class="S8">)</span><br>
+<span class="S1">; ...</span><br>
+<span class="S9">$Ftpc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_FTP_Close</span><span class="S8">(</span><span class="S9">$Open</span><span class="S8">)</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_FTP_Connect.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

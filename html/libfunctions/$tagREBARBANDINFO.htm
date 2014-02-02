@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagREBARBANDINFO</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagREBARBANDINFO</font>
+<hr size="2">
+<p>ComboBoxExコントロール内のアイテムの情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagREBARBANDINFO = "uint cbSize;uint fMask;uint fStyle;dword clrFore;dword clrBack;ptr lpText;uint cch;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "int iImage;hwnd hwndChild;uint cxMinChild;uint cyMinChild;uint cx;hwnd hbmBack;uint wID;uint cyChild;uint cyMaxChild;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "uint cyIntegral;uint cxIdeal;int lParam;uint cxHeader"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">cbSize</td>
+    <td width="85%">構造体のバイト単位でのサイズ。パラメータとしてこの構造体のアドレスを使用するメッセージを送信する前にはアプリケーションはこのメンバーを必ず設定しなければなりません。</td>
+  </tr>
+  <tr>
+   <td>fMask</td>
+   <td>この構造体のどのメンバーが有効か、または設定しなければならないかを表すフラグ。この値は次のものの組み合わせです:<br>
+       $RBBIM_BACKGROUND - hbmBackが有効、または設定しなければなりません。<br>
+       $RBBIM_CHILD - ThehwndChildが有効、または設定しなければなりません。<br>
+       $RBBIM_CHILDSIZE - cxMinChild、cyMinChild、cyChild、cyMaxChild、cyIntegralが有効、または設定しなければなりません。<br>
+       $RBBIM_COLORS - clrForeとclrBackが有効、または設定しなければなりません。<br>
+       $RBBIM_HEADERSIZE - バージョン4.71。cxHeaderが有効、または設定しなければなりません。<br>
+       $RBBIM_IDEALSIZE - バージョン4.71。cxIdealが有効、または設定しなければなりません。<br>
+       $RBBIM_ID - wIDが有効、または設定しなければなりません。<br>
+       $RBBIM_IMAGE - iImageが有効、または設定しなければなりません。<br>
+       $RBBIM_LPARAM - バージョン4.71。lParamが有効、または設定しなければなりません。<br>
+       $RBBIM_SIZE - cxが有効、または設定しなければなりません。<br>
+       $RBBIM_STYLE - fStyleが有効、または設定しなければなりません。<br>
+       $RBBIM_TEXT - lpTextが有効、または設定しなければなりません。<br>
+       $RBBIM_CHEVRONLOCATION - rcChevronLocationが有効、または設定しなければなりません。<br>
+       $RBBIM_CHEVRONSTATE - uChevronStateが有効、または設定しなければなりません。</td>
+  </tr>
+  <tr>
+   <td>fStyle</td>
+   <td>バンドのスタイルを指定するフラグ。この値は次のものの組み合わせです:<br>
+       $RBBS_BREAK - バンドは新しい行上です。<br>
+       $RBBS_CHILDEDGE - バンドは子ウィンドウの上と底の境界線を持ちます。<br>
+       $RBBS_FIXEDBMP - バンドがサイズ変更された際に背景ビットマップが動きません。<br>
+       $RBBS_FIXEDSIZE - バンドはサイズ変更できません。このスタイルではバンドにサイズグリップは表示されません。<br>
+       $RBBS_GRIPPERALWAYS - バージョン4.71。リバー内に1つしかバンドがなくても、バンドは常にサイズグリップを持ちます。<br>
+       $RBBS_HIDDEN - バンドは非表示です。<br>
+       $RBBS_NOGRIPPER - バージョン4.71。リバー内に複数のバンドがある場合でもバンドはサイズグリップを持ちません。<br>
+       $RBBS_USECHEVRON - バージョン 5.80。バンドがcxIdealより小さい場合にシェブロンボタンを表示します。<br>
+       $RBBS_VARIABLEHEIGHT - バージョン4.71。リバーコントロールによってバンドをサイズ変更することができます。cyIntegralとcyMaxChildによってリバーがどのようにバンドをサイズ変更するかを変更できます。<br>
+       $RBBS_NOVERT - 垂直時に表示しません。<br>
+       $RBBS_USECHEVRON - ドロップダウンボタンを表示します。<br>
+       $RBBS_HIDETITLE - バンドタイトルを非表示のままにします。<br>
+       $RBBS_TOPALIGN - バンドを1行目に固定します。</td>
+  </tr>
+  <tr>
+   <td>clrFore</td>
+   <td>バンド前景色。</td>
+  </tr>
+  <tr>
+   <td>clrBack</td>
+   <td>バンド背景色。<br>
+   hbmBackが背景ビットマップを指定している場合、これらのメンバーは無視されます。<br>
+   デフォルトでは$RB_SETBKCOLORメッセージによって設定されたリバーコントロールの背景色を使用します。<br>
+   ここに背景色が指定された場合、代わりにこの背景色が使用されます。</td>
+  </tr>
+  <tr>
+   <td>lpText</td>
+   <td>
+	バンド用の表示テキストが格納されたバッファへのポインタ。<br>
+	コントロールがバンド情報を要求し、$RBBIM_TEXTがfMaskで指定された場合、<br>
+	このメンバーはテキストを受け取るバッファのアドレスで初期化されなければなりません。</td>
+  </tr>
+  <tr>
+   <td>cch</td>
+   <td>
+	lpTextのバッファのバイト単位でのサイズ。コントロールから情報が要求されていない場合、このメンバーは無視されます。</td>
+  </tr>
+  <tr>
+   <td>iImage</td>
+   <td>バンド内に表示される全画像のゼロ始まりのインデックス。画像リストは$RB_SETBARINFOメッセージを使用して設定されます。</td>
+  </tr>
+  <tr>
+   <td>hwndChild</td>
+   <td>バンド内に格納される子ウィンドウが存在する場合はそのハンドル。</td>
+  </tr>
+  <tr>
+   <td>cxMinChild</td>
+   <td>子ウィンドウのピクセル単位での最小幅。バンドをこの値以下にサイズ変更することはできません。</td>
+  </tr>
+  <tr>
+   <td>cyMinChild</td>
+   <td>子ウィンドウのピクセル単位での最小高さ。バンドをこの値以下にサイズ変更することはできません。</td>
+  </tr>
+  <tr>
+   <td>cx</td>
+   <td>バンドのピクセル単位での長さ。</td>
+  </tr>
+  <tr>
+   <td>hbmBack</td>
+   <td>このバンドの背景として使用されるビットマップのハンドル。</td>
+  </tr>
+  <tr>
+   <td>wID</td>
+   <td>コントロールが描画通知メッセージカスタム時にこのバンドを識別するために使用するUINT値</td>
+  </tr>
+  <tr>
+   <td>cyChild</td>
+   <td>バージョン 4.71。バンドのピクセル単位での初期高さ。$RBBS_VARIABLEHEIGHTスタイルが指定されていない場合、このメンバーは無視されます。</td>
+  </tr>
+  <tr>
+   <td>cyMaxChild</td>
+   <td>バージョン 4.71。バンドのピクセル単位での最大高さ。$RBBS_VARIABLEHEIGHTスタイルが指定されていない場合、このメンバーは無視されます。</td>
+  </tr>
+  <tr>
+   <td>cyIntegral</td>
+   <td>バージョン 4.71。バンド伸縮時のピクセル単位でのステップ値。<br>
+   バンドがサイズ変更された場合、この値で指定されたステップでサイズ変更されます。<br>
+   $RBBS_VARIABLEHEIGHTスタイルが指定されていない場合、このメンバーは無視されます。</td>
+  </tr>
+  <tr>
+   <td>cxIdeal</td>
+   <td>バージョン 4.71。バンドのピクセル単位での理想的な幅。<br>
+   バンドが理想的な幅に最大化される場合($RB_MAXIMIZEBAND参照)、リバーコントロールはバンドをこの幅にしようとします。</td>
+  </tr>
+  <tr>
+   <td>lParam</td>
+   <td>バージョン 4.71。アプリケーション定義の値。</td>
+  </tr>
+  <tr>
+   <td>cxHeader</td>
+   <td>バージョン 4.71。バンドのヘッダーのピクセル単位でのサイズ。<br>
+	バンドヘッダーとはバンドの縁と子ウィンドウの縁の間の領域です。<br>
+	ここはバンドテキストと画像が指定された場合に表示される領域です。<br>
+	この値が指定された場合、コントロールがバンド用に計算した通常のヘッダーサイズが上書きされます。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

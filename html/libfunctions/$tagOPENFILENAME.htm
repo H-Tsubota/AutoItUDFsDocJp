@@ -1,0 +1,264 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagOPENFILENAME</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagOPENFILENAME</font>
+<hr size="2">
+<p>GetOpenFileName関数とGetSaveFileName関数がOpenダイアログボックス、Save Asダイアログボックスを初期化するのに使用する情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagOPENFILENAME = "dword StructSize;hwnd hwndOwner;hwnd hInstance;ptr lpstrFilter;ptr lpstrCustomFilter;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "dword nMaxCustFilter;dword nFilterIndex;ptr lpstrFile;dword nMaxFile;ptr lpstrFileTitle;int nMaxFileTitle;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "ptr lpstrInitialDir;ptr lpstrTitle;dword Flags;short nFileOffset;short nFileExtension;ptr lpstrDefExt;ptr lCustData;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "ptr lpfnHook;ptr lpTemplateName;ptr pvReserved;dword dwReserved;dword FlagsEx"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">StructSize</td>
+    <td width="85%">この構造体の長さをバイト単位で指定します。</td>
+  </tr>
+  <tr>
+   <td>hwndOwner</td>
+   <td>ダイアログボックスを所有するウィンドウのハンドル。
+   任意の有効なウィンドウハンドルを使用できます。
+   またダイアログボックスに所有者がない場合、NULLにできます。</td>
+  </tr>
+  <tr>
+   <td>hInstance</td>
+   <td>
+   $OFN_ENABLETEMPLATEHANDLEフラグがFlagsに設定されている場合、
+   hInstanceはダイアログボックスのテンプレートを格納しているメモリーオブジェクトのハンドルです。<br>
+   $OFN_ENABLETEMPLATE フラグが設定されている場合、
+   hInstanceはlpTemplateNameによって命名されたダイアログボックスのテンプレートを格納するモジュールのハンドルです。<br>
+	どちらのフラグも設定されていない場合、このメンバーは無視されます。<br>
+	$OFN_EXPLORERフラグが設定されている場合、
+	システムはデフォルトのExplorerスタイルダイアログの子ダイアログボックスを作成するのに指定されたテンプレートを使用します。<br>
+	$OFN_EXPLORERフラグが設定されていない場合、
+	システムはデフォルトのダイアログボックスを置き換える　古いスタイルのダイアログボックスを作成するのにテンプレートを使用します</td>
+  </tr>
+  <tr>
+   <td>lpstrFilter</td>
+   <td>
+   NULL終端フィルター文字列の組を格納しているバッファへのポインタ。
+   バッファ内の最後の文字列は2つのNULL文字で終っている必要があります。</td>
+  </tr>
+  <tr>
+   <td>lpstrCustomFilter</td>
+   <td>ユーザーによって選択されたフィルターパターンを保持するNULL終端フィルター文字列の組を格納した静的バッファへのポインタ。<br>
+	最初の文字列はカスタムフィルターを表す表示文字列で、2番目の文字列はユーザーによって選択されたフィルターパターンです。<br>
+	アプリケーションがはじめてダイアログボックスを作成する際に空でない最初の文字列を指定します。<br>
+	ユーザーがファイルを選択すると、ダイアログボックスは現在のフィルターパターンを2番目の文字列にコピーします。<br>
+	pReservedフィルターパターンはlpstrFilterバッファで指定されたパターンの1つ、またはユーザーによって入力されたフィルターパターンです。<br>
+	システムは次回以降にダイアログボックスが作成された際にユーザー定義ファイルフィルターを初期化するのに文字列を使用します。<br>
+	nFilterIndexがゼロの場合、ダイアログボックスはカスタムフィルターを使用します。<br>
+	このメンバーがNULLの場合、ダイアログボックスはユーザー定義のフィルターパターンを保持しません。<br>
+	このメンバーがNULLでない場合、nMaxCustFilterの値でlpstrCustomFilterバッファのTCHAR単位のサイズを指定しなければなりません。<br>
+       ANSIバージョンではこれはバイト数です。Unicodeバージョンではこれは文字数です。</td>
+  </tr>
+  <tr>
+   <td>nMaxCustFilter</td>
+   <td>lpstrCustomFilterによって識別されるバッファのTCHAR単位でのサイズを指定します。<br>
+	ANSIバージョンではこれはバイト数です。Unicodeバージョンではこれは文字数です。<br>
+	このバッファは少なくとも40文字の長さが必要です。
+	このメンバーはlpstrCustomFilterがNULLの場合、またNULL文字列を指している場合は無視されます。</td>
+  </tr>
+  <tr>
+   <td>nFilterIndex</td>
+   <td>File Typesコントロールで現在選択されているフィルターのインデックスを指定します。<br>
+	lpstrFilterによって指されるバッファはフィルターを定義する文字列の組を格納します。<br>
+	最初の文字列の組のインデックス値は1で、2番目の組は2という風に続きます。<br>
+	インデックス0はlpstrCustomFilterによって指定されるカスタムフィルターを表します。<br>
+	ダイアログボックス用の初期フィルター説明、フィルターパターンを表すために入力にインデックスを使用できます。<br>
+	ユーザーがファイルを選択すると　nFilterIndexは現在表示されているフィルターのインデックスを返します。<br>
+	nFilterIndexがゼロでlpstrCustomFilterがNULLの場合、システムはlpstrFilterバッファ内の最初のフィルターを使用します。<br>
+	3つのメンバー全てがゼロまたはNULLの場合、システムはフィルターを一切使用せず、ダイアログボックスのファイルリストコントロールにはフィルターが表示されません。</td>
+  </tr>
+  <tr>
+   <td>lpstrFile</td>
+   <td>
+   ファイル名エディットコントロールの初期化に使用されるファイル名を格納したバッファへのポインタ。<br>
+   初期化が必要ない場合はバッファの1文字目にNULLを指定します。<br>
+   _WinAPI_GetOpenFileNameまたは_WinAPI_GetSaveFileName関数が成功して返ると、
+	このバッファはドライブ指定子、パス、ファイル名、選択したフィルターの拡張子が格納しています。<br>
+	$OFN_ALLOWMULTISELECTフラグが設定され、ユーザーが複数ファイルを選択した場合、
+	バッファは現在のディレクトリと選択されたファイルのファイル名を格納します。<br>
+	Explorerスタイルダイアログボックスでは、ディレクトリとファイル名文字列は最後のファイル名の後に続く追加NULL文字でNULL区切りされます。<br>
+	古いスタイルのダイアログボックスでは、文字列はスペースで区切られ関数はファイル名の代わりにスペースのついた短いファイル名を使用します。<br>
+	またFindFirstFile関数を使用することで長いファイル名と短いファイル名の間の変換がおこなえます。<br>
+	ユーザーがファイルを1つだけ選択した場合、lpstrFile文字列はパスとファイル名の間の区切り文字をもちません。<br>
+	バッファが小さすぎた場合、関数はFALSEを返し、_WinAPI_CommDlgExtendedError関数は$FNERR_BUFFERTOOSMALLを返します。<br>
+    この場合、lpstrFileバッファの最初の2バイトに必要サイズがバイト単位または文字数単位で格納されます。</td>
+  </tr>
+  <tr>
+   <td>nMaxFile</td>
+   <td>lpstrFileによって指されるバッファのサイズをTCHAR単位で指定します。<br>
+       ANSIバージョンではこれはバイト数です。Unicodeバージョンではこれは文字数です。<br>
+	   このバッファはパス、終端のNULL文字を含むファイル名文字列を保持できる十分な大きさがなければなりません。<br>
+       バッファが小さすぎてファイル情報を格納できない場合、_WinAPI_GetOpenFileName関数と_WinAPI_GetSaveFileName関数はFALSEを返します。<br>
+		バッファには少なくとも256文字の長さが必要です。</td>
+  </tr>
+  <tr>
+   <td>lpstrFileTitle</td>
+   <td>
+   選択されたファイルのファイル名と拡張子(パス情報を含まない)を受け取るバッファへのポインタ。このメンバーはNULLにできます。</td>
+  </tr>
+  <tr>
+   <td>nMaxFileTitle</td>
+   <td>lpstrFileTitleによって指されるバッファのTCHAR単位でのサイズを指定します。<br>
+   ANSIバージョンではこれはバイト数です。Unicodeバージョンではこれは文字数です。このメンバーはlpstrFileTitleがNULLの場合無視されます。</td>
+  </tr>
+  <tr>
+   <td>lpstrInitialDir</td>
+   <td>初期ディレクトリを指定するNULL終端文字列へのポインタ。</td>
+  </tr>
+  <tr>
+   <td>lpstrTitle</td>
+   <td>ダイアログボックスのタイトルバーに表示される文字列へのポインタ。このメンバーがNULLの場合、システムはデフォルトのタイトル(Save AsまたはOpen)を使用します。</td>
+  </tr>
+  <tr>
+   <td>Flags</td>
+   <td>
+   ダイアログボックスを初期化するために使用できるビットフラグのセット。
+	ダイアログボックスが返ると、ユーザー入力を表すフラグが設定されます。
+	このメンバーは次のフラグの組み合わせです。<br>
+       &nbsp;&nbsp;$OFN_ALLOWMULTISELECT - ファイル名リストボックスでの複数選択を許可します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;さらに$OFN_EXPLORERフラグが設定されていた場合、ダイアログボックスは古いスタイルのユーザーインターフェイスではなくExplorerスタイルのユーザーインターフェイスを使用します。<br>
+       &nbsp;&nbsp;$OFN_CREATEPROMPT - ユーザーが存在しないファイルを指定した場合、ダイアログボックスはユーザーにファイル作成許可をプロンプトします。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;ユーザーがファイル作成を選択すると、ダイアログボックスが閉じて関数は指定された名前を返します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;このフラグを$OFN_ALLOWMULTISELECTフラグとともに使用すると、ダイアログボックスはユーザーが存在しないファイルを1つだけ指定できるようにします。<br>
+       &nbsp;&nbsp;$OFN_DONTADDTORECENT - Windows 2000/XP:システムが選択されたファイルへのリンクをユーザーが最近使ったドキュメントを格納するファイルシステムディレクトリに追加しないようにします。<br>
+       &nbsp;&nbsp;$OFN_ENABLEHOOK - lpfnHookで指定されたフック関数を有効にします。<br>
+       &nbsp;&nbsp;$OFN_ENABLEINCLUDENOTIFY - Windows 2000/XP: ユーザーがフォルダを開いた際にダイアログボックスがOFNHookProcフックプロシージャにCDN_INCLUDEITEM通知メッセージを送信するよう設定します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;ダイアログボックスは新しく開かれたフォルダ内の各アイテムに対して通知を送信します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;このメッセージによってダイアログボックスがどのアイテムをフォルダのアイテムリストに表示するかを制御できます。<br>
+       &nbsp;&nbsp;$OFN_ENABLESIZING - Windows 2000/XP、Windows 98/Me: Explorerスタイルのダイアログボックスをマウス、キーボードを使用してサイズ変更できるようにします。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;デフォルトではExplorerスタイルのOpen、Save Asダイアログボックスはこのフラグの設定によらずサイズ変更できます。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;このフラグはフックプロシージャまたはカスタムテンプレートを使用する場合のみ必要です。古いスタイルのダイアログボックスではサイズ変更は許可されていません。<br>
+       &nbsp;&nbsp;$OFN_ENABLETEMPLATE - lpTemplateNameがhInstanceで識別されるモジュール内のダイアログのテンプレートリソース名へのポインタであることを表します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;$OFN_EXPLORERフラグが設定されている場合、システムはデフォルトのExplorerダイアログボックスの子であるダイアログボックスを作成するための指定されたテンプレートを使用します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;$OFN_EXPLORERフラグが設定されていない場合、システムは　デフォルトのダイアログボックスを置き換える古いスタイルのダイアログボックスを作成するためのテンプレートを使用します。<br>
+       &nbsp;&nbsp;$OFN_ENABLETEMPLATEHANDLE - 
+	   hInstanceが事前ロードされたダイアログボックステンプレートを格納したデータブロックを指すことを表します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;このフラグが指定された場合、システムはlpTemplateNameを無視します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;$OFN_EXPLORERフラグが設定されている場合、システムはデフォルトのExplorerダイアログボックスの子であるダイアログボックスを作成するための指定されたテンプレートを使用します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;$OFN_EXPLORERフラグが設定されていない場合、システムは　デフォルトのダイアログボックスを置き換える古いスタイルのダイアログボックスを作成するためのテンプレートを使用します。<br>
+       &nbsp;&nbsp;$OFN_EXPLORER - Open、Save Asダイアログボックスに対しておこなわれるカスタムが新しいExplorerスタイルのカスタム方法を使用しておこなわれることを表します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;デフォルトではOpen、Save Asダイアログボックスはこのフラグの設定によらずExplorerスタイルのユーザーインターフェイスを使用します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;このフラグはフックプロシージャまたはカスタムテンプレートを使用する場合または$OFN_ALLOWMULTISELECTフラグが設定されている場合のみ必要です。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;古いスタイルのユーザーインターフェイスを使用したい場合、$OFN_EXPLORERフラグを省略し代わりの古いスタイルのテンプレートまたはフックプロシージャを設定してください。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;古いスタイルを使用し、なおかつカスタムテンプレートとフックプロシージャが必要でない場合は、単純に常にFALSEを返すフックプロシージャを設定してください。<br>
+       &nbsp;&nbsp;$OFN_EXTENSIONDIFFERENT - ユーザーがlpstrDefExtで指定された拡張子と異なるファイル名拡張子を入力したことを表します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;lpstrDefExtがNULLの場合、関数はこのフラグを使用しません。<br>
+       &nbsp;&nbsp;$OFN_FILEMUSTEXIST - ユーザーがファイル名入力欄に存在するファイル名のみ入力できるように指定します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;このフラグが指定されユーザーが無効な名前を入力した場合、ダイアログボックスプロシージャはメッセージボックスで警告を表示します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;このフラグが指定されると$OFN_PATHMUSTEXISTフラグも使用されます。このフラグはOpenダイアログボックスでのみ使用でき、Save Asダイアログボックスでは使用できません。<br>
+       &nbsp;&nbsp;$OFN_FORCESHOWHIDDEN - Windows 2000/XP: システムファイル、隠しファイルを強制表示させます。隠しファイル表示・非表示のユーザー設定は上書きされます。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;ただしシステムファイル、隠しファイル両方の設定がされているファイルは表示されません。<br>
+       &nbsp;&nbsp;$OFN_HIDEREADONLY - Read Onlyのチェックボックスを隠します。<br>
+       &nbsp;&nbsp;$OFN_LONGNAMES - 古いスタイルのダイアログボックスでダイアログボックスが長いファイル名を使用するようにします。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;
+	   このフラグが指定されていない場合、$OFN_ALLOWMULTISELECTフラグも設定されている場合には古いスタイルのダイアログボックスはファイル名としてスペースのついた短いファイル名(8.3フォーマット)を使用します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;Explorerスタイルのダイアログボックスはこのフラグを無視し、常に長いファイル名を表示します。<br>
+       &nbsp;&nbsp;$OFN_NOCHANGEDIR - 
+	   ファイル検索中にユーザーがディレクトリを変更した場合、現在のディレクトリをもとの値に復元します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;Windows NT 4.0/2000/XP: このフラグはGetOpenFileNameに対しては効果がありません。<br>
+       &nbsp;&nbsp;$OFN_NODEREFERENCELINKS - 
+	   選択されたショートカットファイル(.LNK)のファイル名とパスを返すようにダイアログボックスに指示します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;この値が指定されていない場合、ダイアログボックスはショートカットの参照するファイルのファイル名とパスを返します。<br>
+       &nbsp;&nbsp;$OFN_NOLONGNAMES - 古いスタイルのダイアログボックスでダイアログボックスが短いファイル名(8.3フォーマット)を使用するようにします。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;Explorerスタイルのダイアログボックスはこのフラグを無視し、常に長いファイル名を表示します。<br>
+       &nbsp;&nbsp;$OFN_NONETWORKBUTTON - ネットワークボタンを隠し、無効にします。<br>
+       &nbsp;&nbsp;$OFN_NOREADONLYRETURN - 返されるファイルがRead Onlyチェックボックス選択されておらず、書き込み保護ディレクトリ内にないことを表します。<br>
+       &nbsp;&nbsp;$OFN_NOTESTFILECREATE - ダイアログボックスが閉じられる前にファイルが作成されないことを表します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;このフラグはアプリケーションが作成-非変更ネットワーク共有上のファイルを保存する場合に指定されていなければなりません。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;アプリケーションがこのフラグを指定すると、ライブラリは書込み保護、フルディスク、オープンドライブドア、ネットワーク保護を調べません。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;このフラグを使用するアプリケーションは1度閉じるとファイルを再度開くことができないので、ファイル操作を慎重におこなう必要があります。<br>
+       &nbsp;&nbsp;$OFN_NOVALIDATE - コモンダイアログボックスが返すファイル名に無効な文字を使用できることを表します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;一般的に呼び出し側アプリケーションはFILEOKSTRINGメッセージを使用してファイル名を調べるフックプロシージャを使用します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;エディットコントロールのテキストボックスが空であったりスペース以外の文字が入力されていない場合、ファイルのリストとディレクトリが更新されます。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;エディットコントロールのテキストボックスがそれ以外の状態の場合、nFileOffsetとnFileExtensionにはテキスト解析によって生じた値が設定されます。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;デフォルト拡張子はテキストに追加されず、テキストはlpstrFileTitleによって指定されたバッファにコピーされません。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;nFileOffsetによって指定された値がゼロ以下の場合、ファイル名は無効です。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;それ以外の場合、ファイル名は有効で$OFN_NOVALIDATEフラグが指定されていない場合と同様にnFileExtensionとnFileOffsetを使用できません。<br>
+       &nbsp;&nbsp;$OFN_OVERWRITEPROMPT - Save Asダイアログボックスは選択されたファイルが既に存在する場合にメッセージボックスを表示します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;ユーザーはファイルを上書きするかどうかの確認をしなければなりません。<br>
+       &nbsp;&nbsp;$OFN_PATHMUSTEXIST - ユーザーが有効なパスとファイル名のみ入力できることを表します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;このフラグが使用され、ユーザーがファイル名入力欄に無効なパスとファイル名を入力した場合、ダイアログボックス関数は警告メッセージを表示します。<br>
+       &nbsp;&nbsp;$OFN_READONLY - ダイアログボックス作成時にRead Onlyチェックボックスを初期選択することを表します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;またこのフラグはダイアログボックスが閉じられた際のRead Onlyチェックボックスの状態を表します。<br>
+       &nbsp;&nbsp;$OFN_SHAREAWARE - OpenFile関数呼び出しがネットワーク共有違反が原因で失敗した場合、エラーを無視しダイアログが選択ファイル名を返すよう指定します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;このフラグが設定されていない場合、ユーザーによって指定されたファイル名によってネットワーク共有違反が起きた際にダイアログボックスはフックプロシージャに通知をおこないます。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;$OFN_EXPLORERフラグを設定している場合、ダイアログボックスはフックプロシージャにCDN_SHAREVIOLATIONメッセージを送信します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;$OFN_EXPLORERフラグを設定していない場合、ダイアログボックスはフックプロシージャにSHAREVISTRING登録メッセージを送信します。<br>
+       &nbsp;&nbsp;$OFN_SHOWHELP - ダイアログボックスにヘルプボタンを表示します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;hwndOwnerにユーザーがヘルプボタンをクリックした際にダイアログボックスが送信するHELPMSGSTRING登録メッセージを受け取るウィンドウを指定しなければなりません。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;Explorerスタイルのダイアログボックスはユーザーがヘルプボタンをクリックした際にCDN_HELP通知メッセージをフックプロシージャに送信します。<br>
+       &nbsp;&nbsp;$OFN_USESHELLITEM - 使用不可。</td>
+  </tr>
+  <tr>
+   <td>nFileOffset</td>
+   <td>lpstrFileによって指される文字列内の"パス-ファイル名"開始位置のゼロ始まりのオフセット位置をTCHAR単位で指定します。<br>
+       ANSIバージョンではこれはバイト数です。Unicodeバージョンではこれは文字数です。</td>
+  </tr>
+  <tr>
+   <td>nFileExtension</td>
+   <td>lpstrFileによって指される文字列内の"パス-ファイル名拡張子"開始位置のゼロ始まりのオフセット位置をTCHAR単位で指定します。<br>
+       ANSIバージョンではこれはバイト数です。Unicodeバージョンではこれは文字数です。</td>
+  </tr>
+  <tr>
+   <td>lpstrDefExt</td>
+   <td>デフォルト拡張子を格納したバッファへのポインタ。</td>
+  </tr>
+  <tr>
+   <td>lCustData</td>
+   <td>システムがlpfnHookで識別されるフックプロシージャに渡すアプリケーション定義のデータを指定します。</td>
+  </tr>
+  <tr>
+   <td>lpfnHook</td>
+   <td>
+	フックプロシージャへのポインタ。
+	Flagsに$OFN_ENABLEHOOKフラグが含まれていない場合、このメンバーは無視されます。</td>
+  </tr>
+  <tr>
+   <td>lpTemplateName</td>
+   <td>hInstanceによって識別されるモジュール内のダイアログテンプレートリソースを命名するNULL終端文字列へのポインタ。</td>
+  </tr>
+  <tr>
+   <td>pvReserved</td>
+   <td>予約済み。NULLでなければなりません。</td>
+  </tr>
+  <tr>
+   <td>dwReserved</td>
+   <td>予約済み。0でなければなりません。</td>
+  </tr>
+  <tr>
+   <td>FlagsEx</td>
+   <td>Windows 2000/XP: ダイアログボックスを初期化するために使用できるビットフラグのセット。現在このメンバーにはゼロまたは次のフラグを使用できます:<br>
+       &nbsp;&nbsp;$OFN_EX_NOPLACESBAR - このフラグが設定されるとプレースバーが表示されません<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;このフラグが設定されていない場合、
+	   お気に入りやデスクトップといった共通ユーザーフォルダ用のアイコンが配置された
+	   プレースバーがExplorerスタイルのダイアログボックスに表示されます。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

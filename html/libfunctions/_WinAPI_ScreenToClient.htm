@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_ScreenToClient</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_ScreenToClient</font>
+<hr size="2">
+<p>指定されたスクリーン上の点のスクリーン座標をクライアント座標に変換します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_ScreenToClient($hWnd, ByRef $tPoint)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">変換で使用されるウィンドウを識別します</td>
+  </tr>
+  <tr>
+   <td>$tPoint</td>
+   <td>変換されるスクリーン座標を格納している$tagPOINT構造体</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数はクライアント座標を計算するために$hWndパラメータで識別されるウィンドウと$tagPOINT構造体で与えられるスクリーン座標を使用します。<br>
+また計算後、スクリーン座標をクライアント座標で置き換えます。<br>
+新しい座標は指定されたウィンドウのクライアント領域の左上隅に対する相対座標です。<br>
+<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_ClientToScreen.htm">_WinAPI_ClientToScreen</a>, <a href="$tagPOINT.htm">$tagPOINT</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=ScreenToClient">ScreenToClient</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_Au3Check_Parameters= -d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hwnd</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Example"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">200</span><span class="S8">,</span><span class="S0"> </span><span class="S3">200</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$tpoint</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S7">"int X;int Y"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tpoint</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"X"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">641</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tpoint</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Y"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">459</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">(</span><span class="S6">@SW_SHOW</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Sleep</span><span class="S8">(</span><span class="S3">1000</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_ScreenToClient</span><span class="S8">(</span><span class="S9">$hwnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tpoint</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_WINAPI_ClientToScreen Example"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Screen Cordinates of 641,459 is x,y position of client: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"X: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tpoint</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"X"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"Y: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tpoint</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Y"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WinAPI_ScreenToClient.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

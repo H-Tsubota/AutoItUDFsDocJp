@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _Security__LookupPrivilegeValue</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_Security__LookupPrivilegeValue</font>
+<hr size="2">
+<p>権限値に対応するローカルの一意な識別子(LUID)を取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Security.au3&gt;<br>
+_Security__LookupPrivilegeValue($sSystem, $sName)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sSystem</td>
+    <td width="85%">
+	権限名を取得するシステムの名前を指定します。<br>
+	空白の場合、この関数はローカルシステム上の権限名を取得しようとします。
+	</td>
+  </tr>
+  <tr>
+   <td>$sName</td>
+   <td>権限の名前を指定します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">既知の権限のLUID</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=LookupPrivilegeValue">LookupPrivilegeValue</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ChooseFont</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ChooseFont</font>
+<hr size="2">
+<p>ユーザーが論理フォントの属性を選択するためのフォントダイアログボックスを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Misc.au3&gt;<br>
+_ChooseFont([$sFontName = "Courier New" [, $iPointSize = 10 [, $iColorRef = 0 [, $iFontWeight = 0 [, $iItalic = False [, $iUnderline = False [, $iStrikethru = False [, $hWndOwner = 0]]]]]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sFontName</td>
+    <td width="85%"><b>[オプション]</b>デフォルトのフォント名</td>
+  </tr>
+  <tr>
+   <td>$iPointSize</td>
+   <td><b>[オプション]</b>フォントのポイントサイズ</td>
+  </tr>
+  <tr>
+   <td>$iColorRef</td>
+   <td><b>[オプション]</b>COLORREF型 RGB色</td>
+  </tr>
+  <tr>
+   <td>$iFontWeight</td>
+   <td><b>[オプション]</b>フォントの太さ</td>
+  </tr>
+  <tr>
+   <td>$iItalic</td>
+   <td><b>[オプション]</b>斜体</td>
+  </tr>
+  <tr>
+   <td>$iUnderline</td>
+   <td><b>[オプション]</b>下線</td>
+  </tr>
+  <tr>
+   <td>$iStrikethru</td>
+   <td><b>[オプション]</b>取り消し線</td>
+  </tr>
+  <tr>
+   <td>$hWndOwnder</td>
+   <td><b>[オプション]</b>ダイアログボックスを所有するウィンドウのハンドル</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">次に示す形式の配列。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[0] - 要素数が格納されています</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[1] - 属性 = 斜体:2, 下線:4, 取り消し線:8 のBitOr結果</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[2] - フォント名</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[3] - フォントサイズ = ポイントサイズ</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[4] - フォントの太さ = = 0-1000</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[5] - COLORREF型 RGB色</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[6] - BGR色 16進数</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[7] - RGB色 16進数</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>-1</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Misc.au3&gt;</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$a_font</span><br>
+<br>
+<span class="S1">; 例 1</span><br>
+<span class="S9">$a_font</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ChooseFont</span><span class="S8">(</span><span class="S7">"Arial"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">8</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@error</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error _ChooseFont: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@error</span><span class="S8">)</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Font Name: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">2</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Size: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">3</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Weight: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">4</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"COLORREF rgbColors: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">5</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Hex BGR Color: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">6</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Hex RGB Color: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">7</span><span class="S8">])</span><br>
+<span class="S5">EndIf</span><br>
+<br>
+<span class="S1">; 例 2</span><br>
+<span class="S9">$a_font</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ChooseFont</span><span class="S8">()</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@error</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error _ChooseFont: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@error</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Font Name: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">2</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Size: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">3</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Weight: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">4</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"COLORREF rgbColors: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">5</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Hex BGR Color: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">6</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Hex RGB Color: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">7</span><span class="S8">])</span><br>
+<span class="S5">EndIf</span><br>
+<br>
+<span class="S1">; 例 3</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$FontName</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">2</span><span class="S8">]</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$FontSize</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">3</span><span class="S8">]</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$ColorRef</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">5</span><span class="S8">]</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$FontWeight</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">4</span><span class="S8">]</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$Italic</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">1</span><span class="S8">],</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$Underline</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">1</span><span class="S8">],</span><span class="S0"> </span><span class="S3">4</span><span class="S8">)</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$Strikethru</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">1</span><span class="S8">],</span><span class="S0"> </span><span class="S3">8</span><span class="S8">)</span><br>
+<span class="S9">$a_font</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ChooseFont</span><span class="S8">(</span><span class="S9">$FontName</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$FontSize</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ColorRef</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$FontWeight</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Italic</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Underline</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Strikethru</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@error</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error _ChooseFont: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@error</span><span class="S8">)</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Font Name: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">2</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Size: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">3</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Weight: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">4</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"COLORREF rgbColors: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">5</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Hex BGR Color: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">6</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Hex RGB Color: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_font</span><span class="S8">[</span><span class="S3">7</span><span class="S8">])</span><br>
+<span class="S5">EndIf</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ChooseFont.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

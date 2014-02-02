@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_SetWindowRgn</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_SetWindowRgn</font>
+<hr size="2">
+<p>ウィンドウのウィンドウリージョンを設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_SetWindowRgn($hWnd, $hRgn [, $bRedraw])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウリージョンが設定されるウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$hRgn</td>
+   <td>リージョンのハンドル。この関数はウィンドウのウィンドウリージョンにこのリージョンを設定します。</td>
+  </tr>
+  <tr>
+   <td>$bRedraw</td>
+   <td><b>[オプション]</b>ウィンドウリージョンの設定後にシステムがウィンドウの再描画をおこなうかどうかを指定します。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">非ゼロ</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+ウィンドウリージョンはシステムが描画を許可しているウィンドウ内の領域を決めます。<br>
+システムはウィンドウリージョンの外側に位置するウィンドウ部分を表示しません。<br>
+この関数が呼ばれるとシステムはWM_WINDOWPOSCHANGINGメッセージとWM_WINDOWPOSCHANGEDメッセージをウィンドウに送信します。<br>
+ウィンドウのウィンドウリージョンの座標はウィンドウクライアント領域ではなく、ウィンドウの左上隅に対する相対座標です。<br>
+SetWindowRgnの呼び出しに成功すると、システムはリージョンハンドルhRgnによって指定されるリージョンを所有するようになります。<br>
+システムはリージョンのコピーを作成しません。従ってこのリージョンハンドルを使用して関数を呼び出すべきではありません。<br>
+特にこのリージョンハンドルを削除してはなりません。必要なくなった場合、システムがリージョンハンドルを削除します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_CreateRectRgn.htm">_WinAPI_CreateRectRgn</a>, <a href="_WinAPI_CreateRoundRectRgn.htm">_WinAPI_CreateRoundRectRgn</a>, <a href="_WinAPI_CombineRgn.htm">_WinAPI_CombineRgn</a>, <a href="_WinAPI_GetWindowRgn.htm">_WinAPI_GetWindowRgn</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=SetWindowRgn">SetWindowRgn</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<br>
+<span class="S1">; ウィンドウタイトルの高さとウィンドウフレームの幅を取得-XPのテーマのON/OFFによって異なる</span><br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$htit</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetSystemMetrics</span><span class="S8">(</span><span class="S9">$SM_CYCAPTION</span><span class="S8">)</span><br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$frame</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetSystemMetrics</span><span class="S8">(</span><span class="S9">$SM_CXDLGFRAME</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$gui</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Test Windows regions"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">350</span><span class="S8">,</span><span class="S0"> </span><span class="S3">210</span><span class="S8">)</span><br>
+<span class="S9">$btn_default</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Default region"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">30</span><span class="S8">,</span><span class="S0"> </span><span class="S3">150</span><span class="S8">)</span><br>
+<span class="S9">$btn_round</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Round region"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">60</span><span class="S8">,</span><span class="S0"> </span><span class="S3">150</span><span class="S8">)</span><br>
+<span class="S9">$btn_buble</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Buble region "</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">90</span><span class="S8">,</span><span class="S0"> </span><span class="S3">150</span><span class="S8">)</span><br>
+<span class="S9">$btn_transparent</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Transparent region"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">120</span><span class="S8">,</span><span class="S0"> </span><span class="S3">150</span><span class="S8">)</span><br>
+<span class="S9">$btn_exit</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Exit"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">150</span><span class="S8">,</span><span class="S0"> </span><span class="S3">150</span><span class="S8">)</span><br>
+<span class="S4">GUISetState</span><span class="S8">(</span><span class="S6">@SW_SHOW</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$pos</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">WinGetPos</span><span class="S8">(</span><span class="S9">$gui</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; ウィンドウ全体のサイズを取得 (GUICreateで定義されたクライアントサイズではない)</span><br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$width</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$pos</span><span class="S8">[</span><span class="S3">2</span><span class="S8">]</span><br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$height</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$pos</span><span class="S8">[</span><span class="S3">3</span><span class="S8">]</span><br>
+<br>
+<span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Select</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><span class="S0"> </span><span class="S5">Or</span><span class="S0"> </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$btn_exit</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$btn_default</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$rgn</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateRectRgn</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_WinAPI_SetWindowRgn</span><span class="S8">(</span><span class="S9">$gui</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$rgn</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$btn_round</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$rgn</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateRoundRectRgn</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">3</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">3</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_WinAPI_SetWindowRgn</span><span class="S8">(</span><span class="S9">$gui</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$rgn</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$btn_buble</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$rgn1</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateRoundRectRgn</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 左上</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$rgn2</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateRoundRectRgn</span><span class="S8">(</span><span class="S9">$width</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 右上</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_WinAPI_CombineRgn</span><span class="S8">(</span><span class="S9">$rgn1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$rgn1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$rgn2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$RGN_OR</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_WinAPI_DeleteObject</span><span class="S8">(</span><span class="S9">$rgn2</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$rgn2</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateRoundRectRgn</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 左下</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_WinAPI_CombineRgn</span><span class="S8">(</span><span class="S9">$rgn1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$rgn1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$rgn2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$RGN_OR</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_WinAPI_DeleteObject</span><span class="S8">(</span><span class="S9">$rgn2</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$rgn2</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateRoundRectRgn</span><span class="S8">(</span><span class="S9">$width</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 右下</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_WinAPI_CombineRgn</span><span class="S8">(</span><span class="S9">$rgn1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$rgn1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$rgn2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$RGN_OR</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_WinAPI_DeleteObject</span><span class="S8">(</span><span class="S9">$rgn2</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$rgn2</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateRoundRectRgn</span><span class="S8">(</span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 中央</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_WinAPI_CombineRgn</span><span class="S8">(</span><span class="S9">$rgn1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$rgn1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$rgn2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$RGN_OR</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_WinAPI_DeleteObject</span><span class="S8">(</span><span class="S9">$rgn2</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_WinAPI_SetWindowRgn</span><span class="S8">(</span><span class="S9">$gui</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$rgn1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$btn_transparent</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _GuiHole</span><span class="S8">(</span><span class="S9">$gui</span><span class="S8">,</span><span class="S0"> </span><span class="S3">40</span><span class="S8">,</span><span class="S0"> </span><span class="S3">40</span><span class="S8">,</span><span class="S0"> </span><span class="S3">260</span><span class="S8">,</span><span class="S0"> </span><span class="S3">170</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndSelect</span><br>
+<span class="S5">WEnd</span><br>
+<br>
+<span class="S1">; コントロール追加を除く内部の透過領域を作成</span><br>
+<span class="S5">Func</span><span class="S0"> _GuiHole</span><span class="S8">(</span><span class="S9">$h_win</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i_x</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i_y</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i_sizew</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i_sizeh</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$outer_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$inner_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$combined_rgn</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$outer_rgn</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateRectRgn</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$height</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$inner_rgn</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateRectRgn</span><span class="S8">(</span><span class="S9">$i_x</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i_y</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i_x</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$i_sizew</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i_y</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$i_sizeh</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$combined_rgn</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateRectRgn</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_CombineRgn</span><span class="S8">(</span><span class="S9">$combined_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$outer_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$inner_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$RGN_DIFF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_DeleteObject</span><span class="S8">(</span><span class="S9">$outer_rgn</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_DeleteObject</span><span class="S8">(</span><span class="S9">$inner_rgn</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; _AddCtrlRegion</span><span class="S8">(</span><span class="S9">$combined_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$btn_default</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; _AddCtrlRegion</span><span class="S8">(</span><span class="S9">$combined_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$btn_round</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; _AddCtrlRegion</span><span class="S8">(</span><span class="S9">$combined_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$btn_buble</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; _AddCtrlRegion</span><span class="S8">(</span><span class="S9">$combined_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$btn_transparent</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; _AddCtrlRegion</span><span class="S8">(</span><span class="S9">$combined_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$btn_exit</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_SetWindowRgn</span><span class="S8">(</span><span class="S9">$h_win</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$combined_rgn</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_GuiHole</span><br>
+<br>
+<span class="S1">; 与えられたリージョンにコントロールの領域を追加</span><br>
+<span class="S1">; ウィンドウタイトル/フレームサイズも考慮する</span><br>
+<span class="S5">Func</span><span class="S0"> _AddCtrlRegion</span><span class="S8">(</span><span class="S9">$full_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ctrl_id</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$ctrl_pos</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ctrl_rgn</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ctrl_pos</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">ControlGetPos</span><span class="S8">(</span><span class="S9">$gui</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ctrl_id</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ctrl_rgn</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateRectRgn</span><span class="S8">(</span><span class="S9">$ctrl_pos</span><span class="S8">[</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$frame</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ctrl_pos</span><span class="S8">[</span><span class="S3">1</span><span class="S8">]</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$htit</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$frame</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$ctrl_pos</span><span class="S8">[</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$ctrl_pos</span><span class="S8">[</span><span class="S3">2</span><span class="S8">]</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$frame</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ctrl_pos</span><span class="S8">[</span><span class="S3">1</span><span class="S8">]</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$ctrl_pos</span><span class="S8">[</span><span class="S3">3</span><span class="S8">]</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$htit</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$frame</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_CombineRgn</span><span class="S8">(</span><span class="S9">$full_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$full_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ctrl_rgn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$RGN_OR</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_DeleteObject</span><span class="S8">(</span><span class="S9">$ctrl_rgn</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_AddCtrlRegion</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WinAPI_SetWindowRgn.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

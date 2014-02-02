@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlDTP_SetSystemTimeEx</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlDTP_SetSystemTimeEx</font>
+<hr size="2">
+<p>現在選択されている日付けと時刻を設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiDateTimePicker.au3&gt;<br>
+_GUICtrlDTP_SetSystemTimeEx($hWnd, ByRef $tDate[, $fFlag = False])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$tDate</td>
+   <td>$tagSYSTEMTIME構造体</td>
+  </tr>
+  <tr>
+   <td>$fFlag</td>
+   <td><b>[オプション]</b>日付けなし設定:<br>
+       &nbsp;True - コントロールに"日付けなし"が設定されます。<br>
+       False - コントロールに日付けと時刻の値が設定されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlDTP_GetSystemTimeEx.htm">_GUICtrlDTP_GetSystemTimeEx</a>, <a href="$tagSYSTEMTIME.htm">$tagSYSTEMTIME</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiDateTimePicker.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_DTP</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; DTP関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tDate</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hDTP</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUIを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"DateTimePick Set System TimeEx"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hDTP</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlGetHandle</span><span class="S8">(</span><span class="S4">GUICtrlCreateDate</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">6</span><span class="S8">,</span><span class="S0"> </span><span class="S3">190</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iMemo</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateEdit</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">32</span><span class="S8">,</span><span class="S0"> </span><span class="S3">396</span><span class="S8">,</span><span class="S0"> </span><span class="S3">266</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetFont</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S3">9</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Courier New"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 表示形式を設定</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlDTP_SetFormat</span><span class="S8">(</span><span class="S9">$hDTP</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"ddd MMM dd, yyyy hh:mm ttt"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; システム時刻を設定</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tDate</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S9">$tagDTPTIME</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tDate</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Year"</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@YEAR</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tDate</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"月"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">8</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tDate</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Day"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">19</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tDate</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Hour"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">21</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tDate</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Minute"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">57</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tDate</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Second"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">34</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlDTP_SetSystemTimeEx</span><span class="S8">(</span><span class="S9">$hDTP</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tDate</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; システム時刻を表示</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tDate</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlDTP_GetSystemTimeEx</span><span class="S8">(</span><span class="S9">$hDTP</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Current date: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> GetDateStr</span><span class="S8">())</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Current time: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> GetTimeStr</span><span class="S8">())</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIDelete</span><span class="S8">()</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S1">; 日付け部分を返す</span><br>
+<span class="S5">Func</span><span class="S0"> GetDateStr</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S4">StringFormat</span><span class="S8">(</span><span class="S7">"%02d/%02d/%04d"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tDate</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"月"</span><span class="S8">),</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tDate</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Day"</span><span class="S8">),</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tDate</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Year"</span><span class="S8">))</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;GetDateStr</span><br>
+<br>
+<span class="S1">; 時刻部分を返す</span><br>
+<span class="S5">Func</span><span class="S0"> GetTimeStr</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S4">StringFormat</span><span class="S8">(</span><span class="S7">"%02d:%02d:%02d"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tDate</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Hour"</span><span class="S8">),</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tDate</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Minute"</span><span class="S8">),</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tDate</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Second"</span><span class="S8">))</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;GetTimeStr</span><br>
+<br>
+<span class="S1">; メモコントロールに1行書き込み</span><br>
+<span class="S5">Func</span><span class="S0"> MemoWrite</span><span class="S8">(</span><span class="S9">$sMessage</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sMessage</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;MemoWrite</span></span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlDTP_SetSystemTimeEx.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _NamedPipes_CallNamedPipe</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_NamedPipes_CallNamedPipe</font>
+<hr size="2">
+<p>名前付きパイプでの読み取り/書き込み操作を実行します。<br></p>
+
+<p class="codeheader">
+#Include &lt;NamedPipes.au3&gt;<br>
+_NamedPipes_CallNamedPipe($sPipeName, $pInpBuf, $iInpSize, $pOutBuf, $iOutSize, ByRef $iRead[, $iTimeOut = 0])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sPipeName</td>
+    <td width="85%">パイプ名</td>
+  </tr>
+  <tr>
+   <td>$pInpBuf</td>
+   <td>パイプへ書き込まれるデータを格納しているバッファへのポインタ</td>
+  </tr>
+  <tr>
+   <td>$iInpSize</td>
+   <td>書き込みバッファのバイト単位でのサイズ</td>
+  </tr>
+  <tr>
+   <td>$pOutBuf</td>
+   <td>パイプから読み取られるデータを受けるバッファへのポインタ</td>
+  </tr>
+  <tr>
+   <td>$iOutSize</td>
+   <td>読み取りバッファのバイト単位でのサイズ</td>
+  </tr>
+  <tr>
+   <td>$iRead</td>
+   <td>返し時にパイプから読み取られたバイト数が格納されます</td>
+  </tr>
+  <tr>
+   <td>$iTimeOut</td>
+   <td><b>[オプション]</b>名前付きパイプが利用可能になるまで待機する際の待機時間をミリ秒数で指定します。<br>
+   さらに次の特別な数値を指定できます:<br>
+       -1 - ずっと待機します<br>
+       &nbsp;0 - CreateNamedPipe呼び出し時に指定されたデフォルトのタイムアウト時間を使用<br>
+       &nbsp;1 - 待機しません。パイプが利用可能でない場合はエラーを返します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+CallNamedPipeの呼び出しはCreateFile(CreateFileがパイプを直ちに開けない場合はWaitNamedPipe)の呼び出しに、TransactNamedPipeはCloseHandleに相当します。<br>
+CreateFileはアクセスフラグ = GENERIC_READ | GENERIC_WRITEのとハンドル継承フラグ=Falseで呼び出されます。　<br>
+パイプがバイト型パイプの場合、CallNamedPipeは失敗します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_NamedPipes_WaitNamedPipe.htm">_NamedPipes_WaitNamedPipe</a>, <a href="_NamedPipes_TransactNamedPipe.htm">_NamedPipes_TransactNamedPipe</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CallNamedPipe">CallNamedPipe</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

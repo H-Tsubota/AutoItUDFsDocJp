@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _DebugReportVar</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_DebugReportVar</font>
+<hr size="2">
+<p>デバグ用セッションに変数の内容を書き込みます。<br></p>
+
+<p class="codeheader">
+#include &lt;Debug.au3&gt;<br>
+_DebugReportVar ($sVarname, $vVar [,$bErrExt = False])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sVarname</td>
+    <td width="85%">変数名を表す文字列またはコメント</td>
+  </tr>
+  <tr>
+   <td>$vVar</td>
+   <td>レポートされる変数</td>
+  </tr>
+  <tr>
+   <td>$bErrExt</td>
+   <td>	<b>[オプション]</b> @errorと@extendedも表示する必要がある場合、True</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+_DebugSetup()が呼び出されていない場合、この関数は常に返ります。<br>
+呼び出し側の@errorは変更されません。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_DebugSetup.htm">_DebugSetup</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Debug.au3&gt;</span><br>
+<br>
+<span class="S15">_DebugSetup</span><span class="S8">(</span><span class="S7">"_DebugReportVar examples"</span><span class="S8">,</span><span class="S0"> </span><span class="S5">True</span><span class="S8">)</span><br>
+<br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$Array2D</span><span class="S8">[</span><span class="S3">5</span><span class="S8">][</span><span class="S3">2</span><span class="S8">]</span><br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$r</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">to</span><span class="S0"> </span><span class="S4">Ubound</span><span class="S8">(</span><span class="S9">$Array2D</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$c</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">to</span><span class="S0"> </span><span class="S4">UBound</span><span class="S8">(</span><span class="S9">$Array2D</span><span class="S8">,</span><span class="S0"> &nbsp;</span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$Array2D</span><span class="S8">[</span><span class="S9">$r</span><span class="S8">][</span><span class="S9">$c</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$r</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">","</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$c</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<span class="S5">Next</span><br>
+<span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"Array2D"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Array2D</span><span class="S8">)</span><br>
+<br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$Array</span><span class="S8">[</span><span class="S3">7</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1.1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"string"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">Binary</span><span class="S8">(</span><span class="S3">0x010203</span><span class="S8">),</span><span class="S0"> </span><span class="S4">Ptr</span><span class="S8">(-</span><span class="S3">1</span><span class="S8">),</span><span class="S0"> </span><span class="S5">False</span><span class="S8">,</span><span class="S0"> </span><span class="S5">Default</span><span class="S8">]</span><br>
+<span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"Array"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Array</span><span class="S8">)</span><br>
+<br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$Array3D</span><span class="S8">[</span><span class="S3">5</span><span class="S8">][</span><span class="S3">2</span><span class="S8">][</span><span class="S3">10</span><span class="S8">]</span><br>
+<span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"Array3D"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Array3D</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$int</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><br>
+<span class="S0">&nbsp;</span><span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"int"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$int</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$int64</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">2</span><span class="S8">^</span><span class="S3">63</span><br>
+<span class="S0">&nbsp;</span><span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"int64"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$int64</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$bool</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">True</span><br>
+<span class="S0">&nbsp;</span><span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"bool"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$bool</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$float</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1.1</span><br>
+<span class="S0">&nbsp;</span><span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"float"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$float</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$keyword</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">Default</span><br>
+<span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"keyword"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$keyword</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$string</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"stringstring"</span><br>
+<span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"string"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$string</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$binary</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">Binary</span><span class="S8">(</span><span class="S7">"0x0102030405060708"</span><span class="S8">)</span><br>
+<span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"binary"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$binary</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$binary</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">Binary</span><span class="S8">(</span><span class="S7">"abcdefghij"</span><span class="S8">)</span><br>
+<span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"binary"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$binary</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$ptr</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">Ptr</span><span class="S8">(</span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"ptr"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ptr</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$hwnd</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">WinActive</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">)</span><br>
+<span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"hwnd"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hwnd</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$dllstruct</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S7">"int"</span><span class="S8">)</span><br>
+<span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"dllstruct"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$dllstruct</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$obj</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">ObjCreate</span><span class="S8">(</span><span class="S7">"shell.application"</span><span class="S8">)</span><br>
+<span class="S15">_DebugReportVar</span><span class="S8">(</span><span class="S7">"obj"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$obj</span><span class="S8">)</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_DebugReportVar.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

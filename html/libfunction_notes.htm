@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function Notes</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="css/default.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+<!--
+.style1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+-->
+  </style>
+</head>
+
+<body>
+<H1>User Defined Function Notes</H1>
+
+  
+<p>
+AutoIt3標準関数によって作られているファイルをいくつか添付しました。これらのファイルは<span class="style1">U</span>ser <span class="style1">D</span>efined <span class="style1">F</span>unctions(訳註：ユーザー定義関数)と呼ばれます。<br>
+UDF'sはAutoIt3で書かれた関数/スクリプト群で、あなた自身のスクリプトに#includeすることで必要な際に自分自身でプログラムしたり、毎回コピー&amp;ペーストしたりせずに使用することができます。</p>
+<p>例:<br>
+</p>
+    <p class="codebox">#include &lt;date.au3&gt;<br>
+      MsgBox(0,&quot;Today&quot;,&quot;Today's date is &quot; &amp; 
+      _Now())</p>
+<p>
+このスクリプトは　あなたのPCのロング形式でフォーマットされた今日の日付けを表示します。例えば&quot;Sunday, December 18, 2004&quot;といった具合です。</p>
+<p>&nbsp;</p>
+<p>
+多くのUDF'sは省略できるオプションパラメータを持ちます。オプションパラメータを指定する場合はそれ以前の全てのパラメータを指定する必要があります!<br>
+<i><a href="libfunctions/_ArraySort.htm">_ArraySort</a></i>( ByRef $a_Array [, $i_Descending [, $i_Base=0 [, $i_Ubound=0 [, $i_Dim=1 [, $i_SortIndex=0 ]]]]] )を例に考えて見ましょう。<br>
+ パラメータの前にByrefがつく場合、関数がその変数を新しい値に更新することを意味しています。
+それらのパラメータは変数($xyz)でなければならず、定数であってはなりません。<br>
+</p>
+<p>
+ほとんどのUDF'sは成功/失敗を<b>返し値</b>で通知し、他のものは<b>@errorフラグ</b>を設定することで通知します。一部は両方をおこないます...<br>
+@error = 0は常に成功を表します。<br>
+返し値はコードを読みやすくするために通常は非ゼロが成功を表します...<br>
+  <br>
+  <b>関数が@errorフラグを設定する場合、返し値を使用する前に常に@errorを調べた方が良いでしょう。@errorがエラーを示している場合、一般に関数の返し値は未定義です... </b><br>
+</p>
+<p><br>
+</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+<p><img src="images/blue_gradient_1024x24.jpg" width="1024" height="1"></p>
+</html>

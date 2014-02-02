@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_FatalAppExit</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_FatalAppExit</font>
+<hr size="2">
+<p>メッセージボックスを表示し、アプリケーションを終了します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_FatalAppExit($sMessage)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sMessage</td>
+    <td width="85%">メッセージボックスに表示される文字列</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+他の方法で終了できない場合のみアプリケーションはFatalAppExitを呼びます。<br>
+FatalAppExitは常にアプリケーションのメモリを解放し、そのファイルを閉じることができるわけではなく、<br>その場合はシステムの一般的なエラーがおきます。<br>
+予期しないエラーが起きたアプリケーションは自身の全てのメモリを解放し、メインメッセージループから処理を返すことで終了します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=FatalAppExit">FatalAppExit</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_GetProcessAffinityMask</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_GetProcessAffinityMask</font>
+<hr size="2">
+<p>プロセスとシステムのアフィニティマスクを取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_GetProcessAffinityMask($hProcess)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hProcess</td>
+    <td width="85%">アフィニティマスクを要求されているプロセスの開かれているハンドル</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">次のフォーマットの配列:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aMask[0] - 成功の場合True、それ以外の場合False</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aMask[1] - プロセスのアフィニティマスク</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aMask[2] - システムのアフィニティマスク</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+アフィニティマスクはビットマスクで各ビットはプロセスのスレッドが実行を許されているプロセッサを表します。
+例えば、0x05のマスクを渡すとプロセッサ1と3が実行を許可されます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GetProcessAffinityMask">GetProcessAffinityMask</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

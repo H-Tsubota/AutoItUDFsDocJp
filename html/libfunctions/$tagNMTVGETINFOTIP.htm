@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagNMTVGETINFOTIP</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagNMTVGETINFOTIP</font>
+<hr size="2">
+<p>アイテムのツールチップを表示するのに必要なツリービューアイテムの情報を受け取り、格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagNMTVGETINFOTIP = $tagNMHDR & ";ptr Text;int TextMax;hwnd hItem;int lParam"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$tagNMHDR</td>
+    <td width="85%">通知メッセージの情報を格納します</td>
+  </tr>
+  <tr>
+   <td>Text</td>
+   <td>表示されるテキストを格納した文字バッファのアドレス</td>
+  </tr>
+  <tr>
+   <td>TextMax</td>
+   <td>Textのバッファの文字単位でのサイズ。ただしこのバッファは任意の値を取れるわけではありません。
+   値を決定するために$INFOTIPSIZE値を使用することができます。</td>
+  </tr>
+  <tr>
+   <td>hItem</td>
+   <td>ツールチップが表示されるアイテムのツリーのハンドル</td>
+  </tr>
+  <tr>
+   <td>lParam</td>
+   <td>ツールチップが表示されるアイテムに関連付けられたアプリケーション定義データ</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

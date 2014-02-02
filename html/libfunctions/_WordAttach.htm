@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WordAttach</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WordAttach</font>
+<hr size="2">
+<p>選択されたモードに基づいて検索し、最初に一致したMicrosoft Wordの既存のインスタンスを取得します。<br></p>
+
+<p class="codeheader">
+#include &lt;Word.au3&gt; <br>
+_WordAttach ( $s_string [, $s_mode = "FilePath"] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$s_string</td>
+    <td width="85%">検索文字列</td>
+  </tr>
+  <tr>
+   <td>$s_mode</td>
+   <td><b>[オプション]</b> 検索モードを指定します<br>
+       FileName = 開いているドキュメント名<br>
+       FilePath = (デフォルト) 開いているドキュメントのフルパス<br>
+       HWND = Wordウィンドウのhwnd<br>
+       Text = ドキュメントのボディ内のテキスト<br>
+       Title = Wordウィンドウのタイトル</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">Word.Applicationオブジェクトを指すオブジェクト変数を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>$_WordStatus_Success = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_GeneralError = 一般的なエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_InvalidValue = 無効な値</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_NoMatch = 一致なし</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの数を格納</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WordCreate.htm">_WordCreate</a>, <a href="_WordQuit.htm">_WordQuit</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - "Test.doc"という名前のファイルを開いているWordウィンドウを取得</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ドキュメントファイルのフルパスを表示</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Word.au3&gt;</span><br>
+<span class="S9">$oWordApp</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordAttach</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"Test.doc"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"FileName"</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S5">Not</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$oDoc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordDocGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oWordApp</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">64</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Document FileName"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$oDoc</span><span class="S8">.</span><span class="S14">FullName</span><span class="S8">)</span><br>
+<span class="S5">EndIf</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 2 - ドキュメントのテキストに"The quick brown fox"を含むWordウィンドウを取得</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Word.au3&gt;</span><br>
+<span class="S9">$oWordApp</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordAttach</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"The quick brown fox"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Text"</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WordAttach.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

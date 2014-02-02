@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _Timer_GetIdleTime</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_Timer_GetIdleTime</font>
+<hr size="2">
+<p>最後のユーザー操作(i.e. キーボード/マウス)からの経過時間を返します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Timers.au3&gt;<br>
+_Timer_GetIdleTime()<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">最後の操作からの経過時間を表す整数(ミリ秒近似)</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>1を設定します(注意を参照)</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+システム再起動からの経過時間は50日ごとに0にまき戻されます(ロールオーバー)。<br>
+最後のユーザー操作がまき戻し前で、この関数の実行がまき戻し後の場合、<br>経過時間の取得が不可能になります。<br>
+もしこれが起きた場合、@extended = 1になりロールオーバー実行からの経過時間が返されます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_Au3Check_Parameters= -d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Timers.au3&gt;</span><br>
+<br>
+<span class="S1">; この10秒間にマウス/キーボードを操作するとアイドリング時間のレポート内容が変わる</span><br>
+<span class="S4">Sleep</span><span class="S8">(</span><span class="S3">10</span><span class="S0"> </span><span class="S8">*</span><span class="S0"> </span><span class="S3">1000</span><span class="S8">)</span><span class="S1">; 10秒</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$iIdleTime</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_Timer_GetIdleTime</span><span class="S8">()</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">64</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_Timer_GetIdleTime"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Idle time = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIdleTime</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"ms"</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_Timer_GetIdleTime.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

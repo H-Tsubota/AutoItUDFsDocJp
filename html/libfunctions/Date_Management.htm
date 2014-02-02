@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Date user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;Date.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="_DateAdd.htm">_DateAdd</a></td>
+<td>与えられた日付けと加算間隔に基づいて新しい日付けを計算します。<br></td>
+</tr>
+<tr>
+<td><a href="_DateDayOfWeek.htm">_DateDayOfWeek</a></td>
+<td>指定した曜日に基づいて、曜日名を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_DateDaysInMonth.htm">_DateDaysInMonth</a></td>
+<td>指定された月、年に基づいて、月の日数を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_DateDiff.htm">_DateDiff</a></td>
+<td>指定した形式で表現された2つの日付けの間の差を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_DateIsLeapYear.htm">_DateIsLeapYear</a></td>
+<td>与えられた年がうるう年かどうかを調べます。<br></td>
+</tr>
+<tr>
+<td><a href="_DateIsValid.htm">_DateIsValid</a></td>
+<td>与えられた日付けが有効な日付けかどうか調べます。<br></td>
+</tr>
+<tr>
+<td><a href="_DateTimeFormat.htm">_DateTimeFormat</a></td>
+<td>PCの地域設定形式で日付けを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_DateTimeSplit.htm">_DateTimeSplit</a></td>
+<td>日付けと時刻の入った文字列を2つの配列に分割します。<br></td>
+</tr>
+<tr>
+<td><a href="_DateToDayOfWeek.htm">_DateToDayOfWeek</a></td>
+<td>与えられた日付けの曜日番号を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_DateToDayOfWeekISO.htm">_DateToDayOfWeekISO</a></td>
+<td>与えられた日付けのISOでの曜日番号を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_DateToDayValue.htm">_DateToDayValue</a></td>
+<td>与えられたグレゴリオ暦での日付けの紀元前4713年1月1日正午からの経過日数を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_DateToMonth.htm">_DateToMonth</a></td>
+<td>指定された月番号に基づいて、月の名前を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_CompareFileTime.htm">_Date_Time_CompareFileTime</a></td>
+<td>2つのファイル時刻を比較します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_DOSDateTimeToArray.htm">_Date_Time_DOSDateTimeToArray</a></td>
+<td>DOS日付け/時刻を配列にデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_DOSDateTimeToFileTime.htm">_Date_Time_DOSDateTimeToFileTime</a></td>
+<td>MS-DOS日付け/時刻値をファイル時刻に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_DOSDateTimeToStr.htm">_Date_Time_DOSDateTimeToStr</a></td>
+<td>DOS日付けを文字列にデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_DOSDateToArray.htm">_Date_Time_DOSDateToArray</a></td>
+<td>DOS日付けを配列にデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_DOSDateToStr.htm">_Date_Time_DOSDateToStr</a></td>
+<td>DOS日付けを文字列にデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_DOSTimeToArray.htm">_Date_Time_DOSTimeToArray</a></td>
+<td>DOS時刻を配列にデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_DOSTimeToStr.htm">_Date_Time_DOSTimeToStr</a></td>
+<td>DOS時刻を文字列にデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_EncodeFileTime.htm">_Date_Time_EncodeFileTime</a></td>
+<td>$tagFILETIME構造体をエンコードして返します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_EncodeSystemTime.htm">_Date_Time_EncodeSystemTime</a></td>
+<td>$tagSYSTEMTIME構造体をエンコードして返します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_FileTimeToArray.htm">_Date_Time_FileTimeToArray</a></td>
+<td>ファイル時刻を配列にデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_FileTimeToDOSDateTime.htm">_Date_Time_FileTimeToDOSDateTime</a></td>
+<td>ファイル時刻をMS-DOSの日付け/時刻値に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_FileTimeToLocalFileTime.htm">_Date_Time_FileTimeToLocalFileTime</a></td>
+<td>協定世界時(UTC)に基づくファイル時刻をローカルなファイル時刻に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_FileTimeToStr.htm">_Date_Time_FileTimeToStr</a></td>
+<td>ファイル時刻を日付け/時刻文字列にデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_FileTimeToSystemTime.htm">_Date_Time_FileTimeToSystemTime</a></td>
+<td>ファイル時刻をシステム時間形式に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_GetFileTime.htm">_Date_Time_GetFileTime</a></td>
+<td>ファイルの作成、アクセス、変更日時を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_GetLocalTime.htm">_Date_Time_GetLocalTime</a></td>
+<td>現在の地域日付け/時刻を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_GetSystemTime.htm">_Date_Time_GetSystemTime</a></td>
+<td>UTC表現の現在のシステム日時を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_GetSystemTimeAdjustment.htm">_Date_Time_GetSystemTimeAdjustment</a></td>
+<td>システムに周期間隔調節が施されているかどうかを調べます。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_GetSystemTimeAsFileTime.htm">_Date_Time_GetSystemTimeAsFileTime</a></td>
+<td>UTCで表現された現在のシステム日時を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_GetSystemTimes.htm">_Date_Time_GetSystemTimes</a></td>
+<td>システム時間情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_GetTickCount.htm">_Date_Time_GetTickCount</a></td>
+<td>Windowsが開始されてからの経過ミリ秒数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_GetTimeZoneInformation.htm">_Date_Time_GetTimeZoneInformation</a></td>
+<td>現在のタイムゾーン設定を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_LocalFileTimeToFileTime.htm">_Date_Time_LocalFileTimeToFileTime</a></td>
+<td>ローカルなファイル時刻をUTCに基づくファイル時刻に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_SetFileTime.htm">_Date_Time_SetFileTime</a></td>
+<td>ファイルの作成、アクセス、変更日時を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_SetLocalTime.htm">_Date_Time_SetLocalTime</a></td>
+<td>現在の地域時間と日付けを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_SetSystemTime.htm">_Date_Time_SetSystemTime</a></td>
+<td>UTC表現で現在のシステム時間と日付けを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_SetSystemTimeAdjustment.htm">_Date_Time_SetSystemTimeAdjustment</a></td>
+<td>システムクロックの周期間隔調節の有効/無効を切り替えます。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_SetTimeZoneInformation.htm">_Date_Time_SetTimeZoneInformation</a></td>
+<td>現在のタイムゾーン設定を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_SystemTimeToArray.htm">_Date_Time_SystemTimeToArray</a></td>
+<td>システム時間を配列にデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_SystemTimeToDateStr.htm">_Date_Time_SystemTimeToDateStr</a></td>
+<td>システム時間を日付け文字列にデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_SystemTimeToDateTimeStr.htm">_Date_Time_SystemTimeToDateTimeStr</a></td>
+<td>システム時間を日付け/時刻文字列にデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_SystemTimeToFileTime.htm">_Date_Time_SystemTimeToFileTime</a></td>
+<td>システム時間をファイル時刻形式に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_SystemTimeToTimeStr.htm">_Date_Time_SystemTimeToTimeStr</a></td>
+<td>システム時間を時刻文字列にデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_SystemTimeToTzSpecificLocalTime.htm">_Date_Time_SystemTimeToTzSpecificLocalTime</a></td>
+<td>UTC時刻を指定したタイムゾーンの対応する地域時刻に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_Date_Time_TzSpecificLocalTimeToSystemTime.htm">_Date_Time_TzSpecificLocalTimeToSystemTime</a></td>
+<td>地域時刻をUTCでの時刻に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_DayValueToDate.htm">_DayValueToDate</a></td>
+<td>紀元前4713年1月1日正午からの経過日数を与えると、グレゴリオ暦での日付けを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_Now.htm">_Now</a></td>
+<td>現在の日付けと時刻をPCの形式で返します。<br></td>
+</tr>
+<tr>
+<td><a href="_NowCalc.htm">_NowCalc</a></td>
+<td>日付け計算用に日付けと時刻をYYYY/MM/DD HH:MM:SS形式で返します。<br></td>
+</tr>
+<tr>
+<td><a href="_NowCalcDate.htm">_NowCalcDate</a></td>
+<td>現在の日付けをYYYY/MM/DD形式で返します。<br></td>
+</tr>
+<tr>
+<td><a href="_NowDate.htm">_NowDate</a></td>
+<td>現在の日付けをPCの形式で返します。<br></td>
+</tr>
+<tr>
+<td><a href="_NowTime.htm">_NowTime</a></td>
+<td>現在の時刻を要求された形式で返します。<br></td>
+</tr>
+<tr>
+<td><a href="_SetDate.htm">_SetDate</a></td>
+<td>システムの現在の日付けを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_SetTime.htm">_SetTime</a></td>
+<td>システムの現在時刻を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_TicksToTime.htm">_TicksToTime</a></td>
+<td>指定されたミリ秒数を時間、分および秒に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_TimeToTicks.htm">_TimeToTicks</a></td>
+<td>指定された時間、分および秒をミリ秒に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_WeekNumberISO.htm">_WeekNumberISO</a></td>
+<td>与えた日付けが年頭から何週目かを計算します。<br></td>
+</tr>
+</table>
+</body>

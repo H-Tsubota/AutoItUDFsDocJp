@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_GetObject</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_GetObject</font>
+<hr size="2">
+<p>指定されたグラフィックオブジェクトの情報を取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_GetObject($hObject, $iSize, $pObject)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hObject</td>
+    <td width="85%">論理ペン、ブラシ、フォント、ビットマップ、リージョン、パレットを識別します</td>
+  </tr>
+  <tr>
+   <td>$iSize</td>
+   <td>バッファに書き込まれるバイト数を指定します</td>
+  </tr>
+  <tr>
+   <td>$pObject</td>
+   <td>情報を受け取るバッファへのポインタ。<br>
+   指定するグラフィックオブジェクトの種類ごとにバッファが受け取る情報の種類を次に示します:<br>
+       HBITMAP - BITMAPまたはDIBSECTION<br>
+       HPALETTE - 論理パレット内のエントリの総数<br>
+       HPEN - EXTLOGPENまたはLOGPEN<br>
+       HBRUSH - LOGBRUSH<br>
+       HFONT - LOGFONT</td>
+  </tr>
+  <tr>
+   <td></td>
+   <td>$pObjectが0の場合、この関数の返し値は指定されたグラフィックオブジェクトに対してバッファに書き込まれる情報を保持するのに必要なバイト数になります。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">$pObjectが有効なポインタの場合、返し値はバッファに格納されたバイト数になります。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>関数が成功し$pObjectが0の場合、返し値はこの関数がバッファに格納しようとしている情報を保持するのに必要なバイト数になります。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GetObject">GetObject</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

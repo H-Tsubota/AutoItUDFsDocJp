@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _NamedPipes_CreateNamedPipe</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_NamedPipes_CreateNamedPipe</font>
+<hr size="2">
+<p>名前付きパイプのインスタンスを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;NamedPipes.au3&gt;<br>
+_NamedPipes_CreateNamedPipe($sName[, $iAccess = 2[, $iFlags = 2[, $iACL = 0[, $iType = 1[, $iRead = 1[, $iWait = 0[, $iMaxInst = 25[, $iOutBufSize = 4096[, $iInpBufSize = 4096[, $iDefTimeout = 5000[, $pSecurity = 0]]]]]]]]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sName</td>
+    <td width="85%">
+	\\.\pipe\pipename形式のパイプ名。名前のpipename部分はバックスラッシュ以外の数字、特殊文字を含む全ての文字を使用できます。パイプ名文字列の最大長は256文字で、大文字小文字は区別されません。</td>
+  </tr>
+  <tr>
+   <td>$iAccess</td>
+   <td><b>[オプション]</b>パイプアクセスモード。次のいずれかです:<br>
+       0 - パイプ内のデータの流れはクライントからサーバーへの方向のみ(inbound)<br>
+       1 - パイプ内のデータの流れはサーバーからクライントへの方向のみ(outbound)<br>
+       2 - 双方向パイプ(duplex)</td>
+  </tr>
+  <tr>
+   <td>$iFlags</td>
+   <td><b>[オプション]</b>パイプフラグ。次のものの組み合わせ:<br>
+       1 - このフラグで複数のパイプインスタンスを作成しようとした場合、1つめの作成は成功しますが、次以降のインスタンス作成は失敗します。<br>
+       2 - オーバーラップモード有効。このモードが有効な場合、関数は完了するまでにかなり長い時間がかかる可能性のある読み取り、書き込み、接続操作ですぐに制御を返します。<br>
+       4 - ライトスルーモード有効。このモードはバイト型パイプでの書込み操作をクライアントとサーバーが異るコンピュータ上でおこなう場合のみ影響を与えます。</td>
+  </tr>
+  <tr>
+   <td>$iACL</td>
+   <td><b>[オプション]</b>セキュリティACLフラグ。次のものの組み合わせ:<br>
+       1 - 呼び出し側は名前付きパイプの随意ACLへの書き込み権限を持ちます<br>
+       2 - 呼び出し側は名前付きパイプのオーナーへの書き込み権限を持ちます<br>
+       4 - 呼び出し側は名前付きパイプのセキュリティACLへの書き込み権限を持ちます</td>
+  </tr>
+  <tr>
+   <td>$iType</td>
+   <td><b>[オプション]</b>パイプタイプモード。次のいずれか:<br>
+       0 - データはパイプにバイトストリームとして書き込まれます<br>
+       1 - データはパイプにメッセージストリームとして書き込まれます</td>
+  </tr>
+  <tr>
+   <td>$iRead</td>
+   <td><b>[オプション]</b>パイプ読み取りモード。次のいずれか:<br>
+       0 - データはパイプからバイトストリームとして読み取られます<br>
+       1 - データはパイプからメッセージストリームとして読み取られます</td>
+  </tr>
+  <tr>
+   <td>$iWait</td>
+   <td><b>[オプション]</b>パイプ待機モード。次のいずれか:<br>
+       0 - ブロッキングモード有効。ReadFile、WriteFile、ConnectNamedPipeでパイプハンドルが指定されると、
+	   読み取りデータが発生するまで、全てのデータが書き込まれるまで、クライアントが接続するまで操作が完了しません。<br>
+       1 - 非ブロッキングモード有効。ReadFile、WriteFile、ConnectNamedPipeは常にただちに制御を返します。</td>
+  </tr>
+  <tr>
+   <td>$iMaxInst</td>
+   <td><b>[オプション]</b>このパイプで作成できるインスタンスの最大数</td>
+  </tr>
+  <tr>
+   <td>$iOutBufSize</td>
+   <td><b>[オプション]</b>出力バッファ用に予約するバイト数</td>
+  </tr>
+  <tr>
+   <td>$iInpBufSize</td>
+   <td><b>[オプション]</b>入力バッファ用に予約するバイト数</td>
+  </tr>
+  <tr>
+   <td>$iDefTimeOut</td>
+   <td><b>[オプション]</b>ミリ秒単位でのデフォルト時間出力値</td>
+  </tr>
+  <tr>
+   <td>$pSecurity</td>
+   <td><b>[オプション]</b>新しい名前付きパイプ用のセキュリティ記述子を指定し、子プロセスが返されたハンドルを継承できるかを決定するtagSECURITY_ATTRIBUTES構造体へのポインタ。pSecurityが0の場合、その名前付きパイプはデフォルトのセキュリティ記述子を取得し、ハンドルを継承することはできません。名前付きパイプ用デフォルトセキュリティ記述子のACLはLocalSystemアカウント管理者と作成所有者へ全制御権を付与します。また、すべてのユーザーグループのメンバー、匿名アカウントに読み取りアクセス権を付与します。
+</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">名前付きパイプインスタンスのサーバー端点のハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>-1</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_NamedPipes_ConnectNamedPipe.htm">_NamedPipes_ConnectNamedPipe</a>, <a href="_NamedPipes_CreatePipe.htm">_NamedPipes_CreatePipe</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CreateNamedPipe">CreateNamedPipe</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

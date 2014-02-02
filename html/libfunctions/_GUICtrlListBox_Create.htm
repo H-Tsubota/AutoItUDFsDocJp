@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlListBox_Create</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlListBox_Create</font>
+<hr size="2">
+<p>リストボックスコントロールを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiListBox.au3&gt;<br>
+_GUICtrlListBox_Create($hWnd, $sText, $iX, $iY[, $iWidth = 100[, $iHeight = 200[, $iStyle = 0x00B00002[, $iExStyle = 0x00000200]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">親ウィンドウまたはオーナーウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$sText</td>
+   <td>コンボボックスに追加される文字列</td>
+  </tr>
+  <tr>
+   <td>$iX</td>
+   <td>コントロールの水平位置</td>
+  </tr>
+  <tr>
+   <td>$iY</td>
+   <td>コントロールの垂直位置</td>
+  </tr>
+  <tr>
+   <td>$iWidth</td>
+   <td><b>[オプション]</b>コントロールの幅</td>
+  </tr>
+  <tr>
+   <td>$iHeight</td>
+   <td><b>[オプション]</b>コントロールの高さ</td>
+  </tr>
+  <tr>
+   <td>$iStyle</td>
+   <td><b>[オプション]</b>コントロールのスタイル:<br>
+       $LBS_COMBOBOX - リストボックスがコンボボックスの一部であることを通知します<br>
+       $LBS_DISABLENOSCROLL - 無効化された垂直スクロールバーを表示します<br>
+       $LBS_EXTENDEDSEL - 複数アイテムの選択を許可します<br>
+       $LBS_HASSTRINGS - リストボックスが文字列からなるアイテムを格納していることを表します<br>
+       $LBS_MULTICOLUMN - 水平にスクロールできる複数列のリストボックスを表します<br>
+       $LBS_MULTIPLESEL - ユーザーがクリックするたびに文字列の選択をオン/オフします<br>
+       $LBS_NODATA - データのないリストボックスを表します<br>
+       $LBS_NOINTEGRALHEIGHT - サイズ設定にアプリケーションによって設定されたサイズの正確な値を使用します<br>
+       $LBS_NOREDRAW - 変更が起きた際にリストボックスの外見を更新しないように指定します<br>
+       $LBS_NOSEL - リストボックス内のアイテムは表示されるだけで選択できないように指定します<br>
+       $LBS_NOTIFY - ユーザーが文字列をクリック、ダブルクリックをした際に通知します<br>
+       $LBS_OWNERDRAWFIXED - リストボックスがオーナーによって描画されるよう指定します<br>
+       $LBS_OWNERDRAWVARIABLE - リストボックスがオーナーによって変数の高さで描画されるよう指定します<br>
+       $LBS_SORT - リストボックス内の文字列をアルファベット順にソートします<br>
+       $LBS_STANDARD - 標準的なリストボックススタイル<br>
+       $LBS_USETABSTOPS - リストボックスでのタブ文字の認識、展開を有効にします<br>
+       $LBS_WANTKEYBOARDINPUT - オーナーがWM_VKEYTOITEMメッセージを受け取るように指定します</td>
+  </tr>
+  <tr>
+   <td></td>
+   <td>デフォルト: $LBS_SORT、$WS_HSCROLL、$WS_VSCROLL、$WS_BORDER<br>
+       強制 : $WS_CHILD、$WS_TABSTOP、$WS_VISIBLE、$LBS_NOTIFY</td>
+  </tr>
+  <tr>
+   <td></td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>$iExStyle</td>
+   <td><b>[オプション]</b>コントロール拡張スタイル。標準的な$WS_EX_定数と対応しています。<br>
+   デフォルト: $WS_EX_CLIENTEDGE</td>
+  </tr>
+  <tr>
+   <td></td>
+   <td></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">リストボックスコントロールのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数は上級者、コントロール動作学習用です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlListBox_Destroy.htm">_GUICtrlListBox_Destroy</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIListBox.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Constants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_LB</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; ListBox関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$hListBox</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUIを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"(UDF Created) List Box Create"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">296</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hListBox</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlListBox_Create</span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"String upon creation"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">396</span><span class="S8">,</span><span class="S0"> </span><span class="S3">296</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">4160</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Information"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Adding Items"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIRegisterMsg</span><span class="S8">(</span><span class="S9">$WM_COMMAND</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"WM_COMMAND"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ファイルを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListBox_BeginUpdate</span><span class="S8">(</span><span class="S9">$hListBox</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListBox_ResetContent</span><span class="S8">(</span><span class="S9">$hListBox</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListBox_InitStorage</span><span class="S8">(</span><span class="S9">$hListBox</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">4096</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListBox_Dir</span><span class="S8">(</span><span class="S9">$hListBox</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@WindowsDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\win*.exe"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListBox_AddFile</span><span class="S8">(</span><span class="S9">$hListBox</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@WindowsDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Notepad.exe"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListBox_Dir</span><span class="S8">(</span><span class="S9">$hListBox</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$DDL_DRIVES</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListBox_Dir</span><span class="S8">(</span><span class="S9">$hListBox</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$DDL_DRIVES</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListBox_EndUpdate</span><span class="S8">(</span><span class="S9">$hListBox</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> WM_COMMAND</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iMsg</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iwParam</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ilParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S12">#forceref $hWnd, $iMsg</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hWndFrom</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iIDFrom</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iCode</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hWndListBox</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S5">Not</span><span class="S0"> </span><span class="S4">IsHWnd</span><span class="S8">(</span><span class="S9">$hListBox</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S9">$hWndListBox</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlGetHandle</span><span class="S8">(</span><span class="S9">$hListBox</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hWndFrom</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$ilParam</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iIDFrom</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$iwParam</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0xFFFF</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 下位ワード</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iCode</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitShift</span><span class="S8">(</span><span class="S9">$iwParam</span><span class="S8">,</span><span class="S0"> </span><span class="S3">16</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 上位ワード</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$hWndFrom</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$hListBox</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hWndListBox</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$iCode</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$LBN_DBLCLK</span><span class="S0"> </span><span class="S1">; ユーザーがリストボックスの文字列をダブルクリックした際に送信される</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _DebugPrint</span><span class="S8">(</span><span class="S7">"$LBN_DBLCLK"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"--&gt; hWndFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hWndFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;IDFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIDFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;Code:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iCode</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; 返し値なし</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$LBN_ERRSPACE</span><span class="S0"> </span><span class="S1">; リストボックスが要求に見合う十分なメモリを割り当てられなかった際に送信される</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _DebugPrint</span><span class="S8">(</span><span class="S7">"$LBN_ERRSPACE"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"--&gt; hWndFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hWndFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;IDFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIDFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;Code:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iCode</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; 返し値なし</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$LBN_KILLFOCUS</span><span class="S0"> </span><span class="S1">; リストボックスからキーボードフォーカスが外れた際に送信される</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _DebugPrint</span><span class="S8">(</span><span class="S7">"$LBN_KILLFOCUS"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"--&gt; hWndFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hWndFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;IDFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIDFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;Code:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iCode</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; 返し値なし</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$LBN_SELCANCEL</span><span class="S0"> </span><span class="S1">; ユーザーがリストボックス内の選択をキャンセルした際に送信される</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _DebugPrint</span><span class="S8">(</span><span class="S7">"$LBN_SELCANCEL"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"--&gt; hWndFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hWndFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;IDFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIDFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;Code:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iCode</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; 返し値なし</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$LBN_SELCHANGE</span><span class="S0"> </span><span class="S1">; リストボックス内の選択が変更された際に送信される</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _DebugPrint</span><span class="S8">(</span><span class="S7">"$LBN_SELCHANGE"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"--&gt; hWndFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hWndFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;IDFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIDFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;Code:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iCode</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; 返し値なし</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$LBN_SETFOCUS</span><span class="S0"> </span><span class="S1">; リストボックスにキーボードフォーカスが合った際に送信される</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _DebugPrint</span><span class="S8">(</span><span class="S7">"$LBN_SETFOCUS"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"--&gt; hWndFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hWndFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;IDFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIDFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;Code:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iCode</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; 返し値なし</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; デフォルトのAutoit3内部メッセージコマンドを続行</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ラインアウトで完了することもできる</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; !!!ただし'Return'(値なし)だけは新しいデフォルトのAutoit3メッセージ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; を続行できない!!!</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S9">$GUI_RUNDEFMSG</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;WM_COMMAND</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _DebugPrint</span><span class="S8">(</span><span class="S9">$s_text</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$s_text</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">StringReplace</span><span class="S8">(</span><span class="S9">$s_text</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@LF</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"--&gt;"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"!==========================================================="</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"+==========================================================="</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$s_text</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"+==========================================================="</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_DebugPrint</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlListBox_Create.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

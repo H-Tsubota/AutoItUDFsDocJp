@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _DateAdd</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_DateAdd</font>
+<hr size="2">
+<p>与えられた日付けと加算間隔に基づいて新しい日付けを計算します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Date.au3&gt;<br>
+_DateAdd($sType, $iValToAdd, $sDate)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sType</td>
+    <td width="85%">次のいずれか<br>
+       D - 与えられた日付けに日数を加算<br>
+       M - 与えられた日付けに月数を加算<br>
+       Y - 与えられた日付けに年数を加算<br>
+       w - 与えられた日付けに週数を加算<br>
+       h - 与えられた日付けに時間数を加算<br>
+       n - 与えられた日付けに分数を加算<br>
+       s - 与えられた日付けに秒数を加算</td>
+  </tr>
+  <tr>
+   <td>$iValToAdd</td>
+   <td>加算数</td>
+  </tr>
+  <tr>
+   <td>$sDate</td>
+   <td>YYYY/MM/DD[ HH:MM:SS]形式の入力日付け</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">新しく計算された日付け</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0。@ERRORを次の値に設定</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>0 - 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - 無効な$sType</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - 無効な$iValToAdd</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 - 無効な$sDate</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数は無効な日付けを返しません。<br>
+'2004/1/31'に3ヶ月を加えた場合、結果は'2004/04/30'になります。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_DateDiff.htm">_DateDiff</a>, <a href="_DateTimeSplit.htm">_DateTimeSplit</a>, <a href="_DateToDayOfWeek.htm">_DateToDayOfWeek</a>, <a href="_DateToDayOfWeekISO.htm">_DateToDayOfWeekISO</a>, <a href="_DateToDayValue.htm">_DateToDayValue</a>, <a href="_DayValueToDate.htm">_DayValueToDate</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Date.au3&gt;</span><br>
+<br>
+<span class="S1">; 今日に5日足す</span><br>
+<span class="S9">$sNewDate</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_DateAdd</span><span class="S8">(</span><span class="S0"> </span><span class="S7">'d'</span><span class="S8">,</span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_NowCalcDate</span><span class="S8">())</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S0"> </span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Today + 5 days:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sNewDate</span><span class="S0"> </span><span class="S8">)</span><br>
+<br>
+<span class="S1">; 今日から2週引く</span><br>
+<span class="S9">$sNewDate</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_DateAdd</span><span class="S8">(</span><span class="S0"> </span><span class="S7">'w'</span><span class="S8">,-</span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_NowCalcDate</span><span class="S8">())</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S0"> </span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Today minus 2 weeks: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sNewDate</span><span class="S0"> </span><span class="S8">)</span><br>
+<br>
+<span class="S1">; 現在時刻に15分足す</span><br>
+<span class="S9">$sNewDate</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_DateAdd</span><span class="S8">(</span><span class="S0"> </span><span class="S7">'n'</span><span class="S8">,</span><span class="S3">15</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_NowCalc</span><span class="S8">())</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S0"> </span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Current time +15 minutes: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sNewDate</span><span class="S0"> </span><span class="S8">)</span><br>
+<br>
+<span class="S1">; 1970/01/01 00:00:00からの経過秒数を返すイベントログの日付けを計算 </span><br>
+<span class="S9">$sNewDate</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_DateAdd</span><span class="S8">(</span><span class="S0"> </span><span class="S7">'s'</span><span class="S8">,</span><span class="S3">1087497645</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"1970/01/01 00:00:00"</span><span class="S8">)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S0"> </span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Date: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sNewDate</span><span class="S0"> </span><span class="S8">)</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_DateAdd.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlToolbar_ButtonCount</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlToolbar_ButtonCount</font>
+<hr size="2">
+<p>ボタンの総数を取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiToolBar.au3&gt;<br>
+_GUICtrlToolbar_ButtonCount($hWnd)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+成功: ツールバー上のボタンの数<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiToolbar.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Constants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_TB</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; 関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hToolbar</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S5">Enum</span><span class="S0"> </span><span class="S9">$idNew</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1000</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idOpen</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idSave</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idHelp</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUIを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Toolbar"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hToolbar</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlToolbar_Create</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 標準的なシステムのビットマップを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddBitmap</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$IDB_STD_LARGE_COLOR</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ボタンを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idNew</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_FILENEW</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idOpen</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_FILEOPEN</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idSave</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_FILESAVE</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButtonSep</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idHelp</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_HELP</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ボタンの総数を表示</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Information"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"There are "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_GUICtrlToolbar_ButtonCount</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" buttons"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlToolbar_ButtonCount.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

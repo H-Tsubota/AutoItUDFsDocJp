@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IsPressed</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IsPressed</font>
+<hr size="2">
+<p>キーが押されているかどうかを調べます。<br></p>
+
+<p class="codeheader">
+#Include &lt;Misc.au3&gt;<br>
+_IsPressed($sHexKey [, $vDLL = 'user32.dll'])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sHexKey</td>
+    <td width="85%">調べるキー</td>
+  </tr>
+  <tr>
+   <td>$vDLL</td>
+   <td><b>[オプション]</b>DLLのハンドル。デフォルトはuser32.dll</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">True:</td>
+    <td width="90%">1</td>
+  </tr>
+  <tr>
+    <td valign="top">False:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数を繰り返し呼ぶ場合、'user32.dll'を開き、ハンドルを渡さなければなりません。<br>
+スクリプトの終わりでDLLを閉じるのを忘れないでください。<br>
+01 左マウスボタン<br>
+02 右マウスボタン<br>
+04 中央マウスボタン (3ボタンマウスの場合)<br>
+05 Windows 2000/XP: X1マウスボタン<br>
+06 Windows 2000/XP: X2マウスボタン<br>
+08 BACKSPACEキー<br>
+09 TABキー<br>
+0C CLEARキー<br>
+0D ENTERキー<br>
+10 SHIFTキー<br>
+11 CTRLキー<br>
+12 ALTキー<br>
+13 PAUSEキー<br>
+14 CAPS LOCKキー<br>
+1B ESCキー<br>
+20 SPACEBAR<br>
+21 PAGE UPキー<br>
+22 PAGE DOWNキー<br>
+23 ENDキー<br>
+24 HOMEキー<br>
+25 左カーソルキー<br>
+26 上カーソルキー<br>
+27 右カーソルキー<br>
+28 下カーソルキー<br>
+29 SELECTキー<br>
+2A PRINTキー<br>
+2B EXECUTEキー<br>
+2C PRINT SCREENキー<br>
+2D INSキー<br>
+2E DELキー<br>
+30 0キー<br>
+31 1キー<br>
+32 2キー<br>
+33 3キー<br>
+34 4キー<br>
+35 5キー<br>
+36 6キー<br>
+37 7キー<br>
+38 8キー<br>
+39 9キー<br>
+41 Aキー<br>
+42 Bキー<br>
+43 Cキー<br>
+44 Dキー<br>
+45 Eキー<br>
+46 Fキー<br>
+47 Gキー<br>
+48 Hキー<br>
+49 Iキー<br>
+4A Jキー<br>
+4B Kキー<br>
+4C Lキー<br>
+4D Mキー<br>
+4E Nキー<br>
+4F Oキー<br>
+50 Pキー<br>
+51 Qキー<br>
+52 Rキー<br>
+53 Sキー<br>
+54 Tキー<br>
+55 Uキー<br>
+56 Vキー<br>
+57 Wキー<br>
+58 Xキー<br>
+59 Yキー<br>
+5A Zキー<br>
+5B 左Windowsキー<br>
+5C 右Windowsキー<br>
+60 数字キーパッド 0キー<br>
+61 数字キーパッド 1キー<br>
+62 数字キーパッド 2キー<br>
+63 数字キーパッド 3キー<br>
+64 数字キーパッド 4キー<br>
+65 数字キーパッド 5キー<br>
+66 数字キーパッド 6キー<br>
+67 数字キーパッド 7キー<br>
+68 数字キーパッド 8キー<br>
+69 数字キーパッド 9キー<br>
+6A Multiplyキー<br>
+6B Addキー<br>
+6C Separatorキー<br>
+6D Subtractキー<br>
+6E Decimalキー<br>
+6F Divideキー<br>
+70 F1キー<br>
+71 F2キー<br>
+72 F3キー<br>
+73 F4キー<br>
+74 F5キー<br>
+75 F6キー<br>
+76 F7キー<br>
+77 F8キー<br>
+78 F9キー<br>
+79 F10キー<br>
+7A F11キー<br>
+7B F12キー<br>
+7C-7F F13キー - F16キー<br>
+80H-87H F17キー - F24キー<br>
+90 NUM LOCKキー<br>
+91 SCROLL LOCKキー<br>
+A0 左SHIFTキー<br>
+A1 右SHIFTキー<br>
+A2 左CONTROLキー<br>
+A3 右CONTROLキー<br>
+A4 左MENUキー<br>
+A5 右MENUキー<br>
+BA ;<br>
+BB =<br>
+BC ,<br>
+BD -<br>
+BE .<br>
+BF /<br>
+C0 `<br>
+DB [<br>
+DC \<br>
+DD ]<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Misc.au3&gt;</span><br>
+<br>
+<span class="S9">$dll</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllOpen</span><span class="S8">(</span><span class="S7">"user32.dll"</span><span class="S8">)</span><br>
+<br>
+<span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Sleep</span><span class="S0"> </span><span class="S8">(</span><span class="S0"> </span><span class="S3">250</span><span class="S0"> </span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S15">_IsPressed</span><span class="S8">(</span><span class="S7">"23"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$dll</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"_IsPressed"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"End Key Pressed"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S5">WEnd</span><br>
+<span class="S4">DllClose</span><span class="S8">(</span><span class="S9">$dll</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IsPressed.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

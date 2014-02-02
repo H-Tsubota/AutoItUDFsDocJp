@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlListView_InsertItem</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlListView_InsertItem</font>
+<hr size="2">
+<p>コントロールに新しいアイテムを挿入します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiListView.au3&gt;<br>
+_GUICtrlListView_InsertItem($hWnd, $sText[, $iIndex = -1[, $iImage = -1[, $iParam = 0]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$sText</td>
+   <td>アイテムのテキスト。-1に設定した場合、アイテムのテキストは$LVN_GETDISPINFO通知メッセージを通じて設定されます。</td>
+  </tr>
+  <tr>
+   <td>$iIndex</td>
+   <td><b>[オプション]</b>新しいアイテムが象乳される位置のゼロ始まりのインデックス。
+この値が現在コントロールに格納されているアイテムの数より大きい場合、新しいアイテムはリストの末尾に追加され正しいインデックスが割り当てられます。</td>
+  </tr>
+  <tr>
+   <td>$iImage</td>
+   <td><b>[オプション]</b>コントロールの画像リスト内でのアイテムアイコンのゼロ始まりのインデックス</td>
+  </tr>
+  <tr>
+   <td>$iParam</td>
+   <td><b>[オプション]</b>アプリケーション定義のデータ</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">新しいアイテムのインデックス</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>-1</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数をサブアイテムを挿入するために使用することはできません。サブアイテムを挿入するには_GUICtrlListView_SetItemTextを使用してください。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlListView_SetItemText.htm">_GUICtrlListView_SetItemText</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiListView.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_LV</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; ListView関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hListView</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"ListView Insert Item"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hListView</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateListView</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">394</span><span class="S8">,</span><span class="S0"> </span><span class="S3">268</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 列を挿入</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_InsertColumn</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; アイテムを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_InsertItem</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Item 1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_InsertItem</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Item 2"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_InsertItem</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Item 3"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIDelete</span><span class="S8">()</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlListView_InsertItem.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

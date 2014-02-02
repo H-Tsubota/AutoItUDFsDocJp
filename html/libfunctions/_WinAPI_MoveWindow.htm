@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_MoveWindow</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_MoveWindow</font>
+<hr size="2">
+<p>指定されたウィンドウの位置とサイズを変更します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_MoveWindow($hWnd, $iX, $iY, $iWidth, $iHeight [, $fRepaint = True])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iX</td>
+   <td>ウィンドウの左端の新しい位置</td>
+  </tr>
+  <tr>
+   <td>$iY</td>
+   <td>ウィンドウの上端の新しい位置</td>
+  </tr>
+  <tr>
+   <td>$iWidth</td>
+   <td>ウィンドウの新しい幅</td>
+  </tr>
+  <tr>
+   <td>$iHeight</td>
+   <td>ィンドウの新しい高さ</td>
+  </tr>
+  <tr>
+   <td>$fRepaint</td>
+   <td><b>[オプション]</b>
+   ウィンドウが再描画されるかどうかを指定します。Trueの場合、ウィンドウは$WM_PAINTメッセージを受け取ります。<br>
+   Falseの場合、どのような種類の再描画も起きません。<br>
+   クライアント領域、非クライアント領域、子ウィンドウの移動によって覆われない親ウィンドウの全ての領域に適用されます。<br>
+   Falseの場合、アプリケーションは再描画の必要な親ウィンドウ、ウィンドウの任意領域を明示的に無効化、再描画します。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=MoveWindow">MoveWindow</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

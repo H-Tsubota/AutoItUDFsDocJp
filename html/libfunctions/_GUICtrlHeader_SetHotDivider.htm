@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlHeader_SetHotDivider</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlHeader_SetHotDivider</font>
+<hr size="2">
+<p>ホットディバイダーカラーを変更します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiHeader.au3&gt;<br>
+_GUICtrlHeader_SetHotDivider($hWnd, $iFlag, $iInputValue)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iFlag</td>
+   <td>$iInputValueで表される値の種類を指定する値。<br>
+   この値は次のうちの1つです:<br>
+       &nbsp;True - $iInputValueがポインタのクライアント座標であることを表します<br>
+       False - $iInputValueがディバイダーのインデックス値であることを表します</td>
+  </tr>
+  <tr>
+   <td>$iInputValue</td>
+   <td>$iFlagに従って取り扱われる値</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+成功: コントロールがハイライトするディバイダーのインデックスと同じ値<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数はヘッダーコントロールにHDS_DRAGDROPが設定されている場合に自動的に処理される機能に影響します。<br>
+コントロールのオーナーがドラッグ&amp;ドロップ操作を手動制御する場合に使用されることを想定しています。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiHeader.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_HDR</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; 関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iTicks</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iIndex</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$begin</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUIを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Header"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hHeader</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlHeader_Create</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 列を追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_AddItem</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_AddItem</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 2"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_AddItem</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 3"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_AddItem</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 4"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S4">TimerDiff</span><span class="S8">(</span><span class="S9">$begin</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&gt;</span><span class="S0"> </span><span class="S3">500</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$iIndex</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">Mod</span><span class="S8">(</span><span class="S9">$iIndex</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">4</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_SetHotDivider</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iIndex</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$begin</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">TimerInit</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlHeader_SetHotDivider.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

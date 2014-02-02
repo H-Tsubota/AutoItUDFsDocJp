@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagNMLVFINDITEM</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagNMLVFINDITEM</font>
+<hr size="2">
+<p>仮想リストビューコントロールによって要求されるアイテムを見つけるためにオーナーが必要とする情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagNMLVFINDITEM = $tagNMHDR & ";int Start;int Flags;ptr Text;int Param;int X;int Y;int Direction"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$tagNMHDR</td>
+    <td width="85%">通知メッセージの情報を格納します</td>
+  </tr>
+  <tr>
+   <td>Start</td>
+   <td>検索開始位置のアイテムのインデックス</td>
+  </tr>
+  <tr>
+   <td>Flags</td>
+   
+   <td>おこなう検索の種類。次の値の1つまたは組み合わせです:<br>
+       $LVFI_PARAM - 
+	   この構造体のParamとアイテムのParamの間で一致するものを検索します。
+       $LVFI_PARAMが指定されると他のフラグはすべて無視されます。<br>
+       $LVFI_PARTIAL - 
+	   アイテムテキストがTextによって指される文字列で開始するかを確認します。
+	   この値は$LVFI_STRINGの使用を意味します。<br>
+       $LVFI_STRING - 
+アイテムテキストに基づいて検索します。他の値を追加しない場合、一致したアイテムのアイテムテキストはTextによって指される文字列と完全一致します。<br>
+       $LVFI_WRAP - 一致するものがみつからない場合、先頭から検索を続行します。<br>
+       $LVFI_NEARESTXY - Directionで指定された方向に、X、Yで指定された位置からもっとも近いアイテムを発見します。
+	   このフラグは大小のアイコンモードでのみサポートされています。</td>
+  </tr>
+  <tr>
+   <td>Text</td>
+   <td>
+アイテムテキストと比較される文字列のアドレス。Flagsに$LVFI_STRINGまたは$LVFI_PARTIALが設定された場合に有効です。	
+	</td>
+  </tr>
+  <tr>
+   <td>Param</td>
+   <td>
+   アイテムの$LVITEM構造体のParamと比較される値。Flagsに$LVFI_PARAMが設定された場合のみ有効です。
+   </td>
+  </tr>
+  <tr>
+   <td>X</td>
+   <td>初期X検索座標。Flagsに$LVFI_NEARESTXYが設定された場合のみ有効です。</td>
+  </tr>
+  <tr>
+   <td>Y</td>
+   <td>初期Y検索座標。Flagsに$LVFI_NEARESTXYが設定された場合のみ有効です。</td>
+  </tr>
+  <tr>
+   <td>Direction</td>
+   <td>
+   検索方向を指定するバーチャルキーコード。次のコードがサポートされています:<br>
+       VK_LEFT<br>
+       VK_RIGHT<br>
+       VK_UP<br>
+       VK_DOWN<br>
+       VK_HOME<br>
+       VK_END<br>
+       VK_PRIOR<br>
+       VK_NEXT<br>
+	   Flagsに$LVFI_NEARESTXYが設定された場合のみ有効です。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この通知によってアプリケーション(または通知の受け手)はインクリメンタルサーチのカスタマイズをおこなうことができます。<br>
+例えば検索アイテムが数値の場合、アプリケーションは文字列検索の代わりに数値検索をおこなうことができるようになります。<br>
+アプリケーションはParamに検索結果または検索の失敗を表す別のアプリケーション定義値を設定し、コントロールに以降の処理方法を提示します。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

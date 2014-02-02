@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_CreateWindowEx</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_CreateWindowEx</font>
+<hr size="2">
+<p>オーバーラップウィンドウ、ポップアップウィンドウ、子ウィンドウを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_CreateWindowEx($iExStyle, $sClass, $sName, $iStyle, $iX, $iY, $iWidth, $iHeight, $hParent [, $hMenu = 0 [, $hInstance = 0 [, $pParam = 0]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iExStyle</td>
+    <td width="85%">拡張ウィンドウスタイル</td>
+  </tr>
+  <tr>
+   <td>$sClass</td>
+   <td>登録クラス名</td>
+  </tr>
+  <tr>
+   <td>$sName</td>
+   <td>ウィンドウ名</td>
+  </tr>
+  <tr>
+   <td>$iStyle</td>
+   <td>ウィンドウスタイル</td>
+  </tr>
+  <tr>
+   <td>$iX</td>
+   <td>ウィンドウの水平位置</td>
+  </tr>
+  <tr>
+   <td>$iY</td>
+   <td>ウィンドウの垂直位置</td>
+  </tr>
+  <tr>
+   <td>$iWidth</td>
+   <td>ウィンドウの幅</td>
+  </tr>
+  <tr>
+   <td>$iHeight</td>
+   <td>ウィンドウの高さ</td>
+  </tr>
+  <tr>
+   <td>$hParent</td>
+   <td>親ウィンドウまたはオーナーウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$hMenu</td>
+   <td><b>[オプション]</b>メニューのハンドルまたは子ウィンドウの識別子</td>
+  </tr>
+  <tr>
+   <td>$hInstance</td>
+   <td><b>[オプション]</b>アプリケーションインスタンスのハンドル</td>
+  </tr>
+  <tr>
+   <td>$pParam</td>
+   <td><b>[オプション]</b>ウィンドウ作成データへのポインタ</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">新しいウィンドウのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_DestroyWindow.htm">_WinAPI_DestroyWindow</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CreateWindowEx">CreateWindowEx</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

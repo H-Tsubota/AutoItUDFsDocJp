@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _FTP_Open</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_FTP_Open</font>
+<hr size="2">
+<p>FTPセッションを開始します。<br></p>
+
+<p class="codeheader">
+#Include &lt;FTPEx.au3&gt;<br>
+_FTP_Open($s_Agent[, $l_AccessType = 1 [, $s_ProxyName = '' [, $s_ProxyBypass = '' [, $l_Flags = 0]]]] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$s_Agent</td>
+    <td width="85%">リモート名( 例: "myftp" )</td>
+  </tr>
+  <tr>
+   <td>$l_AccessType</td>
+   <td>	<b>[オプション]</b> プロキシを使用する場合、設定</td>
+  </tr>
+  <tr>
+   <td>$s_ProxyName</td>
+   <td>	<b>[オプション]</b> プロキシ名</td>
+  </tr>
+  <tr>
+   <td>$s_ProxyBypass</td>
+   <td>	<b>[オプション]</b> プロキシをバイパスするホスト名</td>
+  </tr>
+  <tr>
+   <td>$l_Flags</td>
+   <td>	<b>[オプション]</b> 注意を参照。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">_FTP_Connect()で使用するためのインターネットセッションのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し、@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+Values for $l_AccessType<br>
+&nbsp;&nbsp;&nbsp; $INTERNET_OPEN_TYPE_DIRECT -> プロキシ非設定。<br>
+&nbsp;&nbsp;&nbsp; $INTERNET_OPEN_TYPE_PRECONFIG -> レジストリからプロキシを使用するか直接接続するかの設定を取得します。<br>
+&nbsp;&nbsp;&nbsp; $INTERNET_OPEN_TYPE_PRECONFIG_WITH_NO_AUTOPROXY -> レジストリからプロキシを使用するか直接接続するかの設定を取得し、スタートアップ用Microsoft JScript、Internet Setup (INS) ファイルを使用をしません。<br>
+&nbsp;&nbsp;&nbsp; $INTERNET_OPEN_TYPE_PROXY -> プロキシバイパスリストが設定され、プロキシをバイパスするホスト名が見つからない場合のみリクエストをプロキシに渡します。見つかった場合はプロキシを使用しません。<br>
+<br>
+Values for $l_Flags<br>
+&nbsp;&nbsp;&nbsp; $INTERNET_FLAG_ASYNC -> 
+この関数が返すハンドルに関連付けられているハンドルに対する非同期リクエストのみ実行します。<br>
+&nbsp;&nbsp;&nbsp; $INTERNET_FLAG_FROM_CACHE -> ネットワークリクエストを実行しません。全てのエントリーははキャッシュから返されます。要求されたアイテムがキャッシュ内に見つからない場合はERROR_FILE_NOT_FOUNDなど対応するエラーを返します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_FTP_Connect.htm">_FTP_Connect</a>, <a href="_FTP_Close.htm">_FTP_Close</a>, <a href="_FTP_SetStatusCallback.htm">_FTP_SetStatusCallback</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=InternetOpen">InternetOpen</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;FTPEx.au3&gt;</span><br>
+<br>
+<span class="S9">$Open</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_FTP_Open</span><span class="S8">(</span><span class="S7">'MyFTP Control'</span><span class="S8">)</span><br>
+<span class="S1">; ...</span><br>
+<span class="S9">$Ftpc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_FTP_Close</span><span class="S8">(</span><span class="S9">$Open</span><span class="S8">)</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_FTP_Open.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

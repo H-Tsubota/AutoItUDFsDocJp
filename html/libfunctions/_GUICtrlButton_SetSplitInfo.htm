@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlButton_SetSplitInfo</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlButton_SetSplitInfo</font>
+<hr size="2">
+<p>スプリットボタンコントロールの情報を設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiButton.au3&gt;<br>
+_GUICtrlButton_SetSplitInfo($hWnd[, $himlGlyph = -1[, $iSplitStyle = $BCSS_ALIGNLEFT[, $iWidth = 0[, $iHeight = 0]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$himlGlyph</td>
+   <td><b>[オプション]</b>画像リストのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iSplitStyle</td>
+   <td><b>[オプション]</b>スプリットボタンのスタイル。値は次のフラグの1つまたは組み合わせです:<br>
+       &nbsp;&nbsp;$BCSS_ALIGNLEFT - 画像、グリフを左余白に水平に揃えます<br>
+       &nbsp;&nbsp;$BCSS_IMAGE - アイコン画像をグリフとして描画<br>
+       &nbsp;&nbsp;$BCSS_NOSPLIT - スプリットなし<br>
+       &nbsp;&nbsp;$BCSS_STRETCH - アスペクト比を維持するようにグリフを引き伸ばします</td>
+  </tr>
+  <tr>
+   <td>$iWidth</td>
+   <td><b>[オプション]</b>グリフの幅</td>
+  </tr>
+  <tr>
+   <td>$iHeight</td>
+   <td><b>[オプション]</b>グリフの高さ<br>
+  </tr>  
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+$BS_SPLITBUTTON、$BS_DEFSPLITBUTTONスタイルのボタンに対してのみ動作します。<br>
+<br>
+最低限度のオペレーティングシステム: Windows Vista<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlButton_GetSplitInfo.htm">_GUICtrlButton_GetSplitInfo</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=BCM_SETSPLITINFO">BCM_SETSPLITINFO</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_Au3Check_Parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiButton.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiMenu.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">"MustDeclareVars"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$btn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$btn2</span><br>
+<br>
+<span class="S1">; これらのボタンのIDはGuiCtrlReadでは読み取れないことに注意</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aInfo</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Buttons"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iMemo</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateEdit</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">390</span><span class="S8">,</span><span class="S0"> </span><span class="S3">284</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_VSCROLL</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetFont</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S3">9</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Courier New"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$btn</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlButton_Create</span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Split Button"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">120</span><span class="S8">,</span><span class="S0"> </span><span class="S3">30</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$BS_SPLITBUTTON</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlButton_SetSplitInfo</span><span class="S8">(</span><span class="S9">$btn</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$btn2</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlButton_Create</span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Split Button 2"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">50</span><span class="S8">,</span><span class="S0"> </span><span class="S3">120</span><span class="S8">,</span><span class="S0"> </span><span class="S3">30</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$BS_SPLITBUTTON</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIRegisterMsg</span><span class="S8">(</span><span class="S9">$WM_COMMAND</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"WM_COMMAND"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIRegisterMsg</span><span class="S8">(</span><span class="S9">$WM_NOTIFY</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"WM_NOTIFY"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$aInfo</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlButton_GetSplitInfo</span><span class="S8">(</span><span class="S9">$btn</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Split Info"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"----------------"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">3</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"$ainfo["</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"] = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aInfo</span><span class="S8">[</span><span class="S9">$x</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Split Info"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"----------------"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">WEnd</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S1">; メモコントロールに1行書き込み</span><br>
+<span class="S5">Func</span><span class="S0"> MemoWrite</span><span class="S8">(</span><span class="S9">$sMessage</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sMessage</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;MemoWrite</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> WM_NOTIFY</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Msg</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S12">#forceref $hWnd, $Msg, $wParam</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S5">Const</span><span class="S0"> </span><span class="S9">$BCN_HOTITEMCHANGE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1249</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$tNMBHOTITEM</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S7">"hwnd hWndFrom;int IDFrom;int Code;dword dwFlags"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$nNotifyCode</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMBHOTITEM</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Code"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$nID</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMBHOTITEM</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"IDFrom"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hCtrl</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMBHOTITEM</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"hWndFrom"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$dwFlags</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMBHOTITEM</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"dwFlags"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">""</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$nNotifyCode</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$BCN_HOTITEMCHANGE</span><span class="S0"> </span><span class="S1">; WinXP以上</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$dwFlags</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x10</span><span class="S8">)</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0x10</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"$BCN_HOTITEMCHANGE - Entering: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ElseIf</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$dwFlags</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x20</span><span class="S8">)</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0x20</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"$BCN_HOTITEMCHANGE - Leaving: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"-----------------------------"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"WM_NOTIFY - Infos:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"-----------------------------"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"Code"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">":"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$nNotifyCode</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"CtrlID"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">":"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$nID</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"CtrlHWnd:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hCtrl</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUICtrlButton_GetText</span><span class="S8">(</span><span class="S9">$hCtrl</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$BCN_DROPDOWN</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"$BCN_DROPDOWN"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _Popup_Menu</span><span class="S8">(</span><span class="S9">$hCtrl</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S9">$GUI_RUNDEFMSG</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;WM_NOTIFY</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Popup_Menu</span><span class="S8">(</span><span class="S9">$hCtrl</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hMenu</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S5">Enum</span><span class="S0"> </span><span class="S9">$idOpen</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1000</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idSave</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idInfo</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hMenu</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlMenu_CreatePopup</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlMenu_InsertMenuItem</span><span class="S8">(</span><span class="S9">$hMenu</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Open"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idOpen</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlMenu_InsertMenuItem</span><span class="S8">(</span><span class="S9">$hMenu</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Save"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idSave</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlMenu_InsertMenuItem</span><span class="S8">(</span><span class="S9">$hMenu</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlMenu_InsertMenuItem</span><span class="S8">(</span><span class="S9">$hMenu</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Info"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idInfo</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S15">_GUICtrlMenu_TrackPopupMenu</span><span class="S8">(</span><span class="S9">$hMenu</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hCtrl</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$idOpen</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Open - Selected"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$idSave</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Save - Selected"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$idInfo</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Info - Selected"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlMenu_DestroyMenu</span><span class="S8">(</span><span class="S9">$hMenu</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Popup_Menu</span><br>
+<br>
+<span class="S1">; ボタンクリックに反応</span><br>
+<span class="S5">Func</span><span class="S0"> WM_COMMAND</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Msg</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S12">#forceref $hWnd, $Msg</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$nNotifyCode</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitShift</span><span class="S8">(</span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S3">16</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$nID</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x0000FFFF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hCtrl</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$lParam</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">""</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$hCtrl</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$btn</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$btn2</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$nNotifyCode</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$BN_CLICKED</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"$BN_CLICKED"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$BN_PAINT</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"$BN_PAINT"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$BN_PUSHED</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$BN_HILITE</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"$BN_PUSHED, $BN_HILITE"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$BN_UNPUSHED</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$BN_UNHILITE</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"$BN_UNPUSHED"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$BN_DISABLE</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"$BN_DISABLE"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$BN_DBLCLK</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$BN_DOUBLECLICKED</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"$BN_DBLCLK, $BN_DOUBLECLICKED"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$BN_SETFOCUS</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"$BN_SETFOCUS"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$BN_KILLFOCUS</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"$BN_KILLFOCUS"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"-----------------------------"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"WM_COMMAND - Infos:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"-----------------------------"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"Code"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">":"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$nNotifyCode</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"CtrlID"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">":"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$nID</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"CtrlHWnd:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hCtrl</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUICtrlButton_GetText</span><span class="S8">(</span><span class="S9">$hCtrl</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S1">; ボタンクリック時のみ動作</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; デフォルトのAutoit3内部メッセージコマンドを続行</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ラインアウトで完了することもできる</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; !!!ただし'Return'(値なし)だけは新しいデフォルトのAutoit3メッセージ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; を続行できない!!!</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S9">$GUI_RUNDEFMSG</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;WM_COMMAND</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlButton_SetSplitInfo.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

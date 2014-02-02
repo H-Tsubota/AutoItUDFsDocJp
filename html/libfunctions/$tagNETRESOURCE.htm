@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagNETRESOURCE</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagNETRESOURCE</font>
+<hr size="2">
+<p>tagNETRESOURCE構造体<br></p>
+
+<p class="codeheader">
+Global Const $tagNETRESOURCE = "int Scope;int Type;int DisplayType;int Usage;ptr LocalName;ptr RemoteName;ptr Comment;ptr Provider"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">Scope</td>
+    <td width="85%">列挙の範囲:<br>
+       $RESOURCE_CONNECTED - 現在接続しているリソースを列挙<br>
+       $RESOURCE_GLOBALNET - ネットワーク上のすべてのリソースを列挙<br>
+       $RESOURCE_REMEMBERED - 記憶している接続を列挙</td>
+  </tr>
+  <tr>
+   <td>Type</td>
+   <td>リソースの種類を識別するビットフラグのセット:<br>
+       $RESOURCETYPE_ANY - 全リソース<br>
+       $RESOURCETYPE_DISK - ディスクリソース<br>
+       $RESOURCETYPE_PRINT - プリントリソース</td>
+  </tr>
+  <tr>
+   <td>DisplayType</td>
+   <td>ネットワークブラウズ時のユーザーインターフェイスでのネットワークオブジェクトの表示オプション:<br>
+       $RESOURCEDISPLAYTYPE_DOMAIN - オブジェクトはドメインとして表示されます<br>
+       $RESOURCEDISPLAYTYPE_SERVER - オブジェクトはサーバーとして表示されます<br>
+       $RESOURCEDISPLAYTYPE_SHARE - オブジェクトは共有として表示されます<br>
+       $RESOURCEDISPLAYTYPE_GENERIC - オブジェクト表示方法は任意です</td>
+  </tr>
+  <tr>
+   <td>Usage</td>
+   <td>リソースの使用法を表すビットフラグのセット。
+   このメンバーはScopeが$RESOURCE_GLOBALNETの場合のみ指定できます。<br>
+   このメンバーは次の値のいずれかです:<br>
+       $RESOURCEUSAGE_CONNECTABLE - 
+	   接続可能なリソースです。RemoteNameの指す名前を_WNet_AddConnection関数に渡すことでネットワーク接続を作成できます。<br>
+       $RESOURCEUSAGE_CONTAINER -
+	   コンテナリソースです。RemoteNameの指す名前をWNet_OpenEnum関数に渡すことでコンテナ内のリソースを列挙できます。</td>
+  </tr>
+  <tr>
+   <td>LocalName</td>
+   <td>
+    Scopeが$RESOURCE_CONNECTEDまたは$RESOURCE_REMEMBEREDの場合、
+	このメンバーはローカルデバイスの名前を指定するNULL終端文字列へのポインタです。
+	接続がデバイスを使用しない場合、このメンバーは0です。</td>
+  </tr>
+  <tr>
+   <td>RemoteName</td>
+   <td>
+	エントリーがネットワークリソースの場合、
+	このメンバーはリモートネットワーク名を指定するNULL終端文字列へのポインタです。<br>
+	エントリーが現在または永続的な接続の場合、
+	RemoteNameはLocalNameの指す名前に関連付けられたネットワーク名を指します。</td>
+  </tr>
+  <tr>
+   <td>Comment</td>
+   <td>ネットワークプロバイダによって提供されたコメントを格納したNULL終端文字列のポインタです。</td>
+  </tr>
+  <tr>
+   <td>Provider</td>
+   <td>
+   リソースを所有するプロバイダの名前を格納したNULL終端文字列のポインタです。
+   プロバイダ名が未知の場合、このメンバーNULLになります。
+   プロバイダ名を取得するには_WNet_GetProviderName関数を呼んでください。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

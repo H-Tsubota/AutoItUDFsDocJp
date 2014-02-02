@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _Iif</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_Iif</font>
+<hr size="2">
+<p>式に対して真偽判定をおこないます。<br></p>
+
+<p class="codeheader">
+#Include &lt;Misc.au3&gt;<br>
+_Iif($fTest, $vTrueVal, $vFalseVal)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$fTest</td>
+    <td width="85%">真偽判定</td>
+  </tr>
+  <tr>
+   <td>$vTrueVal</td>
+   <td>$fTestが真だった場合に返す値</td>
+  </tr>
+  <tr>
+   <td>$vFalseVal</td>
+   <td>$fTestが偽だった場合に返す値.</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True: $vTrueVal</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False: $vFalseVal</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Misc.au3&gt;</span><br>
+<br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$i_Count</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i_Index</span><br>
+<br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$i_Index</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">2</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;</span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Count"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"This dialog has displayed "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">String</span><span class="S8">(</span><span class="S9">$i_Index</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S7">" time"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_Iif</span><span class="S8">(</span><span class="S9">$i_Index</span><span class="S0"> </span><span class="S8">&gt;</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"s"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" so far"</span><span class="S8">)</span><br>
+<span class="S5">Next</span><br>
+<br>
+<span class="S5">Exit</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_Iif.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinNet_AddConnection</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinNet_AddConnection</font>
+<hr size="2">
+<p>ローカルデバイスをネットワークリソースに接続します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinNet.au3&gt;<br>
+_WinNet_AddConnection($sLocalName, $sRemoteName [, $sPassword = 0])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sLocalName</td>
+    <td width="85%">"F:"や"LPT1"などリダイレクトされるローカルデバイスの名前。<br>
+	文字列内の大文字小文字は区別されません。<br>
+	0の場合、ネットワークリソースへの接続はローカルデバイスのリダイレクトなしに作成されます。</td>
+  </tr>
+  <tr>
+   <td>$sRemoteName</td>
+   <td>接続するネットワークリソース名</td>
+  </tr>
+  <tr>
+   <td>$sPassword</td>
+   <td><b>[オプション]</b>接続を作成する際に使用されるパスワード。<br>
+   このパラメータは通常、現在のユーザーに関連付けられたパスワードです。<br>
+   0の場合、デフォルトのパスワードが使用されます。<br>
+   文字列が空白の場合、パスワードは使用されません。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数は16ビットバージョンのWindowsとの互換性を図るために提供されています。<br>
+アプリケーションではWNet_AddConnection2関数またはWNet_AddConnection3関数を使用してください。<br>
+接続が恒久的であるとはログオン操作後にシステムが自動で接続を復元することを意味します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinNet_AddConnection2.htm">_WinNet_AddConnection2</a>, <a href="_WinNet_AddConnection3.htm">_WinNet_AddConnection3</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=WNetAddConnection">WNetAddConnection</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

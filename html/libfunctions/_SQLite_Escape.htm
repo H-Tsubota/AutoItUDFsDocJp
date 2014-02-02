@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _SQLite_Escape</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_SQLite_Escape</font>
+<hr size="2">
+<p>文字列をエスケープします。<br></p>
+
+<p class="codeheader">
+#include &lt;SQLite.au3&gt;<br>
+_SQLite_Escape ( $sString [, $iBuffSize ] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sString</td>
+    <td width="85%">エスケープする文字列</td>
+  </tr>
+  <tr>
+   <td>$iBuffSize </td>
+   <td><b>[オプション]</b> これより長い場合、結果が切り捨てられます</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">エスケープされた文字列が返されます</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>空文字列を返し@errorを設定します</td>
+  </tr>
+    <tr>
+    <td valign="top">@error:</td>
+    <td>1 - SQLite API 'sqlite3_mprintf'の呼び出しエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - UTF-8への文字列変換エラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 - エスケープ文字列の読み込みエラー</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+エスケープされた文字列は既にシングルコーテーションで囲まれています。<br>
+例えば"It's a fine day"は"It''s a fine day"のようになります。<br>
+バイナリデータには_SQLite_Encode()を使用してください。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_SQLite_Encode.htm">_SQLite_Encode</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;SQLite.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;SQLite.dll.au3&gt;</span><br>
+<br>
+<span class="S15">_SQLite_Startup</span><span class="S8">()</span><br>
+<span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"_SQLite_LibVersion="</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S15">_SQLite_LibVersion</span><span class="S8">()</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$sTestString</span><span class="S8">,</span><span class="S9">$i</span><span class="S8">,</span><span class="S9">$aRow</span><br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$i</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">255</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sTestString</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S4">Chr</span><span class="S8">(</span><span class="S9">$i</span><span class="S8">)</span><br>
+<span class="S5">Next</span><br>
+<span class="S15">_SQLite_Open</span><span class="S8">()</span><br>
+<span class="S15">_SQLite_Exec</span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S7">"CREATE TABLE test (a)"</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Exec</span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S7">"INSERT INTO test VALUES ("</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_SQLite_Escape</span><span class="S8">(</span><span class="S9">$sTestString</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">")"</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_QuerySingleRow</span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S7">"SELECT a FROM test LIMIT 1"</span><span class="S8">,</span><span class="S9">$aRow</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S9">$aRow</span><span class="S8">[</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$sTestString</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"! identical !"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Shutdown</span><span class="S8">()</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_SQLite_Escape.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

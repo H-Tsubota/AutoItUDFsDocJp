@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagLVHITTESTINFO</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagLVHITTESTINFO</font>
+<hr size="2">
+<p>ヒットテストの情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagLVHITTESTINFO = "int X;int Y;int Flags;int Item;int SubItem"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">X</td>
+    <td width="85%">ヒットテストのX位置</td>
+  </tr>
+  <tr>
+   <td>Y</td>
+   <td>ヒットテストのY位置</td>
+  </tr>
+  <tr>
+   <td>Flags</td>
+   <td>ヒットテストの結果。次の値の1つまたは組み合わせです:<br>
+       $LVHT_ABOVE - コントロールクライアント領域より上です<br>
+       $LVHT_BELOW - コントロールクライアント領域より下です<br>
+       $LVHT_NOWHERE - クライアントウィンドウの内側ですが、リストアイテムには触れていません<br>
+       $LVHT_ONITEMICON - アイテムのアイコン上です<br>
+       $LVHT_ONITEMLABEL - アイテムのテキスト上です<br>
+       $LVHT_ONITEMSTATEICON - アイテムの状態イメージ上です<br>
+       $LVHT_TOLEFT - コントロールクライアント領域より左です<br>
+       $LVHT_TORIGHT - コントロールクライアント領域より右です</td>
+  </tr>
+  <tr>
+   <td>Item</td>
+   <td>一致するアイテムのインデックスを受け取ります。またサブアイテムのヒットテストの場合、この値はサブアイテムの親アイテムを表します。</td>
+  </tr>
+  <tr>
+   <td>SubItem</td>
+   <td>一致するサブアイテムのインデックスを受け取ります。アイテムのヒットテストの場合、このメンバーはゼロになります。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

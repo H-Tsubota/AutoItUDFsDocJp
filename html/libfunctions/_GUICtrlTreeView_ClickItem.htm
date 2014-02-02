@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlTreeView_ClickItem</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlTreeView_ClickItem</font>
+<hr size="2">
+<p>アイテムをクリックします。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiTreeView.au3&gt;<br>
+_GUICtrlTreeView_ClickItem($hWnd, $hItem[, $sButton = "left"[, $fMove = False[, $iClicks = 1[, $iSpeed = 0]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$hItem</td>
+   <td>アイテムのハンドル</td>
+  </tr>
+  <tr>
+   <td>$sButton</td>
+   <td><b>[オプション]</b>クリックするボタン</td>
+  </tr>
+  <tr>
+   <td>$fMove</td>
+   <td><b>[オプション]</b>Trueの場合はマウスが動き、Falseの場合はマウスが動きません</td>
+  </tr>
+  <tr>
+   <td>$iClicks</td>
+   <td><b>[オプション]</b>クリック回数</td>
+  </tr>
+  <tr>
+   <td>$iSpeed</td>
+   <td><b>[オプション]</b>マウス動作のスピード</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0 を返し@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiTreeView.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiImageList.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_TV</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; 関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$hTreeView</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hItem</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iImage</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$iStyle</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$TVS_EDITLABELS</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TVS_HASBUTTONS</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TVS_HASLINES</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TVS_LINESATROOT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TVS_DISABLEDRAGDROP</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TVS_SHOWSELALWAYS</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TVS_CHECKBOXES</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"TreeView Click Item"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hTreeView</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateTreeView</span><span class="S8">(</span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">396</span><span class="S8">,</span><span class="S0"> </span><span class="S3">268</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iStyle</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_EX_CLIENTEDGE</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIRegisterMsg</span><span class="S8">(</span><span class="S9">$WM_NOTIFY</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"WM_NOTIFY"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hImage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUIImageList_Create</span><span class="S8">(</span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">110</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">131</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">165</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">168</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">137</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">146</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlTreeView_SetNormalImageList</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hImage</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlTreeView_BeginUpdate</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S4">Random</span><span class="S8">(</span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$iImage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">Random</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$hItem</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlTreeView_Add</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S4">StringFormat</span><span class="S8">(</span><span class="S7">"[%02d] New Item"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">),</span><span class="S0"> </span><span class="S9">$iImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iImage</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$y</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S4">Random</span><span class="S8">(</span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$iImage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">Random</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUICtrlTreeView_AddChild</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hItem</span><span class="S8">,</span><span class="S0"> </span><span class="S4">StringFormat</span><span class="S8">(</span><span class="S7">"[%02d] New Child"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$y</span><span class="S8">),</span><span class="S0"> </span><span class="S9">$iImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iImage</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlTreeView_EndUpdate</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlTreeView_ClickItem</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hItem</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"left"</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIDelete</span><span class="S8">()</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> WM_NOTIFY</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iMsg</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iwParam</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ilParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S12">#forceref $hWnd, $iMsg, $iwParam</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hWndFrom</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iIDFrom</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iCode</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tNMHDR</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hWndTreeview</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hWndTreeview</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$hTreeView</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S5">Not</span><span class="S0"> </span><span class="S4">IsHWnd</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S9">$hWndTreeview</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlGetHandle</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tNMHDR</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S9">$tagNMHDR</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ilParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hWndFrom</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">HWnd</span><span class="S8">(</span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMHDR</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"hWndFrom"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iIDFrom</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMHDR</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"IDFrom"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iCode</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMHDR</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Code"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$hWndFrom</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$hWndTreeview</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$iCode</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$NM_CLICK</span><span class="S0"> </span><span class="S1">; ユーザーがコントロールでマウス左ボタンをクリック</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _DebugPrint</span><span class="S8">(</span><span class="S7">"$NM_CLICK"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"--&gt; hWndFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hWndFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;IDFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIDFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;Code:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iCode</span><span class="S8">)</span><br>
+<span class="S1">;~ &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Return 1 ; デフォルト処理を許可しない場合、非ゼロ</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S1">; デフォルト処理を許可する場合、ゼロ</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$NM_DBLCLK</span><span class="S0"> </span><span class="S1">; ユーザーがコントロールでマウス左ボタンをダブルクリック</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _DebugPrint</span><span class="S8">(</span><span class="S7">"$NM_DBLCLK"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"--&gt; hWndFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hWndFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;IDFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIDFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;Code:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iCode</span><span class="S8">)</span><br>
+<span class="S1">;~ &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Return 1 ; デフォルト処理を許可しない場合、非ゼロ</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S1">; デフォルト処理を許可する場合、ゼロ</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$NM_RCLICK</span><span class="S0"> </span><span class="S1">; ユーザーがコントロールでマウス右ボタンをクリック</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _DebugPrint</span><span class="S8">(</span><span class="S7">"$NM_RCLICK"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"--&gt; hWndFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hWndFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;IDFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIDFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;Code:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iCode</span><span class="S8">)</span><br>
+<span class="S1">;~ &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Return 1 ; デフォルト処理を許可しない場合、非ゼロ</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S1">; デフォルト処理を許可する場合、ゼロ</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$NM_RDBLCLK</span><span class="S0"> </span><span class="S1">; ユーザーがコントロールでマウス右ボタンをダブルクリック</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _DebugPrint</span><span class="S8">(</span><span class="S7">"$NM_RDBLCLK"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"--&gt; hWndFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$hWndFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;IDFrom:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIDFrom</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;Code:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iCode</span><span class="S8">)</span><br>
+<span class="S1">;~ &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Return 1 ; デフォルト処理を許可しない場合、非ゼロ</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S1">; デフォルト処理を許可する場合、ゼロ</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S9">$GUI_RUNDEFMSG</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;WM_NOTIFY</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _DebugPrint</span><span class="S8">(</span><span class="S9">$s_text</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$line</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S6">@ScriptLineNumber</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"!==========================================================="</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"+======================================================"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"--&gt;Line("</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">StringFormat</span><span class="S8">(</span><span class="S7">"%04d"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$line</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"):"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$s_text</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"+======================================================"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_DebugPrint</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlTreeView_ClickItem.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

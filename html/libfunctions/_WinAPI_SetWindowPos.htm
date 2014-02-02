@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_SetWindowPos</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_SetWindowPos</font>
+<hr size="2">
+<p>子ウィンドウ、ポップアップウィンドウ、トップレベルウィンドウのサイズ、位置、Zオーダーを変更します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_SetWindowPos($hWnd, $hAfter, $iX, $iY, $iCX, $iCY, $iFlags)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$hAfter</td>
+   <td> Z オーダーでウィンドウの1つ前に位置するウィンドウを識別します。<br>
+       このパラメータはウィンドウのハンドルまたは次の値の1つでなければなりません:<br>
+       $HWND_BOTTOM - ウィンドウをZオーダーの最後に配置します<br>
+       $HWND_NOTOPMOST - ウィンドウをすべての非最前面ウィンドウの前に配置します<br>
+       $HWND_TOP - ウィンドウをZオーダーの先頭に配置します<br>
+       $HWND_TOPMOST - ウィンドウをすべての非最前面ウィンドウの前に配置します</td>
+  </tr>
+  <tr>
+   <td>$iX</td>
+   <td>ウィンドウ左辺の新しい位置を指定します</td>
+  </tr>
+  <tr>
+   <td>$iY</td>
+   <td>ウィンドウ上辺の新しい位置を指定します</td>
+  </tr>
+  <tr>
+   <td>$iCX</td>
+   <td>ウィンドウの新しい幅をピクセル単位で指定します</td>
+  </tr>
+  <tr>
+   <td>$iCY</td>
+   <td>ウィンドウの新しい高さをピクセル単位で指定します</td>
+  </tr>
+  <tr>
+   <td>$iFlags</td>
+   <td>ウィンドウのサイズ変更フラグ、位置変更フラグを指定します:<br>
+       $SWP_DRAWFRAME - ウィンドウの周りに枠を描画します<br>
+       $SWP_FRAMECHANGED - ウィンドウのサイズが変更されていなくても$WM_NCCALCSIZEメッセージをウィンドウに送信します<br>
+       $SWP_HIDEWINDOW - ウィンドウを非表示にします<br>
+       $SWP_NOACTIVATE - ウィンドウを非アクティブ化します<br>
+       $SWP_NOCOPYBITS - クライアント領域の全内容を破棄します<br>
+       $SWP_NOMOVE - 現在の位置を維持します<br>
+       $SWP_NOOWNERZORDER - Zオーダーでのオーナーウィンドウの位置を維持します<br>
+       $SWP_NOREDRAW - 変更を再描画しません<br>
+       $SWP_NOREPOSITION - $SWP_NOOWNERZORDERフラグと同じです<br>
+       $SWP_NOSENDCHANGING - ウィンドウが$WM_WINDOWPOSCHANGINGを受け取らないようにします<br>
+       $SWP_NOSIZE - 現在のサイズを維持します<br>
+       $SWP_NOZORDER - 現在のZオーダーを維持します<br>
+       $SWP_SHOWWINDOW - ウィンドウを表示します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+定義済み定数用にConstants.au3が必要です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=SetWindowPos">SetWindowPos</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

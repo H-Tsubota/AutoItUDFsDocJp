@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_DrawText</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_DrawText</font>
+<hr size="2">
+<p>指定された長方形にフォーマットされたテキストを描画します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_DrawText($hDC, $sText, ByRef $tRect, $iFlags)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hDC</td>
+    <td width="85%">デバイスコンテキストを識別します</td>
+  </tr>
+  <tr>
+   <td>$sText</td>
+   <td>描画される文字列</td>
+  </tr>
+  <tr>
+   <td>$tRect</td>
+   <td>テキスト用の長方形を格納している$tagRECT構造体</td>
+  </tr>
+  <tr>
+   <td>$iFlags</td>
+   <td>テキストのフォーマット方法を指定します:<br>
+       $DT_BOTTOM - 長方形の下辺にテキストを揃えます<br>
+       $DT_CALCRECT - 長方形の幅と高さを調べます<br>
+       $DT_CENTER - 長方形水平方向にテキストを中央揃えさせます<br>
+       $DT_EDITCONTROL - 複数行エディットコントロールのテキスト表示特性と同じ<br>
+       $DT_END_ELLIPSIS - 必要な場合、与えられた文字列の一部を省略符号で置き換えます<br>
+       $DT_EXPANDTABS -  タブ文字を展開します<br>
+       $DT_EXTERNALLEADING - 行の高さにフォントの外部レディングの高さを加算します<br>
+       $DT_HIDEPREFIX - テキストのプレフィックスとしてのアンパサンド（&amp;）を無視します。<br>
+       &nbsp;&nbsp;続く文字列には下線が引かれませんが、その他のニーモニックプレフィックス文字は通常どおり処理されます。<br>
+       $DT_INTERNAL - テキストメトリックスの計算にシステムフォントを使用します<br>
+       $DT_LEFT - テキストを左揃えにします<br>
+       $DT_MODIFYSTRING - 指定された文字列を表示されるテキストと一致するように変更します<br>
+       $DT_NOCLIP - クリッピングをせずに描画します。<br>
+       $DT_NOFULLWIDTHCHARBREAK - DBCS (2バイト文字文字列)での改行をやめ、改行規則をSBCS文字列と同じにします。<br>
+	   &nbsp;&nbsp;例えば、韓国語版WIndowsではアイコンラベルの信頼性が向上します。<br>
+	   &nbsp;&nbsp;この値は$DT_WORDBREAKが指定されていない場合は効果がありません。<br>
+       $DT_NOPREFIX - プレフィックス文字の処理をオフにします<br>
+       $DT_PATH_ELLIPSIS - 結果が指定された長方形に収まるように、表示テキスト文字列の途中の文字を省略符号で置き換えます。<br>
+	   &nbsp;&nbsp;文字列にバックスラッシュ(\)文字が含まれる場合、$DT_PATH_ELLIPSISは最後のバックスラッシュの後ろのテキストを可能な限り保持します。<br>
+	   &nbsp;&nbsp;$DT_MODIFYSTRINGフラグが指定されていない場合、文字列は変更されません。<br>
+       $DT_PREFIXONLY - プレフィックスとしてのアンパサンド（&amp;）文字の後ろの文字位置の下線のみ描画します。<br>
+	   &nbsp;&nbsp;文字列の他の文字は描画しません。<br>
+       $DT_RIGHT - テキストを右揃えにします<br>
+       $DT_RTLREADING - 双方向テキストを右から左への読み取り順序にレイアウトします<br>
+       $DT_SINGLELINE - テキストを単一行で表示します<br>
+       $DT_TABSTOP - タブ間隔を設定します。$iFlagsの15ビット-8ビットで各タブの文字数を指定します。<br>
+       $DT_TOP - 長方形の上辺にテキストを揃えます (単一行のみ)<br>
+       $DT_VCENTER - テキストを垂直方向に中央揃えします (単一行のみ)<br>
+       $DT_WORDBREAK - 複数行で表示<br>
+       $DT_WORD_ELLIPSIS - 長方形に収まらない語を全て切り捨て、省略符号を追加します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">テキストの高さ</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+DrawText関数はテキストの描画にデバイスコンテキストで選択されたフォント、テキストカラー、背景色を使用します。<br>
+$DT_NOCLIPフォーマットが使用されない限り、DrawTextは指定された長方形の外にはみ出さないようにテキストをクリップします。<br>
+$DT_SINGLELINEフォーマットが指定されない限り、全てのフォーマットは複数行を前提とします。<br>
+選択されたフォントが大きすぎる場合でもDrawTextは小さいフォントへの入れ換えをおこないません。<br>
+<br>
+定義済み定数用にWindowsConstants.au3が必要です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagRECT.htm">$tagRECT</a>, <a href="_WinAPI_GetBkMode.htm">_WinAPI_GetBkMode</a>, <a href="_WinAPI_SetBkMode.htm">_WinAPI_SetBkMode</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=DrawText">DrawText</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;FontConstants.au3&gt;</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$tRECT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hFont</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hOldFont</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hDC</span><br>
+<br>
+<span class="S4">HotKeySet</span><span class="S8">(</span><span class="S7">"</span><span class="S10">{ESC}</span><span class="S7">"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_Exit"</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$tRECT</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S9">$tagRect</span><span class="S8">)</span><br>
+<span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRECT</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Left"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">)</span><br>
+<span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRECT</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Top"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">)</span><br>
+<span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRECT</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Right"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">250</span><span class="S8">)</span><br>
+<span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRECT</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Bottom"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">50</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$hDC</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetDC</span><span class="S8">(</span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S9">$hFont</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateFont</span><span class="S8">(</span><span class="S3">50</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$DEFAULT_CHARSET</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$OUT_DEFAULT_PRECIS</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$CLIP_DEFAULT_PRECIS</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$DEFAULT_QUALITY</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">'Arial'</span><span class="S8">)</span><br>
+<span class="S9">$hOldFont</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_SelectObject</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hFont</span><span class="S8">)</span><br>
+<br>
+<span class="S15">_WinAPI_SetTextColor</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x0000FF</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_SetBkColor</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x000000</span><span class="S8">)</span><br>
+<span class="S1">; 次の行をコメント化すると背景色が透過色から黒色になる</span><br>
+<span class="S15">_WinAPI_SetBkMode</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TRANSPARENT</span><span class="S8">)</span><br>
+<br>
+<span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_DrawText</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Hello world!"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tRECT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$DT_CENTER</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Sleep</span><span class="S8">(</span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S5">WEnd</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Exit</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_SelectObject</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hOldFont</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_DeleteObject</span><span class="S8">(</span><span class="S9">$hFont</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_ReleaseDC</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hDC</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_InvalidateRect</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tRECT</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Exit</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WinAPI_DrawText.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

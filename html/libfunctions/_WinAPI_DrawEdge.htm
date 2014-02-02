@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_DrawEdge</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_DrawEdge</font>
+<hr size="2">
+<p>1つまたは複数の長方形の辺を描画します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_DrawEdge($hDC, $ptrRect, $nEdgeType, $grfFlags)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hDC</td>
+    <td width="85%">デバイスコンテキストのハンドル</td>
+  </tr>
+  <tr>
+   <td>$ptrRect</td>
+   <td>長方形の論理座標を格納している$tagRECT構造体へのポインタ</td>
+  </tr>
+  <tr>
+   <td>$nEdgeType</td>
+   <td>描画する内部辺、外部辺の種類を指定します。このパラメータは1つの内部境界フラグと1つの外部境界フラグの組み合わせでなければなりません。<br>
+       内部境界フラグは次の通りです:<br>
+       $BDR_RAISEDINNER - 内部辺を隆起させます<br>
+       $BDR_SUNKENINNER - 内部辺をを陥没させます<br>
+       外部境界フラグは次の通りです:<br>
+       $BDR_RAISEDOUTER - 外部辺を隆起させます<br>
+       $BDR_SUNKENOUTER - 外部辺をを陥没させます<br>
+       また辺パラメータには次のフラグの1つを指定することもできます:<br>
+       $EDGE_BUMP - $BDR_RAISEDOUTERと$BDR_SUNKENINNERの組み合わせ<br>
+       $EDGE_ETCHED - $BDR_SUNKENOUTERと$BDR_RAISEDINNERの組み合わせ<br>
+       $EDGE_RAISED - $BDR_RAISEDOUTERと$BDR_RAISEDINNERの組み合わせ<br>
+       $EDGE_SUNKEN - $BDR_SUNKENOUTERと$BDR_SUNKENINNERの組み合わせ</td>
+  </tr>
+  <tr>
+   <td>$grfFlags</td>
+   <td>境界の種類を指定します。このパラメータは次の値の組み合わせです:<br>
+       $BF_ADJUST - このフラグが渡される場合、$ptrRectパラメータによって指される長方形を縮小し、既に描画されている辺を取り除きます。<br>
+	   このフラグが渡されない場合、$ptrRectパラメータによって指される長方形は変更されません。<br>
+       $BF_BOTTOM - 長方形の下辺<br>
+       $BF_BOTTOMLEFT - 長方形の下辺と左辺<br>
+       $BF_BOTTOMRIGHT - 長方形の下辺と右辺<br>
+       $BF_DIAGONAL -  対角線<br>
+       $BF_DIAGONAL_ENDBOTTOMLEFT - 対角線。始点は長方形の右上隅、終点は左下隅です。<br>
+       $BF_DIAGONAL_ENDBOTTOMRIGHT - 対角線。始点は長方形の左上隅、終点は右下隅です。<br>
+       $BF_DIAGONAL_ENDTOPLEFT - 対角線。始点は長方形の右下隅、終点は左上隅です。<br>
+       $BF_DIAGONAL_ENDTOPRIGHT - 対角線。始点は長方形の左下隅、終点は右上隅です。<br>
+       $BF_FLAT - 平らな辺<br>
+       $BF_LEFT - 長方形の左辺<br>
+       $BF_MIDDLE - 長方形の内側を塗りつぶします<br>
+       $BF_MONO - 1次元の辺<br>
+       $BF_RECT - 長方形の全ての辺<br>
+       $BF_RIGHT - 長方形の右辺<br>
+       $BF_SOFT - タイルではなくソフトなボタン<br>
+       $BF_TOP - 長方形の上辺<br>
+       $BF_TOPLEFT - 長方形の上辺と左辺<br>
+       $BF_TOPRIGHT - 長方形の上辺と右辺</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+定義済み定数用にBorderConstants.au3が必要です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagRECT.htm">$tagRECT</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=DrawEdge">DrawEdge</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

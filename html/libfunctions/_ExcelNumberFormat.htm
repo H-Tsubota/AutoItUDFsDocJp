@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ExcelNumberFormat</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ExcelNumberFormat</font>
+<hr size="2">
+<p>指定したR1C1形式の範囲内にあるセルに指定したフォーマットを適用する。<br></p>
+
+<p class="codeheader">
+#Include &lt;Excel.au3&gt;<br>
+_ExcelNumberFormat($oExcel, $sFormat, $sRangeOrRowStart [, $iColStart = 1 [, $iRowEnd = 1 [, $iColEnd = 1]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$oExcel</td>
+    <td width="85%">_ExcelBookOpen()か_ExcelBookNew()の呼び出しで開かれているExcelオブジェクト</td>
+  </tr>
+  <tr>
+   <td>$sFormat</td>
+   <td>指定した範囲に適用するフォーマット文字列(下記の注意を参照)</td>
+  </tr>
+  <tr>
+   <td>$sRangeOrRowStart</td>
+   <td>A1形式の範囲。R1C1形式を使用する場合、整数の開始行番号</td>
+  </tr>
+  <tr>
+   <td>$iColStart</td>
+   <td><b>[オプション]</b>数値フォーマットの開始列番号 (左)</td>
+  </tr>
+  <tr>
+   <td>$iRowEnd</td>
+   <td><b>[オプション]</b>数値フォーマットの終了行番号 (下)</td>
+  </tr>
+  <tr>
+   <td>$iColEnd</td>
+   <td><b>[オプション]</b>数値フォーマットの終了列番号 (右)</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@errorに次の値を設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>0 - 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - 指定されたオブジェクトが存在しません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - 行、または列の開始位置が無効です</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 - 行、または列の終了位置が無効です</td>
+  </tr>
+  <tr>
+    <td valign="top">@extended:</td>
+    <td>0 - 行が無効です</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - 列が無効です</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+このコマンドで使用可能なフォーマット文字列に関する情報については次の書籍を調べてください。<br>
+"Programming Excel With VBA and .NET"、著者: Steven Saunders and Jeff Webb、ISBN: 978-0-59-600766-9<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; ***************************************************************</span><br>
+<span class="S1">; 例 1 - ワークブックを開きオブジェクト識別子取得後、ループを使ってセルに書き込む。数値をフォーマット後、保存して閉じる。</span><br>
+<span class="S1">; *****************************************************************</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Excel.au3&gt;</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$oExcel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelBookNew</span><span class="S8">()</span><span class="S0"> </span><span class="S1">;新しいブックを作成して表示</span><br>
+<br>
+<span class="S1">; ループと乱数を使っていくつかのセルを埋める</span><br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$y</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">10</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">10</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_ExcelWriteCell</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S4">Random</span><span class="S8">(</span><span class="S3">1000</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10000</span><span class="S8">),</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$y</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;乱数をいくつかファイルに書き込む</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<span class="S5">Next</span><br>
+<br>
+<span class="S9">$sFormat</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"$#,##0.00"</span><span class="S0"> </span><span class="S1">;フォーマット文字列で_ExcelNumberFormatに$通貨への変換を設定</span><br>
+<span class="S15">_ExcelNumberFormat</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sFormat</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;1行1列目から5行5列目まで</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Exiting"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Press OK to Save File and Exit"</span><span class="S8">)</span><br>
+<span class="S15">_ExcelBookSaveAs</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@TempDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Temp.xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 上書き設定でtempディレクトリに保存</span><br>
+<span class="S15">_ExcelBookClose</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 閉じて終わり</span><br>
+<br>
+<span class="S1">; ***************************************************************</span><br>
+<span class="S1">; 例 2 - ワークブックを開きオブジェクト識別子取得後、ループを使ってセルに書き込む。数値をフォーマット後、保存して閉じる。</span><br>
+<span class="S1">; *****************************************************************</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Excel.au3&gt;</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$oExcel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelBookNew</span><span class="S8">()</span><span class="S0"> </span><span class="S1">;新しいブックを作成して表示</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$aFormatExamples</span><span class="S8">[</span><span class="S3">5</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[</span><span class="S7">"Format Examples"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"General"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"hh:mm:ss"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$#,##0.00"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"[Red]($#,##0.00)"</span><span class="S8">]</span><span class="S0"> </span><span class="S1">;ヘッダー作成用配列</span><br>
+<br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$i</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S4">UBound</span><span class="S8">(</span><span class="S9">$aFormatExamples</span><span class="S8">)</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S1">;Use loop to write headers</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_ExcelWriteCell</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aFormatExamples</span><span class="S8">[</span><span class="S9">$i</span><span class="S8">],</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 0始まりのインデックスと行をあわせるために$iに+1する</span><br>
+<span class="S5">Next</span><br>
+<br>
+<span class="S1">; ループと乱数を使っていくつかのセルを埋める</span><br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$y</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">2</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">5</span><span class="S0"> </span><span class="S1">;2列目から開始</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">2</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">10</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_ExcelWriteCell</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S4">Random</span><span class="S8">(</span><span class="S3">1000</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10000</span><span class="S8">),</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$y</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;乱数をいくつかファイルに書き込む</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<span class="S5">Next</span><br>
+<br>
+<span class="S4">ToolTip</span><span class="S8">(</span><span class="S7">"Formatting Column(s) Soon..."</span><span class="S8">)</span><br>
+<span class="S4">Sleep</span><span class="S8">(</span><span class="S3">3500</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;ユーザー確認用に一時停止</span><br>
+<br>
+<span class="S1">; ループを使用してフォーマットをおこなう</span><br>
+<span class="S1">; 各列で異なったタイプのフォーマットがおこなわれる</span><br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$i</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S4">UBound</span><span class="S8">(</span><span class="S9">$aFormatExamples</span><span class="S8">)</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_ExcelNumberFormat</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aFormatExamples</span><span class="S8">[</span><span class="S9">$i</span><span class="S8">],</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i</span><span class="S8">,</span><span class="S0"> </span><span class="S3">11</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i</span><span class="S8">)</span><br>
+<span class="S5">Next</span><br>
+<br>
+<span class="S9">$oExcel</span><span class="S8">.</span><span class="S14">Columns</span><span class="S8">.</span><span class="S14">AutoFit</span><span class="S0"> </span><span class="S1">;列が綺麗に見えるようAutoFits</span><br>
+<span class="S9">$oExcel</span><span class="S8">.</span><span class="S14">Rows</span><span class="S8">.</span><span class="S14">AutoFit</span><span class="S0"> </span><span class="S1">;行が綺麗に見えるようAutoFits</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Exiting"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Press OK to Save File and Exit"</span><span class="S8">)</span><br>
+<span class="S15">_ExcelBookSaveAs</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@TempDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Temp.xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 上書き設定でtempディレクトリに保存</span><br>
+<span class="S15">_ExcelBookClose</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 閉じて終わり</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ExcelNumberFormat.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

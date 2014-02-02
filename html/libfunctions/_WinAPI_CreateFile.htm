@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_CreateFile</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_CreateFile</font>
+<hr size="2">
+<p>ファイルまたは他のデバイスを作成または開きます。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_CreateFile($sFileName, $iCreation [, $iAccess = 4 [, $iShare = 0 [, $iAttributes = 0 [, $pSecurity = 0]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sFileName</td>
+    <td width="85%">作成または開くオブジェクトの名前</td>
+  </tr>
+  <tr>
+   <td>$iCreation</td>
+   <td>ファイルに対しておこなう動作:<br>
+       0 - 新しいファイルを作成します。ファイルが存在する場合、この関数は失敗します。<br>
+       1 - 新しいファイルを作成します。ファイルが存在する場合、上書きされます。<br>
+       2 - ファイルを開きます。ファイルが存在しない場合、この関数は失敗します。<br>
+       3 - ファイルを開きます。ファイルが存在しない場合、この関数はファイルを作成します。<br>
+       4 - ファイルを開き、そのサイズが0バイトになるように切り捨てます。ファイルが存在しない場合、この関数は失敗します。</td>
+  </tr>
+  <tr>
+   <td>$iAccess</td>
+   <td><b>[オプション]</b>オブジェクトへのアクセス:<br>
+       1 - 実行<br>
+       2 - 読み取り<br>
+       4 - 書き込み</td>
+  </tr>
+  <tr>
+   <td>$iShare</td>
+   <td><b>[オプション]</b>オブジェクトの共有モード:<br>
+       1 - 削除<br>
+       2 - 読み取り<br>
+       4 - 書き込み</td>
+  </tr>
+  <tr>
+   <td>$iAttributes</td>
+   <td><b>[オプション]</b>ファイル属性:<br>
+       1 - ファイルはアーカイブになります<br>
+       2 - ファイルは隠しファイルになります<br>
+       4 - ファイルは読み取り専用になります<br>
+       8 - ファイルはオペレーティングシステムの一部、またはオペレーティングシステム専用のファイルになります</td>
+  </tr>
+  <tr>
+   <td>$pSecurity</td>
+   <td><b>[オプション]</b>返されたハンドルを子プロセスが継承できるかどうかを決める$tagSECURITY_ATTRIBUTES構造体へのポインタ。<br>
+   pSecurityが0の場合、ハンドルを継承することはできません。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">指定されたファイルの開かれているハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagSECURITY_ATTRIBUTES.htm">$tagSECURITY_ATTRIBUTES</a>, <a href="_WinAPI_CloseHandle.htm">_WinAPI_CloseHandle</a>, <a href="_WinAPI_FlushFileBuffers.htm">_WinAPI_FlushFileBuffers</a>, <a href="_WinAPI_GetFileSizeEx.htm">_WinAPI_GetFileSizeEx</a>, <a href="_WinAPI_ReadFile.htm">_WinAPI_ReadFile</a>, <a href="_WinAPI_SetEndOfFile.htm">_WinAPI_SetEndOfFile</a>, <a href="_WinAPI_SetFilePointer.htm">_WinAPI_SetFilePointer</a>, <a href="_WinAPI_WriteFile.htm">_WinAPI_WriteFile</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CreateFile">CreateFile</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_Au3Check_Parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$sFile</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hFile</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sText</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$nBytes</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tBuffer</span><br>
+<br>
+<span class="S1">; 1) ファイルを作成し、データを書き込む</span><br>
+<span class="S9">$sFile</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S6">@ScriptDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">'\test.txt'</span><br>
+<span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">'abcdefghijklmnopqrstuvwxyz'</span><br>
+<span class="S9">$tBuffer</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S7">"byte["</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">StringLen</span><span class="S8">(</span><span class="S9">$sText</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"]"</span><span class="S8">)</span><br>
+<span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tBuffer</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sText</span><span class="S8">)</span><br>
+<span class="S9">$hFile</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateFile</span><span class="S8">(</span><span class="S9">$sFile</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_WriteFile</span><span class="S8">(</span><span class="S9">$hFile</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetPtr</span><span class="S8">(</span><span class="S9">$tBuffer</span><span class="S8">),</span><span class="S0"> </span><span class="S4">StringLen</span><span class="S8">(</span><span class="S9">$sText</span><span class="S8">),</span><span class="S0"> </span><span class="S9">$nBytes</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_CloseHandle</span><span class="S8">(</span><span class="S9">$hFile</span><span class="S8">)</span><br>
+<span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">'1) '</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">FileRead</span><span class="S8">(</span><span class="S9">$sFile</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; 2) 位置3から6バイト読み込む</span><br>
+<span class="S9">$tBuffer</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S7">"byte[6]"</span><span class="S8">)</span><br>
+<span class="S9">$hFile</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateFile</span><span class="S8">(</span><span class="S9">$sFile</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_SetFilePointer</span><span class="S8">(</span><span class="S9">$hFile</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_ReadFile</span><span class="S8">(</span><span class="S9">$hFile</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetPtr</span><span class="S8">(</span><span class="S9">$tBuffer</span><span class="S8">),</span><span class="S0"> </span><span class="S3">6</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$nBytes</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_CloseHandle</span><span class="S8">(</span><span class="S9">$hFile</span><span class="S8">)</span><br>
+<span class="S9">$sText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BinaryToString</span><span class="S8">(</span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tBuffer</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">))</span><br>
+<span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">'2) '</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; 3) 先ほど位置3から読み込んだ6バイトを同じ位置に大文字で書き込む</span><br>
+<span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tBuffer</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S4">StringUpper</span><span class="S8">(</span><span class="S9">$sText</span><span class="S8">))</span><br>
+<span class="S9">$hFile</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateFile</span><span class="S8">(</span><span class="S9">$sFile</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">4</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_SetFilePointer</span><span class="S8">(</span><span class="S9">$hFile</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_WriteFile</span><span class="S8">(</span><span class="S9">$hFile</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetPtr</span><span class="S8">(</span><span class="S9">$tBuffer</span><span class="S8">),</span><span class="S0"> </span><span class="S3">6</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$nBytes</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_CloseHandle</span><span class="S8">(</span><span class="S9">$hFile</span><span class="S8">)</span><br>
+<span class="S9">$tBuffer</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><br>
+<span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">'3) '</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">FileRead</span><span class="S8">(</span><span class="S9">$sFile</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; 4) ファイルサイズを12バイトに切り捨て</span><br>
+<span class="S9">$hFile</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateFile</span><span class="S8">(</span><span class="S9">$sFile</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">4</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_SetFilePointer</span><span class="S8">(</span><span class="S9">$hFile</span><span class="S8">,</span><span class="S0"> </span><span class="S3">12</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_SetEndOfFile</span><span class="S8">(</span><span class="S9">$hFile</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_CloseHandle</span><span class="S8">(</span><span class="S9">$hFile</span><span class="S8">)</span><br>
+<span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">'4) '</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">FileRead</span><span class="S8">(</span><span class="S9">$sFile</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<br>
+<span class="S4">FileDelete</span><span class="S8">(</span><span class="S9">$sfile</span><span class="S8">)</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WinAPI_CreateFile.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

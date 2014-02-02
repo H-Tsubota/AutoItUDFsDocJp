@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IEErrorHandlerRegister</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IEErrorHandlerRegister</font>
+<hr size="2">
+<p>ユーザーのCOMエラーハンドラを登録し、有効にします。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IEErrorHandlerRegister ( [$s_functionName = "__IEInternalErrorHandler"] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$s_functionName</td>
+    <td width="85%"><b>[オプション]</b>ユーザー定義のCOMエラーハンドラの名前の文字列。デフォルトではこのUDF内部のCOMエラーハンドラ</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 ($_IEStatus_GeneralError) = 一般的なエラー</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+重要: 独自のエラーハンドラを使用する場合、使用するエラーオブジェクト変数の名前は$oIEErrorHandlerでなければなりません(例を参照)。<br>
+<br>
+AutoItはCOMエラーを検知して、それをObjEvent関数を使用している自作のエラーハンドラに渡すことができます。ただし、ここにUDF作成者にとって問題になることがあります。一度に1つのCOMエラーハンドラしか使用できないのです。UDFがCOMエラーハンドラを使用するためにはまずユーザーのエラーハンドラの登録を解除し、自身をインストールし、その後ユーザーのハンドラを元に戻さなければなりません。不運なことにデフォルト設定ではUDFはユーザーのエラーハンドラのハンドルにアクセスする方法がありません。<br>
+<br>
+この関数を使用することで必要なときにIE.au3がうまく解除、復元できるようにあなたのCOMエラーハンドラを登録できます。独自の自作エラーハンドラを使用することも、IE.au3用に開発されたものを使用する(デフォルト)こともできます。またデフォルトの IE.au3用エラーハンドラを使用すると、コンソールに書かれる便利な対話情報と検知したエラー情報を格納したグローバル変数を得られます。<br>
+<br>
+このIE.au3関数を使用しないで独自のCOMエラーハンドラを作成した場合、いくつかのCOMエラーは検知することができず、結果として突然のスクリプト終了が起きる可能性があります。<br>
+<br>
+デフォルトのエラーハンドラ(__IEInternalErrorHandler)を使用する場合、次のグローバル変数が参照用に設定されます。<br>
+$IEComErrorNumber、$IEComErrorNumberHex、$IEComErrorDescription、$IEComErrorScriptline、$IEComErrorWinDescription、<br>
+$IEComErrorSource、$IEComErrorHelpFile、$IEComErrorHelpContext、$IEComErrorLastDllError、$IEComErrorComObj、<br>
+$IEComErrorOutput<br>
+<br>
+コンソールへのCOMエラーメッセージ表示は_IEErrorNotifyで制御することができます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IEErrorHandlerDeRegister.htm">_IEErrorHandlerDeRegister</a>, <a href="_IEErrorNotify.htm">_IEErrorNotify</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - 自作エラーハンドラとデフォルトのIE.au3エラーハンドラを登録し、後で登録解除</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S1">; 自作エラーハンドラを登録</span><br>
+<span class="S15">_IEErrorHandlerRegister</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"MyErrFunc"</span><span class="S8">)</span><br>
+<span class="S1">; なにか処理</span><br>
+<span class="S1">; 自作エラーハンドラ登録解除</span><br>
+<span class="S15">_IEErrorHandlerDeregister</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S1">; なにか処理</span><br>
+<span class="S1">; デフォルトのIE.au3エラーハンドラを登録</span><br>
+<span class="S15">_IEErrorHandlerRegister</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S1">; さらになにか処理</span><br>
+<br>
+<span class="S5">Exit</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> MyErrFunc</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 重要: エラーオブジェクト変数の名前は$oIEErrorHandlerでなければならない</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorScriptline</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$oIEErrorHandler</span><span class="S8">.</span><span class="S14">scriptline</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorNumber</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$oIEErrorHandler</span><span class="S8">.</span><span class="S14">number</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorNumberHex</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">Hex</span><span class="S8">(</span><span class="S9">$oIEErrorHandler</span><span class="S8">.</span><span class="S14">number</span><span class="S8">,</span><span class="S0"> </span><span class="S3">8</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorDescription</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">StringStripWS</span><span class="S8">(</span><span class="S9">$oIEErrorHandler</span><span class="S8">.</span><span class="S14">description</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorWinDescription</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">StringStripWS</span><span class="S8">(</span><span class="S9">$oIEErrorHandler</span><span class="S8">.</span><span class="S14">WinDescription</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorSource</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$oIEErrorHandler</span><span class="S8">.</span><span class="S14">Source</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorHelpFile</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$oIEErrorHandler</span><span class="S8">.</span><span class="S14">HelpFile</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorHelpContext</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$oIEErrorHandler</span><span class="S8">.</span><span class="S14">HelpContext</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorLastDllError</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$oIEErrorHandler</span><span class="S8">.</span><span class="S14">LastDllError</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorOutput</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">""</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorOutput</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"--&gt; COM Error Encountered in "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@ScriptName</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CR</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorOutput</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"----&gt; $ErrorScriptline = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$ErrorScriptline</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CR</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorOutput</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"----&gt; $ErrorNumberHex = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$ErrorNumberHex</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CR</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorOutput</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"----&gt; $ErrorNumber = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$ErrorNumber</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CR</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorOutput</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"----&gt; $ErrorWinDescription = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$ErrorWinDescription</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CR</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorOutput</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"----&gt; $ErrorDescription = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$ErrorDescription</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CR</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorOutput</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"----&gt; $ErrorSource = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$ErrorSource</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CR</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorOutput</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"----&gt; $ErrorHelpFile = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$ErrorHelpFile</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CR</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorOutput</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"----&gt; $ErrorHelpContext = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$ErrorHelpContext</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CR</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$ErrorOutput</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"----&gt; $ErrorLastDllError = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$ErrorLastDllError</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"COM Error"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ErrorOutput</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">SetError</span><span class="S8">(</span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;</span><span class="S1">;==&gt;MyErrFunc</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IEErrorHandlerRegister.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

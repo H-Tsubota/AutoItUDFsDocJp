@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlMenu_GetSystemMenu</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlMenu_GetSystemMenu</font>
+<hr size="2">
+<p>コピーと変更のためにアプリケーションがウィンドウメニューにアクセスすることを許可します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiMenu.au3&gt;<br>
+_GUICtrlMenu_GetSystemMenu($hWnd[, $fRevert = False])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウメニューのコピーを保持するウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$fRevert</td>
+   <td><b>[オプション]</b>実行される動作を指定します。<br>
+   このパラメータがFalseの場合、この関数は現在使用されているウィンドウメニューのコピーのハンドルを返します。<br>
+   コピーは最初、ウィンドウメニューと同じですが変更することができます。<br>
+   このパラメータがTrueの場合、この関数はウィンドウメニューをデフォルトの状態にリセットします。<br>
+   以前のウィンドウメニューが存在する場合は破棄されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+$fRevertパラメータがFalseの場合、返し値はウィンドウメニューのコピーのハンドルです。<br>
+&nbsp;&nbsp;&nbsp; $fRevertパラメータがTrueの場合、返し値は0です。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+GetSystemMenu関数を使って自身が保持するウィンドウメニューのコピーを作成しないウィンドウは全て、標準のウィンドウメニューを受け取ります。<br>
+ウィンドウメニューは最初、$SC_CLOSE、$SC_MOVE、$SC_SIZEなどのさまざまな識別子値を持つアイテムを格納しています。<br>
+全ての定義済みウィンドウメニューアイテムは0xF000より大きい識別番号を持っています。<br>
+アプリケーションがウィンドウメニューにコマンドを追加すると、それらには0xF000より小さい識別番号が使用されます。<br>
+システムは状況に応じて標準ウィンドウメニュー上のアイテムを自動的にグレイアウトします。<br>
+アプリケーションはメニューが表示される前に送信される$WM_INITMENUメッセージに応じてチェック処理、グレイアウト処理をおこないます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GetSystemMenu">GetSystemMenu</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiMenu.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hMenu</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iCount</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iI</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; メモ帳を開く</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Run</span><span class="S8">(</span><span class="S7">"Notepad.exe"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">WinWaitActive</span><span class="S8">(</span><span class="S7">"[CLASS:Notepad]"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hWnd</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">WinGetHandle</span><span class="S8">(</span><span class="S7">"[CLASS:Notepad]"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hMenu</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlMenu_GetSystemMenu</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; システムメニューを再生</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlMenu_InsertMenuItem</span><span class="S8">(</span><span class="S9">$hMenu</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"&amp;AutoIt"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; システムメニューを表示</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iCount</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlMenu_GetItemCount</span><span class="S8">(</span><span class="S9">$hMenu</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; Writeln</span><span class="S8">(</span><span class="S7">"System menu handle: 0x"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">Hex</span><span class="S8">(</span><span class="S9">$hMenu</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; Writeln</span><span class="S8">(</span><span class="S7">"Item count .......: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iCount</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$iI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S9">$iCount</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; Writeln</span><span class="S8">(</span><span class="S7">"Item "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iI</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" text ......: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_GUICtrlMenu_GetItemText</span><span class="S8">(</span><span class="S9">$hMenu</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iI</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S1">; メモ帳にテキストを1行書き込む</span><br>
+<span class="S5">Func</span><span class="S0"> Writeln</span><span class="S8">(</span><span class="S9">$sText</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">ControlSend</span><span class="S8">(</span><span class="S7">"Untitled - Notepad"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Edit1"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sText</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CR</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;Writeln</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlMenu_GetSystemMenu.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

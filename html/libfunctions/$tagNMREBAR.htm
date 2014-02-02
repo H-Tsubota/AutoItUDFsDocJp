@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagNMREBAR</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagNMREBAR</font>
+<hr size="2">
+<p>リバー(ReBar)のさまざまな通知メッセージ処理に使用される情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagNMREBAR = $tagNMHDR & ";dword dwMask;uint uBand;uint fStyle;uint wID;int lParam"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$tagNMHDR</td>
+    <td width="85%">通知メッセージの情報を格納します</td>
+  </tr>
+  <tr>
+   <td>dwMask</td>
+   <td>この構造体のどのメンバーが有効な情報を格納しているかを定義するフラグ。次の値の1つまたは組み合わせです:<br>
+       $RBNM_ID - wIDが有効な値を格納しています。<br>
+       $RBNM_LPARAM - lParamが有効な値を格納しています。<br>
+       $RBNM_STYLE - fStyleが有効な値を格納しています。</td>
+  </tr>
+  <tr>
+   <td>uBand</td>
+   <td>通知によって影響を受けるバンドのゼロ始まりのインデックス。影響を受けるバンドがない場合-1になります。</td>
+  </tr>
+  <tr>
+   <td>fStyle</td>
+   <td>バンドのスタイル。これは$tagREBARBANDINF構造体のfStyleで詳述される1つ以上の$RBBS_スタイルです。<br>
+   このメンバーはdwMaskが$RBNM_STYLEを含んでいる場合のみ有効です。</td>
+  </tr>
+  <tr>
+   <td>wID</td>
+   <td>バンドのアプリケーション定義の識別子。 このメンバーはdwMaskが$RBNM_IDを含んでいる場合のみ有効です。</td>
+  </tr>
+  <tr>
+   <td>lParam</td>
+   <td>バンドに関連付けられたアプリケーション定義の値。このメンバーはdwMaskが$RBNM_LPARAMを含んでいる場合のみ有効です。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

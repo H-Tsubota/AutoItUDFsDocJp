@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_UnhookWindowsHookEx</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_UnhookWindowsHookEx</font>
+<hr size="2">
+<p>_WinAPI_SetWindowsHookEx関数によってフックチェーンに設置されたフックプロシージャを取り除きます。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_UnhookWindowsHookEx($hhk)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hhk</td>
+    <td width="85%">取り除かれるフックのハンドル</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_SetWindowsHookEx.htm">_WinAPI_SetWindowsHookEx</a>, <a href="AutoIt3.chm::/html/functions/DllCallbackFree.htm">DllCallbackFree</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=UnhookWindowsHookEx">UnhookWindowsHookEx</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_Au3Check_Parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;StructureConstants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$hHook</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hStub_KeyProc</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$buffer</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">""</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">OnAutoItExitRegister</span><span class="S8">(</span><span class="S7">"Cleanup"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hmod</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hStub_KeyProc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllCallbackRegister</span><span class="S8">(</span><span class="S7">"_KeyProc"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"long"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"int;wparam;lparam"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hmod</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetModuleHandle</span><span class="S8">(</span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hHook</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_SetWindowsHookEx</span><span class="S8">(</span><span class="S9">$WH_KEYBOARD_LL</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllCallbackGetPtr</span><span class="S8">(</span><span class="S9">$hStub_KeyProc</span><span class="S8">),</span><span class="S0"> </span><span class="S9">$hmod</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Click OK, then in notepad type..."</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Jon"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"AutoIt"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Press Esc to exit script"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Run</span><span class="S8">(</span><span class="S7">"Notepad"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">WinWait</span><span class="S8">(</span><span class="S7">"Untitled -"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">WinActivate</span><span class="S8">(</span><span class="S7">"Untitled -"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">Sleep</span><span class="S8">(</span><span class="S3">10</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">WEnd</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> EvaluateKey</span><span class="S8">(</span><span class="S9">$keycode</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S8">((</span><span class="S9">$keycode</span><span class="S0"> </span><span class="S8">&gt;</span><span class="S0"> </span><span class="S3">64</span><span class="S8">)</span><span class="S0"> </span><span class="S5">And</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$keycode</span><span class="S0"> </span><span class="S8">&lt;</span><span class="S0"> </span><span class="S3">91</span><span class="S8">))</span><span class="S0"> </span><span class="S8">_</span><span class="S0"> </span><span class="S1">; a - z</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Or</span><span class="S0"> </span><span class="S8">((</span><span class="S9">$keycode</span><span class="S0"> </span><span class="S8">&gt;</span><span class="S0"> </span><span class="S3">96</span><span class="S8">)</span><span class="S0"> </span><span class="S5">And</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$keycode</span><span class="S0"> </span><span class="S8">&lt;</span><span class="S0"> </span><span class="S3">123</span><span class="S8">))</span><span class="S0"> </span><span class="S8">_</span><span class="S0"> </span><span class="S1">; A - Z</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Or</span><span class="S0"> </span><span class="S8">((</span><span class="S9">$keycode</span><span class="S0"> </span><span class="S8">&gt;</span><span class="S0"> </span><span class="S3">47</span><span class="S8">)</span><span class="S0"> </span><span class="S5">And</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$keycode</span><span class="S0"> </span><span class="S8">&lt;</span><span class="S0"> </span><span class="S3">58</span><span class="S8">))</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S1">; 0 - 9</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$buffer</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S4">Chr</span><span class="S8">(</span><span class="S9">$keycode</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$buffer</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S7">"Jon"</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">ToolTip</span><span class="S8">(</span><span class="S7">"What can you say?"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S7">"AutoIt"</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">ToolTip</span><span class="S8">(</span><span class="S7">"AutoIt Rocks"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">ElseIf</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$keycode</span><span class="S0"> </span><span class="S8">&gt;</span><span class="S0"> </span><span class="S3">159</span><span class="S8">)</span><span class="S0"> </span><span class="S5">And</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$keycode</span><span class="S0"> </span><span class="S8">&lt;</span><span class="S0"> </span><span class="S3">164</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Return</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">ElseIf</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$keycode</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">27</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S1">; esc key</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$buffer</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">""</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;EvaluateKey</span><br>
+<br>
+<span class="S1">;===========================================================</span><br>
+<span class="S1">; コールバック関数</span><br>
+<span class="S1">;===========================================================</span><br>
+<span class="S5">Func</span><span class="S0"> _KeyProc</span><span class="S8">(</span><span class="S9">$nCode</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$tKEYHOOKS</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tKEYHOOKS</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S9">$tagKBDLLHOOKSTRUCT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S9">$nCode</span><span class="S0"> </span><span class="S8">&lt;</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S15">_WinAPI_CallNextHookEx</span><span class="S8">(</span><span class="S9">$hHook</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$nCode</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S9">$wParam</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$WM_KEYDOWN</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; EvaluateKey</span><span class="S8">(</span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tKEYHOOKS</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"vkCode"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$flags</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tKEYHOOKS</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"flags"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$flags</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$LLKHF_ALTDOWN</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"$LLKHF_ALTDOWN"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$LLKHF_EXTENDED</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"$LLKHF_EXTENDED"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$LLKHF_INJECTED</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"$LLKHF_INJECTED"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$LLKHF_UP</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"$LLKHF_UP: scanCode - "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tKEYHOOKS</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"scanCode"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"vkCode - "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tKEYHOOKS</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"vkCode"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S15">_WinAPI_CallNextHookEx</span><span class="S8">(</span><span class="S9">$hHook</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$nCode</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_KeyProc</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> Cleanup</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_UnhookWindowsHookEx</span><span class="S8">(</span><span class="S9">$hHook</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllCallbackFree</span><span class="S8">(</span><span class="S9">$hStub_KeyProc</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;Cleanup</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WinAPI_UnhookWindowsHookEx.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GDIPlus_MatrixScale</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GDIPlus_MatrixScale</font>
+<hr size="2">
+<p>行列を自身とスケーリング行列の積で更新します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GDIPlus.au3&gt;<br>
+_GDIPlus_MatrixScale($hMatrix, $fScaleX, $fScaleY[, $bOrder = False])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hMatrix</td>
+    <td width="85%">Matrixオブジェクトのハンドル</td>
+  </tr>
+  <tr>
+   <td>$fScaleX</td>
+   <td>X軸方向のスケール乗数</td>
+  </tr>
+  <tr>
+   <td>$fScaleY</td>
+   <td>Y軸方向のスケール乗数</td>
+  </tr>
+  <tr>
+   <td>$bOrder</td>
+   <td><b>[オプション]</b>乗算順序を指定します:<br>
+       &nbsp;True - スケーリング行列を左から乗じます<br>
+       False - スケーリング行列を右から乗じます</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GdipScaleMatrix">GdipScaleMatrix</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;ScreenCapture.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<br>
+<span class="S1">; GUI作成</span><br>
+<span class="S9">$hWnd</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"GDI+ Example"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">500</span><span class="S8">,</span><span class="S0"> </span><span class="S3">500</span><span class="S8">)</span><br>
+<span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S1">; GDI+を開始</span><br>
+<span class="S15">_GDIPlus_Startup</span><span class="S8">()</span><br>
+<span class="S9">$hGraphics</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_GraphicsCreateFromHWND</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_GraphicsClear</span><span class="S8">(</span><span class="S9">$hGraphics</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; スクリーンの左下のスクリーンショットをとる</span><br>
+<span class="S9">$hScreenCap_hBitmap</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ScreenCapture_Capture</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@DesktopHeight</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">500</span><span class="S8">,</span><span class="S0"> </span><span class="S3">500</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@DesktopHeight</span><span class="S8">)</span><br>
+<span class="S9">$hScreenCap_Bitmap</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_BitmapCreateFromHBITMAP</span><span class="S8">(</span><span class="S9">$hScreenCap_hBitmap</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$hMatrix</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_MatrixCreate</span><span class="S8">()</span><br>
+<span class="S1">; 行列を2でスケール (全てが2倍の大きさになる)</span><br>
+<span class="S15">_GDIPlus_MatrixScale</span><span class="S8">(</span><span class="S9">$hMatrix</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2.0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2.0</span><span class="S8">)</span><br>
+<br>
+<br>
+<span class="S15">_GDIPlus_GraphicsSetTransform</span><span class="S8">(</span><span class="S9">$hGraphics</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hMatrix</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_GraphicsDrawImageRect</span><span class="S8">(</span><span class="S9">$hGraphics</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hScreenCap_Bitmap</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">500</span><span class="S8">,</span><span class="S0"> </span><span class="S3">500</span><span class="S8">)</span><br>
+<br>
+<span class="S5">Do</span><br>
+<span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<br>
+<span class="S1">; リソースを破棄</span><br>
+<span class="S15">_WinAPI_DeleteObject</span><span class="S8">(</span><span class="S9">$hScreenCap_hBitmap</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_BitmapDispose</span><span class="S8">(</span><span class="S9">$hScreenCap_Bitmap</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_MatrixDispose</span><span class="S8">(</span><span class="S9">$hMatrix</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_GraphicsDispose</span><span class="S8">(</span><span class="S9">$hGraphics</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_Shutdown</span><span class="S8">()</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GDIPlus_MatrixScale.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

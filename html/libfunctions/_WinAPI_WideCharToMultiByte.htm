@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_WideCharToMultiByte</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_WideCharToMultiByte</font>
+<hr size="2">
+<p>Unicode文字列をマルチバイト文字列に変換します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_WideCharToMultiByte($pUnicode [, $iCodePage = 0 [, $iFlags = 0 [, $bRetString = True]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$pUnicode</td>
+    <td width="85%">変換されるUnicodeテキストを格納した文字列、DllStruct、またはバイト配列構造体へのポインタ</td>
+  </tr>
+  <tr>
+   <td>$iCodePage</td>
+   <td><b>[オプション]</b>変換処理で使用するコードページ:<br>
+       0 - 現在のシステムのWindows ANSIコードページ<br>
+       1 - 現在のシステムのOEMコードページ<br>
+       2 - 現在のシステムのMacintoshコードページ<br>
+       3 - 現在のスレッドのWindows ANSIコードページ<br>
+       42 - Symbolコードページ<br>
+       65000 - UTF-7<br>
+       65001 - UTF-8</td>
+  </tr>
+    <tr>
+   <td>$iFlags</td>
+   <td><b>[オプション]</b>変換タイプを表すフラグ。MSDNを参照して下さい。 (デフォルトは0)</td>
+  </tr>
+  <tr>
+   <td>$bRetString</td>
+   <td><b>[オプション]</b>文字列、DllStructのいずれを返すかを表すフラグ (デフォルトはTrue : 文字列)</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+マルチバイト文字列を格納した文字列またはDllStructを返します。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_MultiByteToWideChar.htm">_WinAPI_MultiByteToWideChar</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=WideCharToMultiByte">WideCharToMultiByte</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

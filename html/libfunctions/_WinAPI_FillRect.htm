@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_FillRect</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_FillRect</font>
+<hr size="2">
+<p>指定されたブラシを使用して長方形を塗りつぶします。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_FillRect($hDC, $ptrRect, $hBrush)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hDC</td>
+    <td width="85%">デバイスコンテキストのハンドル</td>
+  </tr>
+  <tr>
+   <td>$ptrRect</td>
+   <td>塗りつぶされる長方形のクライアント座標を格納している$tagRECT構造体へのポインタ</td>
+  </tr>
+  <tr>
+   <td>$hBrush</td>
+   <td>長方形を塗りつぶすのに使用されるブラシのハンドル</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+$hBrushパラメータで識別されるブラシは論理ブラシまたはカラー値のいずれかです。<br>
+論理ブラシのハンドルを指定すると_WinAPI_CreateSolidBrushを呼び出します。<br>
+また_WinAPI_GetStockObject関数を使用することで保存されているブラシの1つのハンドルを取得できます。<br>
+$hBrushパラメータにカラー値を指定すると標準のシステムカラーの1つになります(値1が選択色に追加される必要があります)。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=FillRect">FillRect</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

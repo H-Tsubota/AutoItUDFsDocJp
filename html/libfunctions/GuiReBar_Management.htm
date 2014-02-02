@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>GuiReBar user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;GuiReBar.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_AddBand.htm">_GUICtrlRebar_AddBand</a></td>
+<td>レバーコントロールに新しいバンドを追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_AddToolBarBand.htm">_GUICtrlRebar_AddToolBarBand</a></td>
+<td>レバーコントロールに新しいバンドを追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_BeginDrag.htm">_GUICtrlRebar_BeginDrag</a></td>
+<td>レバーコントロールのドラッグ&amp;ドロップ操作を開始します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_Create.htm">_GUICtrlRebar_Create</a></td>
+<td>レバーコントロールを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_DeleteBand.htm">_GUICtrlRebar_DeleteBand</a></td>
+<td>レバーコントロールからバンドを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_Destroy.htm">_GUICtrlRebar_Destroy</a></td>
+<td>コントロールを破棄します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_DragMove.htm">_GUICtrlRebar_DragMove</a></td>
+<td>前の_GUICtrlRebar_BeginDrag命令に引き続き、レバーコントロールのドラッグ位置を更新します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_EndDrag.htm">_GUICtrlRebar_EndDrag</a></td>
+<td>レバーコントロールのドラッグ&amp;ドロップ操作を終了します。この命令は$RBN_ENDDRAG通知の送信を引き起こしません。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandBackColor.htm">_GUICtrlRebar_GetBandBackColor</a></td>
+<td>バンドの背景色を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandBorders.htm">_GUICtrlRebar_GetBandBorders</a></td>
+<td>バンドの枠を取得します。この命令の結果を使ってバンド内の利用可能な領域を計算できます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandBordersEx.htm">_GUICtrlRebar_GetBandBordersEx</a></td>
+<td>バンドの枠を取得します。この命令の結果を使ってバンド内の利用可能な領域を計算できます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandChildHandle.htm">_GUICtrlRebar_GetBandChildHandle</a></td>
+<td>バンド内に子ウィンドウが格納されている場合、そのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandChildSize.htm">_GUICtrlRebar_GetBandChildSize</a></td>
+<td>子のサイズ設定を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandCount.htm">_GUICtrlRebar_GetBandCount</a></td>
+<td>現在レバーコントロール内に存在するバンドの総数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandForeColor.htm">_GUICtrlRebar_GetBandForeColor</a></td>
+<td>バンドの前景色を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandHeaderSize.htm">_GUICtrlRebar_GetBandHeaderSize</a></td>
+<td>バンドのヘッダーのサイズをピクセル単位で取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandID.htm">_GUICtrlRebar_GetBandID</a></td>
+<td>コントロールがカスタム描画通知メッセージ用にバンドを識別する際に使用する値を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandIdealSize.htm">_GUICtrlRebar_GetBandIdealSize</a></td>
+<td>バンドの理想幅をピクセル単位で取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandLength.htm">_GUICtrlRebar_GetBandLength</a></td>
+<td>バンドの長さをピクセル単位で取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandLParam.htm">_GUICtrlRebar_GetBandLParam</a></td>
+<td>アプリケーション定義の値を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandMargins.htm">_GUICtrlRebar_GetBandMargins</a></td>
+<td>バンドの長さをピクセル単位で取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandMarginsEx.htm">_GUICtrlRebar_GetBandMarginsEx</a></td>
+<td>バンドの長さをピクセル単位で取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandRect.htm">_GUICtrlRebar_GetBandRect</a></td>
+<td>レバーコントロール内の指定されたバンドの外接長方形を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandRectEx.htm">_GUICtrlRebar_GetBandRectEx</a></td>
+<td>レバーコントロール内の指定されたバンドの外接長方形を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandStyle.htm">_GUICtrlRebar_GetBandStyle</a></td>
+<td>バンドスタイルのフラグを取得します<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandStyleBreak.htm">_GUICtrlRebar_GetBandStyleBreak</a></td>
+<td>フラグが設定されているかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandStyleChildEdge.htm">_GUICtrlRebar_GetBandStyleChildEdge</a></td>
+<td>フラグが設定されているかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandStyleFixedBMP.htm">_GUICtrlRebar_GetBandStyleFixedBMP</a></td>
+<td>フラグが設定されているかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandStyleFixedSize.htm">_GUICtrlRebar_GetBandStyleFixedSize</a></td>
+<td>フラグが設定されているかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandStyleGripperAlways.htm">_GUICtrlRebar_GetBandStyleGripperAlways</a></td>
+<td>フラグが設定されているかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandStyleHidden.htm">_GUICtrlRebar_GetBandStyleHidden</a></td>
+<td>フラグが設定されているかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandStyleHideTitle.htm">_GUICtrlRebar_GetBandStyleHideTitle</a></td>
+<td>フラグが設定されているかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandStyleNoGripper.htm">_GUICtrlRebar_GetBandStyleNoGripper</a></td>
+<td>フラグが設定されているかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandStyleTopAlign.htm">_GUICtrlRebar_GetBandStyleTopAlign</a></td>
+<td>フラグが設定されているかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandStyleUseChevron.htm">_GUICtrlRebar_GetBandStyleUseChevron</a></td>
+<td>フラグが設定されているかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandStyleVariableHeight.htm">_GUICtrlRebar_GetBandStyleVariableHeight</a></td>
+<td>フラグが設定されているかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBandText.htm">_GUICtrlRebar_GetBandText</a></td>
+<td>バンドの表示テキストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBarHeight.htm">_GUICtrlRebar_GetBarHeight</a></td>
+<td>レバーコントロールの高さを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBarInfo.htm">_GUICtrlRebar_GetBarInfo</a></td>
+<td>レバーコントロールの情報とそれが使用している画像リストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetBKColor.htm">_GUICtrlRebar_GetBKColor</a></td>
+<td>レバーコントロールのデフォルト背景色を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetColorScheme.htm">_GUICtrlRebar_GetColorScheme</a></td>
+<td>レバーコントロールからカラースキーム情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetRowCount.htm">_GUICtrlRebar_GetRowCount</a></td>
+<td>レバーコントロール内のバンドの行数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetRowHeight.htm">_GUICtrlRebar_GetRowHeight</a></td>
+<td>レバーコントロールの指定された行の高さを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetTextColor.htm">_GUICtrlRebar_GetTextColor</a></td>
+<td>レバーコントロールのデフォルトテキストカラーを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetToolTips.htm">_GUICtrlRebar_GetToolTips</a></td>
+<td>レバーコントロールに関連付けられているツールチップコントロールのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_GetUnicodeFormat.htm">_GUICtrlRebar_GetUnicodeFormat</a></td>
+<td>コントロールのUnicode文字フォーマットフラグを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_HitTest.htm">_GUICtrlRebar_HitTest</a></td>
+<td>指定された位置のどのアイテムが存在するかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_IDToIndex.htm">_GUICtrlRebar_IDToIndex</a></td>
+<td>バンドの識別子をレバーコントロール内でのバンドのインデックスに変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_MaximizeBand.htm">_GUICtrlRebar_MaximizeBand</a></td>
+<td>レバーコントロール内のバンドを理想サイズまたは最大サイズにサイズ変更します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_MinimizeBand.htm">_GUICtrlRebar_MinimizeBand</a></td>
+<td>レバーコントロール内のバンドを最小サイズにサイズ変更します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_MoveBand.htm">_GUICtrlRebar_MoveBand</a></td>
+<td>バンドをインデックスから他のインデックスに移動します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandBackColor.htm">_GUICtrlRebar_SetBandBackColor</a></td>
+<td>バンドの背景色を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandForeColor.htm">_GUICtrlRebar_SetBandForeColor</a></td>
+<td>バンドの前景色を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandHeaderSize.htm">_GUICtrlRebar_SetBandHeaderSize</a></td>
+<td>バンドのヘッダーのサイズをピクセル単位で設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandID.htm">_GUICtrlRebar_SetBandID</a></td>
+<td>コントロールがカスタム描画通知メッセージ用にバンドを識別する際に使用する値を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandIdealSize.htm">_GUICtrlRebar_SetBandIdealSize</a></td>
+<td>バンドの理想幅をピクセル単位で設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandLength.htm">_GUICtrlRebar_SetBandLength</a></td>
+<td>バンドの長さをピクセル単位で設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandLParam.htm">_GUICtrlRebar_SetBandLParam</a></td>
+<td>アプリケーション定義の値を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandStyle.htm">_GUICtrlRebar_SetBandStyle</a></td>
+<td>バンドのスタイルフラグを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandStyleBreak.htm">_GUICtrlRebar_SetBandStyleBreak</a></td>
+<td>バンドを新しい行にするかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandStyleChildEdge.htm">_GUICtrlRebar_SetBandStyleChildEdge</a></td>
+<td>バンドが子ウィンドウの上部と下部に縁を持つかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandStyleFixedBMP.htm">_GUICtrlRebar_SetBandStyleFixedBMP</a></td>
+<td>バンドのサイズ変更時にバンドの背景ビットマップが動くかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandStyleFixedSize.htm">_GUICtrlRebar_SetBandStyleFixedSize</a></td>
+<td>バンドがサイズ変更できないかどうか設定します。このスタイルではバンド上にサイズ変更グリップが表示されません。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandStyleGripperAlways.htm">_GUICtrlRebar_SetBandStyleGripperAlways</a></td>
+<td>レバー内にバンドが1つしかない場合でも常にバンドにサイズ変更グリップを表示するかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandStyleHidden.htm">_GUICtrlRebar_SetBandStyleHidden</a></td>
+<td>バンドを非表示にするかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandStyleHideTitle.htm">_GUICtrlRebar_SetBandStyleHideTitle</a></td>
+<td>バンドのタイトルを非表示にするかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandStyleNoGripper.htm">_GUICtrlRebar_SetBandStyleNoGripper</a></td>
+<td>レバー内にバンドが複数ある場合でもバンドにサイズ変更グリップを表示しないかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandStyleTopAlign.htm">_GUICtrlRebar_SetBandStyleTopAlign</a></td>
+<td>バンドを最上行に固定するかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandStyleUseChevron.htm">_GUICtrlRebar_SetBandStyleUseChevron</a></td>
+<td>ドロップダウンボタンを表示するかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandStyleVariableHeight.htm">_GUICtrlRebar_SetBandStyleVariableHeight</a></td>
+<td>バンドがレバーコントロールによってサイズ変更されるかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBandText.htm">_GUICtrlRebar_SetBandText</a></td>
+<td>バンドの表示テキストを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBarInfo.htm">_GUICtrlRebar_SetBarInfo</a></td>
+<td>レバーコントロールの特性を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetBKColor.htm">_GUICtrlRebar_SetBKColor</a></td>
+<td>レバーコントロールのデフォルト背景色を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetColorScheme.htm">_GUICtrlRebar_SetColorScheme</a></td>
+<td>レバーコントロールのカラースキーム情報を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetTextColor.htm">_GUICtrlRebar_SetTextColor</a></td>
+<td>レバーコントロールのデフォルトテキストカラーを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetToolTips.htm">_GUICtrlRebar_SetToolTips</a></td>
+<td>ツールチップコントロールをレバーコントロールに関連付けます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_SetUnicodeFormat.htm">_GUICtrlRebar_SetUnicodeFormat</a></td>
+<td>コントロールのUnicode文字フォーマットフラグを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlRebar_ShowBand.htm">_GUICtrlRebar_ShowBand</a></td>
+<td>レバーコントロール内の指定されたバンドの表示/非表示を切り替えます。<br></td>
+</tr>
+</table>
+</body>

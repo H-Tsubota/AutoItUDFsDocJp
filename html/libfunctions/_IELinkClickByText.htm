@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IELinkClickByText</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IELinkClickByText</font>
+<hr size="2">
+<p>与えられた文字列と一致するテキストを含むリンクに対してマウスクリックをシミュレートします。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IELinkClickByText ( ByRef $o_object, $s_linkText [, $i_index = 0[, $f_wait = 1]] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">InternetExplorer.Applicationのオブジェクト変数、ウィンドウまたはフレームオブジェクト</td>
+  </tr>
+  <tr>
+   <td>$s_linkText</td>
+   <td>ウェブページ上のクリックしたいリンクに表示されているテキスト</td>
+  </tr>
+  <tr>
+   <td>$i_index</td>
+   <td><b>[オプション]</b>一致するリンクのテキストが複数見つかった場合、どれを使用するか指定する0始まりのインデックス</td>
+  </tr>
+  <tr>
+   <td>$f_wait</td>
+   <td><b>[オプション]</b>ページのロード中に待機するかどうかを指定します<br>
+       0 = 直ちに処理を返します。ページのロードを待ちません<br>
+       1 = (デフォルト) ページのロードが完了してから処理を返します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">-1を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 ($_IEStatus_GeneralError) = 一般的なエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 ($_IEStatus_InvalidDataType) = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 ($_IEStatus_InvalidObjectType) = 無効なオブジェクト型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>6 ($_IEStatus_LoadWaitTimeout) = ロード待機タイムアウト</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>7 ($_IEStatus_NoMatch) = 一致するものがありません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>8 ($_IEStatus_AccessIsDenied) = アクセス拒否</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>9 ($_IEStatus_ClientDisconnected) = クライアント切断</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+リンクとして現れる要素が全て本当にリンクであるわけではありません。リンク処理をシミュレートするためにonClick JavaScriptイベントと他のDOMイベントを結びつけるのは一般的な方法です。このような要素をアクティブにするためには_IEAction で"click"を使用してください。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IELinkClickByIndex.htm">_IELinkClickByIndex</a>, <a href="_IELoadWait.htm">_IELoadWait</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - 基礎的なサンプルをブラウザで開き、"user forum"というテキストの</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ついたリンクをクリック</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Example</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"basic"</span><span class="S8">)</span><br>
+<span class="S15">_IELinkClickByText</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"user forum"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 2 - AutoItホームページをブラウザで開き、ページ上のリンクでループ。</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"wallpaper"というテキストを含むリンクをクリック</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S8">(</span><span class="S7">"http://www.autoitscript.com"</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$sMyString</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"wallpaper"</span><br>
+<span class="S9">$oLinks</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IELinkGetCollection</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">)</span><br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$oLink</span><span class="S0"> </span><span class="S5">in</span><span class="S0"> </span><span class="S9">$oLinks</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sLinkText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEPropertyGet</span><span class="S8">(</span><span class="S9">$oLink</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"innerText"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">If</span><span class="S0"> </span><span class="S4">StringInStr</span><span class="S8">(</span><span class="S9">$sLinkText</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sMyString</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_IEAction</span><span class="S8">(</span><span class="S9">$oLink</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"click"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S5">Next</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IELinkClickByText.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

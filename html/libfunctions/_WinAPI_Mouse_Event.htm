@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_Mouse_Event</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_Mouse_Event</font>
+<hr size="2">
+<p>マウス動作とボタンクリックを合成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_Mouse_Event($iFlags [, $iX = 0 [, $iY = 0 [, $iData = 0 [, $iExtraInfo = 0]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iFlags</td>
+    <td width="85%">
+	マウス動作とボタンクリックのさまざまな設定を指定するフラグビットのセット。<br>
+	このパラメータ内のビットは次の値の意味のある任意の組み合わせです:<br>
+	   $MOUSEEVENTF_ABSOLUTE - 
+	   $iXパラメータと$iYパラメータが通常の絶対座標を格納していることを表します。<br>
+	   設定されていない場合、これらのパラメータは相対座標になり、位置変化は最後に通知された位置からのものになります。<br>
+	   このフラグはシステムに接続しているマウスまたはマウスに類するデバイスがぞんざいする場合、<br>
+	   その種類に寄らずに設定、非設定することができます。<br>
+       $MOUSEEVENTF_ABSOLUTE - dxパラメータとdyパラメータが通常の絶対座標を格納していることを表します。<br>
+	   設定されていない場合、これらのパラメータは相対座標になり、位置変化は最後に通知された位置からのものになります。<br>
+	   このフラグはシステムに接続しているマウスまたはマウスに類するデバイスがぞんざいする場合、<br>
+	   その種類に寄らずに設定、非設定することができます。<br>
+       $MOUSEEVENTF_LEFTDOWN - 左ボタンが押された状態に変化したことを表します<br>
+       $MOUSEEVENTF_LEFTUP - 左ボタンが離された状態に変化したことを表します<br>
+       $MOUSEEVENTF_RIGHTDOWN - 右ボタンが押された状態に変化したことを表します<br>
+       $MOUSEEVENTF_RIGHTUP - 右ボタンが離された状態に変化したことを表します<br>
+       $MOUSEEVENTF_MIDDLEDOWN - 中央ボタンが押された状態に変化したことを表します<br>
+       $MOUSEEVENTF_MIDDLEUP - 中央ボタンが離された状態に変化したことを表します<br>
+       $MOUSEEVENTF_WHEEL - マウスにホイールがある場合、ホイールが動かされたことを表します<br>
+       $MOUSEEVENTF_XDOWN - Xボタンが押されたことを表します<br>
+       $MOUSEEVENTF_XUP - Xボタンが離されたことを表します</td>
+  </tr>
+  <tr>
+   <td>$iX</td>
+   <td><b>[オプション]</b>
+   X軸方向のマウスの絶対座標または最後にマウスイベントが発生してからのその移動量を<br>
+   $MOUSEEVENTF_ABSOLUTEの設定に応じて表します。<br>
+   絶対データはマウスの実際のX座標を指定します。相対データは移動のミッキー数で指定します。</td>
+  </tr>
+  <tr>
+   <td>$iY</td>
+	<td><b>[オプション]</b>
+   Y軸方向のマウスの絶対座標または最後にマウスイベントが発生してからのその移動量を<br>
+   $MOUSEEVENTF_ABSOLUTEの設定に応じて表します。<br>
+   絶対データはマウスの実際のY座標を指定します。相対データは移動のミッキー数で指定します。</td>
+  </tr>
+  <tr>
+   <td>$iData</td>
+   <td><b>[オプション]</b>
+   iFlagsに$MOUSEEVENTF_WHEELが設定された場合、iDataはホイールの動作量を指定します。<br>
+   正の数はホイールがユーザーから離れる方向に回転されたことを表し、負の数は反対にホイールがユーザーにむかって回転されたことを表します。<br>
+   1回のホイールクリックは $WHEEL_DELTA として定義されていて、この値は 120 です。<br> 
+    iFlagsに$MOUSEEVENTF_WHEELが設定されていない場合、 $iDataはゼロでなければなりません。</td>
+  </tr>
+  <tr>
+   <td>$iExtraInfo</td>
+   <td><b>[オプション]</b>マウスイベントに関連付けられた32ビット値を指定します。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+定義済み定数用にConstants.au3が必要です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=mouse_event">mouse_event</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

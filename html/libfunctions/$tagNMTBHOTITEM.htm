@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagNMTBHOTITEM</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagNMTBHOTITEM</font>
+<hr size="2">
+<p>$TBN_HOTITEMCHANGE通知とともに使用される情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagNMTBHOTITEM = $tagNMHDR & ";int idOld;int idNew;dword dwFlags"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$tagNMHDR</td>
+    <td width="85%">通知メッセージの情報を格納します</td>
+  </tr>
+  <tr>
+   <td>idOld</td>
+   <td>前の強調表示されたアイテムのコマンド識別子</td>
+  </tr>
+  <tr>
+   <td>idNew</td>
+   <td>強調表示されたアイテムのコマンド識別子</td>
+  </tr>
+  <tr>
+   <td>dwFlags</td>
+   <td>ホットアイテム変更の理由を表すフラグ。1つまたは複数の次の値です:<br>
+       $HICF_ACCELERATOR - ホットアイテムの変更はシュートカットキーによっておこなわれました<br>
+       $HICF_ARROWKEYS - Tホットアイテムの変更は矢印キー<br>
+       $HICF_DUPACCEL - $HICF_ACCELERATORの変更。このフラグが設定されると1つ以上のアイテムに同じショートカットキーが割り当てられます。<br>
+       $HICF_ENTERING - その他のフラグの変更。このフラグが設定されている場合、前のホットアイテムは存在せずidOldには有効な情報が設定されません<br>
+       $HICF_LEAVING - その他のフラグの変更。このフラグが設定されている場合、新しいホットアイテムは存在せずidNewには有効な情報が設定されません<br>
+       $HICF_LMOUSE - ホットアイテムの変更はマウスの左クリックイベントの結果です<br>
+       $HICF_MOUSE - ホットアイテムの変更はマウスイベントの結果です<br>
+       $HICF_OTHER - ホットアイテムの変更は未知のイベントの結果です。多くの場合はフォーカスの変更または$TB_SETHOTITEMメッセージによるものです。<br>
+       $HICF_RESELECT - ホットアイテムの変更は既にホットなアイテムに対するユーザーのショートカットキー入力の結果です。<br>
+       $HICF_TOGGLEDROPDOWN - バージョン5.80。ボタンの状態切り替えが原因です。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+x64用に調整が必要<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

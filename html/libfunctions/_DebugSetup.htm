@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _DebugSetup</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_DebugSetup</font>
+<hr size="2">
+<p>指定したレポートを使用してデバグ用セッションを準備します。<br></p>
+
+<p class="codeheader">
+#include &lt;Debug.au3&gt;<br>
+_DebugSetup ( $sTitle = Default, $bBugReportInfos = False, $vReportType = 1, $sLogFile = "" )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sTitle</td>
+    <td width="85%">レポートウィンドウ上に表示されるタイトル。デフォルト値は"AutoIt Debug Report"。</td>
+  </tr>
+  <tr>
+   <td>$bBugReportInfos</td>
+   <td>バグレポート情報を表示します。デフォルト値はFalse。</td>
+  </tr>
+  <tr>
+   <td>$vReportType</td>
+   <td>1 - レポートログウィンドウ(デフォルト)<br>
+       2 - コンソール書き込み<br>
+       3 - メッセージボックス<br>
+       4 - ファイル名で指定された$sLogFileへのファイル書き込み<br>
+       string - 使用する特定のレポート関数の名前</td>
+  </tr>
+  <tr>
+   <td>$sLogFile</td>
+   <td>$vReportType = 4の場合、ファイル名</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">レポートタイプ</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@Errorを設定します。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 既に呼ばれている</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 無効なレポートタイプ</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 無効なコールバック関数</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+特定のレポート用関数を登録した場合、AutoIt終了時に引数無しで呼ばれます。<br>
+<br>
+スクリプト実行中は一度に1つのデバグ用セッションしか開始できません。<br>
+_DebugSetup()を呼ぶ際に同じ$sTitleを使うだけで複数のスクリプトを同時に同じデバグ用セッションでデバグすることができます。
+全ての_DebugOut()が同じデバグ用セッションに出力を行います。<br>
+<br>
+_DebugSetup()をコメントアウトすることで全ての_DebugOut()を効率的に無効化できます。ただしスクリプトのリリースバージョンを作成する前に全ての_Debug関数を削除したいと思うのが普通です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_DebugOut.htm">_DebugOut</a>, <a href="_DebugReport.htm">_DebugReport</a>, <a href="_DebugReportEx.htm">_DebugReportEx</a>, <a href="_DebugReportVar.htm">_DebugReportVar</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S2">#cs ----------------------------------------------------------------------------</span><br>
+<br>
+<span class="S2">&nbsp; &nbsp; AutoIt Version: 3.2.8.1</span><br>
+<span class="S2">&nbsp; &nbsp; 作成者: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;David Nuttall</span><br>
+<br>
+<span class="S2">&nbsp; &nbsp; スクリプトの機能:</span><br>
+<span class="S2">&nbsp; &nbsp; Debug関数の機能を見せる基本スクリプト。</span><br>
+<br>
+<span class="S2">#ce ----------------------------------------------------------------------------</span><br>
+<br>
+<span class="S4">AutoItSetOption</span><span class="S8">(</span><span class="S7">"MustDeclareVars"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Debug.au3&gt;</span><br>
+<br>
+<span class="S15">_DebugSetup</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"Check Excel"</span><span class="S8">)</span><br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$i</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">4</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">WinActivate</span><span class="S8">(</span><span class="S7">"Microsoft Excel"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; Excelと連携</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Send</span><span class="S8">(</span><span class="S7">"</span><span class="S10">{Down}</span><span class="S7">"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_DebugOut</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"Moved Mouse Down"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> &nbsp; </span><span class="S1">; デバグ用メモ帳ウィンドウの制御を強制的に得る</span><br>
+<span class="S5">Next</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_DebugSetup.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

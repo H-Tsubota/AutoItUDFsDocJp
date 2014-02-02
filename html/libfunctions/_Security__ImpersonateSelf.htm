@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _Security__ImpersonateSelf</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_Security__ImpersonateSelf</font>
+<hr size="2">
+<p>呼び出し元プロセスのセキュリティコンテキストを偽装するアクセストークンを取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Security.au3&gt;<br>
+_Security__ImpersonateSelf([$iLevel = 2])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iLevel</td>
+    <td width="85%"><b>[オプション]</b>新しいトークンの偽装レベル:<br>
+       0 - 匿名。
+	   サーバープロセスはクライアントに関する識別情報を取得できず、クラインアントに偽装することもできません。<br>
+       1 - 識別。サーバープロセスはセキュリティ識別子、権限といったクライアントに関する識別情報を取得できますが、クラインアントに偽装することはできません。<br>
+       2 - 偽装。
+	   サーバープロセスはそのローカルシステム上のクライアントセキュリティコンテキストに偽装できますが、
+	   リモートシステム上のクラインアントに偽装することはできません。<br>
+       3 - 委任。
+	   サーバープロセスはリモートシステム上のクライアントのセキュリティコンテキストに偽装できます。
+	   </td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_Security__OpenThreadTokenEx.htm">_Security__OpenThreadTokenEx</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=ImpersonateSelf">ImpersonateSelf</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

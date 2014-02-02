@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _Net_Share_ShareEnum</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_Net_Share_ShareEnum</font>
+<hr size="2">
+<p>サーバ上の各共有リソースの情報を取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;NetShare.au3&gt;<br>
+_Net_Share_ShareEnum([$sServer = ""])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sServer</td>
+    <td width="85%"><b>[オプション]</b>
+	この関数が実行されるリモートサーバーのDNSまたはNetBIOS名を指定する文字列。<br>
+	このパラメータが空白の場合、ローカルコンピュータが使用されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">次のフォーマットの配列:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[0][0] - 配列内のエントリー数</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[1][0] - リソースの共有名</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[1][1] - 共有リソースの種類。次のものの組み合わせ:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> $STYPE_DISKTREE - プリントキュー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> $STYPE_PRINTQ - ディスクドライブ</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> $STYPE_DEVICE - 通信機器</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> $STYPE_IPC - IPC</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> $STYPE_SPECIAL - IPC$用またはサーバーのリモート管理用の特別な共有</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> $STYPE_TEMPORARY - 一時的な共有</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[1][2] - 共有リソースのオプションコメント</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[1][3] - 共有リソースのアクセス許可を表します:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>  1 - リソースからのデータ読み込みと実行を許可</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>  2 - リソースへのデータ書き込み許可</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>  4 - リソースのインスタンス作成許可</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>  8 - リソースの実行許可</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 16 - リソースの削除許可</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 32 - リソースの属性変更許可</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 64 - リソースのアクセス権限変更許可</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[1][4] - リソースの保持できる接続の最大数を表します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[1][5] - 現在のリソースへの接続数を表します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[1][6] - 共有リソースのローカルパスを指定します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[1][7] - 共有のパスワードを指定します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@errorを設定します</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数の実行には管理者、パワーユーザー、プリントオペレータまたはサーバーオペレータグループ権限が必要です。<br>
+
+Administrator, Power User, Print Operator, or Server Operator group membership is required to execute this<br>
+function.<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_Net_Share_FileEnum.htm">_Net_Share_FileEnum</a>, <a href="_Net_Share_SessionEnum.htm">_Net_Share_SessionEnum</a>, <a href="_Net_Share_ConnectionEnum.htm">_Net_Share_ConnectionEnum</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=NetShareEnum">NetShareEnum</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;NetShare.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$iMemo</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aInfo</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S5">Const</span><span class="S0"> </span><span class="S9">$sShareName</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"AutoIt Share"</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUI作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"NetShare"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; メモコントロール作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iMemo</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateEdit</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">396</span><span class="S8">,</span><span class="S0"> </span><span class="S3">296</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_VSCROLL</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetFont</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S3">9</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Courier New"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 共有が存在するか確認</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S15">_Net_Share_ShareCheck</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@ComputerName</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sShareName</span><span class="S8">)</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; ローカルコンピュータ上に共有を作成</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_Net_Share_ShareAdd</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@ComputerName</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sShareName</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"C:\"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"AutoIt Share Comment"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S4">MsgBox</span><span class="S0"> </span><span class="S8">(</span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Information"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Share add error : "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@error</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite </span><span class="S8">(</span><span class="S7">"Share added"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite </span><span class="S8">(</span><span class="S7">"Share exists"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; すべてのローカル共有の情報を表示</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$aInfo</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_Net_Share_ShareEnum</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@ComputerName</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Entries read ............: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aInfo</span><span class="S8">[</span><span class="S3">0</span><span class="S8">][</span><span class="S3">0</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$iI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S9">$aInfo</span><span class="S8">[</span><span class="S3">0</span><span class="S8">][</span><span class="S3">0</span><span class="S8">]</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Share name ..............: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aInfo</span><span class="S8">[</span><span class="S9">$iI</span><span class="S8">][</span><span class="S3">0</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Share type...............: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_Net_Share_ResourceStr</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$aInfo</span><span class="S8">[</span><span class="S9">$iI</span><span class="S8">][</span><span class="S3">1</span><span class="S8">]))</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Comment .................: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aInfo</span><span class="S8">[</span><span class="S9">$iI</span><span class="S8">][</span><span class="S3">2</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Permissions .............: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_Net_Share_PermStr</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$aInfo</span><span class="S8">[</span><span class="S9">$iI</span><span class="S8">][</span><span class="S3">3</span><span class="S8">]))</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Maximum connections .....: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aInfo</span><span class="S8">[</span><span class="S9">$iI</span><span class="S8">][</span><span class="S3">4</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Current connections .....: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aInfo</span><span class="S8">[</span><span class="S9">$iI</span><span class="S8">][</span><span class="S3">5</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Local path ..............: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aInfo</span><span class="S8">[</span><span class="S9">$iI</span><span class="S8">][</span><span class="S3">6</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Password ................: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aInfo</span><span class="S8">[</span><span class="S9">$iI</span><span class="S8">][</span><span class="S3">7</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 共有を削除</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_Net_Share_ShareDel</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@ComputerName</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sShareName</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S4">MsgBox</span><span class="S0"> </span><span class="S8">(</span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Information"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Share delete error : "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@error</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Share deleted"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S1">; メモにメッセージ書き込み</span><br>
+<span class="S5">Func</span><span class="S0"> MemoWrite</span><span class="S8">(</span><span class="S9">$sMessage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">""</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sMessage</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;MemoWrite</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_Net_Share_ShareEnum.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

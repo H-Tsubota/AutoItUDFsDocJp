@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUIScrollBars_GetScrollBarInfoEx</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUIScrollBars_GetScrollBarInfoEx</font>
+<hr size="2">
+<p>指定されたスクロールバーの情報を取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiScrollBars.au3&gt;<br>
+_GUIScrollBars_GetScrollBarInfoEx($hWnd, $idObject)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$idObject</td>
+   <td>スクロールバーオブジェクトを指定します。このパラメータは次の値のいずれかです:<br>
+       &nbsp;&nbsp;$OBJID_CLIENT - $hWndパラメータはスクロールバーコントロールのハンドルです。<br>
+       &nbsp;&nbsp;$OBJID_HSCROLL - $hWndウィンドウの水平スクロールバー。<br>
+       &nbsp;&nbsp;$OBJID_VSCROLL - $hWndウィンドウの垂直スクロールバー。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">$tagSCROLLBARINFO構造体</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+上記の定数にはScrollBarConstants.au3が必要です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagSCROLLBARINFO.htm">$tagSCROLLBARINFO</a>, <a href="_GUIScrollBars_GetScrollBarRect.htm">_GUIScrollBars_GetScrollBarRect</a>, <a href="_GUIScrollBars_GetScrollBarRGState.htm">_GUIScrollBars_GetScrollBarRGState</a>, <a href="_GUIScrollBars_GetScrollBarXYLineButton.htm">_GUIScrollBars_GetScrollBarXYLineButton</a>, <a href="_GUIScrollBars_GetScrollBarXYThumbBottom.htm">_GUIScrollBars_GetScrollBarXYThumbBottom</a>, <a href="_GUIScrollBars_GetScrollBarXYThumbTop.htm">_GUIScrollBars_GetScrollBarXYThumbTop</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GetScrollBarInfo">GetScrollBarInfo</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;StructureConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIScrollBars.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;ScrollBarConstants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">"MustDeclareVars"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$iMemo</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$GUIMsg</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tSCROLLBARINFO</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"ScrollBar Example"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$WS_MINIMIZEBOX</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_CAPTION</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_POPUP</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_SYSMENU</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_SIZEBOX</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iMemo</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateEdit</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">380</span><span class="S8">,</span><span class="S0"> </span><span class="S3">360</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$WS_HSCROLL</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_VSCROLL</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetResizing</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$GUI_DOCKALL</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetFont</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S3">9</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Courier New"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetBkColor</span><span class="S8">(</span><span class="S3">0x88AABB</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIScrollBars_Init</span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tSCROLLBARINFO</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUIScrollBars_GetScrollBarInfoEx</span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$OBJID_HSCROLL</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Horizontal"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"--------------------------------------"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Left.........: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLBARINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Left"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Top..........: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLBARINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Top"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Right........: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLBARINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Right"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Bottom.......: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLBARINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Bottom"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"dxyLineButton: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLBARINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"dxyLineButton"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"xyThumbTop...: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLBARINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"xyThumbTop"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"xyThumbBottom: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLBARINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"xyThumbBottom"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">5</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"rgstate["</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"]...: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLBARINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"rgstate"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">1</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$GUIMsg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$GUIMsg</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">WEnd</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S1">; メモコントロールに1行書き込み</span><br>
+<span class="S5">Func</span><span class="S0"> MemoWrite</span><span class="S8">(</span><span class="S9">$sMessage</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sMessage</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;MemoWrite</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUIScrollBars_GetScrollBarInfoEx.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

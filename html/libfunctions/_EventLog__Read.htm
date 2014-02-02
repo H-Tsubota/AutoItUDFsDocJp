@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _EventLog__Read</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_EventLog__Read</font>
+<hr size="2">
+<p>イベントログからエントリーを読み込みます。<br></p>
+
+<p class="codeheader">
+#Include &lt;EventLog.au3&gt;<br>
+_EventLog__Read($hEventLog [, $fRead = True [, $fForward = True [, $iOffset = 0]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hEventLog</td>
+    <td width="85%">イベントログのハンドル</td>
+  </tr>
+  <tr>
+   <td>$fRead</td>
+   <td><b>[オプション]</b>
+	Trueの場合、操作はこのハンドルでこの関数が最後に呼び出された際の続きから進められます。<br>
+	Falseの場合、読み込み操作は$iOffsetパラメータで指定されたレコードから進められます。</td>
+  </tr>
+  <tr>
+   <td>$fForward</td>
+   <td><b>[オプション]</b>Trueの場合、ログは日付け順に読み込まれます。Falseの場合、ログは逆日付け順に読み込まれます。</td>
+  </tr>
+  <tr>
+   <td>$iOffset</td>
+   <td><b>[オプション]</b>
+   読み込み操作を開始するイベントレコード番号。このパラメータはfReadがTrueの場合、無視されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">次の形式の配列:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[ 0] - True</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[ 1] - レコード数</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[ 2] - このエントリーがサブミットされた日付け</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[ 3] - このエントリーがサブミットされた時間</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[ 4] - このエントリーがログに書き込まれるために受信された日付け</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[ 5] - このエントリーがログに書き込まれるために受信された時間</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[ 6] - イベント識別子</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[ 7] - イベント型。次の値のいずれかです:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>  1 - エラーイベント</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>  2 - 警告イベント</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>  4 - 情報イベン</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>  8 - 成功監査イベント</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 16 - 失敗監査イベント</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[ 8] - イベント型文字列</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[ 9] - イベントカテゴリ</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[10] - イベントソース</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[11] - コンピュータ名</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[12] - ユーザー名</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[13] - イベントの説明</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>[14] - イベントデータ配列</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>Array[0] = False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数が成功で返ると、イベントログの読み込み位置が読み込んだレコード番号によって調整されます。
+複数のレコードが読み込める場合でも、正常に動作するためにこの関数は一度に1つのレコードしか返しません。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_EventLog__Close.htm">_EventLog__Close</a>, <a href="_EventLog__Open.htm">_EventLog__Open</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;EventLog.au3&gt;</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$iMemo</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hEventLog</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aEvent</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUI作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"EventLog"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iMemo</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateEdit</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">396</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetFont</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S3">9</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Courier New"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 直近のイベントレコードを読み込む</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hEventLog</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_EventLog__Open</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Application"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$aEvent</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_EventLog__Read</span><span class="S8">(</span><span class="S9">$hEventLog</span><span class="S8">,</span><span class="S0"> </span><span class="S5">True</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">)</span><span class="S0">&nbsp; </span><span class="S1">; read last event</span><br>
+<span class="S1">;~ &nbsp;$hEventLog = _EventLog__Open("", "System")</span><br>
+<span class="S1">;~ &nbsp;$aEvent = _EventLog__Read($hEventLog, True, False)</span><br>
+<span class="S1">;~ &nbsp;$aEvent = _EventLog__Read($hEventLog, True, False)</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Result ............: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S0"> </span><span class="S3">0</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Record number .....: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S0"> </span><span class="S3">1</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Submitted .........: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S0"> </span><span class="S3">2</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S0"> </span><span class="S3">3</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Generated .........: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S0"> </span><span class="S3">4</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S0"> </span><span class="S3">5</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Event ID ..........: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S0"> </span><span class="S3">6</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Type ..............: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S0"> </span><span class="S3">8</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Category ..........: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S0"> </span><span class="S3">9</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Source ............: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S3">10</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Computer ..........: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S3">11</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Username ..........: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S3">12</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Description .......: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aEvent</span><span class="S8">[</span><span class="S3">13</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_EventLog__Close</span><span class="S8">(</span><span class="S9">$hEventLog</span><span class="S8">)</span><br>
+<br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了させるまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S1">; メモコントロールに1行書き込む</span><br>
+<span class="S5">Func</span><span class="S0"> MemoWrite</span><span class="S8">(</span><span class="S9">$sMessage</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sMessage</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;MemoWrite</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_EventLog__Read.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

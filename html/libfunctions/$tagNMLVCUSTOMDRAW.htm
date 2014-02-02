@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagNMLVCUSTOMDRAW</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagNMLVCUSTOMDRAW</font>
+<hr size="2">
+<p>リストビューコントロールによって送信されるNM_CUSTOMDRAW(リストビュー)通知メッセージの固有情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagNMLVCUSTOMDRAW = $tagNMHDR & ";dword dwDrawStage;hwnd hdc;int Left;int Top;int Right;int Bottom;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "dword dwItemSpec;uint uItemState;long lItemlParam;int clrText;int clrTextBk;int iSubItem;dword dwItemType;int clrFace;int iIconEffect;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "int iIconPhase;int iPartId;int iStateId;int TextLeft;int TextTop;int TextRight;int TextBottom;uint uAlign"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$tagNMHDR</td>
+    <td width="85%">通知メッセージの情報を格納します</td>
+  </tr>
+  <tr>
+   <td>dwDrawStage</td>
+      <td>現在の描画ステージ。次のうちの1つです:<br>
+       グローバルな値:<br>
+       &nbsp;&nbsp;$CDDS_POSTERASE - 消去サイクル完了後<br>
+       &nbsp;&nbsp;$CDDS_POSTPAINT - 描画サイクル完了後<br>
+       &nbsp;&nbsp;$CDDS_PREERASE - 消去サイクルが始まる前<br>
+       &nbsp;&nbsp;$CDDS_PREPAINT - 描画サイクルが始まる前<br>
+       アイテム固有の値:<br>
+       &nbsp;&nbsp;$CDDS_ITEM - dwItemSpecuItemStatelItemlParamが有効であることを表します<br>
+       &nbsp;&nbsp;$CDDS_ITEMPOSTERASE - 	アイテムが消去された後<br>
+       &nbsp;&nbsp;$CDDS_ITEMPOSTPAINT - アイテムが描画された後<br>
+       &nbsp;&nbsp;$CDDS_ITEMPREERASE - アイテムが消去される前<br>
+       &nbsp;&nbsp;$CDDS_ITEMPREPAINT - アイテムが描画される前<br>
+       &nbsp;&nbsp;$CDDS_SUBITEM - サブアイテムが描画させれようとしている場合、$CDDS_ITEMPREPAINTまたは$CDDS_ITEMPOSTPAINTと組み合わさったフラグ<br>
+	   &nbsp;&nbsp;これは$CDDS_PREPAINTから$CDRF_NOTIFYITEMDRAWが返された場合のみ設定されます。
+	   </td>
+  </tr>
+  <tr>
+   <td>hdc</td>
+   <td>コントロールのデバイスコンテキストのハンドル<br>
+       &nbsp;&nbsp;
+	   デバイスコンテキスト(HDC)でMicrosoft Windows Graphics Device Interface(GDI)関数を実行するために
+	   このハンドルを使用してください。</td>
+  </tr>
+  <tr>
+   <td>Left</td>
+   <td>描画される領域長方形の左上隅のX座標。このメンバーは$CDDS_ITEMPREPAINT通知によってのみ初期化されます。</td>
+  </tr>
+  <tr>
+   <td>Top</td>
+   <td>描画される領域長方形の左上隅のY座標。このメンバーは$CDDS_ITEMPREPAINT通知によってのみ初期化されます。</td>
+  </tr>
+  <tr>
+   <td>Right</td>
+   <td>描画される領域長方形の右下隅のX座標。このメンバーは$CDDS_ITEMPREPAINT通知によってのみ初期化されます。</td>
+  </tr>
+  <tr>
+   <td>Bottom</td>
+   <td>描画される領域長方形の右下隅のY座標。このメンバーは$CDDS_ITEMPREPAINT通知によってのみ初期化されます。</td>
+  </tr>
+  <tr>
+   <td>dwItemSpec</td>
+   <td>アイテム番号</td>
+  </tr>
+  <tr>
+   <td>uItemState</td>
+      <td>現在のアイテム状態。この値は次のものの組み合わせです:<br>
+       &nbsp;&nbsp;$CDIS_CHECKED - アイテムはチェックされています<br>
+       &nbsp;&nbsp;$CDIS_DEFAULT - アイテムはデフォルト状態です<br>
+       &nbsp;&nbsp;$CDIS_DISABLED - アイテムは無効にされています<br>
+       &nbsp;&nbsp;$CDIS_FOCUS - アイテムにフォーカスが合っています<br>
+       &nbsp;&nbsp;$CDIS_GRAYED - アイテムはグレイアウトされています<br>
+       &nbsp;&nbsp;$CDIS_HOT - アイテムに現在ポインタが合っています("ホット"状態)<br>
+       &nbsp;&nbsp;$CDIS_INDETERMINATE - アイテムは不確定な状態です<br>
+       &nbsp;&nbsp;$CDIS_MARKED - アイテムはマークされています。この意味は実装によって決まります。<br>
+       &nbsp;&nbsp;$CDIS_SELECTED - アイテムは選択されています<br>
+       &nbsp;&nbsp;$CDIS_SHOWKEYBOARDCUES - バージョン 6.0 Comctl32。アイテムはキーボードキューです。<br>
+       &nbsp;&nbsp;$CDIS_NEARHOT - アイテムは現在マウスポインタ下("ホット"状態)にあるコントロールの一部ですが、アイテム自体は"ホット"になっていません。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;この意味は実装によって決まります。<br>
+       &nbsp;&nbsp;$CDIS_OTHERSIDEHOT - アイテムは現在マウスポインタ下("ホット"状態)にあるスプリットボタンの一部ですが、アイテム自体は"ホット"になっていません。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;この意味は実装によって決まります。<br>
+       &nbsp;&nbsp;$CDIS_DROPHILITED - アイテムはドラッグ&amp;ドロップ操作の現在のドロップターゲットです</td>
+  </tr>
+  <tr>
+   <td>lItemlParam</td>
+   <td>アプリケーション定義のアイテムデータ</td>
+  </tr>
+  <tr>
+   <td>clrText</td>
+   <td>リストビューコントロール内のテキスト前景表示に使用される色を表すCOLORREF値です。</td>
+  </tr>
+  <tr>
+   <td>clrTextBk</td>
+   <td>リストビューコントロール内のテキスト背景表示に使用される色を表すCOLORREF値です。</td>
+  </tr>
+  <tr>
+   <td>iSubItem</td>
+   <td>描画中のサブアイテムのインデックスです。メインアイテムが描画中の場合、このメンバーはゼロになります。</td>
+  </tr>
+  <tr>
+   <td>dwItemType</td>
+   <td>バージョン 6.0。描画するアイテムの種類を格納したDWORDです。このメンバーは次の値のいずれかです:<br>
+       &nbsp;&nbsp;$LVCDI_ITEM - 描画されるアイテムです。<br>
+       &nbsp;&nbsp;$LVCDI_GROUP - 描画されるグループです。</td>
+  </tr>
+  <tr>
+   <td>clrFace</td>
+   <td>バージョン 6.0。アイテムの表面の描画に使用される色を表すCOLORREF値です。</td>
+  </tr>
+  <tr>
+   <td>iIconEffect</td>
+   <td>バージョン 6.0。Glow、Shadow、Pulseなどアイコンに適用されるエフェクトを指定するint型の値です。</td>
+  </tr>
+  <tr>
+   <td>iIconPhase</td>
+   <td>バージョン 6.0。アイコンのフェイズを指定するint型の値です。</td>
+  </tr>
+  <tr>
+   <td>iPartId</td>
+   <td>バージョン 6.0。描画するアイテムの部分IDを指定するint型の値です。</td>
+  </tr>
+  <tr>
+   <td>iStateId</td>
+   <td>バージョン 6.0。描画するアイテムの状態IDを指定するint型の値です。</td>
+  </tr>
+  <tr>
+   <td>TextLeft</td>
+   <td>テキストが描画される長方形の左上隅のX座標</td>
+  </tr>
+  <tr>
+   <td>TextTop</td>
+   <td>テキストが描画される長方形の左上隅のＹ座標</td>
+  </tr>
+  <tr>
+   <td>TextRight</td>
+   <td>テキストが描画される長方形の右下隅のX座標</td>
+  </tr>
+  <tr>
+   <td>TextBottom</td>
+   <td>テキストが描画される長方形の右下隅のY座標</td>
+  </tr>
+  <tr>
+   <td>uAlign</td>
+   <td>バージョン 6.0。グループがどのように配置されるかを指定するUINT。次の値のいずれかです:<br>
+       &nbsp;&nbsp;$LVGA_HEADER_CENTER - グループを中央揃え<br>
+       &nbsp;&nbsp;$LVGA_HEADER_LEFT - グループを左揃え<br>
+       &nbsp;&nbsp;$LVGA_HEADER_RIGHT - グループを右揃え</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+$LVxxx_定数はListViewConstants.au3を、$CDxx_定数はWindowsConstants.au3を必要とします。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

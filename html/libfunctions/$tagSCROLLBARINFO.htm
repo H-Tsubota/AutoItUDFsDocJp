@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagSCROLLBARINFO</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagSCROLLBARINFO</font>
+<hr size="2">
+<p>スクロールバーの情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagSCROLLBARINFO = "dword cbSize;int Left;int Top;int Right;int Bottom;int dxyLineButton;int xyThumbTop;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "int xyThumbBottom;int Reserved;dword rgstate[6]"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">cbSize</td>
+    <td width="85%">バイト単位でのこの構造体のサイズを指定します。呼び出し側はこれにDllStructGetSize($tagSCROLLBARINFO)を設定しなければなりません</td>
+  </tr>
+  <tr>
+   <td>Left</td>
+   <td>スクロールバー長方形座標の左上隅のX座標を指定します</td>
+  </tr>
+  <tr>
+   <td>Top</td>
+   <td>スクロールバー長方形座標の左上隅のY座標を指定します</td>
+  </tr>
+  <tr>
+   <td>Right</td>
+   <td>スクロールバー長方形座標の右下隅のX座標を指定します</td>
+  </tr>
+  <tr>
+   <td>Bottom</td>
+   <td>スクロールバー長方形座標の右下隅のY座標を指定します</td>
+  </tr>
+  <tr>
+   <td>dxyLineButton</td>
+   <td>つまみの高さまたは幅</td>
+  </tr>
+  <tr>
+   <td>xyThumbTop</td>
+   <td>つまみの上または左の位置</td>
+  </tr>
+  <tr>
+   <td>xyThumbBottom</td>
+   <td>つまみの下または右の位置</td>
+  </tr>
+  <tr>
+   <td>Reserved</td>
+   <td>予約済み</td>
+  </tr>
+  <tr>
+   <td>rgstate</td>
+   <td>
+   DWORD要素の配列。各要素はスクロールバーコンポーネントの状態を表します。
+   以下の値は各配列インデックスに対応したスクロールバーコンポーネントを表します:<br>
+       &nbsp;&nbsp;0 スクロールバー本体<br>
+       &nbsp;&nbsp;1 上または右矢印ボタン<br>
+       &nbsp;&nbsp;2 上ページまたは右ページ領域<br>
+       &nbsp;&nbsp;3 スクロールボックス(つまみ)<br>
+       &nbsp;&nbsp;4 下ページまたは左ページ領域<br>
+       &nbsp;&nbsp;5 下または左矢印ボタン</td>
+  </tr>
+  <tr>
+   <td></td>
+   <td>
+   各スクロールバーコンポーネントのDWORD要素は次のビットフラグの組み合わせをとれます<br>
+       &nbsp;&nbsp;STATE_SYSTEM_INVISIBLE -  スクロールバー本体の場合、指定された垂直、水平スクロールバーが存在しないことを表します。<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;上ページ、下ページ領域の場合、領域が存在しないような位置につまみがあることを表します。<br>
+       &nbsp;&nbsp;STATE_SYSTEM_OFFSCREEN - スクロールバー本体の場合、指定された垂直、水平スクロールバーが現在表示されないようなウィンドウサイズであることを表します。<br>
+       &nbsp;&nbsp;STATE_SYSTEM_PRESSED - 矢印ボタンまたはページ領域が押されました。<br>
+       &nbsp;&nbsp;STATE_SYSTEM_UNAVAILABLE - コンポーネントが無効です。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+スクロールバー用の$SIF_xxxxxと$SB_xxxxxはWindowsConstants.au3を必要とします。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

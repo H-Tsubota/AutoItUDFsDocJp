@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WordDocAddLink</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WordDocAddLink</font>
+<hr size="2">
+<p>ドキュメントにハイパーリンクを追加します。<br></p>
+
+<p class="codeheader">
+#include &lt;Word.au3&gt; <br>
+_WordDocAddLink ( ByRef $o_object [, $o_Anchor = "" [, $s_Address = "" [, $s_SubAddress = "" [, $s_ScreenTip = "" [, $s_TextToDisplay = "" [, $s_Target = ""]]]]]] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">ドキュメントオブジェクトまたはWord.Applicationのオブジェクト変数</td>
+  </tr>
+  <tr>
+   <td>$o_Anchor</td>
+   <td><b>[オプション]</b> ハイパーリンクにしたいテキストまたは画像。<br>
+       "" = (デフォルト) ドキュメント全体を範囲として使用します</td>
+  </tr>
+  <tr>
+   <td>$s_Address</td>
+   <td><b>[オプション]</b> 指定されたリンクのアドレス。アドレスにはeメールアドレス、インターネットアドレスまたはファイル名を使用できます。<br>
+       "" = (デフォルト) 指定されたドキュメントへのリンクが使用されます</td>
+  </tr>
+  <tr>
+   <td>$s_SubAddress</td>
+   <td><b>[オプション]</b> ブックマーク、名前付き範囲、スライド番号などのリンク先ファイル内の位置名。</td>
+  </tr>
+  <tr>
+   <td>$s_ScreenTip</td>
+   <td><b>[オプション]</b> マウスポインターが指定されたハイパーリンクをポイントした際にスクリーンチップとして表示されるテキスト。<br>
+       "" = (デフォルト) $s_Addressの値を使用します</td>
+  </tr>
+  <tr>
+   <td>$s_TextToDisplay</td>
+   <td><b>[オプション]</b> 指定されたハイパーリンクの表示テキスト。この引数の値がAnchorで指定されたテキスト、画像と置き換わります。<br>
+       "" = (デフォルト) $s_Addressの値を使用します</td>
+  </tr>
+  <tr>
+   <td>$s_Target</td>
+   <td><b>[オプション]</b> 指定されたハイパーリンクをロードするフレーム、ウィンドウの名前。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERROR = 1を設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>$_WordStatus_Success = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_InvalidDataType = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_InvalidObjectType = 無効なオブジェクト型</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの数を格納</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+None.
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - 新しい空のドキュメントでWordウィンドウを作成</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; リンクを追加後、リンクのコレクションを取得</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Word.au3&gt;</span><br>
+<span class="S9">$oWordApp</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordCreate</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S9">$oDoc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordDocGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oWordApp</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S15">_WordDocAddLink</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oDoc</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"www.AutoIt3.com"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"AutoIt"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Link to AutoIt"</span><span class="S8">)</span><br>
+<span class="S9">$oLinks</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordDocLinkGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oDoc</span><span class="S8">)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Link Count"</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@extended</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WordDocAddLink.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

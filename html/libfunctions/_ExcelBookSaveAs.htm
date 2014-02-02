@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ExcelBookSaveAs</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ExcelBookSaveAs</font>
+<hr size="2">
+<p>指定したExcelオブジェクトのアクティブなワークブックを新しいファイル名、種類で保存します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Excel.au3&gt;<br>
+_ExcelBookSaveAs($oExcel, $sFilePath [, $sType = "xls" [, $fAlerts = 0 [, $fOverWrite = 0 [, $sPassword = "" [, $sWritePassword = "" [, $iAccessMode = 1 [, $iConflictResolution = 2]]]]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$oExcel</td>
+    <td width="85%">_ExcelBookOpen()か_ExcelBookNew()の呼び出しで開かれているExcelオブジェクト</td>
+  </tr>
+  <tr>
+   <td>$sFilePath</td>
+   <td>読み込むファイルのパスとファイル名</td>
+  </tr>
+  <tr>
+   <td>$sType</td>
+   <td><b>[オプション]</b>Excelの書き込み可能なファイルの種類。文字列 = "xls|csv|txt|template|html"。デフォルトは"xls"</td>
+  </tr>
+  <tr>
+   <td>$fAlerts</td>
+   <td><b>[オプション]</b>Excelの警告メッセージの無効/有効を設定するフラグ(0=無効、1=有効)</td>
+  </tr>
+  <tr>
+   <td>$fOverWrite</td>
+   <td><b>[オプション]</b>ファイルが既に存在する場合、上書きするかどうかのフラグ(0=しない、1=する)</td>
+  </tr>
+  <tr>
+   <td>$sPassword</td>
+   <td><b>[オプション]</b>シートを保護するためのパスワード文字列。空白の場合、パスワードを使用しません(デフォルトは空白)</td>
+  </tr>
+  <tr>
+   <td>$sWritePassword</td>
+   <td><b>[オプション]</b>シートを保護するための書き込みアクセス用パスワード文字列。空白の場合、パスワードを使用しません(デフォルトは空白)</td>
+  </tr>
+  <tr>
+   <td>$iAccessMode</td>
+   <td><b>[オプション]</b>ワークブックに設定される共有ドキュメントモード</td>
+  </tr>
+  <tr>
+   <td>$xlNoChange</td>
+   <td><b>[オプション]</b>現在の共有モードを維持します(デフォルト) (数値 = 1)</td>
+  </tr>
+  <tr>
+   <td>$xlExclusive</td>
+   <td><b>[オプション]</b>ワークブックの共有を無効にします (数値 = 3)</td>
+  </tr>
+  <tr>
+   <td>$xlShared</td>
+   <td><b>[オプション]</b>ワークブックの共有を有効にします (数値 = 2)</td>
+  </tr>
+  <tr>
+   <td>$iConflictResolution</td>
+   <td><b>[オプション]</b>ドキュメント共有時、どのように共有のコンフリクトを解決するか設定します</td>
+  </tr>
+  <tr>
+   <td>$xlUserResolution</td>
+   <td><b>[オプション]</b>どのように解決するかユーザーに尋ねるダイアログボックスを表示します (数値 = 1)</td>
+  </tr>
+  <tr>
+   <td>$xlLocalSessionChanges</td>
+   <td><b>[オプション]</b>ローカルユーザーの変更を常に優先します(デフォルト) (数値 = 2)</td>
+  </tr>
+  <tr>
+   <td>$xlOtherSessionChanges</td>
+   <td><b>[オプション]</b>ローカルユーザーの変更を常に拒絶します(数値 = 3)</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@errorに次の値を設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>1 - 指定されたオブジェクトが存在しません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - 無効なファイルの種類の文字列です</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 - ファイルが存在し、上書きフラグが設定されていません</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+オリジナルのワークブックが開かれた際と同じ作業パスにのみSaveAsをおこなえます<br>
+(新しく作成され、まだ保存されていないブックには使用できません)。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; ***************************************************************</span><br>
+<span class="S1">; 例 1 - 既存のワークブックを開きその識別子を返す。その後、新しい名前で警告なしでファイルを保存する。</span><br>
+<span class="S1">; *****************************************************************</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Excel.au3&gt;</span><br>
+<br>
+<span class="S9">$sFilePath1</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S6">@ScriptDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Test1.xls"</span><span class="S0"> </span><span class="S1">;このファイルは既に存在していなければならない</span><br>
+<span class="S9">$oExcel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelBookOpen</span><span class="S8">(</span><span class="S9">$sFilePath1</span><span class="S8">)</span><br>
+<br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error!"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Unable to Create the Excel Object"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">ElseIf</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">2</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error!"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"File does not exist - Shame on you!"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">EndIf</span><br>
+<br>
+<span class="S15">_ExcelBookSaveAs</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@ScriptDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\SaveAsExample"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"xls"</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S5">Not</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Success"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"File was Saved!"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">)</span><br>
+<span class="S15">_ExcelBookClose</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;このメソッドはファイルを閉じる際に通常のプロンプトなしで変更にかかわらず保存をおこなう。</span><br>
+<br>
+<br>
+<span class="S1">; ***************************************************************</span><br>
+<span class="S1">; 例 2 - 既存のワークブックを開きその識別子を返す。その後、新しい名前で警告なしでファイルを保存する。</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp;
+ファイルが存在する場合は上書きし、パスワードオプションで保護する。その後、パスワードによる保護を示すためにファイルを開く。</span><br>
+<span class="S1">; *****************************************************************</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Excel.au3&gt;</span><br>
+<br>
+<span class="S9">$sFilePath1</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S6">@ScriptDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Test1.xls"</span><span class="S0"> </span><span class="S1">;このファイルは既に存在していなければならない</span><br>
+<span class="S9">$oExcel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelBookOpen</span><span class="S8">(</span><span class="S9">$sFilePath1</span><span class="S8">)</span><br>
+<br>
+<span class="S1">;ファイルを開く際に起きるエラーを表示</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error!"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Unable to Create the Excel Object"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">ElseIf</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">2</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error!"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"File does not exist - Shame on you!"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">EndIf</span><br>
+<br>
+<span class="S15">_ExcelBookSaveAs</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@ScriptDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\SaveAsExample2"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"ReadOnly"</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;'SaveAsExample2.xls"として保存</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S5">Not</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Success"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"File was Saved!"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">)</span><br>
+<span class="S15">_ExcelBookClose</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;このメソッドはファイルを閉じる際に通常のプロンプトなしで変更にかかわらず保存をおこなう。</span><br>
+<br>
+<span class="S9">$oExcel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelBookOpen</span><span class="S8">(</span><span class="S6">@ScriptDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\SaveAsExample2.xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;パスワードによる保護を示すために先ほどのファイルを開く</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ExcelBookSaveAs.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

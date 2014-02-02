@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _MemGlobalAlloc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_MemGlobalAlloc</font>
+<hr size="2">
+<p>指定したバイト数をヒープから割り当てます。<br></p>
+
+<p class="codeheader">
+#Include &lt;Memory.au3&gt;<br>
+_MemGlobalAlloc($iBytes[, $iFlags = 0])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iBytes</td>
+    <td width="85%">割り当てるバイト数。このパラメータがゼロで$iFlagsパラメータが$GMEM_MOVEABLEの場合、
+	この関数は破棄マークのついたメモリオブジェクトのハンドルを返します。
+	</td>
+  </tr>
+  <tr>
+   <td>$iFlags</td>
+   <td><b>[オプション]</b>メモリ割り当て属性:<br>
+       $GMEM_FIXED - 固定メモリを割り当てます。返し値はポインタです。<br>
+       $GMEM_MOVEABLE - 移動可能メモリを割り当てます。メモリブロックは物理メモリで移動することはありませんが、デフォルトヒープ内で は移動することができます。返し値はメモリオブジェクトのハンドルです。ハンドルをポインタに変換するには_MemGlobalLock関数を使用します。この値を$GMEM_FIXEDと組み合わせて使うことはできません。<br>
+       $GMEM_ZEROINIT - メモリの内容をゼロで初期化します。<br>
+       $GHND - $GMEM_MOVEABLEと$GMEM_ZEROINITの組み合わせ<br>
+       $GPTR - $GMEM_FIXEDと$GMEM_ZEROINITの組み合わせ</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">新しく割り当てられたメモリオブジェクトのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+Windowsのメモリ管理ではローカルヒープとグローバルヒープの区別がありません。
+この関数が成功した場合、少なくとも要求しただけのメモリ量が割り当てられます。実際の割り当て量が要求量よりも多い場合、プロセスはその全体を使用することが可能です。実際の割り当てバイト数を知るには_MemGlobalSize関数を使用してください。ヒープに割り当て要求を満足させるだけの十分な空き領域がない場合、この関数はNULLを返します。<br>
+この関数によって割り当てられるメモリは8バイト境界上に配置されていることが保証されています。
+動的に生成されるコードを実行するためにはメモリ割り当てに_MemVirtualAlloc関数を、$PAGE_EXECUTEアクセス許可に_Mem_VirtualProtect関数を使用してください。<br>
+メモリを解放するには_MemGlobalFree関数を使用してください。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_MemGlobalLock.htm">_MemGlobalLock</a>, <a href="_MemGlobalSize.htm">_MemGlobalSize</a>, <a href="_MemVirtualAlloc.htm">_MemVirtualAlloc</a>, <a href="_MemGlobalFree.htm">_MemGlobalFree</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GlobalAlloc">GlobalAlloc</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

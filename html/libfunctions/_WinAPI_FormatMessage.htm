@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_FormatMessage</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_FormatMessage</font>
+<hr size="2">
+<p>メッセージ文字列をフォーマットします。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_FormatMessage($iFlags, $pSource, $iMessageID, $iLanguageID, ByRef $pBuffer, $iSize, $vArguments)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iFlags</td>
+    <td width="85%">
+	フォーマットプロセスとpSourceパラメータの解釈方法を指定するビットフラグのセットを格納します。<br>
+	$iFlagsの下位バイトは　この関数が　出力バッファの改行をどのように制御するかを指定します。<br>
+	また上位バイトでファオーマット済み出力行の最大幅を指定できます。</td>
+  </tr>
+  <tr>
+   <td>$pSource</td>
+   <td>メッセージ元を指します</td>
+  </tr>
+  <tr>
+   <td>$iMessageID</td>
+   <td>要求されたメッセージの識別子</td>
+  </tr>
+  <tr>
+   <td>$iLanguageID</td>
+   <td>要求されたメッセージの言語識別子</td>
+  </tr>
+  <tr>
+   <td>$pBuffer</td>
+   <td>メッセージバッファへのポインタ、またはメッセージを格納する文字列変数</td>
+  </tr>
+  <tr>
+   <td>$iSize</td>
+   <td>メッセージバッファの最大サイズ</td>
+  </tr>
+  <tr>
+   <td>$vArguments</td>
+   <td>メッセージ挿入配列のアドレス</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">メッセージバッファに保持されているバイト数</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=FormatMessageA">FormatMessageA</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

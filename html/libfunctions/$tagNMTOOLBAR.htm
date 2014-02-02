@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagNMTOOLBAR</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagNMTOOLBAR</font>
+<hr size="2">
+<p>ツールバー通知メッセージを処理するのに使用される情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagNMTOOLBAR = $tagNMHDR & ";int iItem;int iBitmap;int idCommand;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "byte fsState;byte fsStyle;byte bReserved1;byte bReserved2;dword dwData;int iString;int cchText;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "ptr pszText;int Left;int Top;int Right;int Bottom"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$tagNMHDR</td>
+    <td width="85%">通知メッセージの情報を格納します</td>
+  </tr>
+  <tr>
+   <td>iItem</td>
+   <td>通知に関連付けられたボタンのコマンド識別子</td>
+  </tr>
+  <tr>
+   <td>iBitmap</td>
+   <td>ボタン画像のゼロ始まりのインデックス。<br>	ボタンがセパレータの場合でfsStyleに$BTNS_SEPが設定されていた場合、iBitmapによってセパレータの幅がピクセル単位で決定します。</td>
+  </tr>
+  <tr>
+   <td>idCommand</td>
+   <td>ボタンに関連付けられたコマンド識別子。この識別子はボタンが選択された際にWM_COMMANDメッセージで使用されます。</td>
+  </tr>
+  <tr>
+   <td>fsState</td>
+   <td>ボタン状態フラグ。このメンバーはToolbar Button Statesにリストアップされている値の組み合わせです。</td>
+  </tr>
+  <tr>
+   <td>fsStyle</td>
+   <td>ボタンスタイル。このメンバーはToolbar Control、Button Stylesでリストアップされているボタンスタイル値の組み合わせです。</td>
+  </tr>
+  <tr>
+   <td>bReserved1</td>
+   <td>予約済み。使用しないで下さい</td>
+  </tr>
+  <tr>
+   <td>bReserved2</td>
+   <td>予約済み。使用しないで下さい</td>
+  </tr>  
+  <tr>
+   <td>dwData</td>
+   <td>アプリケーション定義の値</td>
+  </tr>
+  <tr>
+   <td>iString</td>
+   <td>ボタン文字列のゼロ始まりのインデックス、またはボタン用テキストを格納した文字列バッファへのポインタ</td>
+  </tr>
+  <tr>
+   <td>cchText</td>
+   <td>ボタンテキストの文字数</td>
+  </tr>
+  <tr>
+   <td>pszText</td>
+   <td>ボタンテキストを格納した文字バッファのアドレス</td>
+  </tr>
+  <tr>
+   <td>Left</td>
+   <td>長方形の左上隅のX座標を指定します</td>
+  </tr>
+  <tr>
+   <td>Top</td>
+   <td>長方形の左上隅のY座標を指定します</td>
+  </tr>
+  <tr>
+   <td>Right</td>
+   <td>長方形の右下隅のX座標を指定します</td>
+  </tr>
+  <tr>
+   <td>Bottom</td>
+   <td>長方形の右下隅のY座標を指定します</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

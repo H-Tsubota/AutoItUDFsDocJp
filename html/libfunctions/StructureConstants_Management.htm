@@ -1,0 +1,389 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>StructureConstants user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;StructureConstants.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="$tagBITMAPINFO.htm">$tagBITMAPINFO</a></td>
+<td>この構造体はWindowsベースのデバイス非依存ビットマップ(DIB)の寸法と色情報を定義します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagBLENDFUNCTION.htm">$tagBLENDFUNCTION</a></td>
+<td>$tagBLENDFUNCTION構造体はコピー元とコピー先ビットマップを指定することによってブレンディングを制御します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagCOLORSCHEME.htm">$tagCOLORSCHEME</a></td>
+<td>ツールバー、リバー(ReBar)内のボタン描画用の情報を格納しています。<br></td>
+</tr>
+<tr>
+<td><a href="$tagCOMBOBOXEXITEM.htm">$tagCOMBOBOXEXITEM</a></td>
+<td>ComboBoxExコントロール内のアイテムの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagDTPRANGE.htm">$tagDTPRANGE</a></td>
+<td>協定世界時(UTC)での日付けと時刻を指定します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagDTPTIME.htm">$tagDTPTIME</a></td>
+<td>世界協定時刻(UTC)での日付けと時間を指定します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagEVENTLOGRECORD.htm">$tagEVENTLOGRECORD</a></td>
+<td>イベントレコードの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagFILETIME.htm">$tagFILETIME</a></td>
+<td>1601年1月1日からの経過時間を100ナノ秒単位で格納しています。<br></td>
+</tr>
+<tr>
+<td><a href="$tagGDIPBITMAPDATA.htm">$tagGDIPBITMAPDATA</a></td>
+<td>ビットマップデータ<br></td>
+</tr>
+<tr>
+<td><a href="$tagGDIPENCODERPARAM.htm">$tagGDIPENCODERPARAM</a></td>
+<td>$tagGDIPENCODERPARAM構造体<br></td>
+</tr>
+<tr>
+<td><a href="$tagGDIPENCODERPARAMS.htm">$tagGDIPENCODERPARAMS</a></td>
+<td>$tagGDIPENCODERPARAMS構造体<br></td>
+</tr>
+<tr>
+<td><a href="$tagGDIPIMAGECODECINFO.htm">$tagGDIPIMAGECODECINFO</a></td>
+<td>$tagGDIPIMAGECODECINFO構造体<br></td>
+</tr>
+<tr>
+<td><a href="$tagGDIPPENCODERPARAMS.htm">$tagGDIPPENCODERPARAMS</a></td>
+<td>tagGDIPPENCODERPARAMS構造体<br></td>
+</tr>
+<tr>
+<td><a href="$tagGDIPRECTF.htm">$tagGDIPRECTF</a></td>
+<td>$tagGDIPRECTF構造体<br></td>
+</tr>
+<tr>
+<td><a href="$tagGDIPSTARTUPINPUT.htm">$tagGDIPSTARTUPINPUT</a></td>
+<td>$tagGDIPSTARTUPINPUT構造体<br></td>
+</tr>
+<tr>
+<td><a href="$tagGDIPSTARTUPOUTPUT.htm">$tagGDIPSTARTUPOUTPUT</a></td>
+<td>$tagGDIPSTARTUPOUTPUT構造体<br></td>
+</tr>
+<tr>
+<td><a href="$tagGETIPAddress.htm">$tagGETIPAddress</a></td>
+<td>IPアドレスコントロールの4つのフィールドすべての情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagGUID.htm">$tagGUID</a></td>
+<td>グローバル一意識別子(GUID)を表します<br></td>
+</tr>
+<tr>
+<td><a href="$tagHDITEM.htm">$tagHDITEM</a></td>
+<td>ヘッダーコントロール内のアイテムの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagIMAGEINFO.htm">$tagIMAGEINFO</a></td>
+<td>画像リスト内の画像の情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagKBDLLHOOKSTRUCT.htm">$tagKBDLLHOOKSTRUCT</a></td>
+<td>低レベルのキーボード入力イベントの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagLOGFONT.htm">$tagLOGFONT</a></td>
+<td>フォントの属性を定義します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagLVFINDINFO.htm">$tagLVFINDINFO</a></td>
+<td>リストビューアイテム検索時に使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagLVHITTESTINFO.htm">$tagLVHITTESTINFO</a></td>
+<td>ヒットテストの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagLVITEM.htm">$tagLVITEM</a></td>
+<td>リストビューアイテムの属性を受け取り、指定します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagMARGINS.htm">$tagMARGINS</a></td>
+<td>ビジュアルスタイルを適用するウィンドウの余白を定義します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagMCHITTESTINFO.htm">$tagMCHITTESTINFO</a></td>
+<td>月カレンダーコントロールのヒットテストポイント固有の情報を保持します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagMCMONTHRANGE.htm">$tagMCMONTHRANGE</a></td>
+<td>月カレンダーコントロールの表示の上下限を表す日付け情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagMCRANGE.htm">$tagMCRANGE</a></td>
+<td>月カレンダーコントロールで許容される最小・最大日付け設定の情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagMCSELRANGE.htm">$tagMCSELRANGE</a></td>
+<td>協定世界時(UTC)での日付けと時刻を指定します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagMENUINFO.htm">$tagMENUINFO</a></td>
+<td>メニューの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagMENUITEMINFO.htm">$tagMENUITEMINFO</a></td>
+<td>メニューアイテムの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNETRESOURCE.htm">$tagNETRESOURCE</a></td>
+<td>tagNETRESOURCE構造体<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMCBEDRAGBEGIN.htm">$tagNMCBEDRAGBEGIN</a></td>
+<td>$CBEN_DRAGBEGIN通知メッセージとともに使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMCBEENDEDIT.htm">$tagNMCBEENDEDIT</a></td>
+<td>ComboBoxExコントロール内の編集操作結果の情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMCOMBOBOXEX.htm">$tagNMCOMBOBOXEX</a></td>
+<td>通知メッセージとともに使用されるComboBoxExアイテム固有の情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMDATETIMECHANGE.htm">$tagNMDATETIMECHANGE</a></td>
+<td>日付ピッカー(DTP)コントロールでの変更の情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMDATETIMEFORMAT.htm">$tagNMDATETIMEFORMAT</a></td>
+<td>日付ピッカー(DTP)コントロール内のコールバックフィールドを定義するフォーマット文字列部分の情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMDATETIMEFORMATQUERY.htm">$tagNMDATETIMEFORMATQUERY</a></td>
+<td>コントロールのコールバックフィールドの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMDATETIMEKEYDOWN.htm">$tagNMDATETIMEKEYDOWN</a></td>
+<td>$DTN_WMKEYDOWN通知メッセージを表現し、ハンドルするのに使用される情報を保持しています。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMDATETIMESTRING.htm">$tagNMDATETIMESTRING</a></td>
+<td>コントロールでおこなわれている編集操作を指定する情報を格納しています。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMDAYSTATE.htm">$tagNMDAYSTATE</a></td>
+<td>$MCN_GETDAYSTATE通知メッセージを処理するために要求される情報を保持しています。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMHDDISPINFO.htm">$tagNMHDDISPINFO</a></td>
+<td>$HDN_GETDISPINFO通知メッセージの取り扱いで使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMHDFILTERBTNCLICK.htm">$tagNMHDFILTERBTNCLICK</a></td>
+<td>フィルタボタンクリックの属性を指定または受け取ります。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMHDR.htm">$tagNMHDR</a></td>
+<td>通知メッセージの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMHEADER.htm">$tagNMHEADER</a></td>
+<td>コントロール通知メッセージの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMIPADDRESS.htm">$tagNMIPADDRESS</a></td>
+<td>$IPN_FIELDCHANGED通知メッセージ用の情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMITEMACTIVATE.htm">$tagNMITEMACTIVATE</a></td>
+<td>ユーザーがアイテムをアクティブ化した際にリストビューコントロールによって送信されます。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMLISTVIEW.htm">$tagNMLISTVIEW</a></td>
+<td>リストビューの通知メッセージの情報を格納します。 <br></td>
+</tr>
+<tr>
+<td><a href="$tagNMLVCUSTOMDRAW.htm">$tagNMLVCUSTOMDRAW</a></td>
+<td>リストビューコントロールによって送信されるNM_CUSTOMDRAW(リストビュー)通知メッセージの固有情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMLVDISPINFO.htm">$tagNMLVDISPINFO</a></td>
+<td>$LVN_GETDISPINFOまたは$LVN_SETDISPINFO通知メッセージの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMLVFINDITEM.htm">$tagNMLVFINDITEM</a></td>
+<td>仮想リストビューコントロールによって要求されるアイテムを見つけるためにオーナーが必要とする情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMLVGETINFOTIP.htm">$tagNMLVGETINFOTIP</a></td>
+<td>アイテムのツールチップを表示するのに必要なリストビューアイテム情報を受け取り、格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMLVKEYDOWN.htm">$tagNMLVKEYDOWN</a></td>
+<td>$LVN_KEYDOWN通知メッセージの処理で使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMLVSCROLL.htm">$tagNMLVSCROLL</a></td>
+<td>スクロール操作の情報を提供します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMMOUSE.htm">$tagNMMOUSE</a></td>
+<td>マウス通知メッセージとともに使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMOBJECTNOTIFY.htm">$tagNMOBJECTNOTIFY</a></td>
+<td>$TBN_GETOBJECT、$TCN_GETOBJECT、$RBN_GETOBJECT、$PSN_GETOBJECT通知メッセージとともに使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMRBAUTOSIZE.htm">$tagNMRBAUTOSIZE</a></td>
+<td>$RBN_AUTOSIZE通知メッセージの処理で使用される情報を格納します<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMREBAR.htm">$tagNMREBAR</a></td>
+<td>リバー(ReBar)のさまざまな通知メッセージ処理に使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMREBARAUTOBREAK.htm">$tagNMREBARAUTOBREAK</a></td>
+<td>$RBN_AUTOBREAK通知とともに使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMREBARCHEVRON.htm">$tagNMREBARCHEVRON</a></td>
+<td>RBN_CHEVRONPUSHED通知メッセージを制御するのに使用される情報を格納しています。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMREBARCHILDSIZE.htm">$tagNMREBARCHILDSIZE</a></td>
+<td>RBN_CHILDSIZE通知メッセージの処理で使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMSELCHANGE.htm">$tagNMSELCHANGE</a></td>
+<td>$MCN_SELCHANGE通知メッセージを処理するために要求される情報が保持されます。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMTBHOTITEM.htm">$tagNMTBHOTITEM</a></td>
+<td>$TBN_HOTITEMCHANGE通知とともに使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMTCKEYDOWN.htm">$tagNMTCKEYDOWN</a></td>
+<td>$LVN_KEYDOWN通知メッセージの処理で使用される情報を格納しています。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMTOOLBAR.htm">$tagNMTOOLBAR</a></td>
+<td>ツールバー通知メッセージを処理するのに使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMTREEVIEW.htm">$tagNMTREEVIEW</a></td>
+<td> ツリービュー通知メッセージの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMTVCUSTOMDRAW.htm">$tagNMTVCUSTOMDRAW</a></td>
+<td>ツリービューコントロールのよって送信されたNM_CUSTOMDRAW(ツリービュー)通知メッセージ固有の情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMTVDISPINFO.htm">$tagNMTVDISPINFO</a></td>
+<td>ツリービューのアイテム用の表示情報を受け取り、格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMTVGETINFOTIP.htm">$tagNMTVGETINFOTIP</a></td>
+<td>アイテムのツールチップを表示するのに必要なツリービューアイテムの情報を受け取り、格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagNMTVKEYDOWN.htm">$tagNMTVKEYDOWN</a></td>
+<td>ツリービューコントロールでのキーボードイベントの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagOPENFILENAME.htm">$tagOPENFILENAME</a></td>
+<td>GetOpenFileName関数とGetSaveFileName関数がOpenダイアログボックス、Save Asダイアログボックスを初期化するのに使用する情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagOVERLAPPED.htm">$tagOVERLAPPED</a></td>
+<td>非同期(またはオーバーラップする)入力、出力(I/O)で使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagPOINT.htm">$tagPOINT</a></td>
+<td>点のx、y座標を定義します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagPROCESS_INFORMATION.htm">$tagPROCESS_INFORMATION</a></td>
+<td>新しく作成されたプロセスとその主スレッドの情報を格納します<br></td>
+</tr>
+<tr>
+<td><a href="$tagREBARBANDINFO.htm">$tagREBARBANDINFO</a></td>
+<td>ComboBoxExコントロール内のアイテムの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagRECT.htm">$tagRECT</a></td>
+<td>長方形の左上隅、右下隅の座標を定義します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagSCROLLBARINFO.htm">$tagSCROLLBARINFO</a></td>
+<td>スクロールバーの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagSCROLLINFO.htm">$tagSCROLLINFO</a></td>
+<td>$SBM_SETSCROLLINFOメッセージによって設定、または$SBM_GETSCROLLINFOメッセージによって取得されるスクロールバーパラメータを格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagSECURITY_ATTRIBUTES.htm">$tagSECURITY_ATTRIBUTES</a></td>
+<td>オブジェクト用のセキュリティ記述子を格納し、この構造体によって指定されたハンドルが継承可能かを指定します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagSIZE.htm">$tagSIZE</a></td>
+<td>整数のペアを保持します。通常は長方形の幅と高さです。<br></td>
+</tr>
+<tr>
+<td><a href="$tagSTARTUPINFO.htm">$tagSTARTUPINFO</a></td>
+<td>プロセスのメインウィンドウ作成時にそのウィンドウステーション、デスクトップ、標準ハンドル、外観を指定します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagSYSTEMTIME.htm">$tagSYSTEMTIME</a></td>
+<td>世界協定時刻(UTC)での日付けと時間を指定します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagTBBUTTON.htm">$tagTBBUTTON</a></td>
+<td>ツールバーのボタンの情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagTBBUTTONINFO.htm">$tagTBBUTTONINFO</a></td>
+<td>ツールバーのボタンの固有情報を受け取り、格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagTIME_ZONE_INFORMATION.htm">$tagTIME_ZONE_INFORMATION</a></td>
+<td>タイムゾーンを特定する情報を指定します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagTOKEN_PRIVILEGES.htm">$tagTOKEN_PRIVILEGES</a></td>
+<td>アクセストークンの権限設定の情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagTVHITTESTINFO.htm">$tagTVHITTESTINFO</a></td>
+<td>ツリービューコントロールに対する相対位置を決定するのに使用される情報を格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagTVITEMEX.htm">$tagTVITEMEX</a></td>
+<td>ツリービューのアイテムの属性を受け取り、指定します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagWIN32_FIND_DATA.htm">$tagWIN32_FIND_DATA</a></td>
+<td>ファイル検索の際に見つかったデータを格納します。<br></td>
+</tr>
+<tr>
+<td><a href="$tagWINDOWPLACEMENT.htm">$tagWINDOWPLACEMENT</a></td>
+<td>スクリーン上でのウィンドウ配置の情報を格納したWINDOWPLACEMENT構造体。<br></td>
+</tr>
+<tr>
+<td><a href="$tagWINDOWPOS.htm">$tagWINDOWPOS</a></td>
+<td>ウィンドウのサイズと位置に関する情報を格納したWINDOWPOS構造体です。<br></td>
+</tr>
+</table>
+</body>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ExcelReadCell</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ExcelReadCell</font>
+<hr size="2">
+<p>指定したExcelオブジェクトのアクティブなワークシートから情報を読み取ります。<br></p>
+
+<p class="codeheader">
+#Include &lt;Excel.au3&gt;<br>
+_ExcelReadCell($oExcel, $sRangeOrRow [, $iColumn = 1])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$oExcel</td>
+    <td width="85%">_ExcelBookOpen()か_ExcelBookNew()の呼び出しで開かれているExcelオブジェクト</td>
+  </tr>
+  <tr>
+   <td>$sRangeOrRow</td>
+   <td>A1参照形式での範囲、R1C1参照形式を使用している場合は読み込む位置の整数の行番号</td>
+  </tr>
+  <tr>
+   <td>$iColumn</td>
+   <td><b>[オプション]</b>R1C1参照形式を使用している場合は読み込む列(デフォルトは1)</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">指定したセルのデータが返されます</td>
+  </tr>
+  <tr>
+    <td valign="top">Failure:</td>
+    <td>0を返し@Errorに値を設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>0 - 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - 指定されたオブジェクトが存在しません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - 指定されたパラメータが不正です</td>
+  </tr>
+  <tr>
+    <td valign="top">@extended:</td>
+    <td>0 - 行が有効範囲外です</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - 列が有効範囲外です</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数はセルを１つずつしか読み込めません。指定された読み取り範囲が<br>複数のセルを含む場合、左上のセルの内容が返されます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; ***************************************************************</span><br>
+<span class="S1">; 例 1 - ワークブックを開きオブジェクト識別子を取得。セルを読み込み、保存して閉じる。</span><br>
+<span class="S1">; *****************************************************************</span><br>
+<br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Excel.au3&gt;</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$oExcel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelBookNew</span><span class="S8">()</span><span class="S0"> </span><span class="S1">;;新しいブックを作成して表示</span><br>
+<br>
+<span class="S15">_ExcelWriteCell</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"I Wrote to This Cell"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;セルに書き込み</span><br>
+<span class="S9">$sCellValue</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelReadCell</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"The Cell Value is: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sCellValue</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Exiting"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Press OK to Save File and Exit"</span><span class="S8">)</span><br>
+<span class="S15">_ExcelBookSaveAs</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@TempDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Temp.xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 上書き設定でtempディレクトリに保存</span><br>
+<span class="S15">_ExcelBookClose</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 閉じて終わり</span><br>
+<br>
+<span class="S1">; ***************************************************************</span><br>
+<span class="S1">; 例 2 - ワークブックを開きオブジェクト識別子取得後、ループを使ってセルに書き込む。セルを読み込み、保存して閉じる。</span><br>
+<span class="S1">; *****************************************************************</span><br>
+<br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Excel.au3&gt;</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$oExcel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelBookNew</span><span class="S8">()</span><span class="S0"> </span><span class="S1">;新しいブックを作成して表示</span><br>
+<br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$i</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">5</span><span class="S0"> </span><span class="S1">;Loop</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_ExcelWriteCell</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;セルに書き込み</span><br>
+<span class="S5">Next</span><br>
+<br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$i</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">5</span><span class="S0"> </span><span class="S1">;Loop</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sCellValue</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelReadCell</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"The Cell Value is: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sCellValue</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<span class="S5">Next</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Exiting"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Press OK to Save File and Exit"</span><span class="S8">)</span><br>
+<span class="S15">_ExcelBookSaveAs</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@TempDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Temp.xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 上書き設定でtempディレクトリに保存</span><br>
+<span class="S15">_ExcelBookClose</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 閉じて終わり</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ExcelReadCell.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_CreateFont</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_CreateFont</font>
+<hr size="2">
+<p>指定された特性で論理フォントを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_CreateFont($nHeight, $nWidth[, $nEscape = 0 [, $nOrientn = 0 [, $fnWeight = $FW_NORMAL [, $bItalic = False[, $bUnderline = False [, $bStrikeout = False [, $nCharset = $DEFAULT_CHARSET [, $nOutputPrec = $OUT_DEFAULT_PRECIS [, $nClipPrec = $CLIP_DEFAULT_PRECIS [, $nQuality = $DEFAULT_QUALITY [, $nPitch = 0 [, $szFace = 'Arial']]]]]]]]]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$nHeight</td>
+    <td width="85%">フォントの高さ</td>
+  </tr>
+  <tr>
+   <td>$nWidth</td>
+   <td>文字の平均幅</td>
+  </tr>
+  <tr>
+   <td>$nEscape</td>
+   <td><b>[オプション]</b>文字送りの角度</td>
+  </tr>
+  <tr>
+   <td>$nOrientn</td>
+   <td><b>[オプション]</b>ベースライン方向の角度</td>
+  </tr>
+  <tr>
+   <td>$fnWeight</td>
+   <td><b>[オプション]</b>フォントの太さ。簡単のために次の値が定義されています:<br>
+       $FW_DONTCARE - 0<br>
+       $FW_THIN - 100<br>
+       $FW_EXTRALIGHT - 200<br>
+       $FW_LIGHT - 300<br>
+       $FW_NORMAL - 400<br>
+       $FW_MEDIUM - 500<br>
+       $FW_SEMIBOLD - 600<br>
+       $FW_BOLD - 700<br>
+       $FW_EXTRABOLD - 800<br>
+       $FW_HEAVY - 900</td>
+  </tr>
+  <tr>
+   <td>$bItalic</td>
+   <td><b>[オプション]</b>イタリック体属性オプション</td>
+  </tr>
+  <tr>
+   <td>$bUnderline</td>
+   <td><b>[オプション]</b>下線属性オプション</td>
+  </tr>
+  <tr>
+   <td>$bStrikeout</td>
+   <td><b>[オプション]</b>取り消し線属性オプション</td>
+  </tr>
+  <tr>
+   <td>$nCharset</td>
+   <td><b>[オプション]</b>文字セットを指定します。次の値が定義済みです:<br>
+       $ANSI_CHARSET - 0<br>
+       $BALTIC_CHARSET - 186<br>
+       $CHINESEBIG5_CHARSET - 136<br>
+       $DEFAULT_CHARSET - 1<br>
+       $EASTEUROPE_CHARSET - 238<br>
+       $GB2312_CHARSET - 134<br>
+       $GREEK_CHARSET - 161<br>
+       $HANGEUL_CHARSET - 129<br>
+       $MAC_CHARSET - 77<br>
+       $OEM_CHARSET - 255<br>
+       $RUSSIAN_CHARSET - 204<br>
+       $SHIFTJIS_CHARSET - 128<br>
+       $SYMBOL_CHARSET - 2<br>
+       $TURKISH_CHARSET - 162<br>
+       $VIETNAMESE_CHARSET - 163</td>
+  </tr>
+  <tr>
+   <td>$nOutputPrec</td>
+   <td><b>[オプション]</b>出力精度を指定します。次の値のいずれかです:<br>
+       $OUT_CHARACTER_PRECIS - 使用されません<br>
+       $OUT_DEFAULT_PRECIS - デフォルトのフォントマッパー処理を指定します<br>
+       $OUT_DEVICE_PRECIS - システムに同じ名前のフォントが複数ある場合、フォントマッパーにデバイスフォントを選択するよう指示します<br>
+       $OUT_OUTLINE_PRECIS - Windows NT/2000/XP: フォントマッパーにTrueTypeやその他のアウトラインベースフォントを選択するよう指示します<br>
+       $OUT_PS_ONLY_PRECIS - Windows 2000/XP: フォントマッパーにPostScriptフォントのみを選択するよう指示します。<br>
+       システムにPostScriptフォントがインストールされていない場合、フォントマッパーはデフォルトの処理を返します<br>
+       $OUT_RASTER_PRECIS - システムに同じ名前のフォントが複数ある場合、フォントマッパーにラスタフォントを選択するよう指示します<br>
+       $OUT_STRING_PRECIS - この値はフォントマッパーに使用されません。ただしラスタフォントが列挙された場合に返されます<br>
+       $OUT_STROKE_PRECIS - Windows NT/2000/XP: この値はフォントマッパーに使用されません。<br>
+	   ただしTrueType、その他のアウトラインベースフォント、ベクターフォントがが列挙された場合に返されます<br>
+       $OUT_TT_ONLY_PRECIS - フォントマッパーにTrueTypeフォントのみを選択するよう指示します。<br>
+	    システムにTrueTypeフォントがインストールされていない場合、フォントマッパーはデフォルトの処理を返します<br>
+       $OUT_TT_PRECIS - システムに同じ名前のフォントが複数ある場合、フォントマッパーにTrueTypeフォントを選択するよう指示します</td>
+  </tr>
+  <tr>
+   <td>$nClipPrec</td>
+   <td><b>[オプション]</b>クリッピング精度を指定します。次の値の組み合わせです:<br>
+       $CLIP_CHARACTER_PRECIS - 使用されません<br>
+       $CLIP_DEFAULT_PRECIS - デフォルトのクリッピング処理を指定します<br>
+       $CLIP_EMBEDDED - 埋め込みの読み取り専用フォントを使用するためにこのフラグを指定します<br>
+       $CLIP_LH_ANGLES - この値が使用された場合、全てのフォントの回転は座標系の方向が左手系か右手系かに依存します。<br>
+	   使用しない場合、デバイスフォントは常に反時計回りに回転し、その他のフォントの回転は座標系の方向に依存するようになります。<br>
+       $CLIP_MASK - 使用されません<br>
+       $CLIP_STROKE_PRECIS - フォントマッパーには使用されません。ただしラスタフォント、ベクターフォント、TrueTypeフォントが列挙された場合に返されます<br>
+       Windows NT/2000/XP: 互換性のためにこの値はフォントの列挙時に常に返されます<br>
+       $CLIP_TT_ALWAYS - 使用されません</td>
+  </tr>
+  <tr>
+   <td>$nQuality</td>
+   <td><b>[オプション]</b>出力品質を指定します。次の値のいずれかです:<br>
+       $ANTIALIASED_QUALITY - Windows NT 4.0以降: フォントがアンチエイリアスをサポートしており、フォントサイズが小さすぎたり大きすぎる場合、フォントはアンチエイリアス、スムージングされます<br>
+       Windows 95 with Plus!、 Windows 98/Me: 
+	   ディスプレイは8ビット色以上で、
+	   単一平面デバイスでなくてはなりません。
+	   またパレットディスプレイであってはならず、
+	   複数ディスプレイモニタの設定になっていてはなりません。<br>
+	   さらにDIBSectionで使用するよりも前にスクリーンDCでそのTrueType フォントを選択しておかなければなりません。
+	   以上の条件が満たされていなければアンチエイリアスはおこなわれません。<br>
+       $DEFAULT_QUALITY - フォントの見栄えは考慮されません<br>
+       $DRAFT_QUALITY - フォントの見栄えはPROOF_QUALITY値が使用された場合に比べ考慮されません。<br>
+	   GDIラスタフォントでスケーリングが有効な場合、より多くのフォントサイズが利用可能ですが品質は下がります。<br>
+	   必要な場合、太文字、イタリック、下線、取り消し線が合成されます。<br>
+       $NONANTIALIASED_QUALITY - Windows 95 with Plus!、Windows 98/Me、Windows NT 4.0以降: フォントはアンチエイリアスされず、フォントのスムージングはおこなわれません。<br>
+       $PROOF_QUALITY - フォントの文字品質が論理フォント属性の完全一致よりも重視されます。<br>
+       GDIラスタフォントではスケーリングが無効になり選択されたサイズにもっとも近いフォントが選択されます。<br>
+	   PROOF_QUALITYが使用された場合、選ばれるフォントのサイズは正確には一致しませんがフォントの品質は高く、表示のゆがみははありません。<br>
+	   必要な場合、太文字、イタリック、下線、取り消し線が合成されます。</td>
+  </tr>
+  <tr>
+   <td>$nPitch</td>
+   <td><b>[オプション]</b>フォントのピッチとファミリーを指定します。下位2ビットでフォントのピッチを指定し、次の値のいずれかです:<br>
+       $DEFAULT_PITCH、$FIXED_PITCH、$VARIABLE_PITCH<br>
+       上位4ビットでフォントファミリーを指定し、次の値のいずれかです:<br>
+       $FF_DECORATIVE - 飾付きフォントです。Old Englishなどがあります。<br>
+       $FF_DONTCARE - デフォルトフォントを使用します。<br>
+       $FF_MODERN - 固定ストローク幅を持つ、セリフ付きまたはセリフなしのフォントです。Pica、Elite、Courier Newなどがあります。<br>
+       $FF_ROMAN - 可変ストローク幅を持つセリフ付きフォントです。MS Serifなどがあります。<br>
+       $FF_SCRIPT -  	手書き風のフォントです。Script、Cursiveなどがあります。<br>
+       $FF_SWISS -  	可変ストローク幅を持つセリフなしフォントです。MS Sans Serifなどがあります。</td>
+  </tr>
+  <tr>
+   <td>$szFace</td>
+   <td><b>[オプション]</b>書体名</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">論理フォントのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+フォントが必要なくなった際は_WinAPI_DeleteObjectを呼んで削除してください。<br>
+定義済み定数用にFontConstants.au3が必要です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CreateFont">CreateFont</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;FontConstants.au3&gt;</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$tRECT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hFont</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hOldFont</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hDC</span><br>
+<br>
+<span class="S4">HotKeySet</span><span class="S8">(</span><span class="S7">"</span><span class="S10">{ESC}</span><span class="S7">"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_Exit"</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$tRECT</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S9">$tagRect</span><span class="S8">)</span><br>
+<span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRECT</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Left"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">)</span><br>
+<span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRECT</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Top"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">)</span><br>
+<span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRECT</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Right"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">250</span><span class="S8">)</span><br>
+<span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRECT</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Bottom"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">50</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$hDC</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetDC</span><span class="S8">(</span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S9">$hFont</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreateFont</span><span class="S8">(</span><span class="S3">50</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$DEFAULT_CHARSET</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$OUT_DEFAULT_PRECIS</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$CLIP_DEFAULT_PRECIS</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$DEFAULT_QUALITY</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">'Arial'</span><span class="S8">)</span><br>
+<span class="S9">$hOldFont</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_SelectObject</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hFont</span><span class="S8">)</span><br>
+<br>
+<span class="S15">_WinAPI_SetTextColor</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x0000FF</span><span class="S8">)</span><br>
+<span class="S15">_WinAPI_SetBkColor</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x000000</span><span class="S8">)</span><br>
+<span class="S1">; 次の行をコメント化すると背景色が透過色から黒色になる</span><br>
+<span class="S15">_WinAPI_SetBkMode</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TRANSPARENT</span><span class="S8">)</span><br>
+<br>
+<span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_DrawText</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Hello world!"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tRECT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$DT_CENTER</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Sleep</span><span class="S8">(</span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S5">WEnd</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Exit</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_SelectObject</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hOldFont</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_DeleteObject</span><span class="S8">(</span><span class="S9">$hFont</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_ReleaseDC</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hDC</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_InvalidateRect</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tRECT</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Exit</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WinAPI_CreateFont.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

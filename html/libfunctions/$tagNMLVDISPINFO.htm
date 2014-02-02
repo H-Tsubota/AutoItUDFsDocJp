@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagNMLVDISPINFO</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagNMLVDISPINFO</font>
+<hr size="2">
+<p>$LVN_GETDISPINFOまたは$LVN_SETDISPINFO通知メッセージの情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagNMLVDISPINFO = $tagNMHDR & ";int Mask;int Item;int SubItem;int State;int StateMask;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "ptr Text;int TextMax;int Image;int Param;int Indent;int GroupID;int Columns;ptr pColumns"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$tagNMHDR</td>
+    <td width="85%">通知メッセージの情報を格納します</td>
+  </tr>
+  <tr>
+   <td>Mask</td>
+   <td>この構造体のどのメンバーが設定データを保持しているか、あるいは要求されているかを指定するフラグのセット。
+   このメンバーは次のフラグのうちの1つまたは組み合わせです:<br>
+       $LVIF_COLUMNS - Columnsが有効です<br>
+       $LVIF_DI_SETITEM - オペレーティングシステムがアイテム情報の要求リストを保持しています<br>
+       $LVIF_GROUPID - GroupIDが有効です<br>
+       $LVIF_IMAGE - Imageが有効です<br>
+       $LVIF_INDENT - Indentが有効です<br>
+       $LVIF_NORECOMPUTE - このコントロールはテキスト情報を取得するためのLVN_GETDISPINFOを発生しません<br>
+       $LVIF_PARAM - Paramが有効です<br>
+       $LVIF_STATE - Stateが有効です<br>
+       $LVIF_TEXT - Textが有効です</td>
+  </tr>
+  <tr>
+   <td>Item</td>
+   <td>この構造体が参照するアイテムのゼロ始まりのインデックス</td>
+  </tr>
+  <tr>
+   <td>SubItem</td>
+   <td>この構造体が参照するサブアイテムの1始まりのインデックス</td>
+  </tr>
+  <tr>
+   <td>State</td>
+   <td>アイテムの状態、状態画像、オーバーレイ画像を表します</td>
+  </tr>
+  <tr>
+   <td>StateMask</td>
+   <td>Stateのどのビットが取得、変更されるかを指定する値</td>
+  </tr>
+  <tr>
+   <td>Text</td>
+   <td>アイテムテキストを格納している文字列へのポインタ</td>
+  </tr>
+  <tr>
+   <td>TextMax</td>
+   <td>Textによって指されるバッファの文字列終了文字を含むバイト数</td>
+  </tr>
+  <tr>
+   <td>Image</td>
+   <td>コントロールの画像リストにあるアイテムアイコンのインデックス</td>
+  </tr>
+  <tr>
+   <td>Param</td>
+   <td>アイテム固有の値</td>
+  </tr>
+  <tr>
+   <td>Indent</td>
+   <td>アイテムのインデントの画像幅数</td>
+  </tr>
+  <tr>
+   <td>GroupID</td>
+   <td>アイテムを受け取るタイルビューグループの識別子</td>
+  </tr>
+  <tr>
+   <td>Columns</td>
+   <td>このアイテムを表示するためのタイルビューの列数</td>
+  </tr>
+  <tr>
+   <td>pColumns</td>
+   <td>列インデックス配列へのポインタ</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

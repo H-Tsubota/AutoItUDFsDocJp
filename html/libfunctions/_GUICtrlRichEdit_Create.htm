@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlRichEdit_Create</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlRichEdit_Create</font>
+<hr size="2">
+<p>エディットコントロールを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiRichEdit.au3&gt;<br>
+_GUICtrlRichEdit_Create($hWnd, $sText, $iLeft, $iTop[, $iWidth = 150[, $iHeight = 150[, $iStyle = -1[, $iExStyle = -1]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">親ウィンドウまたはオーナーウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$sText</td>
+   <td>コントロールに表示されるテキスト</td>
+  </tr>
+  <tr>
+   <td>$iLeft</td>
+   <td>コントロールの水平位置</td>
+  </tr>
+  <tr>
+   <td>$iTop</td>
+   <td>コントロールの垂直位置</td>
+  </tr>
+  <tr>
+   <td>$iWidth</td>
+   <td>	<b>[オプション]</b> コントロールの幅</td>
+  </tr>
+  <tr>
+   <td>$iHeight</td>
+   <td>	<b>[オプション]</b> コントロールの高さ</td>
+  </tr>
+  <tr>
+   <td>$iStyle</td>
+   <td>	<b>[オプション]</b> コントロールのスタイル:<br>
+		$ES_AUTOHSCROLL - ユーザーが行末に文字を入力する際に10文字毎に自動的にテキストを右にスクロールします。<br>
+		$ES_AUTOVSCROLL - ユーザーが行末でENTERキーを押した際に自動的にテキストを1ページ上にスクロールします。<br>
+		$WS_HSCROLL - コントロールに水平スクロールバーを設定します。<br>
+		$WS_VSCROLL - コントロールに垂直水平スクロールバーを設定します。<br>
+		$ES_CENTER - エディットコントロール内のテキストを中央揃えにします。<br>
+		$ES_LEFT - テキストを左余白に揃えます。<br>
+		$ES_MULTILINE - 複数行のコントロールを作成します(デフォルト)。<br>
+		$ES_NOHIDESEL - コントロールにフォーカスが合っていない場合でも選択されたテキストを反転します。<br>
+		$ES_NUMBER - エディットコントロールに数値のみ入力できるようにします。<br>
+		$ES_READONLY - ユーザーがエディットコントロール内でテキストを編集したり、入力できないようにします。<br>
+		$ES_RIGHT - エディットコントロールのテキストを右揃えにします。
+		$ES_WANTRETURN - ユーザーがENTERキーを押した際キャリッジリターンが挿入されるように指定します(デフォルト)。<br>
+		$ES_PASSWORD - エディットコントロールに入力された各文字としてアスタリスク(*)を表示します。</td>
+  </tr>
+  <tr>
+   <td></td>
+   <td>Default: 0<br>
+       強制 : WS_CHILD, $WS_VISIBLE, $ES_READONLYでない場合$WS_TABSTOP()</td>
+  </tr>
+  <tr>
+   <td>$iExStyle</td>
+   <td>	<b>[オプション]</b> コントロールの拡張スタイル。標準の$WS_EX_ 定数と対応します。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">リッチエディットコントロールのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し、@errorを設定します:</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>103 - $iLeftが正の数でもゼロでもありません。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>104 - $iTopが正の数でもゼロでもありません。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>105 - $iWidthが正の数でも-1でもありません。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>106 - $iHeightが正の数でも-1でもありません。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>107 - $iStyleが正の数でもゼロでも-1でもありません。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>108 - $iExStyleが正の数でもゼロでも-1でもありません。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+スクリプトを終了する前に<b>必ず</b>_GUICtrlRichEdit_Destroy()を呼ばなければなりません。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlRichEdit_Destroy.htm">_GUICtrlRichEdit_Destroy</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_Au3Check_Parameters= -d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiRichEdit.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<br>
+<span class="S0">Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGui</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hRichEdit</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iMsg</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGui</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Example ("</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">StringTrimRight</span><span class="S8">(</span><span class="S6">@ScriptName</span><span class="S8">,</span><span class="S3">4</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S7">")"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">320</span><span class="S8">,</span><span class="S0"> </span><span class="S3">350</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hRichEdit</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlRichEdit_Create</span><span class="S8">(</span><span class="S9">$hGui</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"This is a test."</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">,</span><span class="S0"> </span><span class="S3">220</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$ES_MULTILINE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_VSCROLL</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ES_AUTOVSCROLL</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlRichEdit_AppendText</span><span class="S8">(</span><span class="S9">$hRichEdit</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@CR</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"This is more text"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">While</span><span class="S0"> </span><span class="S5">True</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$iMsg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Select</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$iMsg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">GUIDelete</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSelect</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">WEnd</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;Main</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlRichEdit_Create.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

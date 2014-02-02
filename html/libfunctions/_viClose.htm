@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _viClose</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_viClose</font>
+<hr size="2">
+<p>計測器/デバイスへのVISAコネクションを閉じます。<br></p>
+
+<p class="codeheader">
+#include &lt;Visa.au3&gt;<br>
+_viClose ( $h_session )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$h_session</td>
+    <td width="85%">VISAセッションハンドル(_viOpenによって返されます)</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">0を返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>VISA DLLが開けない場合-1を、それ以外の場合VISAエラーコード(VISAプログラミングガイドを参照)を表す非ゼロの値を返します。</td>
+  </tr>
+</table>エラー時にはこの関数は常に@errorを1に設定します。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+全てのVISA関数において使用のためにはVISAライブラリ({WINDOWS}\system32内にvisa32.dllがあるかどうかによって確認できます)とGPIBカード(National Instruments NI PCI-GPIB カードやAgilent 82350B PCI High-Performance GPIB カードなど)がインストールされている必要があります。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_viExecCommand.htm">_viExecCommand</a>, <a href="_viFindGpib.htm">_viFindGpib</a>, <a href="_viGpibBusReset.htm">_viGpibBusReset</a>, <a href="_viGTL.htm">_viGTL</a>, <a href="_viOpen.htm">_viOpen</a>, <a href="_viSetAttribute.htm">_viSetAttribute</a>, <a href="_viSetTimeout.htm">_viSetTimeout</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">;- GPIBアドレス1に設定された計測器を扱うとする</span><br>
+<span class="S1">; どのように_viExecCommand関数をスタンドアローンモードで_viOpen、_viCloseと組み合わせて使用するかを示す</span><br>
+<span class="S1">; また_viGTL関数も示す</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Visa.au3&gt;</span><br>
+<br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$h_session</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><br>
+<br>
+<span class="S1">; GPIBアドレス3で計測器のIDを要求</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"Step 1"</span><span class="S8">,</span><span class="S7">"Open the instrument connection with _viOpen"</span><span class="S8">)</span><br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$h_instr</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_viOpen</span><span class="S8">(</span><span class="S7">"GPIB::3::0"</span><span class="S8">)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"Instrument Handle obtained"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$h_instr = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$h_instr</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; セッションハンドルを表示</span><br>
+<span class="S1">; 計測器の要求</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"Step 2"</span><span class="S8">,</span><span class="S7">"Query the instrument using the VISA instrument handle"</span><span class="S8">)</span><br>
+<span class="S9">$s_answer</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_viExecCommand</span><span class="S8">(</span><span class="S9">$h_instr</span><span class="S8">,</span><span class="S7">"*IDN?"</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; $h_instrは現在、文字列ではない!</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"GPIB QUERY result"</span><span class="S8">,</span><span class="S9">$s_answer</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 回答を表示</span><br>
+<span class="S1">; 再要求。リンクを再び開ける必要は無い</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"Step 3"</span><span class="S8">,</span><span class="S7">"Query again. There is no need to OPEN the link again"</span><span class="S8">)</span><br>
+<span class="S9">$s_answer</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_viExecCommand</span><span class="S8">(</span><span class="S9">$h_instr</span><span class="S8">,</span><span class="S7">"*IDN?"</span><span class="S8">)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"GPIB QUERY result"</span><span class="S8">,</span><span class="S9">$s_answer</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 回答を表示</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"Step 4"</span><span class="S8">,</span><span class="S7">"Close the instrument connection using _viClose"</span><span class="S8">)</span><br>
+<span class="S15">_viClose</span><span class="S8">(</span><span class="S9">$h_instr</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 計測器コネクションを閉じる</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_viClose.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

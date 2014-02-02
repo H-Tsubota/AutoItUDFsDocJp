@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ArrayMax</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ArrayMax</font>
+<hr size="2">
+<p>配列の保持するもっとも大きい値を返します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Array.au3&gt;<br>
+_ArrayMax(Const ByRef $avArray [, $iCompNumeric = 0 [, $iStart = 0 [, $iEnd = 0]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$avArray</td>
+    <td width="85%">検索する配列</td>
+  </tr>
+  <tr>
+   <td>$iCompNumeric</td>
+   <td><b>[オプション]</b> 比較方法<br>
+       0 - 英数字として比較<br>
+       1 - 数値として比較</td>
+  </tr>
+  <tr>
+   <td>$iStart</td>
+   <td><b>[オプション]</b> 配列の検索開始インデックス</td>
+  </tr>
+  <tr>
+   <td>$iEnd</td>
+   <td><b>[オプション]</b> 配列の検索終了インデックス</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">配列内の最大値</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>""。@errorを設定 (エラーコードについては_ArrayMaxIndex()の説明を参照)</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_ArrayMaxIndex.htm">_ArrayMaxIndex</a>, <a href="_ArrayMin.htm">_ArrayMin</a>, <a href="_ArrayMinIndex.htm">_ArrayMinIndex</a>, <a href="_ArrayUnique.htm">_ArrayUnique</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Array.au3&gt;</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$avArray</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">StringSplit</span><span class="S8">(</span><span class="S7">"4,2,06,8,12,5"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">","</span><span class="S8">)</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">'Max String value'</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_ArrayMax</span><span class="S8">(</span><span class="S9">$avArray</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">))</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">'Max Numeric value'</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_ArrayMax</span><span class="S8">(</span><span class="S9">$avArray</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">))</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ArrayMax.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

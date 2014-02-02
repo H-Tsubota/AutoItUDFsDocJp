@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _SQLite_QuerySingleRow</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_SQLite_QuerySingleRow</font>
+<hr size="2">
+<p>指定されたクエリから結果の1行目を読み出します。<br></p>
+
+<p class="codeheader">
+#include &lt;SQLite.au3&gt;<br>
+_SQLite_QuerySingleRow ( $hDB, $sSQL, ByRef $aRow )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hDB</td>
+    <td width="85%">開かれているデータベース。最後に開かれたデータベースを使用する場合-1を使用</td>
+  </tr>
+  <tr>
+   <td>$sSQL</td>
+   <td>実行されるSQLステートメント</td>
+  </tr>
+  <tr>
+   <td>$aRow</td>
+   <td>'データ'行数が渡されます</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">$SQLITE_OKを返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>$SQLITE_* 定数と比較可能な値を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>-1 - SQLiteがエラーを報告 (返し値を調べてください)</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - _SQLite_Queryの呼び出しエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - SafeModeによって呼び出しが阻止されました</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+	<td>3 - _SQLite_FetchDataの呼び出しエラー</td>
+  </tr>
+   <tr>
+    <td valign="top"></td>
+    <td>4 - _SQLite_QueryFinalizeの呼び出しエラー</td>
+  </tr> 
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_SQLite_Query.htm">_SQLite_Query</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;SQLite.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;SQLite.dll.au3&gt;</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$aRow</span><br>
+<span class="S15">_SQLite_Startup</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"_SQLite_LibVersion="</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S15">_SQLite_LibVersion</span><span class="S8">()</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Open</span><span class="S0"> </span><span class="S8">()</span><span class="S0"> </span><span class="S1">; :メモリ: データベースを開く</span><br>
+<span class="S15">_SQLite_Exec</span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S7">"CREATE TEMP TABLE settings (key,value);"</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Exec</span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S7">"INSERT INTO settings (key,value) VALUES ('1','setting one');"</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Exec</span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S7">"INSERT INTO settings (key,value) VALUES ('2','setting two');"</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Exec</span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S7">"INSERT INTO settings (key,value) VALUES ('3','setting Three');"</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Exec</span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S7">"INSERT INTO settings (key,value) VALUES ('4','setting Four');"</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_QuerySingleRow</span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S7">"SELECT value FROM settings WHERE key = '2' LIMIT 1;"</span><span class="S8">,</span><span class="S9">$aRow</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 1行、1フィールドを選択!</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"setting two:"</span><span class="S8">,</span><span class="S9">$aRow</span><span class="S8">[</span><span class="S3">0</span><span class="S8">])</span><br>
+<span class="S15">_SQLite_Close</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S15">_SQLite_Shutdown</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_SQLite_QuerySingleRow.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

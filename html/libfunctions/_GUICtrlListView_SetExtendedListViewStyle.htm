@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlListView_SetExtendedListViewStyle</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlListView_SetExtendedListViewStyle</font>
+<hr size="2">
+<p>拡張スタイルを設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiListView.au3&gt;<br>
+_GUICtrlListView_SetExtendedListViewStyle($hWnd, $iExStyle[, $iExMask = 0])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iExStyle</td>
+   <td>コントロールの拡張スタイル:<br>
+       $LVS_EX_BORDERSELECT - アイテムが選択された際にアイテムの枠の色が変わります。<br>
+       $LVS_EX_CHECKBOXES - リストビューコントロールのアイテムのチェックボックスを有効にします。<br>
+       $LVS_EX_DOUBLEBUFFER - ちらつきを抑えるためにダブルバッファで描画をおこないます。<br>
+       $LVS_EX_FLATSB - リストビューの平らなスクロールバーを有効にします。<br>
+       $LVS_EX_FULLROWSELECT - アイテムが選択された際にアイテムとその全てのサブアイテムをハイライトします。<br>
+       $LVS_EX_GRIDLINES - アイテムとサブアイテムの周りにグリッド線を表示します。<br>
+       $LVS_EX_HEADERDRAGDROP - ドラッグ&amp;ドロップによる列の順序変更を有効にします。<br>
+       $LVS_EX_INFOTIP - ツールチップ表示前に$LVN_GETINFOTIP通知メッセージが送信されます。<br>
+       $LVS_EX_LABELTIP - 設定されていない場合、ラージアイコンモードでのみ部分的に非表示のラベルの展開をおこないます。<br>
+       $LVS_EX_MULTIWORKAREAS - 1つ以上の作業領域が定義されるまでコントロールはアイコンの自動整列をおこないません。<br>
+       $LVS_EX_ONECLICKACTIVATE - ユーザーがアイテムをクリックした際にコントロールは$LVN_ITEMACTIVATEメッセージを送信します。<br>
+       $LVS_EX_REGIONAL - アイテムのアイコンとテキストのみを含むコントロール領域を設定します。<br>
+       $LVS_EX_SIMPLESELECT - アイコン表示でコントロールの状態画像を右上に移動します。<br>
+       $LVS_EX_SUBITEMIMAGES - サブアイテムへの画像表示を許可します。<br>
+       $LVS_EX_TRACKSELECT - コントロールでのホットトラック選択を有効にします。<br>
+       $LVS_EX_TWOCLICKACTIVATE - ユーザーがアイテムをダブルクリックした際にコントロールは$LVN_ITEMACTIVATEメッセージを送信します。<br>
+       $LVS_EX_UNDERLINECOLD - アクティブ化されたホットでないアイテムのテキストに下線を表示します。<br>
+       $LVS_EX_UNDERLINEHOT - アクティブ化されたホットアイテムのテキストに下線を表示します。</td>
+  </tr>
+  <tr>
+   <td>$iExMask</td>
+   <td><b>[オプション]</b>
+	$iExStyleのどのスタイルが変更されるかを指定します。<br>
+	このパラメータは拡張スタイルの組み合わせです。<br>
+	$iExMask内の拡張スタイルのみ変更され、他のスタイルは維持されます。<br>
+	このパラメータがゼロの場合、$iExStyle内の全てのスタイルが変更されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+以前の拡張スタイルを返します。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlListView_GetExtendedListViewStyle.htm">_GUICtrlListView_GetExtendedListViewStyle</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiListView.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiImageList.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_LV</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; ListView関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hListView</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUIを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"ListView Set Extended Style"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hListView</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateListView</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">394</span><span class="S8">,</span><span class="S0"> </span><span class="S3">268</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_SetExtendedListViewStyle</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$LVS_EX_FULLROWSELECT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$LVS_EX_SUBITEMIMAGES</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 画像をロード</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hImage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUIImageList_Create</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_Add</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_GUICtrlListView_CreateSolidBitMap</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0xFF0000</span><span class="S8">,</span><span class="S0"> </span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S3">16</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_Add</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_GUICtrlListView_CreateSolidBitMap</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x00FF00</span><span class="S8">,</span><span class="S0"> </span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S3">16</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_Add</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_GUICtrlListView_CreateSolidBitMap</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x0000FF</span><span class="S8">,</span><span class="S0"> </span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S3">16</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_SetImageList</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 列を追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_InsertColumn</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_InsertColumn</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 2"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_InsertColumn</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 3"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; アイテムを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_AddItem</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Row 1: Col 1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_AddSubItem</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Row 1: Col 2"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_AddSubItem</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Row 1: Col 3"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_AddItem</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Row 2: Col 1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_AddSubItem</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Row 2: Col 2"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_AddItem</span><span class="S8">(</span><span class="S9">$hListView</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Row 3: Col 1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIDelete</span><span class="S8">()</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlListView_SetExtendedListViewStyle.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

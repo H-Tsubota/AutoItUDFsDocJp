@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagWINDOWPOS</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagWINDOWPOS</font>
+<hr size="2">
+<p>ウィンドウのサイズと位置に関する情報を格納したWINDOWPOS構造体です。<br></p>
+
+<p class="codeheader">
+Global Const $tagWINDOWPOS = "hwnd hWnd;int InsertAfter;int X;int Y;int CX;int CY;int Flags"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">hWnd</td>
+    <td width="85%">ウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>InsertAfter</td>
+   <td>ウィンドウのZオーダー位置を指定します</td>
+  </tr>
+  <tr>
+   <td>X</td>
+   <td>ウィンドウの左端位置を指定します</td>
+  </tr>
+  <tr>
+   <td>Y</td>
+   <td>ウィンドウの上端位置を指定します</td>
+  </tr>
+  <tr>
+   <td>CX</td>
+   <td>ウィンドウの幅をピクセル単位で指定します</td>
+  </tr>
+  <tr>
+   <td>CY</td>
+   <td>ウィンドウの高さをピクセル単位で指定します</td>
+  </tr>
+  <tr>
+   <td>Flags</td>
+   <td>ウィンドウ位置を指定します。次の値の1つまたは組み合わせです:<br>
+       $SWP_DRAWFRAME - ウィンドウの周りのフレームを描画します<br>
+       $SWP_FRAMECHANGED - ウィンドウサイズが固定されている場合でも、WM_NCCALCSIZEメッセージをウィンドウに送信します<br>
+       $SWP_HIDEWINDOW - ウィンドウを非表示にします<br>
+       $SWP_NOACTIVATE - ウィンドウをアクティブ化できないようにします<br>
+       $SWP_NOCOPYBITS - クライアントエリア内のコンテンツすべてを破棄します<br>
+       $SWP_NOMOVE - 現在の位置を維持します (x,yパラメータは無視されます)<br>
+       $SWP_ NOOWNERZORDER - オーナーウィンドウのZオーダー位置を固定します<br>
+       $SWP_NOREDRAW - 変更を再描画しません<br>
+       $SWP_NOREPOSITION - SWP_NOOWNERZORDERフラグと同じです<br>
+       $SWP_NOSENDCHANGING - ウィンドウのWM_WINDOWPOSCHANGINGメッセージの受信を妨げます<br>
+       $SWP_NOSIZE - 現在のサイズを維持します (cx,cyパラメータは無視されます)<br>
+       $SWP_NOZORDER - 現在のZオーダー位置を維持します (InsertAfterパラメータは無視されます)<br>
+       $SWP_SHOWWINDOW - ウィンドウを表示します</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

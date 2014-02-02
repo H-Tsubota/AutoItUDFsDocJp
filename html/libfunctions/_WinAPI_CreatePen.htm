@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_CreatePen</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_CreatePen</font>
+<hr size="2">
+<p>指定されたスタイル、幅、色の論理ペンを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_CreatePen($iPenStyle, $iWidth, $nColor)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iPenStyle</td>
+    <td width="85%">ペンのスタイルを指定します。次の値のいずれかです:<br>
+       PS_SOLID -  実線のペンです。<br>
+       PS_DASH - 破線のペンです。このスタイルはペン幅が1またはデバイス単位より小さい場合のみ有効です。 <br>
+       PS_DOT - 点線のペンです。このスタイルはペン幅が1またはデバイス単位より小さい場合のみ有効です。<br>
+       PS_DASHDOT - 一点鎖線のペンです。このスタイルはペン幅が1またはデバイス単位より小さい場合のみ有効です。<br>
+       PS_DASHDOTDOT - 二点鎖線のペンです。このスタイルはペン幅が1またはデバイス単位より小さい場合のみ有効です。<br>
+       PS_NULL - 見えないペンです。<br>
+       PS_INSIDEFRAME - 実線のペンです。境界長方形を指定するGDI描画関数でこのペンを使うとペン幅が考慮され、その長方形に完全に収まるように図形が縮小されます。ジオメトリックペンにのみ適用されます。 </td>
+  </tr>
+  <tr>
+   <td>$iWidth</td>
+   <td>ペンの幅を論理単位で指定します。</td>
+  </tr>
+  <tr>
+   <td>$nColor</td>
+   <td>ペンの色(BGR)を指定します。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">論理ペンを識別するためのHPEN値</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+ペンは後でデバイスコンテキストで選択され、線や弧の描画に使用されます。<br>
+アプリケーションで論理ペンを作成後に、SelectObject関数を呼ぶことでペンをデバイスコンテキストに選択できます。<br>
+nWidthパラメータで指定された値がゼロの場合、作成したペンで描画する線の幅は現在の変換に関係なく常に1ピクセルです。<br>
+nWidthパラメータで指定された値が1より大きい場合、fnPenStyleパラメータはPS_NULL、PS_SOLID、PS_INSIDEFRAMEのいずれかでなければなりません。<br>
+ペンが必要なくなった際は_WinAPI_DeleteObjectを呼んで削除してください。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_MoveTo.htm">_WinAPI_MoveTo</a>, <a href="_WinAPI_LineTo.htm">_WinAPI_LineTo</a>, <a href="_WinAPI_SelectObject.htm">_WinAPI_SelectObject</a>, <a href="_WinAPI_DeleteObject.htm">_WinAPI_DeleteObject</a>, <a href="_WinAPI_DrawLine.htm">_WinAPI_DrawLine</a>, <a href="_WinAPI_GetBkMode.htm">_WinAPI_GetBkMode</a>, <a href="_WinAPI_SetBkMode.htm">_WinAPI_SetBkMode</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CreatePen">CreatePen</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<br>
+<span class="S0">ShowCross</span><span class="S8">(</span><span class="S6">@DesktopWidth</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@DesktopHeight</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">20</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0xFF</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3000</span><span class="S8">)</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> ShowCross</span><span class="S8">(</span><span class="S9">$start_x</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_y</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$length</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$color</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$time</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hPen</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$obj_orig</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hDC</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetWindowDC</span><span class="S8">(</span><span class="S3">0</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 全体スクリーン(デスクトップ)のDC</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hPen</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_CreatePen</span><span class="S8">(</span><span class="S9">$PS_SOLID</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$width</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$color</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$obj_orig</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_SelectObject</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hPen</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_DrawLine</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_x</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S9">$length</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_y</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_x</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_y</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 水平方向 左</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_DrawLine</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_x</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$length</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_y</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_x</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_y</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 水平方向 右</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_DrawLine</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_x</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_y</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S9">$length</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_x</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_y</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">5</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 垂直方向 上</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">;&nbsp; &nbsp;_WinAPI_DrawLine($hDC, $start_x, $start_y + $length, $start_x, $start_y + 5) ; 垂直方向 下</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_MoveTo</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_x</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_y</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$length</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_LineTo</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_x</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$start_y</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">5</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Sleep</span><span class="S8">(</span><span class="S9">$time</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 十字画面を指定した秒数だけ表示</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; デスクトップをリフレッシュ(十字を消す)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_RedrawWindow</span><span class="S8">(</span><span class="S15">_WinAPI_GetDesktopWindow</span><span class="S8">(),</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$RDW_INVALIDATE</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$RDW_ALLCHILDREN</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; リソースを削除</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_SelectObject</span><span class="S8">(</span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$obj_orig</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_DeleteObject</span><span class="S8">(</span><span class="S9">$hPen</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_WinAPI_ReleaseDC</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hDC</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;ShowCross</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WinAPI_CreatePen.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

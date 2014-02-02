@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagMENUITEMINFO</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagMENUITEMINFO</font>
+<hr size="2">
+<p>メニューアイテムの情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagMENUITEMINFO = "int Size;int Mask;int Type;int State;int ID;int SubMenu;int BmpChecked;int BmpUnchecked;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "int ItemData;ptr TypeData;int CCH;int BmpItem"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">Size</td>
+    <td width="85%">この構造体のサイズをバイト単位で指定します</td>
+  </tr>
+  <tr>
+   <td>Mask</td>
+   <td>取得、設定されるメンバー。このメンバーは次の値の1つまたは組み合わせです:<br>
+       $MIIM_BITMAP - BmpItemを取得、設定します<br>
+       $MIIM_CHECKMARKS - BmpCheckedとBmpUncheckedを取得、設定します<br>
+       $MIIM_DATA - ItemDataを取得、設定します<br>
+       $MIIM_FTYPE - Typeを取得、設定します<br>
+       $MIIM_ID - IDを取得、設定します<br>
+       $MIIM_STATE - Stateを取得、設定します<br>
+       $MIIM_STRING - TypeDataを取得、設定します<br>
+       $MIIM_SUBMENU - SubMenuを取得、設定します<br>
+       $MIIM_TYPE - TypeとTypeDataを取得、設定します</td>
+  </tr>
+  <tr>
+   <td>Type</td>
+   <td>メニューアイテムの種類。このメンバーは次の値の1つまたは組み合わせです:<br>
+       $MFT_BITMAP - ビットマップを使用するメニューアイテムを表示<br>
+       $MFT_MENUBARBREAK - 新しい行または列にメニューアイテムを配置<br>
+       $MFT_MENUBREAK - 新しい行または列にメニューアイテムを配置<br>
+       $MFT_OWNERDRAW - メニューオーナーへのメニューアイテム描画権限の割り当て<br>
+       $MFT_RADIOCHECK - ラジオボタンマークを使用する選択メニューを表示<br>
+       $MFT_RIGHTJUSTIFY - メニューアイテムとそれ以降のアイテムを右揃えにします<br>
+       $MFT_RIGHTORDER - メニュー順を右から左に指定<br>
+       $MFT_SEPARATOR - メニューアイテムにセパレータを指定</td>
+  </tr>
+  <tr>
+   <td>State</td>
+   <td>メニューアイテム状態。このメンバーは次の値の1つまたは組み合わせです:<br>
+       $MFS_CHECKED - メニューアイテムをチェックします<br>
+       $MFS_DEFAULT - メニューアイテムをデフォルトに指定します<br>
+       $MFS_DISABLED - メニューアイテムを無効にし、選択できないようにグレイアウトします<br>
+       $MFS_ENABLED - メニューアイテムを選択できるように有効にします<br>
+       $MFS_GRAYED - メニューアイテムを無効にし、選択できないようにグレイアウトします<br>
+       $MFS_HILITE - メニューアイテムを強調表示します</td>
+  </tr>
+  <tr>
+   <td>ID</td>
+   <td>メニューアイテムを識別するためのアプリケーション定義の16ビット値</td>
+  </tr>
+  <tr>
+   <td>SubMenu</td>
+   <td>メニューアイテムに関連付けられたサブメニューまたはドロップダウンメニューのハンドル</td>
+  </tr>
+  <tr>
+   <td>BmpChecked</td>
+   <td>選択時にアイテムの隣に表示されるビットマップのハンドル</td>
+  </tr>
+  <tr>
+   <td>BmpUnchecked</td>
+   <td>非選択時にアイテムの隣に表示されるビットマップのハンドル</td>
+  </tr>
+  <tr>
+   <td>ItemData</td>
+   <td>メニューアイテムに関連付けられたアプリケーション定義の値</td>
+  </tr>
+  <tr>
+   <td>TypeData</td>
+   <td>メニューアイテムの内容</td>
+  </tr>
+  <tr>
+   <td>CCH</td>
+   <td>メニューアイテムテキストの長さ</td>
+  </tr>
+  <tr>
+   <td>BmpItem</td>
+   <td>表示されるビットマップのハンドル</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

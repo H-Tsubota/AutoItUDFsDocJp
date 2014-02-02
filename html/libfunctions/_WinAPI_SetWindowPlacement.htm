@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_SetWindowPlacement</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_SetWindowPlacement</font>
+<hr size="2">
+<p>ウィンドウの最小化時、最大化時、通常時の位置を設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_SetWindowPlacement($hWnd, $pWindowPlacement)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$pWindowPlacement</td>
+   <td>$tagWINDOWPLACEMENT構造体へのポインタ</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False, @error = 1, @extended = _WinAPI_GetLastError()</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_GetWindowPlacement.htm">_WinAPI_GetWindowPlacement</a>, <a href="$tagWINDOWPLACEMENT.htm">$tagWINDOWPLACEMENT</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=SetWindowPlacement">SetWindowPlacement</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_Au3Check_Parameters= -d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$hWindow</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sMsg</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$pStruct</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iRET</span><br>
+<br>
+<span class="S1">; 実行に使用するメモ帳のインスタンスを作成</span><br>
+<span class="S4">Run</span><span class="S8">(</span><span class="S7">"notepad.exe"</span><span class="S8">)</span><br>
+<span class="S4">WinWait</span><span class="S8">(</span><span class="S7">"[CLASS:Notepad]"</span><span class="S8">)</span><br>
+<span class="S9">$hWindow</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">WinGetHandle</span><span class="S8">(</span><span class="S7">"[CLASS:Notepad]"</span><span class="S8">)</span><br>
+<span class="S4">WinMove</span><span class="S8">(</span><span class="S9">$hWindow</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">256</span><span class="S8">,</span><span class="S0"> </span><span class="S3">256</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">)</span><br>
+<span class="S4">Sleep</span><span class="S8">(</span><span class="S3">1000</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; 最小化し、_WinAPI_GetWindowPlacement()の返す位置を調べる</span><br>
+<span class="S4">WinSetState</span><span class="S8">(</span><span class="S9">$hWindow</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@SW_MINIMIZE</span><span class="S8">)</span><br>
+<span class="S9">$stRET</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetWindowPlacement</span><span class="S8">(</span><span class="S9">$hWindow</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"$stWindowPlacement:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"length = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"length"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"flags = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"flags"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"showCmd = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"showCmd"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"ptMinPosition:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"MinX = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"ptMinPosition"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"MinY = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"ptMinPosition"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"ptMaxPosition:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"MaxX = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"ptMaxPosition"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"MaxY = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"ptMaxPosition"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"rcNormalPosition:"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"left = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"rcNormalPosition"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"top = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"rcNormalPosition"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"right = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"rcNormalPosition"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sMsg</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"bottom = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"rcNormalPosition"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">4</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">64</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Success"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sMsg</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; _WinAPI_SetWindowPlacement()で通常の長方形を変更、その後復元</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"rcNormalPosition"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">128</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S1">; 左</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"rcNormalPosition"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">128</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><span class="S1">; 上</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"rcNormalPosition"</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@DesktopWidth</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">128</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">)</span><span class="S1">; 右</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"rcNormalPosition"</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@DesktopHeight</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">128</span><span class="S8">,</span><span class="S0"> </span><span class="S3">4</span><span class="S8">)</span><span class="S1">; 下</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$pStruct</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetPtr</span><span class="S8">(</span><span class="S9">$stRET</span><span class="S8">)</span><span class="S1">; 変更された構造体へのポインタを取得</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iRET</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_SetWindowPlacement</span><span class="S8">(</span><span class="S9">$hWindow</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$pStruct</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">WinSetState</span><span class="S8">(</span><span class="S9">$hWindow</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@SW_RESTORE</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">ControlSetText</span><span class="S8">(</span><span class="S9">$hWindow</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Edit1"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_WinAPI_SetWindowPlacement() succeeded!"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_WinAPI_SetWindowPlacement() failed!"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"$iRET = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iRET</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"@error = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"@extended = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@extended</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_WinAPI_GetWindowPlacement() failed!"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"$stRET = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$stRET</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"@error = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"@extended = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@extended</span><span class="S8">)</span><br>
+<span class="S5">EndIf</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WinAPI_SetWindowPlacement.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

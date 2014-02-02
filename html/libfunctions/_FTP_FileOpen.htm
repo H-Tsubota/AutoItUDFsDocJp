@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _FTP_FileOpen</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_FTP_FileOpen</font>
+<hr size="2">
+<p>読み込み、書き込みのためにFTPサーバー上のリモートファイルのアクセスを開始します。<br></p>
+
+<p class="codeheader">
+#Include &lt;FTPEx.au3&gt;<br>
+_FTP_FileOpen($hConnect, $lpszFileName [, $dwAccess = 0x80000000 [, $dwFlags = 2 [, $dwContext = 0]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hConnect</td>
+    <td width="85%">_FTP_Connect()の返し値</td>
+  </tr>
+  <tr>
+   <td>$lpszFileName</td>
+   <td>FTPサーバー上の開くファイルを表す文字列</td>
+  </tr>
+  <tr>
+   <td>$dwAccess</td>
+   <td>	<b>[オプション]</b> ローカル属性(デフォルトは$GENERIC_READ)</td>
+  </tr>
+  <tr>
+   <td>$dwFlags</td>
+   <td>	<b>[オプション]</b> 転送時の環境設定を指定します。アプリケーションはいずれかの転送タイプを選択する必要があり、ファイルをどのようにキャッシングするかを表すいずれかのフラグを指定します。<br>
+       <br/>転送タイプは次の値のいずれか一つ:<br>
+       <b>$FTP_TRANSFER_TYPE_ASCII</b> - FTPのASCII転送メソッド(タイプA)を使用してファイルを転送します。制御、フォーマット情報はローカルと同じものに変換されます。<br>
+       <b>$FTP_TRANSFER_TYPE_BINARY</b> - FTPのイメージ転送メソッド(タイプI)を使用してファイルを転送します。ファイルは変化せず完全に同一なまま転送されます。デフォルトの転送メソッドです。<br>
+       <b>$FTP_TRANSFER_TYPE_UNKNOWN</b> - デフォルトは$FTP_TRANSFER_TYPE_BINARY<br>
+       <b>$INTERNET_FLAG_TRANSFER_ASCII</b> - ASCIIとしてファイルを転送します。<br>
+       <b>$INTERNET_FLAG_TRANSFER_BINARY</b> - バイナリとしてファイルを転送します。<br>
+       <br/>以下はファイルのキャッシュ方法を制御するために使用されます。アプリケーションは1つまたは複数の値を使用できます:<br>
+       <b>$INTERNET_FLAG_HYPERLINK</b> - ネットワークからアイテムをリロードするかどうかを決定する際、 有効期限、最終変更時刻がサーバーから返されなければ強制的にリロードします。<br>
+       <b>$INTERNET_FLAG_NEED_FILE</b> - ファイルをキャッシュできない場合、一時ファイルを作成します。<br>
+       <b>$INTERNET_FLAG_RELOAD</b> - リクエストされたファイル、オブジェクト、ディレクトリリストをキャッシュではなく元サーバーから強制的にダウンロードします。<br>
+       <b>$INTERNET_FLAG_RESYNCHRONIZE</b> - 最後にダウンロードした時際のリソースから変更があった場合、HTTPソースをリロードします。全てのFTPリソース、Gopherリソースががリロードされます。</td>
+  </tr>
+  <tr>
+   <td>$dwContext</td>
+   <td>	<b>[オプション]</b> このサーチと任意のアプリケーションデータを関連付けるアプリケーション定義の値を保持した変数。<br>
+       ステータスコールバック関数を設定するためにアプリケーションが既に_FTP_SetStatusCallback()を呼び終わっている場合のみ使用できます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%"> _FTP_FileRead()での読み込み/書き込み時に使用するFTPファイルのハンドルを返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し、@errorに非ゼロを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_FTP_FileClose.htm">_FTP_FileClose</a>, <a href="_FTP_FileRead.htm">_FTP_FileRead</a>, <a href="_FTP_SetStatusCallback.htm">_FTP_SetStatusCallback</a>, <a href="_FTP_FileGet.htm">_FTP_FileGet</a>, <a href="_FTP_FilePut.htm">_FTP_FilePut</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=FtpOpenFile">FtpOpenFile</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

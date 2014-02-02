@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ExcelBookOpen</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ExcelBookOpen</font>
+<hr size="2">
+<p>既存のワークブックを開き、そのオブジェクトの識別子を返します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Excel.au3&gt;<br>
+_ExcelBookOpen($sFilePath [, $fVisible = 1 [, $fReadOnly = False [, $sPassword = "" [, $sWritePassword = ""]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sFilePath</td>
+    <td width="85%">開くファイルのパスとファイル名</td>
+  </tr>
+  <tr>
+   <td>$fVisible</td>
+   <td><b>[オプション]</b>ワークブックを表示するかどうかのフラグ(0=非表示、1=表示) (デフォルトは1)</td>
+  </tr>
+  <tr>
+   <td>$fReadOnly</td>
+   <td><b>[オプション]</b>ワークブックを読み込み専用で開くかどうかのフラグ(TrueまたはFalse) (デフォルトはFalse)</td>
+  </tr>
+  <tr>
+   <td>$sPassword</td>
+   <td><b>[オプション]</b>ワークブックの読み取り保護に使用されているパスワード。存在する場合のみ(デフォルトはなし)</td>
+  </tr>
+  <tr>
+   <td>$sWritePassword</td>
+   <td><b>[オプション]</b>ワークブックの書き込み保護に使用されているパスワード。存在する場合のみ(デフォルトはなし)</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">新しいオブジェクトの識別子を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@errorに次の値を設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>1 - オブジェクトを作成できません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - ファイルが存在しません</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_ExcelBookAttach.htm">_ExcelBookAttach</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; ***************************************************************</span><br>
+<span class="S1">; 例 1 - 既存のワークブックを開き、オブジェクトの識別子を返す。</span><br>
+<span class="S1">; *****************************************************************</span><br>
+<br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Excel.au3&gt;</span><br>
+<br>
+<span class="S9">$sFilePath1</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S6">@ScriptDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Test1.xls"</span><span class="S0"> </span><span class="S1">;このファイルは既に存在していなければならない</span><br>
+<span class="S9">$oExcel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelBookOpen</span><span class="S8">(</span><span class="S9">$sFilePath1</span><span class="S8">)</span><br>
+<br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error!"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Unable to Create the Excel Object"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">ElseIf</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">2</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error!"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"File does not exist - Shame on you!"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">EndIf</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ExcelBookOpen.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

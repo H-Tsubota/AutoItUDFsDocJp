@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_CreateBitmap</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_CreateBitmap</font>
+<hr size="2">
+<p>指定された幅、高さ、カラーフォーマットでビットマップを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_CreateBitmap($iWidth, $iHeight [, $iPlanes = 1 [, $iBitsPerPel = 1 [, $pBits = 0]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iWidth</td>
+    <td width="85%">ビットマップの幅をピクセル単位で指定します</td>
+  </tr>
+  <tr>
+   <td>$iHeight</td>
+   <td>ビットマップの高さをピクセル単位で指定します</td>
+  </tr>
+  <tr>
+   <td>$iPlanes</td>
+   <td><b>[オプション]</b>デバイスが使っているカラープレーンの数を指定します</td>
+  </tr>
+  <tr>
+   <td>$iBitsPerPel</td>
+   <td><b>[オプション]</b>1 ピクセルの色を識別するのに必要なビット数を指定します</td>
+  </tr>
+  <tr>
+   <td>$pBits</td>
+   <td><b>[オプション]</b>
+   ピクセル長方形の色を設定するのに使用される色データ配列へのポインタ。<br>
+長方形の各スキャンラインは、ワード整列されなければなりません(ワード整列されていないスキャンラインは0埋めされなければなりません)。<br>
+このパラメータが0の場合、新しいビットマップの内容は未定義になります。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">ビットマップのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CreateBitmap">CreateBitmap</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

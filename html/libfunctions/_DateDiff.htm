@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _DateDiff</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_DateDiff</font>
+<hr size="2">
+<p>指定した形式で表現された2つの日付けの間の差を返します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Date.au3&gt;<br>
+_DateDiff($sType, $sStartDate, $sEndDate)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sType</td>
+    <td width="85%">次のいずれか<br>
+       D = 2つの日付けの日数差<br>
+       M = 2つの日付けの月数差<br>
+       Y = 2つの日付けの年数差<br>
+       w = 2つの日付けの週数差<br>
+       h = 2つの日付けの時間差<br>
+       n = 2つの日付けの分数差<br>
+       s = 2つの日付けの秒数差</td>
+  </tr>
+  <tr>
+   <td>$sStartDate</td>
+   <td>"YYYY/MM/DD[ HH:MM:SS]"形式の起点日付け入力</td>
+  </tr>
+  <tr>
+   <td>$sEndDate</td>
+   <td>"YYYY/MM/DD[ HH:MM:SS]"形式の終点日付け入力</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">2つの日付けの間の差</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し、@Errorを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>0 - 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - 無効な$sType</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - 無効な$sStartDate</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 - I無効な$sEndDate</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_DateAdd.htm">_DateAdd</a>, <a href="_DateTimeSplit.htm">_DateTimeSplit</a>, <a href="_DateToDayOfWeek.htm">_DateToDayOfWeek</a>, <a href="_DateToDayOfWeekISO.htm">_DateToDayOfWeekISO</a>, <a href="_DateToDayValue.htm">_DateToDayValue</a>, <a href="_DayValueToDate.htm">_DayValueToDate</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Date.au3&gt;</span><br>
+<br>
+<span class="S1">; EPOCH (1970/01/01 00:00:00)からの秒数を計算 </span><br>
+<span class="S9">$iDateCalc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_DateDiff</span><span class="S8">(</span><span class="S0"> </span><span class="S7">'s'</span><span class="S8">,</span><span class="S7">"1970/01/01 00:00:00"</span><span class="S8">,</span><span class="S15">_NowCalc</span><span class="S8">())</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S0"> </span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Number of seconds since EPOCH: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iDateCalc</span><span class="S0"> </span><span class="S8">)</span><br>
+<br>
+<span class="S1">; 今年の経過時間を計算</span><br>
+<span class="S9">$iDateCalc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_DateDiff</span><span class="S8">(</span><span class="S0"> </span><span class="S7">'h'</span><span class="S8">,</span><span class="S6">@YEAR</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"/01/01 00:00:00"</span><span class="S8">,</span><span class="S15">_NowCalc</span><span class="S8">())</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S0"> </span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Number of Hours this year: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iDateCalc</span><span class="S0"> </span><span class="S8">)</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_DateDiff.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

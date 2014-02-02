@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _SendMessage</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_SendMessage</font>
+<hr size="2">
+<p>一般的に使用されるDLL呼び出しのためのラッパー<br></p>
+
+<p class="codeheader">
+#Include &lt;SendMessage.au3&gt;<br>
+_SendMessage($hWnd, $iMsg [, $wParam = 0 [, $lParam = 0 [, $iReturn = 0 [, $wParamType = "wparam" [, $lParamType = "lparam" [, $sReturnType = "lparam"]]]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウ/コントロール ハンドル</td>
+  </tr>
+  <tr>
+   <td>$iMsg</td>
+   <td>コントロールに送信するメッセージ (番号)</td>
+  </tr>
+  <tr>
+   <td>$wParam</td>
+   <td><b>[オプション]</b>追加のメッセージ固有情報を指定します</td>
+  </tr>
+  <tr>
+   <td>$lParam</td>
+   <td><b>[オプション]</b>追加のメッセージ固有情報を指定します</td>
+  </tr>
+  <tr>
+   <td>$iReturn</td>
+   <td><b>[オプション]</b>何を返すか:<br>
+       0 - DLL呼び出しの返し値<br>
+       1 - $ihWnd<br>
+       2 - $iMsg<br>
+       3 - $wParam<br>
+       4 - $lParam<br>
+       &lt;0 、 &gt;4 - DllCallと同じ配列</td>
+  </tr>
+  <tr>
+   <td>$wParamType</td>
+   <td><b>[オプション]</b>関連するDllCallを参照</td>
+  </tr>
+  <tr>
+   <td>$lParamType</td>
+   <td><b>[オプション]</b>関連するDllCallを参照</td>
+  </tr>
+  <tr>
+   <td>$sReturnType</td>
+   <td><b>[オプション]</b>関連するDllCallを参照</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">DllCall()の結果からユーザーが選択した値</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@errorが設定されます</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_SendMessageA.htm">_SendMessageA</a>, <a href="AutoIt3.chm::/html/functions/DllCall.htm">DllCall</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;SendMessage.au3&gt;</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">Local</span><span class="S0"> </span><span class="S5">Const</span><span class="S0"> </span><span class="S9">$Off</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$On</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><br>
+<br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S4">Opt</span><span class="S8">(</span><span class="S7">"WinTitleMatchMode"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">4</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S9">$hwnd</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">WinGetHandle</span><span class="S8">(</span><span class="S7">'classname=Progman'</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;_ToggleMonitor</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Off</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S4">Sleep</span><span class="S0"> </span><span class="S8">(</span><span class="S0"> </span><span class="S3">3000</span><span class="S0"> </span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;_ToggleMonitor</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$On</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _ToggleMonitor</span><span class="S8">(</span><span class="S9">$hwnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$OnOff</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">Local</span><span class="S0"> </span><span class="S5">Const</span><span class="S0"> </span><span class="S9">$WM_SYSCOMMAND</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">274</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">Local</span><span class="S0"> </span><span class="S5">Const</span><span class="S0"> </span><span class="S9">$SC_MONITORPOWER</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">61808</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S15">_SendMessage</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WM_SYSCOMMAND</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SC_MONITORPOWER</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$OnOff</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"_ToggleMonitor"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_SendMessage Error: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@error</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">Exit</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">EndIf</span><br>
+<span class="S5">EndFunc</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_SendMessage.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IEErrorNotify</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IEErrorNotify</font>
+<hr size="2">
+<p>IE.au3が警告とエラーを(コンソールに)自動通知するかどうかを指定します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IEErrorNotify ( [$f_notify = -1] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$f_notify</td>
+    <td width="85%"><b>[オプション]</b>通知のオン、オフを指定します<br>
+       -1 = (デフォルト) 現在の設定を返します<br>
+       True = オン<br>
+       False = オフ</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">$f_notify = -1の場合、現在の通知設定が返されます。それ以外の場合、1が返されます。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0が返されます。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+IE.au3はデフォルトでコンソールに警告とエラーの診断情報を書きます。SciTeエディタを使ってスクリプトの実行をおこなうとこの情報は簡単に見ることができます。<br>
+<br>
+この関数でこの機能のオン、オフをおこなえます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IEErrorHandlerRegister.htm">_IEErrorHandlerRegister</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - _IEErrorNotifyの現在の状態を調べ、オンならばオフ、オフならばオンにする</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S15">_IEErrorNotify</span><span class="S0"> </span><span class="S8">()</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_IEErrorNotify Status"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Notification is ON, turning it OFF"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_IEErrorNotify</span><span class="S0"> </span><span class="S8">(</span><span class="S5">False</span><span class="S8">)</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_IEErrorNotify Status"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Notification is OFF, turning it ON"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_IEErrorNotify</span><span class="S0"> </span><span class="S8">(</span><span class="S5">True</span><span class="S8">)</span><br>
+<span class="S5">EndIf</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IEErrorNotify.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WordDocPrint</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WordDocPrint</font>
+<hr size="2">
+<p>指定したドキュメントの全てまたは一部を印刷します。<br></p>
+
+<p class="codeheader">
+#include &lt;Word.au3&gt; <br>
+_WordDocPrint ( ByRef $o_object [, $b_Background = 0 [, $i_Copies = 1 [, $i_Orientation = -1 [, $b_Collate = 1 [, $s_Printer = "" [, $i_Range = 0 [, $i_From = "" [, $i_To = "" [, $s_Pages = "" [, $i_PageType = 0 [, $i_Item = 0]]]]]]]]]]] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">ドキュメントオブジェクトまたはWord.Applicationのオブジェクト変数</td>
+  </tr>
+  <tr>
+   <td>$b_Background</td>
+   <td><b>[オプション]</b> Microsoft Wordがドキュメントを印刷している間にスクリプト処理を進めるかどうか指定します。 (注意を参照)<br>
+       0 = (デフォルト) ドキュメント印刷を待機します<br>
+       1 = 待機せずにスクリプト処理を続けます</td>
+  </tr>
+  <tr>
+   <td>$i_Copies</td>
+   <td><b>[オプション]</b> 印刷部数。</td>
+  </tr>
+  <tr>
+   <td>$i_Orientation</td>
+   <td><b>[オプション]</b> ページ方向設定。<br>
+       -1 = (デフォルト) 現在のドキュメントの方向<br>
+       0 = 縦<br>
+       1 = 横</td>
+  </tr>
+  <tr>
+   <td>$b_Collate</td>
+   <td><b>[オプション]</b> 次の1部を印刷する前にドキュメントの全ページを印刷するかどうかを指定します。<br>
+       0 = 部単位でない印刷<br>
+       1 = (デフォルト) 部単位での印刷</td>
+  </tr>
+  <tr>
+   <td>$s_Printer</td>
+   <td><b>[オプション]</b> プリンタ名を設定します。 (注意を参照)</td>
+  </tr>
+  <tr>
+   <td>$i_Range</td>
+   <td><b>[オプション]</b> ページ範囲を指定します。<br>
+       0 = (デフォルト) ドキュメント全体<br>
+       1 = 現在の選択範囲<br>
+       2 = 現在のページ<br>
+       3 = 指定したページ ($i_Fromと$i_Toを指定しなければなりません)<br>
+       4 = 指定したページ範囲 ($s_Pagesを指定しなければなりません)</td>
+  </tr>
+  <tr>
+   <td>$i_From</td>
+   <td><b>[オプション]</b> $i_Rangeが3に設定されている場合、開始ページ番号。</td>
+  </tr>
+  <tr>
+   <td>$i_To</td>
+   <td><b>[オプション]</b> $i_Rangeが3に設定されている場合、終了ページ番号。</td>
+  </tr>
+  <tr>
+   <td>$s_Pages</td>
+   <td><b>[オプション]</b> $i_Rangeが4に設定されている場合、カンマで区切られた印刷されるページ番号とページ範囲。例えば"2, 6-10"とすると2ページ目と6ページ目から10ページ目が印刷されます。</td>
+  </tr>
+  <tr>
+   <td>$i_PageType</td>
+   <td><b>[オプション]</b> 印刷されるページの種類。<br>
+       0 = (デフォルト) 全てのページ<br>
+       1 = 奇数番目のページのみ<br>
+       2 = 偶数番目のページのみ</td>
+  </tr>
+  <tr>
+   <td>$i_Item</td>
+   <td><b>[オプション]</b> 印刷されるアイテム。<br>
+       0 = (デフォルト) 現在のドキュメントの内容<br>
+       1 = 現在のドキュメントのプロパティ<br>
+       2 = 現在のドキュメントのコメントとマークアップ<br>
+       3 = 現在のドキュメントのスタイル<br>
+       4 = 現在のドキュメントの定型句のエントリ<br>
+       5 = 現在のドキュメントのキー割り当て<br>
+       6 = 封筒<br>
+       7 = マークアップを含む現在のドキュメントの内容</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERROR = 1を設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>$_WordStatus_Success = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_GeneralError = 一般的なエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_ComError = Comエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_InvalidDataType = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_InvalidObjectType = 無効なオブジェクト型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_InvalidValue = 無効な値</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの数を格納</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+
+$b_Backgroundはドキュメント印刷が終了するまでスクリプトを一時停止するわけではありません。Microsoft Wordのプリンタに対するドキュメント送信が終了するまで待機するだけです。バックグラウンドでの印刷をおこなう場合、すぐに_WordQuit()をおこなうとドキュメントを印刷するための時間がなくなってしまいます。<br>
+<br>
+ネットワーク上のプリンタを指定する場合は"\\Server\Printer"形式で指定する必要があります。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+None.
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - Wordウィンドウを作成。ドキュメントを開く。テキストを設定</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; デフォルト設定で印刷。変更を保存せずに終了</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Word.au3&gt;</span><br>
+<span class="S9">$oWordApp</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordCreate</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@ScriptDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Test.doc"</span><span class="S8">)</span><br>
+<span class="S9">$oDoc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordDocGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oWordApp</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S9">$oDoc</span><span class="S8">.</span><span class="S14">Range</span><span class="S8">.</span><span class="S14">Text</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"This is some text to print."</span><br>
+<span class="S15">_WordDocPrint</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oDoc</span><span class="S8">)</span><br>
+<span class="S15">_WordQuit</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oWordApp</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 2 - Wordウィンドウを作成。ドキュメントを開く。テキストを設定</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 横方向で印刷。 変更を保存せずに終了</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Word.au3&gt;</span><br>
+<span class="S9">$oWordApp</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordCreate</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@ScriptDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Test.doc"</span><span class="S8">)</span><br>
+<span class="S9">$oDoc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordDocGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oWordApp</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S9">$oDoc</span><span class="S8">.</span><span class="S14">Range</span><span class="S8">.</span><span class="S14">Text</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"This is some text to print."</span><br>
+<span class="S15">_WordDocPrint</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oDoc</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S15">_WordQuit</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oWordApp</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 3 - Wordウィンドウを作成。ドキュメントを開く。テキストを設定</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "My Printer"という名前のプリンタで印刷。変更を保存せずに終了</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Word.au3&gt;</span><br>
+<span class="S9">$oWordApp</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordCreate</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@ScriptDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Test.doc"</span><span class="S8">)</span><br>
+<span class="S9">$oDoc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordDocGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oWordApp</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S9">$oDoc</span><span class="S8">.</span><span class="S14">Range</span><span class="S8">.</span><span class="S14">Text</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"This is some text to print."</span><br>
+<span class="S15">_WordDocPrint</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oDoc</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"My Printer"</span><span class="S8">)</span><br>
+<span class="S15">_WordQuit</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oWordApp</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WordDocPrint.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_CreateEvent</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_CreateEvent</font>
+<hr size="2">
+<p>名前付きまたは名前なしのイベントオブジェクトを作成または開きます。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_CreateEvent([$pAttributes = 0 [, $fManualReset = True [, $fInitialState = True [, $sName = ""]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$pAttributes</td>
+    <td width="85%"><b>[オプション]</b>$tagSECURITY_ATTRIBUTES構造体へのポインタ。<br>
+	0の場合、ハンドルは子プロセスに継承できません。<br>構造体のDescriptorメンバーは新しいイベントのセキュリティ記述子を指定します。<br>pAttributesが0の場合、イベントはデフォルトのセキュリティ記述子を取得します。<br>イベント用のデフォルトセキュリティ記述子のACLは作成者のプライマリトークンまたは偽装トークンによります。</td>
+  </tr>
+  <tr>
+   <td>$fManualReset</td>
+   <td><b>[オプション]</b>Trueの場合、この関数はイベント状態を非シグナル状態に設定するためにResetEvent関数の使用が必要な手動リセットイベントオブジェクトを作成します。<br>
+Falseの場合、この関数は自動リセットイベントを作成し、システムは1つの待機スレッドが解放された後に自動でイベント状態を非シグナル状態にリセットします。</td>
+  </tr>
+  <tr>
+   <td>$fInitialState</td>
+   <td><b>[オプション]</b>Trueの場合はイベントオブジェクトの初期状態がシグナル状態になり、それ以外の場合は非シグナル状態になります。</td>
+  </tr>
+  <tr>
+   <td>$sName</td>
+   <td><b>[オプション]</b>イベントオブジェクトの名前。名前の比較では大文字と小文字が区別されます。<br>
+   sNameが既存の名前付きイベントオブジェクトと一致した場合、この関数はEVENT_ALL_ACCESSアクセス権限を要求します。<br>
+   この場合、fManualResetパラメータとfInitialStateパラメータは既に作成プロセスによって設定されているため無視されます。<br>
+   pAttributesパラメータがゼロでない場合、ハンドルは継承可能になりますがそのセキュリティ記述子メンバーは無視されます。<br>
+   名前が空白の場合、イベントオブジェクトは名前なしで作成されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">イベントオブジェクトのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>名前付きイベントオブジェクトが関数呼び出し前に既に存在する場合、関数は既存のオブジェクトのハンドルを返し、GetLastErrorはERROR_ALREADY_EXISTSを返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagSECURITY_ATTRIBUTES.htm">$tagSECURITY_ATTRIBUTES</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CreateEvent">CreateEvent</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GDIPlus_ParamAdd</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GDIPlus_ParamAdd</font>
+<hr size="2">
+<p>エンコーダパラメータリストに値を追加します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GDIPlus.au3&gt;<br>
+_GDIPlus_ParamAdd(ByRef $tParams, $sGUID, $iCount, $iType, $pValues)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$tParams</td>
+    <td width="85%">_GDIPlus_ParamInitの返す$tagGDIPPENCODERPARAMS構造体</td>
+  </tr>
+  <tr>
+   <td>$sGUID</td>
+   <td>エンコーダパラメータGUID。次のいずれかです:<br>
+		$ GDIP_EPGCHROMINANCETABLE - クロミナンステーブルの設定<br>
+		$ GDIP_EPGCOLORDEPTH - 色深度の設定<br>
+		$ GDIP_EPGCOMPRESSION - 圧縮の設定<br>
+		$ GDIP_EPGLUMINANCETABLE - 輝度テーブルの設定<br>
+		$ GDIP_EPGQUALITY - 品質の設定<br>
+		$ GDIP_EPGRENDERMETHOD - 描画方法の設定<br>
+		$ GDIP_EPGSAVEFLAG - 保存フラグ設定<br>
+		$ GDIP_EPGSCANMETHOD - スキャンモードの設定<br>
+		$ GDIP_EPGTRANSFORMATION - 変換の設定<br>
+		$ GDIP_EPGVERSION - ソフトウェアバージョンの設定</td>
+  </tr>
+  <tr>
+   <td>$iCount</td>
+   <td>$pValues配列の要素数</td>
+  </tr>
+  <tr>
+   <td>$iType</td>
+   <td>エンコーダパラメータの値の種類。次のいずれかです:<br>
+		$ GDIP_EPTBYTE - 8ビット符号なし整数<br>
+		$ GDIP_EPTASCII - NULL文字で終わる文字列<br>
+		$ GDIP_EPTSHORT - 16ビット符号なし整数<br>
+		$ GDIP_EPTLONG - 32ビット符号なし整数<br>
+		$ GDIP_EPTRATIONAL - 2つのlong型（分子、分母）<br>
+		$ GDIP_EPTLONGRANGE - 2つのlong型（低、高）<br>
+		$ GDIP_EPTUNDEFINED - 任意の型のバイト配列<br>
+		$ GDIP_EPTRATIONALRANGE - 2つの有理数（低、高）</td>
+  </tr>
+  <tr>
+   <td>$pValues</td>
+   <td>値の配列へのポインタ。各値は$iTypeデータメンバーで指定された種類です。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GDIPlus_ParamInit.htm">_GDIPlus_ParamInit</a>, <a href="$tagGDIPPENCODERPARAMS.htm">$tagGDIPPENCODERPARAMS</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GDIPlus.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;ScreenCapture.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hBitmap</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sCLSID</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tData</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tParams</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; スクリーンをキャプチャ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_ScreenCapture_Capture</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@MyDocumentsDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\GDIPlus_Image.jpg"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GDI+ライブラリを初期化</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_Startup</span><span class="S0"> </span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 画像をロード</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hImage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_ImageLoadFromFile</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@MyDocumentsDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\GDIPlus_Image.jpg"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; JPEGエンコーダのCLSIDを取得</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$sCLSID</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_EncodersGetCLSID</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"JPG"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; パラメータに90度回転を設定</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tData</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S7">"int Data"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tData</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Data"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$GDIP_EVTTRANSFORMROTATE90</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tParams</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_ParamInit</span><span class="S0"> </span><span class="S8">(</span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_ParamAdd</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$tParams</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$GDIP_EPGTRANSFORMATION</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$GDIP_EPTLONG</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetPtr</span><span class="S8">(</span><span class="S9">$tData</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Data"</span><span class="S8">))</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 回転した画像を保存</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_ImageSaveToFileEx</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@MyDocumentsDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\GDIPlus_Image2.jpg"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sCLSID</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetPtr</span><span class="S8">(</span><span class="S9">$tParams</span><span class="S8">))</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GDI+ライブラリを閉じる</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_ShutDown</span><span class="S0"> </span><span class="S8">()</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GDIPlus_ParamAdd.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

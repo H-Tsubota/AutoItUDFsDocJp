@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ScreenCapture_Capture</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ScreenCapture_Capture</font>
+<hr size="2">
+<p>スクリーンの指定領域をキャプチャします。<br></p>
+
+<p class="codeheader">
+#Include &lt;ScreenCapture.au3&gt;<br>
+_ScreenCapture_Capture([$sFileName = "" [, $iLeft = 0 [, $iTop = 0 [, $iRight = -1 [, $iBottom = -1 [, $fCursor = True]]]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sFileName</td>
+    <td width="85%"><b>[オプション]</b>画像ファイルのフルパスと拡張子</td>
+  </tr>
+  <tr>
+   <td>$iLeft</td>
+   <td><b>[オプション]</b>長方形領域の左上隅のX座標。</td>
+  </tr>
+  <tr>
+   <td>$iTop</td>
+   <td><b>[オプション]</b>長方形領域の左上隅のY座標。</td>
+  </tr>
+  <tr>
+   <td>$iRight</td>
+   <td><b>[オプション]</b>長方形領域の右下隅のX座標。<br>
+       -1の場合、現在のスクリーンの幅が使用されます。</td>
+  </tr>
+  <tr>
+   <td>$iBottom</td>
+   <td><b>[オプション]</b>長方形領域の右下隅のY座標。<br>
+       -1の場合、現在のスクリーンの高さが使用されます。</td>
+  </tr>
+  <tr>
+   <td>$fCursor</td>
+   <td><b>[オプション]</b>Trueの場合、カーソルも画像にキャプチャされます</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+FileNameが空白でない場合、この関数はスクリーンをキャプチャしファイルに保存します。<br>
+FileNameが空白の場合、この関数はスクリーンをキャプチャしビットマップ画像のHBITMAPハンドルを返します。<br>
+この場合、ビットマップを使い終わった後に必ず_WinAPI_DeleteObjectを呼んでビットマップハンドルを削除しなければなりません。<br>
+<br>
+GDI +が必要 : Microsoft Windows NT 4.0 SP6、Windows 2000、Windows 98、Windows Me <br>オペレーティングシステム上で実行されるアプリケーションではGDI+の再配布が必要です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_DeleteObject.htm">_WinAPI_DeleteObject</a>, <a href="_ScreenCapture_SaveImage.htm">_ScreenCapture_SaveImage</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;ScreenCapture.au3&gt;</span><br>
+<br>
+<span class="S1">; 全画面のキャプチャ</span><br>
+<span class="S15">_ScreenCapture_Capture</span><span class="S8">(</span><span class="S6">@MyDocumentsDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\GDIPlus_Image1.jpg"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; 長方形領域をキャプチャ</span><br>
+<span class="S15">_ScreenCapture_Capture</span><span class="S8">(</span><span class="S6">@MyDocumentsDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\GDIPlus_Image2.jpg"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">796</span><span class="S8">,</span><span class="S0"> </span><span class="S3">596</span><span class="S8">)</span><br>
+<br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ScreenCapture_Capture.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

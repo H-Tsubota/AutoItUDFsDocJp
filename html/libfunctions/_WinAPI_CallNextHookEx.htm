@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_CallNextHookEx</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_CallNextHookEx</font>
+<hr size="2">
+<p>現在のフックチェーンの次のフックプロシージャにフック情報を渡します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_CallNextHookEx($hhk, $iCode, $wParam, $lParam)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hhk</td>
+    <td width="85%">Windows 95/98/ME: 現在のフックのハンドル。アプリケーションはこのハンドルを_WinAPI_SetWindowsHookEx関数の呼び出し結果として受け取ります。<br>
+       Windows NT/XP/2003: 無視されます。</td>
+  </tr>
+  <tr>
+   <td>$iCode</td>
+   <td>現在のフックプロシージャに渡されたフックコードを指定します。次のフックプロシージャはこのコードを使用してどのようにフック情報を処理するかを決定します。</td>
+  </tr>
+  <tr>
+   <td>$wParam</td>
+   <td>現在のフックプロシージャに渡されたwParam値を指定します。<br>
+   このパラメータの意味は現在のフックチェーンに関連付けられたフックのタイプに依存します。</td>
+  </tr>
+  <tr>
+   <td>$lParam</td>
+      <td>現在のフックプロシージャに渡されたlParam値を指定します。<br>
+   このパラメータの意味は現在のフックチェーンに関連付けられたフックのタイプに依存します。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">この値はチェーンの次のフックプロシージャによって返されます</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>-1が返され@errorが設定されます</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_SetWindowsHookEx.htm">_WinAPI_SetWindowsHookEx</a>, <a href="$tagKBDLLHOOKSTRUCT.htm">$tagKBDLLHOOKSTRUCT</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CallNextHookEx">CallNextHookEx</a>を検索して下さい。
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Visa user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;Visa.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="_viClose.htm">_viClose</a></td>
+<td>計測器/デバイスへのVISAコネクションを閉じます。<br></td>
+</tr>
+<tr>
+<td><a href="_viExecCommand.htm">_viExecCommand</a></td>
+<td>VISAインターフェイス(GPIB / TCP)を通じて計測器/デバイスへコマンド/クエリを送信します。<br></td>
+</tr>
+<tr>
+<td><a href="_viFindGpib.htm">_viFindGpib</a></td>
+<td>GPIBバスでみつかった計測器のVISAリソース記述子の配列を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_viGpibBusReset.htm">_viGpibBusReset</a></td>
+<td>GPIB BUSの"リセット": この関数は何らかの原因でGPIB BUSがスタックした場合に使用してください。この関数を呼び出すことで問題が解決する場合があります。<br></td>
+</tr>
+<tr>
+<td><a href="_viGTL.htm">_viGTL</a></td>
+<td>ローカルモードに移行します: このコマンドを受信した計測器は"リモートコントロールモード"を終了し"ローカルモード"に移行します。計測器が既に"ローカルモード"の場合、単純に無視されます。計測器がこのコマンドをサポートしていない場合、計測器は単純に"リモートコントロールモード"のままでとどまります。<br></td>
+</tr>
+<tr>
+<td><a href="_viInteractiveControl.htm">_viInteractiveControl</a></td>
+<td>SCPIコマンドをテストするためにVISAコントロールとの対話を開始します。<br></td>
+</tr>
+<tr>
+<td><a href="_viOpen.htm">_viOpen</a></td>
+<td>測定器/デバイスへのVISAコネクションを開きます。<br></td>
+</tr>
+<tr>
+<td><a href="_viSetAttribute.htm">_viSetAttribute</a></td>
+<td>全てのVISA属性を設定します。またこの関数はVISAの特定の属性を設定するためにも使用できます。この関数は_viSetTimeoutで使用されています。より詳しい情報、VISA属性リストとそれぞれの値についてはVISAのドキュメントを読んでください。<br></td>
+</tr>
+<tr>
+<td><a href="_viSetTimeout.htm">_viSetTimeout</a></td>
+<td>VISAのタイムアウト時間をミリ秒単位で設定します。<br></td>
+</tr>
+</table>
+</body>

@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinNet_GetResourceInformation</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinNet_GetResourceInformation</font>
+<hr size="2">
+<p>リソースを所有するネットワークプロバイダを識別します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinNet.au3&gt;<br>
+_WinNet_GetResourceInformation($sRemoteName [, $sProvider = "" [, $iType = 0]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sRemoteName</td>
+    <td width="85%">リソースのリモートパス名</td>
+  </tr>
+  <tr>
+   <td>$sProvider</td>
+   <td><b>[オプション]</b>リソースを所有するプロバイダの名前。プロバイダ名が不明な場合はこのメンバーを空白にしてください。</td>
+  </tr>
+  <tr>
+   <td>$iType</td>
+   <td><b>[オプション]</b>リソースの種類。不明な場合はこのメンバーを0にしてください。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">次のフォーマットの配列:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aResource[0] - 列挙の範囲:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 0 - 接続しているもの</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 1 - 全てのリソース</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 2 - 記憶しているもの</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aResource[1] - リソースの種類:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 0 - ディスク</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 1 - プリンタ</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 2 - 不明</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aResource[2] - 表示オプション:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 0 - 汎用</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 1 - ドメイン</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 2 - サーバー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 3 - 共有</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 4 - ファイル</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 5 - グループ</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 6 - ネットワーク</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 7 - ルート</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 8 - 管理者共有</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 9 - ディレクトリ</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>10 - ツリー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>11 - NDSコンテナ</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aResource[3] -  リソースの使用法。次の1つまたは組み合わせです:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 1 - リソースは接続可能なリソースです</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 2 - リソースはコンテナリソースです</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 4 - リソースは接続されています</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 8 - リソースは予約済みです</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aResource[4] - ローカル名</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aResource[5] - リモート名</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aResource[6] - ネットワークプロバイダによって提供されたコメント</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aResource[7] - リソースを所有するプロバイダの名前</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aResource[8] - システムの機能を介してアクセスされるリソースの一部</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=WNetGetResourceInformation">WNetGetResourceInformation</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

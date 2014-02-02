@@ -1,0 +1,461 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>GuiToolbar user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;GuiToolbar.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_AddBitmap.htm">_GUICtrlToolbar_AddBitmap</a></td>
+<td>画像リストに画像を追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_AddButton.htm">_GUICtrlToolbar_AddButton</a></td>
+<td>ボタンを追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_AddButtonSep.htm">_GUICtrlToolbar_AddButtonSep</a></td>
+<td>セパレータを追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_AddString.htm">_GUICtrlToolbar_AddString</a></td>
+<td>ツールバーの文字列プールに新しい文字列を追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_ButtonCount.htm">_GUICtrlToolbar_ButtonCount</a></td>
+<td>ボタンの総数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_CheckButton.htm">_GUICtrlToolbar_CheckButton</a></td>
+<td>指定されたボタンのチェック/非チェックを切り替えます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_ClickAccel.htm">_GUICtrlToolbar_ClickAccel</a></td>
+<td>アクセラレータを使用して特定のボタンをクリックします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_ClickButton.htm">_GUICtrlToolbar_ClickButton</a></td>
+<td>指定されたボタンをクリックします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_ClickIndex.htm">_GUICtrlToolbar_ClickIndex</a></td>
+<td>インデックスを使用して特定のボタンをクリックします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_CommandToIndex.htm">_GUICtrlToolbar_CommandToIndex</a></td>
+<td>指定されたコマンド識別子に関連付けられたボタンのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_Create.htm">_GUICtrlToolbar_Create</a></td>
+<td>ツールバーコントロールを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_Customize.htm">_GUICtrlToolbar_Customize</a></td>
+<td>ツールバーのカスタマイズダイアログボックスを表示します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_DeleteButton.htm">_GUICtrlToolbar_DeleteButton</a></td>
+<td>ツールバーからボタンを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_Destroy.htm">_GUICtrlToolbar_Destroy</a></td>
+<td>コントロールを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_EnableButton.htm">_GUICtrlToolbar_EnableButton</a></td>
+<td>指定されたボタンの有効/無効を切り替えます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_FindToolbar.htm">_GUICtrlToolbar_FindToolbar</a></td>
+<td>特定のツールバーを見つけます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetAnchorHighlight.htm">_GUICtrlToolbar_GetAnchorHighlight</a></td>
+<td>アンカーハイライトの設定を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetBitmapFlags.htm">_GUICtrlToolbar_GetBitmapFlags</a></td>
+<td>使用されるビットマップの種類を表すフラグを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetButtonBitmap.htm">_GUICtrlToolbar_GetButtonBitmap</a></td>
+<td>ボタンに関連付けられたビットマップのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetButtonInfo.htm">_GUICtrlToolbar_GetButtonInfo</a></td>
+<td>ボタンの情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetButtonInfoEx.htm">_GUICtrlToolbar_GetButtonInfoEx</a></td>
+<td>ボタンの情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetButtonParam.htm">_GUICtrlToolbar_GetButtonParam</a></td>
+<td>ボタンのパラメータ値を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetButtonRect.htm">_GUICtrlToolbar_GetButtonRect</a></td>
+<td>ボタンの外接長方形を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetButtonRectEx.htm">_GUICtrlToolbar_GetButtonRectEx</a></td>
+<td>指定されたツールバーボタンの外接長方形を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetButtonSize.htm">_GUICtrlToolbar_GetButtonSize</a></td>
+<td>現在のボタンの幅と高さをピクセル単位で取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetButtonState.htm">_GUICtrlToolbar_GetButtonState</a></td>
+<td>指定されたボタンの状態についての情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetButtonStyle.htm">_GUICtrlToolbar_GetButtonStyle</a></td>
+<td>ボタンのスタイルフラグを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetButtonText.htm">_GUICtrlToolbar_GetButtonText</a></td>
+<td>ボタンの表示テキストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetColorScheme.htm">_GUICtrlToolbar_GetColorScheme</a></td>
+<td>カラースキーム情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetDisabledImageList.htm">_GUICtrlToolbar_GetDisabledImageList</a></td>
+<td>無効ボタン用の画像リストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetExtendedStyle.htm">_GUICtrlToolbar_GetExtendedStyle</a></td>
+<td>拡張スタイルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetHotImageList.htm">_GUICtrlToolbar_GetHotImageList</a></td>
+<td>ホットボタン用の画像リストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetHotItem.htm">_GUICtrlToolbar_GetHotItem</a></td>
+<td>ホットアイテムのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetImageList.htm">_GUICtrlToolbar_GetImageList</a></td>
+<td>デフォルト状態用の画像リストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetInsertMark.htm">_GUICtrlToolbar_GetInsertMark</a></td>
+<td>現在の挿入マークを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetInsertMarkColor.htm">_GUICtrlToolbar_GetInsertMarkColor</a></td>
+<td>挿入マークの描画で使用される色を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetMaxSize.htm">_GUICtrlToolbar_GetMaxSize</a></td>
+<td>全ての表示されているボタンとセパレータの総サイズを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetMetrics.htm">_GUICtrlToolbar_GetMetrics</a></td>
+<td>ツールバーコントロールのメトリックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetPadding.htm">_GUICtrlToolbar_GetPadding</a></td>
+<td>水平方向、垂直方向のパディングを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetRows.htm">_GUICtrlToolbar_GetRows</a></td>
+<td>ボタンの行数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetString.htm">_GUICtrlToolbar_GetString</a></td>
+<td>文字列プールから文字列を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetStyle.htm">_GUICtrlToolbar_GetStyle</a></td>
+<td>現在ツールバーコントロールで使用されているスタイルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetStyleAltDrag.htm">_GUICtrlToolbar_GetStyleAltDrag</a></td>
+<td>コントロールがボタンのドラッグを許可するかどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetStyleCustomErase.htm">_GUICtrlToolbar_GetStyleCustomErase</a></td>
+<td>コントロールがNM_CUSTOMDRAW通知メッセージを発生するかどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetStyleFlat.htm">_GUICtrlToolbar_GetStyleFlat</a></td>
+<td>コントロールが平らかどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetStyleList.htm">_GUICtrlToolbar_GetStyleList</a></td>
+<td>コントロールがビットマップの右側にボタンテキストを配置するかどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetStyleRegisterDrop.htm">_GUICtrlToolbar_GetStyleRegisterDrop</a></td>
+<td>コントロールがTBN_GETOBJECT通知メッセージを発生するかどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetStyleToolTips.htm">_GUICtrlToolbar_GetStyleToolTips</a></td>
+<td>コントロールがツールチップを持つかどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetStyleTransparent.htm">_GUICtrlToolbar_GetStyleTransparent</a></td>
+<td>コントロールが透明かどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetStyleWrapable.htm">_GUICtrlToolbar_GetStyleWrapable</a></td>
+<td>コントロールがラッピング可能かどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetTextRows.htm">_GUICtrlToolbar_GetTextRows</a></td>
+<td>ボタン上に表示されるテキストの最大行数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetToolTips.htm">_GUICtrlToolbar_GetToolTips</a></td>
+<td>ツールチップコントロールのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_GetUnicodeFormat.htm">_GUICtrlToolbar_GetUnicodeFormat</a></td>
+<td>Unicode文字フォーマットフラグを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_HideButton.htm">_GUICtrlToolbar_HideButton</a></td>
+<td>指定されたボタンの表示/非表示を切り替えます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_HighlightButton.htm">_GUICtrlToolbar_HighlightButton</a></td>
+<td>指定されたボタンコントロールのハイライト状態を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_HitTest.htm">_GUICtrlToolbar_HitTest</a></td>
+<td>指定した点がコントロール内のどこなのかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_IndexToCommand.htm">_GUICtrlToolbar_IndexToCommand</a></td>
+<td>ボタンに関連付けられたコマンド識別子を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_InsertButton.htm">_GUICtrlToolbar_InsertButton</a></td>
+<td>ボタンを挿入します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_InsertMarkHitTest.htm">_GUICtrlToolbar_InsertMarkHitTest</a></td>
+<td>指定した点の挿入マーク情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_IsButtonChecked.htm">_GUICtrlToolbar_IsButtonChecked</a></td>
+<td>指定されたボタンがチェックされているかどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_IsButtonEnabled.htm">_GUICtrlToolbar_IsButtonEnabled</a></td>
+<td>指定されたボタンが有効かどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_IsButtonHidden.htm">_GUICtrlToolbar_IsButtonHidden</a></td>
+<td>指定されたボタンが非表示かどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_IsButtonHighlighted.htm">_GUICtrlToolbar_IsButtonHighlighted</a></td>
+<td>指定されたボタンがハイライトされているかどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_IsButtonIndeterminate.htm">_GUICtrlToolbar_IsButtonIndeterminate</a></td>
+<td>指定されたボタンが未確定状態かどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_IsButtonPressed.htm">_GUICtrlToolbar_IsButtonPressed</a></td>
+<td>ボタンがクリックされているかどうかを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_LoadBitmap.htm">_GUICtrlToolbar_LoadBitmap</a></td>
+<td>画像リストにファイルからのビットマップを追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_LoadImages.htm">_GUICtrlToolbar_LoadImages</a></td>
+<td>システム定義のボタン画像をツールバーコントロールの画像リストのロードします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_MapAccelerator.htm">_GUICtrlToolbar_MapAccelerator</a></td>
+<td>指定されたアクセラレータと対応するボタンのIDを決定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_MoveButton.htm">_GUICtrlToolbar_MoveButton</a></td>
+<td>ボタンをあるインデックスから他のインデックスに移動します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_PressButton.htm">_GUICtrlToolbar_PressButton</a></td>
+<td>指定されたボタンのスイッチ状態を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetAnchorHighlight.htm">_GUICtrlToolbar_SetAnchorHighlight</a></td>
+<td>アンカーハイライト設定を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetBitmapSize.htm">_GUICtrlToolbar_SetBitmapSize</a></td>
+<td>ツールバーに追加されるビットマップ画像のサイズを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetButtonBitMap.htm">_GUICtrlToolbar_SetButtonBitMap</a></td>
+<td>ボタンに関連付けられたビットマップのインデックスを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetButtonInfo.htm">_GUICtrlToolbar_SetButtonInfo</a></td>
+<td>ボタンの拡張情報を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetButtonInfoEx.htm">_GUICtrlToolbar_SetButtonInfoEx</a></td>
+<td>ボタンの拡張情報を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetButtonParam.htm">_GUICtrlToolbar_SetButtonParam</a></td>
+<td>ボタンのパラメータ値を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetButtonSize.htm">_GUICtrlToolbar_SetButtonSize</a></td>
+<td>ツールバーに追加されるボタンのサイズを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetButtonState.htm">_GUICtrlToolbar_SetButtonState</a></td>
+<td>指定されたボタンの状態についての情報を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetButtonStyle.htm">_GUICtrlToolbar_SetButtonStyle</a></td>
+<td>ボタンのスタイルフラグを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetButtonText.htm">_GUICtrlToolbar_SetButtonText</a></td>
+<td>ボタンの表示テキストを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetButtonWidth.htm">_GUICtrlToolbar_SetButtonWidth</a></td>
+<td>ツールバーコントロールでのボタンの最小・最大幅を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetCmdID.htm">_GUICtrlToolbar_SetCmdID</a></td>
+<td>ツールバーのボタンのコマンド識別子を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetColorScheme.htm">_GUICtrlToolbar_SetColorScheme</a></td>
+<td>カラースキーム情報を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetDisabledImageList.htm">_GUICtrlToolbar_SetDisabledImageList</a></td>
+<td>無効時用の画像リストを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetDrawTextFlags.htm">_GUICtrlToolbar_SetDrawTextFlags</a></td>
+<td>ツールバーのテキスト描画フラグを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetExtendedStyle.htm">_GUICtrlToolbar_SetExtendedStyle</a></td>
+<td>コントロールの拡張スタイルを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetHotImageList.htm">_GUICtrlToolbar_SetHotImageList</a></td>
+<td>ホットボタン用の画像リストを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetHotItem.htm">_GUICtrlToolbar_SetHotItem</a></td>
+<td>ホットアイテムを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetImageList.htm">_GUICtrlToolbar_SetImageList</a></td>
+<td>デフォルトのボタン用画像リストを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetIndent.htm">_GUICtrlToolbar_SetIndent</a></td>
+<td>最初のボタンコントロールのインデントを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetIndeterminate.htm">_GUICtrlToolbar_SetIndeterminate</a></td>
+<td>指定されたボタンの未確定状態を設定またはクリアします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetInsertMark.htm">_GUICtrlToolbar_SetInsertMark</a></td>
+<td>ツールバーの現在の挿入マークを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetInsertMarkColor.htm">_GUICtrlToolbar_SetInsertMarkColor</a></td>
+<td>挿入マークの描画で使用される色を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetMaxTextRows.htm">_GUICtrlToolbar_SetMaxTextRows</a></td>
+<td>ボタンに表示されるテキストの最大行数を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetMetrics.htm">_GUICtrlToolbar_SetMetrics</a></td>
+<td>ツールバーコントロールのメトリックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetPadding.htm">_GUICtrlToolbar_SetPadding</a></td>
+<td>コントロールのパディングを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetParent.htm">_GUICtrlToolbar_SetParent</a></td>
+<td>コントロールが通知メッセージを送信するウィンドウを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetRows.htm">_GUICtrlToolbar_SetRows</a></td>
+<td>ボタンの行数を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetStyle.htm">_GUICtrlToolbar_SetStyle</a></td>
+<td>コントロールのスタイルを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetStyleAltDrag.htm">_GUICtrlToolbar_SetStyleAltDrag</a></td>
+<td>コントロールがボタンのドラッグを許可するかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetStyleCustomErase.htm">_GUICtrlToolbar_SetStyleCustomErase</a></td>
+<td>コントロールがNM_CUSTOMDRAW通知メッセージを発生するかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetStyleFlat.htm">_GUICtrlToolbar_SetStyleFlat</a></td>
+<td>コントロールが平らかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetStyleList.htm">_GUICtrlToolbar_SetStyleList</a></td>
+<td>コントロールがビットマップの右側にボタンテキストを配置するかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetStyleRegisterDrop.htm">_GUICtrlToolbar_SetStyleRegisterDrop</a></td>
+<td>コントロールがTBN_GETOBJECT通知メッセージを発生するかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetStyleToolTips.htm">_GUICtrlToolbar_SetStyleToolTips</a></td>
+<td>コントロールがツールチップを持つかどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetStyleTransparent.htm">_GUICtrlToolbar_SetStyleTransparent</a></td>
+<td>コントロールが透明かどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetStyleWrapable.htm">_GUICtrlToolbar_SetStyleWrapable</a></td>
+<td>コントロールがラッピング可能かどうかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetToolTips.htm">_GUICtrlToolbar_SetToolTips</a></td>
+<td>ツールバーにツールチップコントロールを関連付けます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetUnicodeFormat.htm">_GUICtrlToolbar_SetUnicodeFormat</a></td>
+<td>Unicode文字フォーマットフラグを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlToolbar_SetWindowTheme.htm">_GUICtrlToolbar_SetWindowTheme</a></td>
+<td>ビジュアルスタイルを設定します。<br></td>
+</tr>
+</table>
+</body>

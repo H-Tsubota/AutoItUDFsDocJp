@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagTVHITTESTINFO</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagTVHITTESTINFO</font>
+<hr size="2">
+<p>ツリービューコントロールに対する相対位置を決定するのに使用される情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagTVHITTESTINFO = "int X;int Y;int Flags;int Item"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">X</td>
+    <td width="85%">クライアント座標でのテストされるX位置</td>
+  </tr>
+  <tr>
+   <td>Y</td>
+   <td>クライアント座標でのテストされるY位置</td>
+  </tr>
+  <tr>
+   <td>Flags</td>
+
+   <td>ヒットテストの結果。次の値の1つまたは組み合わせです:<br>
+       $TVHT_ABOVE - クライアント領域より上です<br>
+       $TVHT_BELOW - クライアント領域より下です<br>
+       $TVHT_NOWHERE - クライアント領域ないですが、最後のアイテムより下です<br>
+       $TVHT_ONITEM - アイテムに関連付けられたビットマップ、ラベル上です<br>
+       $TVHT_ONITEMBUTTON - アイテムに関連付けられたボタン上です<br>
+       $TVHT_ONITEMICON - アイテムに関連付けられたビットマップ上です<br>
+       $TVHT_ONITEMINDENT - アイテムに関連付けられたインデント無いです<br>
+       $TVHT_ONITEMLABEL - アイテムに関連付けられたラベル(文字列)上です<br>
+       $TVHT_ONITEMRIGHT - アイテムの右側にある領域です<br>
+       $TVHT_ONITEMSTATEICON - ユーザーが定義した状態にあるアイテムの状態アイコン上です<br>
+       $TVHT_TOLEFT - クライアント領域の左側<br>
+       $TVHT_TORIGHT - クライアント領域の右側</td>
+  </tr>
+  <tr>
+   <td>Item</td>
+   <td>その位置を占めているアイテムのハンドルです</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

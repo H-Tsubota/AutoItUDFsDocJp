@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_GetWindow</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_GetWindow</font>
+<hr size="2">
+<p>指定されたウィンドウと指定された関係をもつウィンドウのハンドルを取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_GetWindow($hWnd, $iCmd)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iCmd</td>
+   <td>指定されたウィンドウとハンドルが取得されるウィンドウとの間の関係を指定します。<br>
+       このパラメータは次の値のいずれかです:<br>
+       $GW_CHILD - 指定されたウィンドウが親ウィンドウの場合、取得されるハンドルはZオーダーで最上位の子ウィンドウを表します。<br>
+	   &nbsp;&nbsp;&nbsp;&nbsp;それ以外の場合は取得されるハンドルは0です。この関数は指定されたウィンドウの子ウィンドウだけを調べ、<br>
+	   &nbsp;&nbsp;&nbsp;&nbsp;孫以下のウィンドウは調べません。<br>
+	   $GW_HWNDFIRST - 取得されるハンドルはZオーダーで最上位の同じ種類のウィンドウを表します。<br>
+	 &nbsp;&nbsp;&nbsp;&nbsp; 指定されたウィンドウが最前面のウィンドウの場合、ハンドルはZオーダーで最上位の最前面ウィンドウを表します。<br>
+	 &nbsp;&nbsp;&nbsp;&nbsp; 指定されたウィンドウがトップレベルウィンドウの場合、ハンドルはZオーダーで最上位のトップレベルウィンドウを表します。<br>
+	 &nbsp;&nbsp;&nbsp;&nbsp; 指定されたウィンドウが子ウィンドウの場合、ハンドルはZオーダーで最上位の兄弟ウィンドウのハンドルを表します。<br>
+       
+	   $GW_HWNDLAST - 取得されるハンドルはZオーダーで最下位の同じ種類のウィンドウを表します。<br>
+	   &nbsp;&nbsp;&nbsp;&nbsp;指定されたウィンドウが最前面のウィンドウの場合、ハンドルはZオーダーで最下位の最前面ウィンドウを表します。<br>
+	   &nbsp;&nbsp;&nbsp;&nbsp;指定されたウィンドウがトップレベルウィンドウの場合、ハンドルはZオーダーで最下位のトップレベルウィンドウを表します。<br>
+	   &nbsp;&nbsp;&nbsp;&nbsp;指定されたウィンドウが子ウィンドウの場合、ハンドルはZオーダーで最下位の兄弟ウィンドウのハンドルを表します。<br>	   
+       
+	   $GW_HWNDNEXT - 取得されるハンドルはZオーダーで指定されたウィンドウの下のウィンドウです。<br>
+	   &nbsp;&nbsp;&nbsp;&nbsp;指定されたウィンドウが最前面のウィンドウの場合、ハンドルは指定されたウィンドウの下の最前面ウィンドウを表します。<br>
+	   &nbsp;&nbsp;&nbsp;&nbsp;指定されたウィンドウがトップレベルウィンドウの場合、ハンドルは指定されたウィンドウの下のトップレベルウィンドウを表します。<br>
+	   &nbsp;&nbsp;&nbsp;&nbsp;指定されたウィンドウが子ウィンドウの場合、ハンドルは指定されたウィンドウの下の兄弟ウィンドウを表します。<br>	   	   
+       
+	   $GW_HWNDPREV - 取得されるハンドルはZオーダーで指定されたウィンドウの上のウィンドウです。<br>
+	   &nbsp;&nbsp;&nbsp;&nbsp;指定されたウィンドウが最前面のウィンドウの場合、ハンドルは指定されたウィンドウの上の最前面ウィンドウを表します。<br>
+	   &nbsp;&nbsp;&nbsp;&nbsp;指定されたウィンドウがトップレベルウィンドウの場合、ハンドルは指定されたウィンドウの上のトップレベルウィンドウを表します。<br>
+	   &nbsp;&nbsp;&nbsp;&nbsp;指定されたウィンドウが子ウィンドウの場合、ハンドルは指定されたウィンドウの上の兄弟ウィンドウを表します。<br>		   
+       
+	   $GW_OWNER - 取得されるハンドルは指定されたウィンドウのオーナーウィンドウを表します(存在する場合)。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">ウィンドウのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+定義済み定数用にConstants.au3が必要です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GetWindow">GetWindow</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

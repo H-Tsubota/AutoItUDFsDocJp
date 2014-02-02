@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_DrawFrameControl</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_DrawFrameControl</font>
+<hr size="2">
+<p>指定された種類、スタイルのフレームコントロールを描画します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_DrawFrameControl($hDC, $ptrRect, $nType, $nState)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hDC</td>
+    <td width="85%">デバイスコンテキストのハンドル</td>
+  </tr>
+  <tr>
+   <td>$ptrRect</td>
+   <td>長方形の論理座標を格納している$tagRECT構造体へのポインタ</td>
+  </tr>
+  <tr>
+   <td>$nType</td>
+   <td>描画するフレームコントロールの種類を指定します。このパラメータは次の値のいずれかです:<br>
+       $DFC_BUTTON - 標準のボタン<br>
+       $DFC_CAPTION - タイトルバー<br>
+       $DFC_MENU - メニューバー<br>
+       $DFC_POPUPMENU - Windows 98/Me、Windows 2000/XP: ポップアップメニューアイテム<br>
+       $DFC_SCROLL - スクロールバー</td>
+  </tr>
+  <tr>
+   <td>$nState</td>
+   <td>フレームコントロールの初期状態を指定します。
+   $nTypeが$DFC_BUTTONの場合、$nStateは次の値のいずれかです:<br>
+       $DFCS_BUTTON3STATE - 3状態ボタン<br>
+       $DFCS_BUTTONCHECK - チェックボックス<br>
+       $DFCS_BUTTONPUSH - プッシュボタン<br>
+       $DFCS_BUTTONRADIO - ラジオボタン<br>
+       $DFCS_BUTTONRADIOIMAGE - ラジオボタンのイメージ（正方形とは異なるイメージ）<br>
+       $DFCS_BUTTONRADIOMASK - ラジオボタンのマスク（正方形とは異なるマスク）<br>
+	$nTypeが$DFC_CAPTIONの場合、$nStateは次の値のいずれかです:<br>
+       $DFCS_CAPTIONCLOSE - 閉じるボタン<br>
+       $DFCS_CAPTIONHELP - ヘルプボタン<br>
+       $DFCS_CAPTIONMAX - 最大化ボタン<br>
+       $DFCS_CAPTIONMIN - 最小化ボタン<br>
+       $DFCS_CAPTIONRESTORE - 復元ボタン<br>
+	 $nTypeが$DFC_MENUの場合、$nStateは次の値のいずれかです:<br>
+       $DFCS_MENUARROW - サブメニュー矢印<br>
+       $DFCS_MENUARROWRIGHT - 左向きのサブメニュー矢印。
+		アラビア語やヘブライ語などの右から左へ書く言語で使用される右から左へカスケードするメニューに使用されます。<br>
+       $DFCS_MENUBULLET - 黒丸<br>
+       $DFCS_MENUCHECK - チェックマーク<br>
+	 $nTypeが$DFC_SCROLLの場合、$nStateは次の値のいずれかです:<br>  
+       $DFCS_SCROLLCOMBOBOX - コンボボックスのスクロールバー<br>
+       $DFCS_SCROLLDOWN - スクロールバーの下向き矢印<br>
+       $DFCS_SCROLLLEFT - スクロールバーの左向き矢印<br>
+       $DFCS_SCROLLRIGHT - スクロールバーの右向き矢印<br>
+       $DFCS_SCROLLSIZEGRIP - ウィンドウの右下隅のサイズ変更グリップ<br>
+       $DFCS_SCROLLSIZEGRIPRIGHT - ウィンドウの左下隅のサイズ変更グリップ。アラビア語やヘブライ語などの右から左へ書く言語で使用されます。<br>
+       $DFCS_SCROLLUP - スクロールバーの上向き矢印<br>
+	   以下のスタイルはプッシュボタンの長方形の外接長方形を調整するために使用されます:<br>
+       $DFCS_ADJUSTRECT - 外接長方形はプッシュボタンを囲む辺を除くように調整されます<br>
+	   以下の値の1つまたは複数を描画されるコントロールの状態設定に使用できます:<br>
+       $DFCS_CHECKED - ボタンをチェックします<br>
+       $DFCS_FLAT - ボタンは平らな縁を持ちます<br>
+       $DFCS_HOT - Windows 98/Me、Windows 2000/XP: ボタンをホットトラッキングします<br>
+       $DFCS_INACTIVE - ボタンを非アクティブ(グレイアウト)にします<br>
+       $DFCS_PUSHED - ボタンを押します<br>
+       $DFCS_TRANSPARENT - Windows 98/Me、Windows 2000/XP: 
+	   背景をそのままにします。このフラグは$DFCS_MENUARROWUPまたは$DFCS_MENUARROWDOWNのみと組み合わせられます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+定義済み定数用にFrameConstants.au3が必要です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagRECT.htm">$tagRECT</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=DrawFrameControl">DrawFrameControl</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

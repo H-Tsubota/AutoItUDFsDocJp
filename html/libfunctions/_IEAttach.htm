@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IEAttach</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IEAttach</font>
+<hr size="2">
+<p>(選択モードに基づいて)指定した検索文字列、部分文字列と一致するInternet Explorerのインスタンスを取得します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IEAttach ( $s_string [, $s_mode = "Title" [, $i_instance = 1]] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$s_string</td>
+    <td width="85%">検索文字列 ("embedded"、"dialogbox"では、タイトルの部分文字列またはウィンドウのHWND)</td>
+  </tr>
+  <tr>
+   <td>$s_mode</td>
+   <td><b>[オプション]</b>検索モードを指定します<br>
+       Title = (デフォルト) メインドキュメントタイトルの部分文字列<br>
+       WindowTitle = フルウィンドウタイトルの部分文字列 (ドキュメントタイトルの代用)<br>
+       URL = 現在のページのURLまたは部分文字列<br>
+       Text = 現在のページのボディのテキストの部分文字列<br>
+       HTML = 現在のページのボディのHTMLの部分文字列<br>
+       HWND = ブラウザウィンドウのHWND<br>
+       Embedded = コントロールを埋め込んであるウィンドウのHWNDまたはタイトルの部分文字列<br>
+       DialogBox = モーダル/モーダレスダイアログボックスのHWNDまたはタイトルの部分文字列<br>
+       Instance = $s_stringは無視され、全ての利用可能なブラウザインスタンスから(インスタンス番号が一致する)1つが返されます。</td>
+  </tr>
+  <tr>
+   <td>$i_instance</td>
+   <td><b>[オプション]</b>$s_string、$s_modeと一致するブラウザ、埋め込みブラウザのグループの1始まりのインデックス。注意を参照。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">
+	Internet Explorerオブジェクトを指すオブジェクト変数。ただしEmbeddedモードとDislogBoxモードではウィンドウオブジェクトが返される</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>5 ($_IEStatus_InvalidValue) = 無効な値</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>7 ($_IEStatus_NoMatch) = 一致するものがありません</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+_IEAttachではブラウザによって作成されたモーダル/モーダレスダイアログを取得するために"dialogbox"パラメータが提供されています。ただしブラウザによって作成された全てのダイアログがこの方法で取得・制御できるわけではないので注意が必要です。これらのダイアログの多くは実際は標準的ウィンドウであり、従来のAutoItウィンドウ関数で制御することが可能です。これらのウィンドウを見分けるための信頼性の高い方法は　"AutoIt Window Info"を使用することです。ウィンドウに"Internet Explorer_Server"というコントロールが存在する場合にはこの関数で取得することが可能です。存在しない場合にはそれは標準的ウィンドウであり、制御するためには従来のAutoItウィンドウ関数を使用しなければなりません。<br>
+<br>
+ハイパーテキストアプリケーション(.hta)ウィンドウは"embedded"オプションを使用して取得できます。<br>
+<br>
+標準のWin*関数で利用可能なウィンドウ名の特別な記述の仕方を"dialogbox"モード、"embedded"モードのタイトル部分文字列部に使用することが可能です。<br>
+<br>
+"embedded"モードでの"$i_instance"の使用：指定したWebBrowserのインスタンスへの参照を返すために使用し、特定のウィンドウ内が複数ある場合に特に便利です。embeddedモードで$s_stringにウィンドウタイトルをいれて渡すと、最初にタイトルが一致したウィンドウが使用されます。もし欲しいWebBrowserコントロールが別のウィンドウにある場合はタイトルの代わりにウィンドウのHWNDを渡すか、標準のWin*関数で利用可能なウィンドウ名の特別な記述の仕方を利用しなければなりません。<br>
+<br>
+"embedded"以外のモードでの"$i_instance"の使用：$s_mode、$s_stringでの検索で一致した全ウィンドウのグループからブラウザの参照を返すために使用します。DialogBoxモードでのインスタンスの順番はWinList()のタイトル検索での順番によって決まります。他のモードではインスタンスの順番はShell.Windowsコレクションによって決まります。<br>
+<br>
+"$i_instance"値 > 1でなければいけません。"hwnd"モード、"DialogBox"モードで$s_stringにHWNDをいれて渡す場合に1を設定すると、警告メッセージが表示されます。<br>
+<br>
+DialogBoxモード、Embeddedモードは標準のブラウザウィンドウを取得するためにも使用できます。ただし返されるオブジェクトはブラウザ内のトップレベルのウィンドウで、Internet Explorerオブジェクトではありません。ウィンドウオブジェクトを使ってInternet Explorerオブジェクトの属性(e.g. ステータスバーテキスト、アドレスバー etc.)の全てにアクセスすることはできません。また、これらのオブジェクトに対して_IENavigateなどの関数を使用するとIE7が実装済みのタブを持っているためにCOMエラーが発生します。この方法はブラウザのインスタンスを見つけるためには便利ですが、すぐに他のモードで_IEAttachを使用し、ウィンドウオブジェクトから得た情報を使って関連付けられたInternet Explorerオブジェクトへの参照を得ることをおすすめします。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IECreate.htm">_IECreate</a>, <a href="_IECreateEmbedded.htm">_IECreateEmbedded</a>, <a href="_IEQuit.htm">_IEQuit</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - タイトルに"AutoIt"とあるブラウザを取得。そのURLを表示</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEAttach</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"AutoIt"</span><span class="S8">)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"The URL"</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_IEPropertyGet</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"locationurl"</span><span class="S8">))</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 2 - トップレベルドキュメントのテキストに</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"The quick brown fox"とあるブラウザを取得</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEAttach</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"The quick brown fox"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"text"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 3 - 他のウィンドウに埋め込まれているブラウザコントロールを取得</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEAttach</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"A Window Title"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"embedded"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 4 - 他のウィンドウに埋め込まれている3番目のブラウザコントロールを取得</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; タイトルに文字列'ICQ'を含む2番目のウィンドウ</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; にウィンドウ名の特別な記述の仕方を使用</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEAttach</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"[REGEXPTITLE:ICQ; INSTANCE:2]"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"embedded"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 5 - 現在存在する全ブラウザインスタンスの参照オブジェクトの配列を作成</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 配列の先頭要素には見つかったインスタンスの数が格納される</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$aIE</span><span class="S8">[</span><span class="S3">1</span><span class="S8">]</span><br>
+<span class="S9">$aIE</span><span class="S8">[</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><br>
+<br>
+<span class="S9">$i</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEAttach</span><span class="S0"> </span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"instance"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$_IEStatus_NoMatch</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">ReDim</span><span class="S0"> </span><span class="S9">$aIE</span><span class="S8">[</span><span class="S9">$i</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">1</span><span class="S8">]</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$aIE</span><span class="S8">[</span><span class="S9">$i</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$oIE</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$aIE</span><span class="S8">[</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$i</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$i</span><span class="S0"> </span><span class="S8">+=</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S5">WEnd</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Browsers Found"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Number of browser instances in the array: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aIE</span><span class="S8">[</span><span class="S3">0</span><span class="S8">])</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IEAttach.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

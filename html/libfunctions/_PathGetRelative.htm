@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _PathGetRelative</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_PathGetRelative</font>
+<hr size="2">
+<p>ディレクトリの相対パスを返します。<br></p>
+
+<p class="codeheader">
+#Include &lt;File.au3&gt;<br>
+_PathGetRelative($sFrom, $sTo)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sFrom</td>
+    <td width="85%">基点となるディレクトリのパス</td>
+  </tr>
+  <tr>
+   <td>$sTo</td>
+   <td>目標のファイル、ディレクトリのパス</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">目標の相対パス</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>目標を返し、@Errorを次の値に設定します。</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>1 - $sFromと$sToが同じです。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - $sFromと$sToのルートドライブが異なり、相対パスを作成できません。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+失敗後にルートドライブが返される場合でも、<br>
+返されるパスの末尾に"\"は尽きません。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_Au3Check_Parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;File.au3&gt;</span><br>
+<br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$from</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$to</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$path</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$Wow64</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">""</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S6">@AutoItX64</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S9">$Wow64</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"\Wow6432Node"</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$sFile</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">RegRead</span><span class="S8">(</span><span class="S7">"HKEY_LOCAL_MACHINE\SOFTWARE"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$Wow64</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\AutoIt v3\AutoIt"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"InstallDir"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$from</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S6">@ScriptDir</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"Source Path: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$from</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$to</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$sFile</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\autoit3.exe"</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"Dest Path: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$to</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$path</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_PathGetRelative</span><span class="S8">(</span><span class="S9">$from</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$to</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"Error: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"Path: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$path</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"Relative Path: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$path</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"Resolved Path: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_PathFull</span><span class="S8">(</span><span class="S9">$from</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$path</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_PathGetRelative.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

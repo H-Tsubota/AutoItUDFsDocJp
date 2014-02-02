@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _Crypt_DecryptData</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_Crypt_DecryptData</font>
+<hr size="2">
+<p>与えられた鍵を使用してデータを復号します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Crypt.au3&gt;<br>
+_Crypt_DecryptData($vData, $vCryptKey, $iALG_ID[, $fFinal = True])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$vData</td>
+    <td width="85%">復号するデータ</td>
+  </tr>
+  <tr>
+   <td>$vCryptKey</td>
+   <td>パスワード。CALG_USERKEYフラグが指定されていた場合は鍵のハンドル。</td>
+  </tr>
+  <tr>
+   <td>$iALG_ID</td>
+   <td>使用するアルゴリズム</td>
+  </tr>
+  <tr>
+   <td>$fFinal</td>
+   <td>	<b>[オプション]</b> データが全データの一部だけの場合はFalse</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">復号されたデータを返します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>@errorを0に設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>-1を返し、@errorを設定します:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - 鍵を作成できません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - データの復号に失敗しました</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+暗号化されたデータが実際には文字列の場合でも常に復号されたデータはバイナリ列として返されます(BinaryToStringでキャストして下さい)。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_Crypt_EncryptData.htm">_Crypt_EncryptData</a>, <a href="_Crypt_Derivekey.htm">_Crypt_Derivekey</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CryptDecrypt">CryptDecrypt</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Crypt.au3&gt;</span><br>
+<br>
+<span class="S1">; 文字列の復号化方法を示す例</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S5">Const</span><span class="S0"> </span><span class="S9">$bEncrypted</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">Binary</span><span class="S8">(</span><span class="S7">"0x040A0D2594CE1FFC8E4CE5BC14E8724B6B5900225EA8E45CF328"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"9D0D6A48E490E53FB66F39FF5CA967C5F6CD04D399AF09E18E7A91EEA32F7BBBB714DEC6865128CE3A"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"4F1BB826554B69B7AC96E8AAA639656F0323E34745167F4B72FF4984A1C4B81E1F66DDD9743B9C664406D76B52"</span><span class="S8">)</span><br>
+<br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Decrypted data"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BinaryToString</span><span class="S8">(</span><span class="S15">_Crypt_DecryptData</span><span class="S8">(</span><span class="S9">$bEncrypted</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"once"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$CALG_RC2</span><span class="S8">)))</span><br>
+<br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_Crypt_DecryptData.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _SoundPos</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_SoundPos</font>
+<hr size="2">
+<p>現在の音声位置を返します。<br></p>
+
+<p class="codeheader">
+#include &lt;Sound.au3&gt;<br>
+_SoundPos ( $aSnd_id [, $iMode ] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$aSnd_id</td>
+    <td width="85%">_SoundOpen()によって返される音声ID、またはファイル名</td>
+  </tr>
+  <tr>
+   <td>$iMode</td>
+   <td><b>[オプション]</b>返される音声位置のフォーマットを決めるフラグ<br>
+       1 = hh:mm:ss h = 時間、m = 分、s = 秒<br>
+       2 = ミリ秒</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">音声位置</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+	<td>0を返し、@errorを設定します。</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>1 = $iModeが無効です</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 = 無効な音声IDです。_SoundOpen()の返す配列または有効なファイル名を使用して下さい。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数ではファイル名を使用する代わりに_SoundOpen()で音声ファイルを開き、ID配列を渡すことを推奨します。ファイル名を直接この関数に渡した場合、VBRエンコードされたファイルでは正確な位置を取得できません。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_SoundLength.htm">_SoundLength</a>, <a href="_SoundOpen.htm">_SoundOpen</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Sound.au3&gt;</span><br>
+<br>
+<span class="S1">;音声ファイルを開く : Vistaで実行する場合は変更する必要あり</span><br>
+<span class="S9">$sound</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_SoundOpen</span><span class="S8">(</span><span class="S6">@WindowsDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\media\Windows XP Startup.wav"</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">2</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"The file does not exist"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">ElseIf</span><span class="S0"> </span><span class="S6">@extended</span><span class="S0"> </span><span class="S8">&lt;&gt;</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$extended</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S6">@extended</span><span class="S0"> </span><span class="S1">;DllCall後に@extendedが設定されるので代入</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$stText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S7">"char[128]"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$errorstring</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllCall</span><span class="S8">(</span><span class="S7">"winmm.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"short"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"mciGetErrorStringA"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"str"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$extended</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"ptr"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetPtr</span><span class="S8">(</span><span class="S9">$stText</span><span class="S8">),</span><span class="S0"> </span><span class="S7">"int"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">128</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Error"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"The open failed."</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Error Number: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$extended</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Error Description: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$stText</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Please Note: The sound may still play correctly."</span><span class="S8">)</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Success"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"The file opened successfully"</span><span class="S8">)</span><br>
+<span class="S5">EndIf</span><br>
+<span class="S15">_SoundPlay</span><span class="S8">(</span><span class="S9">$sound</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S9">$splashtext</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">SplashTextOn</span><span class="S8">(</span><span class="S7">"Current Position"</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_SoundPos</span><span class="S8">(</span><span class="S9">$sound</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">),</span><span class="S0"> </span><span class="S3">300</span><span class="S8">,</span><span class="S0"> </span><span class="S3">90</span><span class="S8">,</span><span class="S0"> </span><span class="S5">Default</span><span class="S8">,</span><span class="S0"> </span><span class="S5">Default</span><span class="S8">,</span><span class="S0"> </span><span class="S3">18</span><span class="S8">,</span><span class="S0"> </span><span class="S5">Default</span><span class="S8">,</span><span class="S0"> </span><span class="S3">55</span><span class="S8">)</span><br>
+<span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Sleep</span><span class="S8">(</span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">ControlSetText</span><span class="S8">(</span><span class="S7">"Current Position"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Static1"</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_SoundPos</span><span class="S8">(</span><span class="S9">$sound</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S15">_SoundPos</span><span class="S8">(</span><span class="S9">$sound</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&gt;=</span><span class="S0"> </span><span class="S15">_SoundLength</span><span class="S8">(</span><span class="S9">$sound</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S5">ExitLoop</span><br>
+<span class="S5">WEnd</span><br>
+<span class="S15">_SoundClose</span><span class="S8">(</span><span class="S9">$sound</span><span class="S8">)</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_SoundPos.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

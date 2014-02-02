@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IEPropertyGet</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IEPropertyGet</font>
+<hr size="2">
+<p>ブラウザ、DOM要素の選択されたプロパティを返します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IEPropertyGet ( ByRef $o_object, $s_property )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">InternetExplorer.Applicationのオブジェクト変数またはDOM要素</td>
+  </tr>
+  <tr>
+   <td>$s_property</td>
+   <td>プロパティ選択 (注意を参照)</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">選択されたプロパティの値</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 ($_IEStatus_InvalidDataType) = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 ($_IEStatus_InvalidObjectType) = 無効なオブジェクト型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>5 ($_IEStatus_InvalidValue) = 無効な値</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+より詳しい情報は<a href="http://msdn2.microsoft.com/en-us/library/aa752084.aspx" target="_blank">MSDN</a>を参照。<br>
+<br>
+次の表は使用できる各プロパティの説明です。DOM要素のものとブラウザのものがあります。<br>
+<br>
+<b><u>ブラウザプロパティ</u></b><br>
+<br>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%"><b>プロパティ</b></td>
+    <td width="85%"><b>説明</b></td>
+  </tr>
+  <tr>
+   <td>"addressbar"</td>
+   <td>ブラウザアドレスバーの表示/非表示を表すブール値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"browserx"</td>
+   <td>ドキュメント要素の左上隅のx座標(ブラウザ相対座標)を取得します。</td>
+  </tr>
+  <tr>
+   <td>"browsery"</td>
+   <td>ドキュメント要素の左上隅のy座標(ブラウザ相対座標)を取得します。</td>
+  </tr>
+  <tr>
+   <td>"busy"</td>
+   <td>オブジェクトが移動操作中か、ダウンロード操作中かを表すブール値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"contenteditable"</td>
+   <td>オブジェクトがマウス、キーボードによって編集可能かを表すブール値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"fullscreen"</td>
+   <td>ブラウザがフルスクリーンモードか、通常ウィンドウモードかを表すブール値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"height"</td>
+   <td>ブラウザメインウィンドウまたはドキュメント要素の高さを取得します。</td>
+  </tr>
+  <tr>
+   <td>"hwnd"</td>
+   <td>Internet Explorerメインウィンドウのハンドルを取得します。このハンドルはほとんどのAutoIt Win*関数で使用できます。</td>
+  </tr>
+  <tr>
+   <td>"innerhtml"</td>
+   <td>開始・終了要素タグを除く要素のレンダリングされているHTMLを取得します。</td>
+  </tr>
+  <tr>
+   <td>"innertext"</td>
+   <td>要素のレンダリングされているテキスト(タグを含まない)を取得します。通常、outertextと同じです。</td>
+  </tr>
+  <tr>
+   <td>"isdisabled"</td>
+   <td>ユーザーがオブジェクトを操作できるかどうかを表す値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"left"</td>
+   <td>オブジェクトのメインウィンドウ左端のスクリーン座標をを取得します。</td>
+  </tr>
+  <tr>
+   <td>"locationname"</td>
+   <td>Internet Explorerが現在表示しているリソースの名前を取得します。</td>
+  </tr>
+  <tr>
+   <td>"locationurl"</td>
+   <td>Internet Explorerが現在表示しているリソースのURLを取得します。</td>
+  </tr>
+  <tr>
+   <td>"menubar"</td>
+   <td>ブラウザのメニューバーが表示されているかを表すブール値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"offline"</td>
+   <td>ブラウザが現在オフラインモードかを表すブール値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"outertext"</td>
+   <td>要素のレンダリングされているテキスト(タグを含まない)を取得します。通常、innertextと同じです。</td>
+  </tr>
+  <tr>
+   <td>"outerhtml"</td>
+   <td>開始・終了要素タグを含む要素のレンダリングされているHTMLを取得します。</td>
+  </tr>
+  <tr>
+   <td>"readystate"</td>
+   <td>オブジェクトの準備状態を取得します。</td>
+  </tr>
+  <tr>
+   <td>"referrer"</td>
+   <td>
+現在ページのアクセス元ページのURL文字列を取得します(そのページ上のリンクを介してアクセスしている場合にのみ。その他の場合、文字列はNULL)。</td>
+  </tr>
+  <tr>
+   <td>"resizable"</td>
+   <td>オブジェクトのサイズ変更が可能かを表す値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"screenx"</td>
+   <td>ブラウザまたはオブジェクトの左上隅のx座標(スクリーン相対座標)を取得します。</td>
+  </tr>
+  <tr>
+   <td>"screeny"</td>
+   <td>ブラウザまたはオブジェクトの左上隅のy座標(スクリーン相対座標)を取得します。</td>
+  </tr>
+  <tr>
+   <td>"silent"</td>
+   <td>ブラウザがダイアログボックス表示できるかどうかを表す値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"statusbar"</td>
+   <td>オブジェクトのステータスバーが表示されているかどうかを表す値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"statustext"</td>
+   <td>オブジェクトのステータスバーのテキストを取得します。</td>
+  </tr>
+  <tr>
+   <td>"theatermode"</td>
+   <td>ブラウザがシアターモードかどうかを表すブール値を取得します。シアターモードではブラウザのメインウィンドウがスクリーン全体を占め、最小限のナビゲーションボタンのみのツールバーが表示されます。</td>
+  </tr>
+  <tr>
+   <td>"title"</td>
+   <td> 	ドキュメントタイトルを取得します。これはウィンドウタイトルとは異なります。通常、ウィンドウタイトルはドキュメントタイトルから始まりますが、Windowsレジストリで指定された追加テキストがそれに付け加えられます。</td>
+  </tr>
+  <tr>
+   <td>"toolbar"</td>
+   <td>ブラウザツールバーの表示/非表示を表すブール値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"top"</td>
+   <td>オブジェクトメインウィンドウの上端のスクリーン座標を取得します。</td>
+  </tr>
+  <tr>
+   <td>"visible"</td>
+   <td>オブジェクトの表示/非表示を表す値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"width"</td>
+   <td>ブラウザメインウィンドウまたはドキュメント要素の幅を取得します。</td>
+  </tr>
+  <tr>
+   <td>"uniqueid"</td>
+   <td>DOMによって割り当てられた全要素に対してユニークなIDを取得します。このIDは要素IDが必要な場合に使用することができます。</td>
+  </tr>
+</table><br>
+<b><u>クライアント情報プロパティ</u></b><br>
+<br>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+	<td width="15%"><b>プロパティ</b></td>
+    <td width="85%"><b>説明</b></td>
+  </tr>
+  <tr>
+   <td>"appcodename"</td>
+   <td>ブラウザのコードネームを取得します(プロパティのデフォルト値はMozilla)。</td>
+  </tr>
+  <tr>
+   <td>"appminorversion"</td>
+   <td>アプリケーションのマイナーバージョン値を取得します。</td>
+  </tr>
+  <tr>
+   <td>"appname"</td>
+   <td>ブラウザ名を取得します(プロパティのデフォルト値はMicrosoft Internet Explorer)。</td>
+  </tr>
+  <tr>
+   <td>"appversion"</td>
+   <td>プラットフォームとブラウザのバージョンを取得します。</td>
+  </tr>
+  <tr>
+   <td>"browserlanguage"</td>
+   <td>現在のブラウザの言語設定を取得します(次の中のいずれかです。<a href="http://msdn.microsoft.com/workshop/author/dhtml/reference/language_codes.asp" target="_blank">Language Codes</a>)。</td>
+  </tr>
+  <tr>
+   <td>"cookieenabled"</td>
+   <td>クライアントサイドの永続的なCookieがブラウザで有効かどうか取得します。永続的なCookieはクライアントサイドのコンピュータに保存されるものです。</td>
+  </tr>
+  <tr>
+   <td>"cpuclass"</td>
+   <td>CPUのクラスを表す文字列を取得します(返し値は<a href="http://msdn.microsoft.com/workshop/author/dhtml/reference/properties/cpuclass.asp" target="_blank">こちら</a>)。</td>
+  </tr>
+  <tr>
+   <td>"javaenabled"</td>
+   <td>Javaが有効かどうかを返します。</td>
+  </tr>
+  <tr>
+   <td>"online"</td>
+   <td>システムが<a href="http://msdn.microsoft.com/workshop/components/offline/offline.asp" target="_blank">グローバルオフラインモード</a>かどうかを取得します。</td>
+  </tr>
+  <tr>
+   <td>"platform"</td>
+   <td>ユーザーのオペレーティングシステム名を取得します。(返し値は<a href="http://msdn.microsoft.com/workshop/author/dhtml/reference/properties/platform.asp" target="_blank">こちら</a>)。</td>
+  </tr>
+  <tr>
+   <td>"systemlanguage"</td>
+   <td>オペレーティングシステムが使用しているデフォルト言語を取得します(次の中のいずれかです。<a href="http://msdn.microsoft.com/workshop/author/dhtml/reference/language_codes.asp" target="_blank">Language Codes</a>)。</td>
+  </tr>
+  <tr>
+   <td>"useragent"</td>
+   <td>HTTPユーザエージェント要求ヘッダーと同じ文字列を取得します。</td>
+  </tr>
+  <tr>
+   <td>"userlanguage"</td>
+   <td>オペレーティングシステムの自然言語設定を取得します(次の中のいずれかです。<a href="http://msdn.microsoft.com/workshop/author/dhtml/reference/language_codes.asp" target="_blank">Language Codes</a>)。</td>
+  </tr>
+  <tr>
+   <td>"vcard"</td>
+   <td>
+   userProfileオブジェクト内の各属性が格納された配列が返されます(属性リストは<a href="http://msdn.microsoft.com/workshop/author/dhtml/reference/methods/getattribute_1.asp" target="_blank">こちら</a>)。返し値は2次元配列です。1次元目は2つの要素を持ちます。1番目の要素(0)には属性名が、2番目の要素(1)には対応する値がはいっています。2次元目は29個の要素(0から28)を持ちます。</td>
+  </tr>
+</table><br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IEPropertySet.htm">_IEPropertySet</a>, <a href="_IEBodyReadHTML.htm">_IEBodyReadHTML</a>, <a href="_IEBodyReadText.htm">_IEBodyReadText</a>, <a href="_IEBodyWriteHTML.htm">_IEBodyWriteHTML</a>, <a href="_IEDocInsertHTML.htm">_IEDocInsertHTML</a>, <a href="_IEDocInsertText.htm">_IEDocInsertText</a>, <a href="_IEHeadInsertEventScript.htm">_IEHeadInsertEventScript</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - 基礎的なサンプルでブラウザを開く。アドレスバーが表示されているか調べ、</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 表示されていない場合は表示する</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Example</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"basic"</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S15">_IEPropertyGet</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"addressbar"</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"AddressBar Status"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"AddressBar Visible, turning it off"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_IEPropertySet</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"addressbar"</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">)</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"AddressBar Status"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"AddressBar Invisible, turning it on"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_IEPropertySet</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"addressbar"</span><span class="S8">,</span><span class="S0"> </span><span class="S5">True</span><span class="S8">)</span><br>
+<span class="S5">EndIf</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 2 - フォームのサンプルを開き、フォームのテキストエリア要素への参照を取得</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;テキストエリアの座標と大きさを取得</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 外縁をマウスでなぞった後、マウスを中央に配置</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Example</span><span class="S8">(</span><span class="S7">"form"</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$oForm</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEFormGetObjByName</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"ExampleForm"</span><span class="S8">)</span><br>
+<span class="S9">$oTextArea</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEFormElementGetObjByName</span><span class="S8">(</span><span class="S9">$oForm</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"textareaExample"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; テキストエリアの座標と大きさを取得</span><br>
+<span class="S9">$iScreenX</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEPropertyGet</span><span class="S8">(</span><span class="S9">$oTextArea</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"screenx"</span><span class="S8">)</span><br>
+<span class="S9">$iScreenY</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEPropertyGet</span><span class="S8">(</span><span class="S9">$oTextArea</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"screeny"</span><span class="S8">)</span><br>
+<span class="S9">$iBrowserX</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEPropertyGet</span><span class="S8">(</span><span class="S9">$oTextArea</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"browserx"</span><span class="S8">)</span><br>
+<span class="S9">$iBrowserY</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEPropertyGet</span><span class="S8">(</span><span class="S9">$oTextArea</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"browserY"</span><span class="S8">)</span><br>
+<span class="S9">$iWidth</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEPropertyGet</span><span class="S8">(</span><span class="S9">$oTextArea</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"width"</span><span class="S8">)</span><br>
+<span class="S9">$iHeight</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEPropertyGet</span><span class="S8">(</span><span class="S9">$oTextArea</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"height"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; 外縁をマウスでなぞった後、マウスを中央に配置</span><br>
+<span class="S4">MouseMove</span><span class="S8">(</span><span class="S9">$iScreenX</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iScreenY</span><span class="S8">)</span><br>
+<span class="S4">MouseMove</span><span class="S8">(</span><span class="S9">$iScreenX</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$iWidth</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iScreenY</span><span class="S8">)</span><br>
+<span class="S4">MouseMove</span><span class="S8">(</span><span class="S9">$iScreenX</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$iWidth</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iScreenY</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$iHeight</span><span class="S8">)</span><br>
+<span class="S4">MouseMove</span><span class="S8">(</span><span class="S9">$iScreenX</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iScreenY</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$iHeight</span><span class="S8">)</span><br>
+<span class="S4">MouseMove</span><span class="S8">(</span><span class="S9">$iScreenX</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iScreenY</span><span class="S8">)</span><br>
+<span class="S4">MouseMove</span><span class="S8">(</span><span class="S9">$iScreenX</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$iWidth</span><span class="S8">/</span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iScreenY</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$iHeight</span><span class="S8">/</span><span class="S3">2</span><span class="S8">)</span><br>
+<br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IEPropertyGet.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlHeader_CreateDragImage</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlHeader_CreateDragImage</font>
+<hr size="2">
+<p>ドラッグ時の画像として使用されるアイテム画像の半透明バージョンを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiHeader.au3&gt;<br>
+_GUICtrlHeader_CreateDragImage($hWnd, $iIndex)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iIndex</td>
+   <td>ゼロ始まりのアイテムインデックス。アイテムに割り当てられる画像が透明画像のもとになります。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">新しい画像のみを要素として格納した画像リストのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlHeader_GetImageList.htm">_GUICtrlHeader_GetImageList</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiHeader.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiImageList.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_HDR</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; 関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iMsg</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aSize</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tPos</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hDC</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUIを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Header"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hHeader</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlHeader_Create</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 列を追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_AddItem</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_AddItem</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 2"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_AddItem</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 3"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlHeader_AddItem</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column 4"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ドラッグ時画像を作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hImage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlHeader_CreateDragImage</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hHeader</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$aSize</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUIImageList_GetIconSize</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hDC</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetDC</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーがやめるまでカーソル位置にドラッグ時画像を表示</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$iMsg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S9">$iMsg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_MOUSEMOVE</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S9">$tPos</span><span class="S0"> </span><span class="S8">&lt;&gt;</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$tRect</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S9">$tagRECT</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Left"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tPos</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"X"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Top"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tPos</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Y"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Right"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tPos</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"X"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$aSize</span><span class="S8">[</span><span class="S3">0</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Bottom"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tPos</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Y"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$aSize</span><span class="S8">[</span><span class="S3">1</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_WinAPI_InvalidateRect</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tRect</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$tRect</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetClientRect</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$tPos</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_GetMousePos</span><span class="S0"> </span><span class="S8">(</span><span class="S5">True</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S15">_WinAPI_PtInRect</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tPos</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUIImageList_Draw</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hDC</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tPos</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"X"</span><span class="S8">),</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tPos</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Y"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S9">$iMsg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlHeader_CreateDragImage.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

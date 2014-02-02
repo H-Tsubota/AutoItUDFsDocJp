@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IEDocInsertHTML</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IEDocInsertHTML</font>
+<hr size="2">
+<p>要素の中または前後にHTMLテキストを挿入します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IEDocInsertHTML ( ByRef $o_object, $s_string [, $s_where = "beforeend"] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">ドキュメント要素を指すオブジェクト変数</td>
+  </tr>
+  <tr>
+   <td>$s_string</td>
+   <td>挿入するHTMLテキストを格納した文字列</td>
+  </tr>
+  <tr>
+   <td>$s_where</td>
+	<td><b>[オプション]</b>文字列挿入位置を指定します<br>
+       beforebegin = 文字列をオブジェクト直前に挿入します<br>
+       afterbegin = 文字列をオブジェクト開始直後、オブジェクト内容開始直前に挿入します<br>
+       beforeend = (デフォルト) 文字列をオブジェクト終了直前、全オブジェクト内容終了直後に挿入します<br>
+       afterend = 文字列をオブジェクト終了直後に挿入します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 ($_IEStatus_InvalidDataType) = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 ($_IEStatus_InvalidObjectType) = 無効なオブジェクト型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>5 ($_IEStatus_InvalidValue) = 無効な値</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+_IEPropertySetのinnerHTML、outerHTML、innerText、outerText機能を使用して挿入した内容を動的に操作することが可能です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IEDocInsertText.htm">_IEDocInsertText</a>, <a href="_IEPropertyGet.htm">_IEPropertyGet</a>, <a href="_IEPropertySet.htm">_IEPropertySet</a>, <a href="_IEBodyReadHTML.htm">_IEBodyReadHTML</a>, <a href="_IEBodyWriteHTML.htm">_IEBodyWriteHTML</a>, <a href="_IEDocReadHTML.htm">_IEDocReadHTML</a>, <a href="_IEHeadInsertEventScript.htm">_IEHeadInsertEventScript</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - ドキュメントの先頭と末尾にHTMLを挿入</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S8">(</span><span class="S7">"http://www.autoitscript.com"</span><span class="S8">)</span><br>
+<span class="S9">$oBody</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IETagNameGetCollection</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"body"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S15">_IEDocInsertHTML</span><span class="S8">(</span><span class="S9">$oBody</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"&lt;h2&gt;This HTML is inserted After Begin&lt;/h2&gt;"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"afterbegin"</span><span class="S8">)</span><br>
+<span class="S15">_IEDocInsertHTML</span><span class="S8">(</span><span class="S9">$oBody</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"&lt;h2&gt;This HTML is inserted Before End&lt;/h2&gt;"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"beforeend"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 2 - 基礎的なサンプルページを使用してブラウザを開き、"IEAu3Data"という</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; DIVタグの内部と周囲にHTMLを挿入。ボディHTMLを表示</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Example</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"basic"</span><span class="S8">)</span><br>
+<span class="S9">$oDiv</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEGetObjByName</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"IEAu3Data"</span><span class="S8">)</span><br>
+<br>
+<span class="S15">_IEDocInsertHTML</span><span class="S8">(</span><span class="S9">$oDiv</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"&lt;b&gt;(HTML beforebegin)&lt;/b&gt;"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"beforebegin"</span><span class="S8">)</span><br>
+<span class="S15">_IEDocInsertHTML</span><span class="S8">(</span><span class="S9">$oDiv</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"&lt;i&gt;(HTML afterbegin)&lt;/i&gt;"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"afterbegin"</span><span class="S8">)</span><br>
+<span class="S15">_IEDocInsertHTML</span><span class="S8">(</span><span class="S9">$oDiv</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"&lt;b&gt;(HTML beforeend)&lt;/b&gt;"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"beforeend"</span><span class="S8">)</span><br>
+<span class="S15">_IEDocInsertHTML</span><span class="S8">(</span><span class="S9">$oDiv</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"&lt;i&gt;(HTML afterend)&lt;/i&gt;"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"afterend"</span><span class="S8">)</span><br>
+<br>
+<span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S15">_IEBodyReadHTML</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 3 - 応用例</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; 全ページの先頭に時刻を挿入し、新しいページをブラウズしている場合でも表示させる</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; _IEDocInsertText、_IEDocInsertHTMLと</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; _IEPropertySetの"innerhtml"、"referrer"機能を使用</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S8">(</span><span class="S7">"http://www.autoitscript.com"</span><span class="S8">)</span><br>
+<br>
+<span class="S4">AdlibRegister</span><span class="S8">(</span><span class="S7">"UpdateClock"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1000</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 1秒毎に時刻を更新</span><br>
+<br>
+<span class="S1">; ブラウザウィンドウが存在する間アイドリング</span><br>
+<span class="S5">While</span><span class="S0"> </span><span class="S4">WinExists</span><span class="S8">(</span><span class="S15">_IEPropertyGet</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"hwnd"</span><span class="S8">))</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S4">Sleep</span><span class="S8">(</span><span class="S3">10000</span><span class="S8">)</span><br>
+<span class="S5">WEnd</span><br>
+<br>
+<span class="S5">Exit</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> UpdateClock</span><span class="S8">()</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$curTime</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"&lt;b&gt;Current Time is: &lt;/b&gt;"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@HOUR</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">":"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@MIN</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">":"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@SEC</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S1">; _IEGetObjByNameは移動後、NoMatchエラーを返すはずなので</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; &nbsp;&nbsp;(DIV挿入前)、エラー通知を一時的にオフにしておく</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S15">_IEErrorNotify</span><span class="S8">(</span><span class="S5">False</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$oAutoItClock</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEGetObjByName</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"AutoItClock"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">If</span><span class="S0"> </span><span class="S5">Not</span><span class="S0"> </span><span class="S4">IsObj</span><span class="S8">(</span><span class="S9">$oAutoItClock</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S1">; 見つからない場合、DIV要素を挿入</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S1">;</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S1">; BODYの参照取得, DIV挿入, DIVの参照取得, 時間を更新</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S9">$oBody</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IETagNameGetCollection</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"body"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S15">_IEDocInsertHTML</span><span class="S8">(</span><span class="S9">$oBody</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"&lt;div id='AutoItClock'&gt;&lt;/div&gt;"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"afterbegin"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S9">$oAutoItClock</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEGetObjByName</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"AutoItClock"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S15">_IEPropertySet</span><span class="S8">(</span><span class="S9">$oAutoItClock</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"innerhtml"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$curTime</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S1">;</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S1">; 時刻の後に空白が挿入されていないかどうか、参照文字列を調べる</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S15">_IELoadWait</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S9">$sReferrer</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEPropertyGet</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"referrer"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">If</span><span class="S0"> </span><span class="S9">$sReferrer</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S15">_IEDocInsertText</span><span class="S8">(</span><span class="S9">$oAutoItClock</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">" &nbsp;Referred by: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sReferrer</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"afterend"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">Else</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S15">_IEPropertySet</span><span class="S8">(</span><span class="S9">$oAutoItClock</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"innerhtml"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$curTime</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 時間を更新</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S15">_IEErrorNotify</span><span class="S8">(</span><span class="S5">True</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IEDocInsertHTML.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

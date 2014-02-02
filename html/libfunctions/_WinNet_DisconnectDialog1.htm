@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinNet_DisconnectDialog1</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinNet_DisconnectDialog1</font>
+<hr size="2">
+<p>ネットワークリソース接続を切断するための汎用のブラウジングダイアログボックスを起動します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinNet.au3&gt;<br>
+_WinNet_DisconnectDialog1($hWnd, $sLocalName [, $sRemoteName = "" [, $iFlags = 1]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ダイアログボックスのオーナーウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$sLocalName</td>
+   <td>"F:"や"LPT1"などのローカルデバイスの名前</td>
+  </tr>
+  <tr>
+   <td>$sRemoteName</td>
+   <td><b>[オプション]</b>
+   接続を切断するネットワークリソースの名前。$LocalNameが指定されている場合、このメンバーは0にできます。<br>
+   sLocalNameが指定されている際はsLocalNameからリダイレクトされているネットワークリソースへの接続が切断されます。</td>
+  </tr>
+  <tr>
+   <td>$iFlags</td>
+   <td><b>[オプション]</b>Flags describing the connection.接続を表すフラグ。次のものの組あわせです:<br>
+       1 - この値を設定すると指定された接続は恒久的でなくなります。このフラグはsLocalNameにローカルデバイスが指定されている場合のみ有効です<br>
+       2 - この値が設定されていない場合、システムは切断時に強制切断をおこないます</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+	<td width="90%">1を返します。ユーザーがダイアログをキャンセルした場合、返し値は-1になります。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+	<td>0を返し、@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinNet_DisconnectDialog.htm">_WinNet_DisconnectDialog</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=WNetDisconnectDialog1">WNetDisconnectDialog1</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

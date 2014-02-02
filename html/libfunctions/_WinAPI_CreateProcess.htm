@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_CreateProcess</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_CreateProcess</font>
+<hr size="2">
+<p>新しいプロセスとそのプライマリスレッドを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_CreateProcess($sAppName, $sCommand, $pSecurity, $pThread, $fInherit, $iFlags, $pEnviron, $sDir, $pStartupInfo, $pProcess)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sAppName</td>
+    <td width="85%">実行されるモジュールの名前</td>
+  </tr>
+  <tr>
+   <td>$sCommand</td>
+   <td>実行されるコマンドライン</td>
+  </tr>
+  <tr>
+   <td>$pSecurity</td>
+   <td>返されるハンドルを子プロセスに継承できるかどうかを決定する$tagSECURITY_ATTRIBUTES構造体へのポインタ</td>
+  </tr>
+  <tr>
+   <td>$pThread</td>
+   <td>返されるハンドルを子プロセスに継承できるかどうかを決定する$tagSECURITY_ATTRIBUTES構造体へのポインタ</td>
+  </tr>
+  <tr>
+   <td>$fInherit</td>
+   <td>Trueの場合、呼び出し元プロセスの継承可能なハンドルが新しいプロセスに継承されます</td>
+  </tr>
+  <tr>
+   <td>$iFlags</td>
+   <td>優先順位クラスとプロセスの作成を制御するフラグ</td>
+  </tr>
+  <tr>
+   <td>$pEnviron</td>
+   <td>新しいプロセスの環境ブロックへのポインタ</td>
+  </tr>
+  <tr>
+   <td>$sDir</td>
+   <td>プロセスの現在のディレクトリのフルパス</td>
+  </tr>
+  <tr>
+   <td>$pStartupInfo</td>
+   <td>$tagSTARTUPINFO構造体へのポインタ</td>
+  </tr>
+  <tr>
+   <td>$pProcess</td>
+   <td>$tagPROCESS_INFORMATION構造体へのポインタ</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagSECURITY_ATTRIBUTES.htm">$tagSECURITY_ATTRIBUTES</a>, <a href="$tagSTARTUPINFO.htm">$tagSTARTUPINFO</a>, <a href="$tagPROCESS_INFORMATION.htm">$tagPROCESS_INFORMATION</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CreateProcess">CreateProcess</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

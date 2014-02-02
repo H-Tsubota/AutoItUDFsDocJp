@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GDIPlus_GraphicsDrawString</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GDIPlus_GraphicsDrawString</font>
+<hr size="2">
+<p>文字列を描画します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GDIPlus.au3&gt;<br>
+_GDIPlus_GraphicsDrawString($hGraphics, $sString, $nX, $nY[, $sFont = "Arial"[, $fSize = 10[, $iFormat = 0]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hGraphics</td>
+    <td width="85%">Graphicsオブジェクトのハンドル</td>
+  </tr>
+  <tr>
+   <td>$sString</td>
+   <td>描画される文字列</td>
+  </tr>
+  <tr>
+   <td>$nX</td>
+   <td>文字列が描画される位置のX座標</td>
+  </tr>
+  <tr>
+   <td>$nY</td>
+   <td>文字列が描画される位置のＹ座標</td>
+  </tr>
+  <tr>
+   <td>$sFont</td>
+   <td><b>[オプション]</b>描画で使用されるフォント名</td>
+  </tr>
+  <tr>
+   <td>$fSize</td>
+   <td><b>[オプション]</b>描画で使用されるフォントサイズ</td>
+  </tr>
+  <tr>
+   <td>$iFormat</td>
+	<td><b>[オプション]</b>フォーマットフラグ。次の1つまたは組み合わせです:<br>
+       0x0001 - 文字列方向を右から左に向かう方向に指定します<br>
+       0x0002 - テキストの各行がディスプレイデバイス上で垂直方向に描画されるように指定します<br>
+       0x0004 - 文字の一部が文字列のレイアウト長方形からはみ出ることを許可するよう指定します<br>
+       0x0020 - Unicodeのレイアウト制御文字を表す文字が表示されるよう指定します<br>
+       0x0400 - 要求されたフォントでサポートされていない文字で代わりのフォントを使用するよう指定します<br>
+       0x0800 - 各行の末尾のスペースも文字列の長さに含めるよう指定します<br>
+       0x1000 - テキストの次行への丸め込みを無効にするよう指定します<br>
+       0x2000 - レイアウト長方形内におさまっている行のみ指定します<br>
+       0x4000 - レイアウト長方形にからはみ出た文字、レイアウト長方形の外側に伸びるテキストも表示するよう指定します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GDIPlus_GraphicsDrawStringEx.htm">_GDIPlus_GraphicsDrawStringEx</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GDIPlus.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hGraphic</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUI作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"GDI+"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 文字列を描画</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_Startup</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGraphic</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_GraphicsCreateFromHWND</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_GraphicsDrawString</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGraphic</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Hello world"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">140</span><span class="S8">,</span><span class="S0"> </span><span class="S3">110</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; リソースを破棄</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_GraphicsDispose</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGraphic</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_Shutdown</span><span class="S0"> </span><span class="S8">()</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GDIPlus_GraphicsDrawString.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

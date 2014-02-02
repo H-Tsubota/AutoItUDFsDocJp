@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _NamedPipes_ConnectNamedPipe</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_NamedPipes_ConnectNamedPipe</font>
+<hr size="2">
+<p>名前付きパイプのサーバープロセスのクライアントプロセス接続待機を有効にします。<br></p>
+
+<p class="codeheader">
+#Include &lt;NamedPipes.au3&gt;<br>
+_NamedPipes_ConnectNamedPipe($hNamedPipe[, $pOverlapped = 0])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hNamedPipe</td>
+    <td width="85%">名前付きパイプインスタンスのサーバー端点のハンドル</td>
+  </tr>
+  <tr>
+   <td>$pOverlapped</td>
+   <td><b>[オプション]</b>$tagOVERLAPPED構造体へのポインタ。hNamedPipeが$FILE_FLAG_OVERLAPPEDで開かれた場合、pOverlappedは0以外である必要があります。hNamedPipeが$FILE_FLAG_OVERLAPPEDで作成されpOverlappedが0でない場合、$tagOVERLAPPED構造体は手動リセットイベントオブジェクトのハンドルを格納している必要があります。hNamedPipeが$FILE_FLAG_OVERLAPPEDで開かれいない場合、この関数はクライアントが接続するかエラーが起きるまで処理を返しません。この関数の呼出し後にクライアントが接続すると成功した同期操作の結果としてこの関数はゼロ以外の値を返します。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+クライアントがこの関数の呼び出し前に接続した場合、この関数はゼロを返し、GetLastErrorはERROR_PIPE_CONNECTEDを返します。<br>これはクライアントがCreateNamedPipe呼び出しとCreateNamedPipe呼び出しの間に接続をおこなった場合に起こります。<br>このような場合、この関数がゼロを返していてもクライアントとサーバー間の正常な接続が存在します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_NamedPipes_CreateNamedPipe.htm">_NamedPipes_CreateNamedPipe</a>, <a href="$tagOVERLAPPED.htm">$tagOVERLAPPED</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=ConnectNamedPipe">ConnectNamedPipe</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_GetWindowRgn</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_GetWindowRgn</font>
+<hr size="2">
+<p>ウィンドウのウィンドウ領域のコピーを取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_GetWindowRgn($hWnd, $hRgn)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウ領域を取得するウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$hRgn</td>
+   <td>領域のハンドル。ウィンドウ領域を表す値が設定されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">
+	関数が取得した領域のタイプ。以下の値のいずれかです:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$NULLREGION - 領域は空です。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$SIMPLEREGION - 領域は1つの長方形です。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$COMPLEXREGION - 領域は複数の長方形です。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0 - 指定されたウィンドウは領域を持っていないか、領域を返そうとした際にエラーが起きました。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+ウィンドウのウィンドウ領域はSetWindowRgn関数の呼び出しによって設定されます。<br>
+システムが描画を許可するウィンドウ内領域はウィンドウ領域によって決定されます。<br>
+システムはウィンドウ領域外にあるウィンドウ部分を表示しません。<br>
+ウィンドウのウィンドウ領域の座標はウィンドウのクライアント領域ではなくウィンドウの左上隅に対する相対座標です。<br>
+ウィンドウのウィンドウ領域を設定するには、SetWindowRgn関数を読んで下さい。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_CreateRectRgn.htm">_WinAPI_CreateRectRgn</a>, <a href="_WinAPI_CreateRoundRectRgn.htm">_WinAPI_CreateRoundRectRgn</a>, <a href="_WinAPI_CombineRgn.htm">_WinAPI_CombineRgn</a>, <a href="_WinAPI_SetWindowRgn.htm">_WinAPI_SetWindowRgn</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GetWindowRgn">GetWindowRgn</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

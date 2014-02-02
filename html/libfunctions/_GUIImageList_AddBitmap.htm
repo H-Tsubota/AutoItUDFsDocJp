@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUIImageList_AddBitmap</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUIImageList_AddBitmap</font>
+<hr size="2">
+<p>ビットマップをイメージリストに追加します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiImageList.au3&gt;<br>
+_GUIImageList_AddBitmap($hWnd, $sImage[, $sMask=""])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$sImage</td>
+   <td>画像を格納しているビットマップのパス</td>
+  </tr>
+  <tr>
+   <td>$sMask</td>
+   <td><b>[オプション]</b>マスクを格納しているビットマップのパス</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">画像のインデックス</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>-1</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUIImageList_Add.htm">_GUIImageList_Add</a>, <a href="_GUIImageList_AddIcon.htm">_GUIImageList_AddIcon</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiListView.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiImageList.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$listview</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hImage</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$Wow64</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">""</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S6">@AutoItX64</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S9">$Wow64</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"\Wow6432Node"</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$sPath</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">RegRead</span><span class="S8">(</span><span class="S7">"HKEY_LOCAL_MACHINE\SOFTWARE"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$Wow64</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\AutoIt v3\AutoIt"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"InstallDir"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Examples\GUI\Advanced\Images"</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"ImageList AddBitmap"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$listview</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateListView</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">394</span><span class="S8">,</span><span class="S0"> </span><span class="S3">268</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$LVS_SHOWSELALWAYS</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$LVS_NOSORTHEADER</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$LVS_REPORT</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_SetExtendedListViewStyle</span><span class="S8">(</span><span class="S9">$listview</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$LVS_EX_FULLROWSELECT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$LVS_EX_GRIDLINES</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$LVS_EX_DOUBLEBUFFER</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 画像をロード</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hImage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUIImageList_Create</span><span class="S8">(</span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S3">32</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddBitmap</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sPath</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Red.bmp"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddBitmap</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sPath</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Green.bmp"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddBitmap</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sPath</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Blue.bmp"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_SetImageList</span><span class="S8">(</span><span class="S9">$listview</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 列を追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_AddColumn</span><span class="S8">(</span><span class="S9">$listview</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Items"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">120</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; アイテムを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_AddItem</span><span class="S8">(</span><span class="S9">$listview</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Item 1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_AddItem</span><span class="S8">(</span><span class="S9">$listview</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Item 2"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlListView_AddItem</span><span class="S8">(</span><span class="S9">$listview</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Item 3"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIDelete</span><span class="S8">()</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUIImageList_AddBitmap.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

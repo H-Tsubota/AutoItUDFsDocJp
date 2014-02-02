@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _SQLite_FetchData</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_SQLite_FetchData</font>
+<hr size="2">
+<p>_SQLite_Query()に基づくクエリからデータの1行を取り出します。<br></p>
+
+<p class="codeheader">
+#include &lt;SQLite.au3&gt;<br>
+_SQLite_FetchData ( $hQuery, ByRef $aRow [, $fBinary  = False [, $fDoNotFinalize = False]] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hQuery</td>
+    <td width="85%">_SQLite_Query()から渡されるクエリハンドル</td>
+  </tr>
+  <tr>
+   <td>$aRow</td>
+   <td>データ行を格納している1次元配列</td>
+  </tr>
+  <tr>
+   <td>$fBinary</td>
+   <td><b>[オプション]</b>バイナリモードに切り替えます ($aRowはバイナリ文字列の配列になります)</td>
+  </tr>
+    <tr>
+   <td>$fDoNotFinalize</td>
+   <td><b>[オプション]</b>
+	以降の処理のためにクエリをファイナライズしない状態に保つ必要がある場合はTRUEを設定して下さい。<br>
+	(その場合、シャットダウン前に_SQLite_QueryFinalizeを呼び出すのは呼び出し側の責任になります。)</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">$SQLITE_OKを返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>$SQLITE_* 定数と比較可能な値を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>-1 - SQLiteがエラーを報告 (返し値を調べてください)</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - SQLite API 'sqlite3_step'の呼び出しエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - SQLite API 'sqlite3_data_count'の呼び出しエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 - SQLite API 'sqlite3_column_text16'の呼び出しエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 - SQLite API 'sqlite3_column_type'の呼び出しエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>5 - SQLite API 'sqlite3_column_bytes'の呼び出しエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>6 - SQLite API 'sqlite3_column_blob'の呼び出しエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>7 - SafeModeによって呼び出しが阻止されました</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_SQLite_Query.htm">_SQLite_Query</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;SQLite.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;SQLite.dll.au3&gt;</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$hQuery</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aRow</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aNames</span><br>
+<span class="S15">_SQLite_Startup</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S7">"_SQLite_LibVersion="</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S15">_SQLite_LibVersion</span><span class="S8">()</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Open</span><span class="S0"> </span><span class="S8">()</span><span class="S0"> </span><span class="S1">; :メモリ: データベースを開く</span><br>
+<span class="S15">_SQLite_Exec</span><span class="S0"> </span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"CREATE TABLE aTest (a,b,c);"</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Exec</span><span class="S0"> </span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"INSERT INTO aTest(a,b,c) VALUES ('c','2','World');"</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Exec</span><span class="S0"> </span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"INSERT INTO aTest(a,b,c) VALUES ('b','3',' ');"</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Exec</span><span class="S0"> </span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"INSERT INTO aTest(a,b,c) VALUES ('a','1','Hello');"</span><span class="S8">)</span><br>
+<span class="S15">_SQlite_Query</span><span class="S0"> </span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"SELECT ROWID,* FROM aTest ORDER BY a;"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hQuery</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_FetchNames</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hQuery</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aNames</span><span class="S8">)</span><br>
+<span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S4">StringFormat</span><span class="S8">(</span><span class="S7">" %-10s &nbsp;%-10s &nbsp;%-10s &nbsp;%-10s "</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aNames</span><span class="S8">[</span><span class="S3">0</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$aNames</span><span class="S8">[</span><span class="S3">1</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$aNames</span><span class="S8">[</span><span class="S3">2</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$aNames</span><span class="S8">[</span><span class="S3">3</span><span class="S8">])</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S5">While</span><span class="S0"> </span><span class="S15">_SQLite_FetchData</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hQuery</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aRow</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">)</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$SQLITE_OK</span><span class="S0"> </span><span class="S1">; 次の行を読み出し</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S4">StringFormat</span><span class="S8">(</span><span class="S7">" %-10s &nbsp;%-10s &nbsp;%-10s &nbsp;%-10s "</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aRow</span><span class="S8">[</span><span class="S3">0</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$aRow</span><span class="S8">[</span><span class="S3">1</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$aRow</span><span class="S8">[</span><span class="S3">2</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$aRow</span><span class="S8">[</span><span class="S3">3</span><span class="S8">])</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S5">WEnd</span><br>
+<span class="S15">_SQLite_QueryFinalize</span><span class="S8">(</span><span class="S9">$hQuery</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Exec</span><span class="S0"> </span><span class="S8">(-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"DROP TABLE aTest;"</span><span class="S8">)</span><br>
+<span class="S15">_SQLite_Close</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S15">_SQLite_Shutdown</span><span class="S0"> </span><span class="S8">()</span><br>
+<br>
+<span class="S1">;~ 出力:</span><br>
+<span class="S1">;~</span><br>
+<span class="S1">;~ &nbsp;rowid &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c</span><br>
+<span class="S1">;~ &nbsp;3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello</span><br>
+<span class="S1">;~ &nbsp;2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</span><br>
+<span class="S1">;~ &nbsp;1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;World</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_SQLite_FetchData.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

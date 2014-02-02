@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>FTPEx user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;FTPEx.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="_FTP_Close.htm">_FTP_Close</a></td>
+<td>_FTP_Openによるセッションを閉じます。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_Command.htm">_FTP_Command</a></td>
+<td>FTPサーバーにコマンドを送信します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_Connect.htm">_FTP_Connect</a></td>
+<td>FTPサーバーに接続します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_DecodeInternetStatus.htm">_FTP_DecodeInternetStatus</a></td>
+<td>受信したインターネットステータスをデコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_DirCreate.htm">_FTP_DirCreate</a></td>
+<td>FTPサーバー上にディレクトリを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_DirDelete.htm">_FTP_DirDelete</a></td>
+<td>FTPサーバー上のディレクトリを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_DirGetCurrent.htm">_FTP_DirGetCurrent</a></td>
+<td>FTPサーバー上でのカレントディレクトリを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_DirPutContents.htm">_FTP_DirPutContents</a></td>
+<td>FTPサーバーにフォルダ分けを送信する。再帰的におこなうことも可能。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_DirSetCurrent.htm">_FTP_DirSetCurrent</a></td>
+<td>FTPサーバー上のカレントディレクトリを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_FileClose.htm">_FTP_FileClose</a></td>
+<td>_FTP_FileOpenによって返されたハンドルを閉じます。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_FileDelete.htm">_FTP_FileDelete</a></td>
+<td>FTPサーバー上からファイルを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_FileGet.htm">_FTP_FileGet</a></td>
+<td>FTPサーバーからファイルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_FileGetSize.htm">_FTP_FileGetSize</a></td>
+<td>FTPサーバー上のファイルのファイルサイズを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_FileOpen.htm">_FTP_FileOpen</a></td>
+<td>読み込み、書き込みのためにFTPサーバー上のリモートファイルのアクセスを開始します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_FilePut.htm">_FTP_FilePut</a></td>
+<td>FTPサーバー上にファイルを置きます。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_FileRead.htm">_FTP_FileRead</a></td>
+<td>_FTP_FileOpen()によって開かれたハンドルからデータを読み込みます。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_FileRename.htm">_FTP_FileRename</a></td>
+<td>FTPサーバー上のファイルの名称を変更します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_FileTimeLoHiToStr.htm">_FTP_FileTimeLoHiToStr</a></td>
+<td>_FTP_Openのセッションを閉じます。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_FindFileClose.htm">_FTP_FindFileClose</a></td>
+<td>FindFileハンドルを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_FindFileFirst.htm">_FTP_FindFileFirst</a></td>
+<td>FTPサーバーでのFindFirstFileです。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_FindFileNext.htm">_FTP_FindFileNext</a></td>
+<td>FTPサーバーでのFindNextFileです。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_GetLastResponseInfo.htm">_FTP_GetLastResponseInfo</a></td>
+<td>この関数を呼んだスレッドでの最後のエラーメッセージ、またはサーバーの応答を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_ListToArray.htm">_FTP_ListToArray</a></td>
+<td>現在のリモートディレクトリからファイル名、ディレクトリ名、あるいはその両方を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_ListToArray2D.htm">_FTP_ListToArray2D</a></td>
+<td>現在のリモートディレクトリからファイル名とファイルサイズを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_ListToArrayEx.htm">_FTP_ListToArrayEx</a></td>
+<td>現在のリモートディレクトリ内のファイル/ディレクトリの名前、サイズ、属性、時刻を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_Open.htm">_FTP_Open</a></td>
+<td>FTPセッションを開始します。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_ProgressDownload.htm">_FTP_ProgressDownload</a></td>
+<td>プログレスウィンドウを表示しながら、またはユーザー定義関数を呼ぶことでバイナリモードでファイルをダウンロードします。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_ProgressUpload.htm">_FTP_ProgressUpload</a></td>
+<td>プログレスウィンドウを表示しながら、またはユーザー定義関数を呼ぶことでバイナリモードでファイルをアップロードします。<br></td>
+</tr>
+<tr>
+<td><a href="_FTP_SetStatusCallback.htm">_FTP_SetStatusCallback</a></td>
+<td>WinINet関数が進行状況に応じて呼ぶ事のできる処理中に作成されるコールバック関数を登録します。<br></td>
+</tr>
+</table>
+</body>

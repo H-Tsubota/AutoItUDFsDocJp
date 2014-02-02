@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _viSetTimeout</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_viSetTimeout</font>
+<hr size="2">
+<p>VISAのタイムアウト時間をミリ秒単位で設定します。<br></p>
+
+<p class="codeheader">
+#include &lt;Visa.au3&gt;<br>
+_viSetTimeout ( $h_session, $i_timeout_ms )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$h_session</td>
+    <td width="85%">VISA記述子(文字列)またはVISAセッションハンドル(整数)。<br>
+       詳しくは_viExecCommandの注意を参照。</td>
+  </tr>
+  <tr>
+   <td>$i_timeout_ms</td>
+   <td>
+   VISA操作(主にGPIBクエリ)でのミリ秒単位でのタイムアウト時間<br>
+		0に設定した場合、タイムアウトは無効になります。<br>
+		"INF"に設定した場合、VISA操作はタイムアウトしません。<br>	注意して使用してください。計測器がクエリに１つでも応答しない場合、簡単にプログラムがハングアップします。<br>バスの種類(GPIB、TCP、etc)によってはタイムアウトは要求された正確な値に設定されません。代わりに要求された時間より長い時間のうち、有効でもっとも近い値が使用されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">0を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>DLLが開けない場合-1を、それ以外の場合VISAエラーコード(VISAプログラミングガイドを参照)を表す非ゼロの値を返します</td>
+  </tr>
+</table>エラー時にはこの関数は常に@errorを1に設定します<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+ほとんどの場合、この関数を呼ぶ必要はありません。_viExecCommandは第3パラメータにVISAのタイムアウト時間を設定するための$i_timeout_msを持っています。<br>
+<br>
+全てのVISA関数において使用のためにはVISAライブラリ({WINDOWS}\system32内にvisa32.dllがあるかどうかによって確認できます)とGPIBカード(National Instruments NI PCI-GPIB カードやAgilent 82350B PCI High-Performance GPIB カードなど)がインストールされている必要があります。<br>
+<br>
+* 一般的なVISA記述子のより詳しい説明については_viExecCommand関数ヘルプの注意を参照してください。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_viSetAttribute.htm">_viSetAttribute</a>, <a href="_viExecCommand.htm">_viExecCommand</a>, <a href="_viOpen.htm">_viOpen</a>, <a href="_viClose.htm">_viClose</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">;- GPIBアドレス3に設定された計測器を扱うとする.</span><br>
+<span class="S1">; 扱う計測器が異なるアドレスの場合は"GPIB::3::0"を対応する記述子に変更</span><br>
+<span class="S1">; _viOpenの呼び出しも同様にする</span><br>
+<span class="S1">; タイムアウト設定した_viExecCommand関数の使い方と</span><br>
+<span class="S1">; 代わりの_viSetTimeoutの呼び方を示します</span><br>
+<br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Visa.au3&gt;</span><br>
+<br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$h_session</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><br>
+<br>
+<span class="S1">; GPIBアドレス3で計測器のIDを要求</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"Step 1"</span><span class="S8">,</span><span class="S7">"Simple GPIB query with explicit TIMEOUT set"</span><span class="S8">)</span><br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$s_answer</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_viExecCommand</span><span class="S8">(</span><span class="S7">"GPIB::3::0"</span><span class="S8">,</span><span class="S7">"*IDN?"</span><span class="S8">,</span><span class="S3">10000</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 10秒でタイムアウト</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"GPIB QUERY result"</span><span class="S8">,</span><span class="S9">$s_answer</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 回答を表示</span><br>
+<br>
+<span class="S1">; 最初の_viSetTimeout関数を使った処理と同じ処理</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"Step 2"</span><span class="S8">,</span><span class="S7">"_vOpen + timeout using _viSetTimeout + GPIB query"</span><span class="S8">)</span><br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$h_instr</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_viOpen</span><span class="S8">(</span><span class="S3">3</span><span class="S8">)</span><br>
+<span class="S15">_viSetTimeout</span><span class="S8">(</span><span class="S9">$h_instr</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10000</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 10000 ms = 10 秒</span><br>
+<span class="S9">$s_answer</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_viExecCommand</span><span class="S8">(</span><span class="S9">$h_instr</span><span class="S8">,</span><span class="S7">"*IDN?"</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; タイムアウトを設定する必要は無い</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"GPIB QUERY result"</span><span class="S8">,</span><span class="S9">$s_answer</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 回答を表示</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"Step 3"</span><span class="S8">,</span><span class="S7">"Close the Instrument connection using _viClose"</span><span class="S8">)</span><br>
+<span class="S15">_viClose</span><span class="S8">(</span><span class="S9">$h_instr</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 計測器コネクションを閉じる</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_viSetTimeout.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

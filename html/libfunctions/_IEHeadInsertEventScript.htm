@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IEHeadInsertEventScript</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IEHeadInsertEventScript</font>
+<hr size="2">
+<p>ドキュメントのHeadにJavaScriptを挿入します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IEHeadInsertEventScript ( ByRef $o_object, $s_htmlFor, $s_event, $s_script )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">InternetExplorer.Applicationのオブジェクト変数、ウィンドウまたはフレームオブジェクト</td>
+  </tr>
+  <tr>
+   <td>$s_htmlFor</td>
+   <td>イベントの監視をするHTML要素(e.g. "document"、"window" または要素ID)</td>
+  </tr>
+  <tr>
+   <td>$s_event</td>
+   <td>監視するイベント(e.g. "onclick"、"oncontextmenu")</td>
+  </tr>
+  <tr>
+   <td>$s_script</td>
+   <td>実行されるJavaScript文字列</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 ($_IEStatus_InvalidDataType) = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+ObjEventを使用すると、AutoItはCOM経由でイベント通知を受け取ることができますが、それらを非同期に管理します(ブラウザコンテキストで管理される際のように同期しません)。この仕組みを利用するとブラウザコンテキストで管理されるようにコードを挿入することができます。<br>
+<br>
+IDを割り当てられていない要素は_IEPropertyGetを使用して"uniqueID"プロパティを取得することによって使用できます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IEDocInsertHTML.htm">_IEDocInsertHTML</a>, <a href="_IEPropertyGet.htm">_IEPropertyGet</a>, <a href="_IEDocInsertText.htm">_IEDocInsertText</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - 基礎的なサンプルページを使用してブラウザを開き、ドキュメントの冒頭に</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ドキュメントをクリックするとJavaScriptの警告が出るようにするイベントスクリプトを挿入</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Example</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"basic"</span><span class="S8">)</span><br>
+<span class="S15">_IEHeadInsertEventScript</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"document"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"onclick"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"alert('Someone clicked the document!');"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 2 - 基礎的なサンプルページを使用してブラウザを開き、ドキュメントの冒頭に</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ドキュメントを右クリックするとJavaScriptの警告が出るようにするイベントスクリプトを挿入</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;右クリックでコンテキストメニューが出ないようにするためにイベントスクリプトは"false"を返す</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Example</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"basic"</span><span class="S8">)</span><br>
+<span class="S15">_IEHeadInsertEventScript</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"document"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"oncontextmenu"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"alert('No Context Menu');return false"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 3 - 基礎的なサンプルページを使用してブラウザを開き、ドキュメントの冒頭に</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ページを移動する際に表示されるJavaScriptの警告を表示し、</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 処理キャンセルのオプションを提供する</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Example</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"basic"</span><span class="S8">)</span><br>
+<span class="S15">_IEHeadInsertEventScript</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"window"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"onbeforeunload"</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S7">"alert('Example warning follows...');return 'Pending changes may be lost';"</span><span class="S8">)</span><br>
+<span class="S15">_IENavigate</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"www.autoitscript.com"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 4 - 基礎的なサンプルページを使用してブラウザを開き、ドキュメントの冒頭に</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ドキュメント内のテキスト選択をできなくさせるイベントスクリプトを挿入</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Example</span><span class="S8">()</span><br>
+<span class="S15">_IEHeadInsertEventScript</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"document"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"ondrag"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"return false;"</span><span class="S8">)</span><br>
+<span class="S15">_IEHeadInsertEventScript</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"document"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"onselectstart"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"return false;"</span><span class="S8">)</span><br>
+<br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 5 - AutoItのホームページを使用してブラウザを開き、ドキュメントの冒頭に</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; リンクのクリックによる移動をできなくさせ、</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; コンソールにクリックしたリンクのURLを記録させるスクリプトを挿入する</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S8">(</span><span class="S7">"http://www.autoitscript.com"</span><span class="S8">)</span><br>
+<span class="S9">$oLinks</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IELinkGetCollection</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">)</span><br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$oLink</span><span class="S0"> </span><span class="S5">in</span><span class="S0"> </span><span class="S9">$oLinks</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S9">$sLinkId</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEPropertyGet</span><span class="S8">(</span><span class="S9">$oLink</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"uniqueid"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S15">_IEHeadInsertEventScript</span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sLinkId</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"onclick"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"return false;"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S4">ObjEvent</span><span class="S8">(</span><span class="S9">$oLink</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_Evt_"</span><span class="S8">)</span><br>
+<span class="S5">Next</span><br>
+<br>
+<span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Sleep</span><span class="S8">(</span><span class="S3">100</span><span class="S8">)</span><br>
+<span class="S5">WEnd</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Evt_onClick</span><span class="S8">()</span><br>
+<span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$o_link</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S6">@COM_EventObj</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">ConsoleWrite</span><span class="S8">(</span><span class="S9">$o_link</span><span class="S8">.</span><span class="S14">href</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IEHeadInsertEventScript.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _NamedPipes_TransactNamedPipe</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_NamedPipes_TransactNamedPipe</font>
+<hr size="2">
+<p>1 回のネットワーク操作で名前付きパイプに対する読み取りと書き込みをおこないます。<br></p>
+
+<p class="codeheader">
+#Include &lt;NamedPipes.au3&gt;<br>
+_NamedPipes_TransactNamedPipe($hNamedPipe, $pInpBuf, $iInpSize, $pOutBuf, $iOutSize [, $pOverlapped = 0])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hNamedPipe</td>
+    <td width="85%">名前付きパイプのハンドル</td>
+  </tr>
+  <tr>
+   <td>$pInpBuf</td>
+   <td>パイプに書き込まれるデータを格納したバッファへのポインタ</td>
+  </tr>
+  <tr>
+   <td>$iInpSize</td>
+   <td>バイト単位での書き込みバッファのサイズ</td>
+  </tr>
+  <tr>
+   <td>$pOutBuf</td>
+   <td>パイプから読み取られるデータを受けるバッファへのポインタ</td>
+  </tr>
+  <tr>
+   <td>$iOutSize</td>
+   <td>バイト単位での読み取りバッファのサイズ</td>
+  </tr>
+  <tr>
+   <td>$pOverlapped</td>
+   <td><b>[オプション]</b>$tagOVERLAPPED構造体へのポインタ。、この構造体はhNamedPipeが$FILE_FLAG_OVERLAPPEDで開かれた場合に要求されます。hNamedPipeが$FILE_FLAG_OVERLAPPEDで開かれた場合、pOverlappedは0以外でなければなりません。hNamedPipeが$FILE_FLAG_OVERLAPPEDで開かれpOverlappedが0以外の場合、TransactNamedPipeはオーバーラップ操作として実行されます。$tagOVERLAPPED構造体は手動リセットイベントオブジェクトのハンドルを格納している必要があります。操作がただちに完了しない場合、TransactNamedPipeはFalseを返し、GetLastErrorはERROR_IO_PENDINGを返します。
+</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">パイプから読み取られたバイト数</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+TransactNamedPipeはサーバーがパイプをメッセージ型パイプとして作成していない場合またはパイプハンドルがメッセージ読み取りモードでない場合、失敗します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagOVERLAPPED.htm">$tagOVERLAPPED</a>, <a href="_NamedPipes_CallNamedPipe.htm">_NamedPipes_CallNamedPipe</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=TransactNamedPipe">TransactNamedPipe</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

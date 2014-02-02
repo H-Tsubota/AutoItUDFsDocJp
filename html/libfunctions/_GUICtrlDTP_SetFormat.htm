@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlDTP_SetFormat</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlDTP_SetFormat</font>
+<hr size="2">
+<p>与えられたフォーマット文字列に従って表示を設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiDateTimePicker.au3&gt;<br>
+_GUICtrlDTP_SetFormat($hWnd, $sFormat)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$sFormat</td>
+   <td>希望フォーマットを定義する文字列。<br>
+   ここに空白を設定するとコントロールの現在のスタイルはデフォルトフォーマット文字列にリセットされます。<br>
+   次のフォーマット文字列を使用できます:<br>
+       "d" - 1桁、または2桁の日<br>
+       "dd" - 2桁の日。1桁の日はゼロ埋めされます。<br>
+       "ddd" - 3文字の曜日の省略形<br>
+       "dddd" - 完全な曜日名<br>
+       "h" - 12時間形式の1桁、または2桁の時<br>
+       "hh" - 12時間形式の2桁の時<br>
+       "H" - 24時間形式の1桁、または2桁の時<br>
+       "HH" - 12時間形式の2桁の時<br>
+       "m" - 1桁、または2桁の分<br>
+       "mm" - 2桁の分<br>
+       "M" - 1桁、または2桁の月番号<br>
+       "MM" - 2桁の月番号<br>
+       "MMM" - 3文字の月の省略形<br>
+       "MMMM" - 完全な月名<br>
+       "t" - 1文字のAM/PMの省略形<br>
+       "tt" - 2文字のAM/PMの省略形<br>
+       "yy" - 年の下2桁<br>
+       "yyyy" - 完全な年</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+より柔軟な表示を可能にするためにフォーマット文字列にいろいろな文字を追加することができます。<br>
+ただし、　非フォーマット文字をシングルコーテーションで囲む必要があります。<br>
+例えばフォーマット文字列"'Today is:'hh':'m':'s ddddMMMdd', 'yyy"は"Today is: 04:22:31 Tuesday Mar 23, 1996". のように出力されます。<br>
+ノート:デフォルトのフォーマット文字列を使用している場合はDTPコントロールは地域変更を追随しますが、<br>
+カスタムしたフォーマット文字列を使用している場合は地域変更に対応した更新はおこなわれません。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiDateTimePicker.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_DTP</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; DTP関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hDTP</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUIを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"DateTimePick Set Format"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hDTP</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlGetHandle</span><span class="S8">(</span><span class="S4">GUICtrlCreateDate</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">6</span><span class="S8">,</span><span class="S0"> </span><span class="S3">190</span><span class="S8">))</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 表示形式を設定</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlDTP_SetFormat</span><span class="S8">(</span><span class="S9">$hDTP</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"ddd MMM dd, yyyy hh:mm ttt"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIDelete</span><span class="S8">()</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlDTP_SetFormat.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

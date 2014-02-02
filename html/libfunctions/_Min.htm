@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _Min</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_Min</font>
+<hr size="2">
+<p>2つの数のうちどちらの方が小さいかを評価します。<br></p>
+
+<p class="codeheader">
+#include &lt;Math.au3&gt;<br>
+_Min ( $nNum1, $nNum2 )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$nNum1</td>
+    <td width="85%">1つめの数。</td>
+  </tr>
+  <tr>
+   <td>$nNum2</td>
+   <td>2つめの数。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">2つの数のうち小さい方を返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 = 正常終了。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 = <i>$nNum1</i>が数字ではありません。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 = <i>$nNum2</i>が数字ではありません。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数は整数だけでなく浮動小数でも動作します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_Max.htm">_Max</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Math.au3&gt;</span><br>
+<br>
+<span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_Min</span><span class="S8">(</span><span class="S3">25</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">)</span><span class="S0"> &nbsp;</span><span class="S1">; 10を返す</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_Min.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

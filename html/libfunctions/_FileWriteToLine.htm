@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _FileWriteToLine</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_FileWriteToLine</font>
+<hr size="2">
+<p>ファイルの指定した行にテキストを書き込みます。<br></p>
+
+<p class="codeheader">
+#Include &lt;File.au3&gt;<br>
+_FileWriteToLine($sFile, $iLine, $sText [, $fOverWrite = 0])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sFile</td>
+    <td width="85%">書き込むファイル</td>
+  </tr>
+  <tr>
+   <td>$iLine</td>
+   <td>書き込む行番号</td>
+  </tr>
+  <tr>
+   <td>$sText</td>
+   <td>書き込むテキスト</td>
+  </tr>
+  <tr>
+   <td><b>[オプション]</b>$fOverWrite</td>
+   <td>1を設定した場合、古い行に上書きします。<br>
+       0を設定した場合、上書きしません。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@errorを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>1 = ファイルに$iLine未満の行数しかありません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 = ファイルが存在しません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 = ファイルが開けません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 = $iLineが無効です</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>5 = $fOverWriteが無効です</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>6 = $sTextが無効です</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+$fOverWriteを1、$sTextを""として_FileWriteToLineを呼び出すとその行が削除されます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;File.au3&gt;</span><br>
+<span class="S1">;例: c:\test.txtの3行目に書き込み/3行目を置換</span><br>
+<span class="S15">_FileWriteToLine</span><span class="S8">(</span><span class="S7">"c:\test.txt"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"my replacement for line 3"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S1">;例: c:\test.txtの3行目に書き込み/3行目を置換しない</span><br>
+<span class="S15">_FileWriteToLine</span><span class="S8">(</span><span class="S7">"c:\test.txt"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"my insertion"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_FileWriteToLine.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

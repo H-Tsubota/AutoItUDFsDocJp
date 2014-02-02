@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagOVERLAPPED</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagOVERLAPPED</font>
+<hr size="2">
+<p>非同期(またはオーバーラップする)入力、出力(I/O)で使用される情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagOVERLAPPED = "int Internal;int InternalHigh;int Offset;int OffsetHigh;int hEvent"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">Internal</td>
+    <td width="85%">オペレーティングシステム使用用に予約されています。このメンバーはシステム依存のステータスを指定し、GetOverlappedResult関数がERROR_IO_PENDINGに拡張エラー情報を設定せずに返った場合に有効になります。</td>
+  </tr>
+  <tr>
+   <td>InternalHigh</td>
+   <td>
+   オペレーティングシステム使用用に予約されています。このメンバーは転送されるデータの長さを指定し、GetOverlappedResult関数がTrueで返った場合に有効になります。</td>
+  </tr>
+  <tr>
+   <td>Offset</td>
+   <td>	ファイルの転送開始位置。ファイル位置はファイル先頭からのバイトオフセットです。呼び出しプロセスはReadFile、WriteFile関数を呼び出す前にこのメンバーを設定しなければなりません。このメンバーはデバイスがファイルの際にのみ使用されます。それ以外の場合、このメンバーはゼロでなければなりません。</td>
+  </tr>
+  <tr>
+   <td>OffsetHigh</td>
+   <td>
+ファイルの転送開始位置の上位ワード。このメンバーはデバイスがファイルの際にのみ使用されます。それ以外の場合、このメンバーはゼロでなければなりません。</td>
+  </tr>
+  <tr>
+   <td>hEvent</td>
+   <td>
+	操作が完了した際にシグナルステータスに設定されるイベントのハンドル。
+呼び出しプロセスはオーバーラップ関数を呼び出す前に、このメンバにをゼロ、または有効なイベントハンドルを設定しなければなりません。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

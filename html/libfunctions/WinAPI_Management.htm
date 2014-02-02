@@ -1,0 +1,809 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>WinAPI user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;WinAPI.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_AttachConsole.htm">_WinAPI_AttachConsole</a></td>
+<td>呼び出し元のプロセスを指定されたプロセスのコンソールにアタッチします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_AttachThreadInput.htm">_WinAPI_AttachThreadInput</a></td>
+<td>スレッドの入力処理機構を他のスレッドにアタッチします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_Beep.htm">_WinAPI_Beep</a></td>
+<td>スピーカーから単純な音を鳴らします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_BitBlt.htm">_WinAPI_BitBlt</a></td>
+<td>色データのビットブロックの転送をおこないます。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CallNextHookEx.htm">_WinAPI_CallNextHookEx</a></td>
+<td>現在のフックチェーンの次のフックプロシージャにフック情報を渡します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CallWindowProc.htm">_WinAPI_CallWindowProc</a></td>
+<td>指定されたウィンドウプロシージャにメッセージ情報を渡します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_ClientToScreen.htm">_WinAPI_ClientToScreen</a></td>
+<td>指定された点のクライアント座標をスクリーン座標に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CloseHandle.htm">_WinAPI_CloseHandle</a></td>
+<td>開かれているオブジェクトのハンドルを閉じます。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CombineRgn.htm">_WinAPI_CombineRgn</a></td>
+<td>2つのリージョンを結合し、その結果を3番目のリージョンに保存します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CommDlgExtendedError.htm">_WinAPI_CommDlgExtendedError</a></td>
+<td>コモンダイアログボックスのエラー文字列を返します。この文字列はコモンダイアログボックス関数の実行中に起きた最新のエラーを表します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CopyIcon.htm">_WinAPI_CopyIcon</a></td>
+<td>他のモジュールから指定されたアイコンをコピーします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateBitmap.htm">_WinAPI_CreateBitmap</a></td>
+<td>指定された幅、高さ、カラーフォーマットでビットマップを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateCompatibleBitmap.htm">_WinAPI_CreateCompatibleBitmap</a></td>
+<td>指定されたデバイスコンテキストと互換性のあるビットマップを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateCompatibleDC.htm">_WinAPI_CreateCompatibleDC</a></td>
+<td>指定されたデバイスと互換性のあるメモリデバイスコンテキストを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateEvent.htm">_WinAPI_CreateEvent</a></td>
+<td>名前付きまたは名前なしのイベントオブジェクトを作成または開きます。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateFile.htm">_WinAPI_CreateFile</a></td>
+<td>ファイルまたは他のデバイスを作成または開きます。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateFont.htm">_WinAPI_CreateFont</a></td>
+<td>指定された特性で論理フォントを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateFontIndirect.htm">_WinAPI_CreateFontIndirect</a></td>
+<td>固有の特性を持つ論理フォントを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreatePen.htm">_WinAPI_CreatePen</a></td>
+<td>指定されたスタイル、幅、色の論理ペンを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateProcess.htm">_WinAPI_CreateProcess</a></td>
+<td>新しいプロセスとそのプライマリスレッドを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateRectRgn.htm">_WinAPI_CreateRectRgn</a></td>
+<td>長方形リージョンを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateRoundRectRgn.htm">_WinAPI_CreateRoundRectRgn</a></td>
+<td>角の丸い長方形のリージョンを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateSolidBitmap.htm">_WinAPI_CreateSolidBitmap</a></td>
+<td>ソリッドカラーのビットマップを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateSolidBrush.htm">_WinAPI_CreateSolidBrush</a></td>
+<td>指定されたソリッドカラーの論理ブラシを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_CreateWindowEx.htm">_WinAPI_CreateWindowEx</a></td>
+<td>オーバーラップウィンドウ、ポップアップウィンドウ、子ウィンドウを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_DefWindowProc.htm">_WinAPI_DefWindowProc</a></td>
+<td>デフォルトの処理を提供するためにデフォルトのウィンドウプロシージャを呼び出します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_DeleteDC.htm">_WinAPI_DeleteDC</a></td>
+<td>指定されたデバイスコンテキストを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_DeleteObject.htm">_WinAPI_DeleteObject</a></td>
+<td>論理ペン、ブラシ、フォント、ビットマップ、リージョン、パレットを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_DestroyIcon.htm">_WinAPI_DestroyIcon</a></td>
+<td>アイコンを破棄し、アイコンによって使用されていたメモリを解放します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_DestroyWindow.htm">_WinAPI_DestroyWindow</a></td>
+<td>指定されたウィンドウを破棄します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_DrawEdge.htm">_WinAPI_DrawEdge</a></td>
+<td>1つまたは複数の長方形の辺を描画します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_DrawFrameControl.htm">_WinAPI_DrawFrameControl</a></td>
+<td>指定された種類、スタイルのフレームコントロールを描画します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_DrawIcon.htm">_WinAPI_DrawIcon</a></td>
+<td>指定されたデバイスコンテキストにアイコンまたはカーソルを描画します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_DrawIconEx.htm">_WinAPI_DrawIconEx</a></td>
+<td>指定されたデバイスコンテキストにアイコンまたはカーソルを描画します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_DrawLine.htm">_WinAPI_DrawLine</a></td>
+<td>線を描画します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_DrawText.htm">_WinAPI_DrawText</a></td>
+<td>指定された長方形にフォーマットされたテキストを描画します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_EnableWindow.htm">_WinAPI_EnableWindow</a></td>
+<td>指定されたウィンドウ、コントロールへのマウス、キーボード入力の有効/無効を切り替えます。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_EnumDisplayDevices.htm">_WinAPI_EnumDisplayDevices</a></td>
+<td>システムのディスプレイデバイスの情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_EnumWindows.htm">_WinAPI_EnumWindows</a></td>
+<td>全てのウィンドウを列挙します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_EnumWindowsPopup.htm">_WinAPI_EnumWindowsPopup</a></td>
+<td>ポップアップウィンドウを列挙します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_EnumWindowsTop.htm">_WinAPI_EnumWindowsTop</a></td>
+<td>全てのトップレベルウィンドウを列挙します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_ExpandEnvironmentStrings.htm">_WinAPI_ExpandEnvironmentStrings</a></td>
+<td>環境変数文字列を展開し、それらを定義された値に置換します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_ExtractIconEx.htm">_WinAPI_ExtractIconEx</a></td>
+<td>ファイルから取り出された大きいアイコンまたは小さいアイコンのハンドルの配列を作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_FatalAppExit.htm">_WinAPI_FatalAppExit</a></td>
+<td>メッセージボックスを表示し、アプリケーションを終了します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_FillRect.htm">_WinAPI_FillRect</a></td>
+<td>指定されたブラシを使用して長方形を塗りつぶします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_FindExecutable.htm">_WinAPI_FindExecutable</a></td>
+<td>指定されたファイル名に関連付けられた実行ファイルの名前を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_FindWindow.htm">_WinAPI_FindWindow</a></td>
+<td>クラス名とウィンドウ名が一致するトップレベルウィンドウのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_FlashWindow.htm">_WinAPI_FlashWindow</a></td>
+<td>指定されたウィンドウを1回点滅します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_FlashWindowEx.htm">_WinAPI_FlashWindowEx</a></td>
+<td>指定されたウィンドウを点滅します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_FloatToInt.htm">_WinAPI_FloatToInt</a></td>
+<td>4バイトfloatを整数値として返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_FlushFileBuffers.htm">_WinAPI_FlushFileBuffers</a></td>
+<td>指定されたファイルのバッファをフラッシュし、全てのバッファデータを書き出させます。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_FormatMessage.htm">_WinAPI_FormatMessage</a></td>
+<td>メッセージ文字列をフォーマットします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_FrameRect.htm">_WinAPI_FrameRect</a></td>
+<td>指定されたブラシを使用して指定された長方形の周りに縁を描画します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_FreeLibrary.htm">_WinAPI_FreeLibrary</a></td>
+<td>ロードされているダイナミカルリンクライブラリ(DLL)モジュールの参照回数をデクリメントします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetAncestor.htm">_WinAPI_GetAncestor</a></td>
+<td>指定したウィンドウの祖先のハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetAsyncKeyState.htm">_WinAPI_GetAsyncKeyState</a></td>
+<td>この関数が呼ばれた際にキーが上がっているか、下がっているかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetBkMode.htm">_WinAPI_GetBkMode</a></td>
+<td>指定されたデバイスコンテキストの現在の背景ミックスモードを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetClassName.htm">_WinAPI_GetClassName</a></td>
+<td>指定されたウィンドウが属しているクラスの名前を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetClientHeight.htm">_WinAPI_GetClientHeight</a></td>
+<td>ウィンドウのクライアント領域の高さを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetClientRect.htm">_WinAPI_GetClientRect</a></td>
+<td>ウィンドウのクライント領域の座標を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetClientWidth.htm">_WinAPI_GetClientWidth</a></td>
+<td>ウィンドウのクライアント領域の幅を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetCurrentProcess.htm">_WinAPI_GetCurrentProcess</a></td>
+<td>呼び出し元のプロセスのプロセスハンドルを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetCurrentProcessID.htm">_WinAPI_GetCurrentProcessID</a></td>
+<td>呼び出し元プロセスのプロセス識別子を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetCurrentThread.htm">_WinAPI_GetCurrentThread</a></td>
+<td>呼び出し元スレッドの擬似ハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetCurrentThreadId.htm">_WinAPI_GetCurrentThreadId</a></td>
+<td>呼び出し元スレッドのスレッド識別子を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetCursorInfo.htm">_WinAPI_GetCursorInfo</a></td>
+<td>グローバルカーソルの情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetDC.htm">_WinAPI_GetDC</a></td>
+<td>ウィンドウのクライアント領域のディスプレイデバイスコンテキストのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetDesktopWindow.htm">_WinAPI_GetDesktopWindow</a></td>
+<td>Windowsのデスクトップウィンドウのハンドルを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetDeviceCaps.htm">_WinAPI_GetDeviceCaps</a></td>
+<td>指定されたデバイスのデバイス固有情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetDIBits.htm">_WinAPI_GetDIBits</a></td>
+<td>指定されたビットマップのビットを取得し、DIBとしてバッファにコピーします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetDlgCtrlID.htm">_WinAPI_GetDlgCtrlID</a></td>
+<td>指定されたコントロールの識別子を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetDlgItem.htm">_WinAPI_GetDlgItem</a></td>
+<td>指定されたダイアログボックスのコントロールのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetFileSizeEx.htm">_WinAPI_GetFileSizeEx</a></td>
+<td>指定されたファイルのサイズを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetFocus.htm">_WinAPI_GetFocus</a></td>
+<td>キーボードフォーカスが合っているウィンドウのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetForegroundWindow.htm">_WinAPI_GetForegroundWindow</a></td>
+<td>フォアグラウンドウィンドウのハンドルを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetGuiResources.htm">_WinAPI_GetGuiResources</a></td>
+<td>指定されたプロセスによって利用されているグラフィカルユーザーインターフェイス(GUI)オブジェクトのハンドルの数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetIconInfo.htm">_WinAPI_GetIconInfo</a></td>
+<td>指定されたアイコンまたはカーソルの情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetLastError.htm">_WinAPI_GetLastError</a></td>
+<td>呼び出しスレッドの最後のエラーコード値を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetLastErrorMessage.htm">_WinAPI_GetLastErrorMessage</a></td>
+<td>呼び出しスレッドの最後のエラーメッセージを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetLayeredWindowAttributes.htm">_WinAPI_GetLayeredWindowAttributes</a></td>
+<td>レイヤードウィンドウの属性を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetModuleHandle.htm">_WinAPI_GetModuleHandle</a></td>
+<td>指定されたモジュールのモジュールハンドルを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetMousePos.htm">_WinAPI_GetMousePos</a></td>
+<td>現在のマウスの座標を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetMousePosX.htm">_WinAPI_GetMousePosX</a></td>
+<td>現在のマウスのX座標を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetMousePosY.htm">_WinAPI_GetMousePosY</a></td>
+<td>現在のマウスのY座標を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetObject.htm">_WinAPI_GetObject</a></td>
+<td>指定されたグラフィックオブジェクトの情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetOpenFileName.htm">_WinAPI_GetOpenFileName</a></td>
+<td>ユーザーが開くドライブ、ディレクトリ、1つまたは複数のファイルの名前を指定するためのOpenダイアログボックスを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetOverlappedResult.htm">_WinAPI_GetOverlappedResult</a></td>
+<td>オーバーラップ操作の結果を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetParent.htm">_WinAPI_GetParent</a></td>
+<td>指定された子ウィンドウの親ウィンドウのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetProcessAffinityMask.htm">_WinAPI_GetProcessAffinityMask</a></td>
+<td>プロセスとシステムのアフィニティマスクを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetSaveFileName.htm">_WinAPI_GetSaveFileName</a></td>
+<td>ユーザーが保存するドライブ、ディレクトリ、ファイルの名前を指定するためのSaveダイアログボックスを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetStdHandle.htm">_WinAPI_GetStdHandle</a></td>
+<td>標準入力デバイス、標準出力デバイス、標準エラーデバイスのハンドルをハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetStockObject.htm">_WinAPI_GetStockObject</a></td>
+<td>定義済みのペン、ブラシ、フォント、パレットのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetSysColor.htm">_WinAPI_GetSysColor</a></td>
+<td>指定された表示要素の現在の色を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetSysColorBrush.htm">_WinAPI_GetSysColorBrush</a></td>
+<td>指定された色インデックスに対応する論理ブラシのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetSystemMetrics.htm">_WinAPI_GetSystemMetrics</a></td>
+<td>指定されたシステムメトリックまたはシステム構成設定を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetTextExtentPoint32.htm">_WinAPI_GetTextExtentPoint32</a></td>
+<td>指定されたテキスト文字列の幅と高さを計算します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetWindow.htm">_WinAPI_GetWindow</a></td>
+<td>指定されたウィンドウと指定された関係をもつウィンドウのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetWindowDC.htm">_WinAPI_GetWindowDC</a></td>
+<td>ウィンドウ全体のデバイスコンテキスト(DC)を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetWindowHeight.htm">_WinAPI_GetWindowHeight</a></td>
+<td>ウィンドウの高さを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetWindowLong.htm">_WinAPI_GetWindowLong</a></td>
+<td>指定されたウィンドウの情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetWindowPlacement.htm">_WinAPI_GetWindowPlacement</a></td>
+<td>ウィンドウの最小化時、最大化時、通常時の位置を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetWindowRect.htm">_WinAPI_GetWindowRect</a></td>
+<td>指定されたウィンドウのバウンディング長方形のサイズを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetWindowRgn.htm">_WinAPI_GetWindowRgn</a></td>
+<td>ウィンドウのウィンドウ領域のコピーを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetWindowText.htm">_WinAPI_GetWindowText</a></td>
+<td>指定されたウィンドウのタイトルバーのテキストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetWindowThreadProcessId.htm">_WinAPI_GetWindowThreadProcessId</a></td>
+<td>指定されたウィンドウを作成したスレッドの識別子を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetWindowWidth.htm">_WinAPI_GetWindowWidth</a></td>
+<td>ウィンドウの幅を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GetXYFromPoint.htm">_WinAPI_GetXYFromPoint</a></td>
+<td>$tagPOINT構造体からX/Y値を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GlobalMemoryStatus.htm">_WinAPI_GlobalMemoryStatus</a></td>
+<td>現在利用可能なメモリの情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GUIDFromString.htm">_WinAPI_GUIDFromString</a></td>
+<td>GUID文字列をバイナリ形式に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_GUIDFromStringEx.htm">_WinAPI_GUIDFromStringEx</a></td>
+<td>GUID文字列をバイナリ形式に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_HiWord.htm">_WinAPI_HiWord</a></td>
+<td>ロングワードの上位ワードを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_InProcess.htm">_WinAPI_InProcess</a></td>
+<td>ウィンドウが現在のプロセスに属しているかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_IntToFloat.htm">_WinAPI_IntToFloat</a></td>
+<td>4バイト整数をfloat値として返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_InvalidateRect.htm">_WinAPI_InvalidateRect</a></td>
+<td>指定されたウィンドウの更新領域に長方形を追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_IsClassName.htm">_WinAPI_IsClassName</a></td>
+<td>コントロールのClassNameを調べるためのラッパー<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_IsWindow.htm">_WinAPI_IsWindow</a></td>
+<td>指定されたウィンドウハンドルが既存ウィンドウのものかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_IsWindowVisible.htm">_WinAPI_IsWindowVisible</a></td>
+<td>指定されたウィンドウの表示状態を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_LineTo.htm">_WinAPI_LineTo</a></td>
+<td>現在の位置から指定された点まで線を描画します。ただし現在の位置は描画に含まれません。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_LoadBitmap.htm">_WinAPI_LoadBitmap</a></td>
+<td>モジュールの実行ファイルから指定されたビットマップリソースをロードします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_LoadImage.htm">_WinAPI_LoadImage</a></td>
+<td>アイコン、カーソル、ビットマップをロードします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_LoadLibrary.htm">_WinAPI_LoadLibrary</a></td>
+<td>指定された実行モジュールを呼び出し元プロセスのアドレス空間にマップします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_LoadLibraryEx.htm">_WinAPI_LoadLibraryEx</a></td>
+<td>指定された実行モジュールを呼び出し元プロセスのアドレス空間にマッピングします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_LoadShell32Icon.htm">_WinAPI_LoadShell32Icon</a></td>
+<td>Shell32.dllファイルからアイコンを抽出します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_LoadString.htm">_WinAPI_LoadString</a></td>
+<td>指定されたモジュールに関連付けられた実行ファイルから文字列リソースをロードします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_LocalFree.htm">_WinAPI_LocalFree</a></td>
+<td>指定されたローカルメモリーオブジェクトを解放し、そのハンドルを無効化します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_LoWord.htm">_WinAPI_LoWord</a></td>
+<td>ロングワードの下位ワードを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_MAKELANGID.htm">_WinAPI_MAKELANGID</a></td>
+<td>プライマリ言語IDとサブ言語IDから言語IDを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_MAKELCID.htm">_WinAPI_MAKELCID</a></td>
+<td>言語IDとソートIDからロケールIDを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_MakeLong.htm">_WinAPI_MakeLong</a></td>
+<td>2つのInt値からLongInt値を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_MakeQWord.htm">_WinAPI_MakeQWord</a></td>
+<td>2つの整数値からQWORD値を計算して返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_MessageBeep.htm">_WinAPI_MessageBeep</a></td>
+<td>WAVE形式のサウンドを再生します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_Mouse_Event.htm">_WinAPI_Mouse_Event</a></td>
+<td>マウス動作とボタンクリックを合成します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_MoveTo.htm">_WinAPI_MoveTo</a></td>
+<td>現在の位置を指定された点に更新します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_MoveWindow.htm">_WinAPI_MoveWindow</a></td>
+<td>指定されたウィンドウの位置とサイズを変更します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_MsgBox.htm">_WinAPI_MsgBox</a></td>
+<td>オリジナルのものより広い余白のメッセージボックスを表示します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_MulDiv.htm">_WinAPI_MulDiv</a></td>
+<td>2つの32ビット値をかけて得られた64ビット値を3つめの32ビット値で割ります。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_MultiByteToWideChar.htm">_WinAPI_MultiByteToWideChar</a></td>
+<td>文字列をワイド文字（Unicode）文字列にマッピングします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_MultiByteToWideCharEx.htm">_WinAPI_MultiByteToWideCharEx</a></td>
+<td>文字列をワイド文字（Unicode）文字列にマッピングします。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_OpenProcess.htm">_WinAPI_OpenProcess</a></td>
+<td>既存のプロセスオブジェクトのハンドルを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_PathFindOnPath.htm">_WinAPI_PathFindOnPath</a></td>
+<td>デフォルトのシステムパスからファイルを検索します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_PointFromRect.htm">_WinAPI_PointFromRect</a></td>
+<td>$tagRECTの左上座標を$tagPOINT構造体として返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_PostMessage.htm">_WinAPI_PostMessage</a></td>
+<td>メッセージキューにメッセージを配置し、処理を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_PrimaryLangId.htm">_WinAPI_PrimaryLangId</a></td>
+<td>言語IDからプライマリ言語IDを抽出します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_PtInRect.htm">_WinAPI_PtInRect</a></td>
+<td>指定された長方形内に指定された点があるかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_ReadFile.htm">_WinAPI_ReadFile</a></td>
+<td>ファイルからデータを読み取ります。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_ReadProcessMemory.htm">_WinAPI_ReadProcessMemory</a></td>
+<td>指定されたプロセスのメモリを読み取ります。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_RectIsEmpty.htm">_WinAPI_RectIsEmpty</a></td>
+<td>長方形が空かどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_RedrawWindow.htm">_WinAPI_RedrawWindow</a></td>
+<td>ウィンドウの指定されたクライアント領域または長方形を更新します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_RegisterWindowMessage.htm">_WinAPI_RegisterWindowMessage</a></td>
+<td>システム全体を通してユニークであることが保証されている新しいウィンドウメッセージを定義します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_ReleaseCapture.htm">_WinAPI_ReleaseCapture</a></td>
+<td>現在のスレッドのウィンドウからマウスキャプチャを解放し、通常のマウス入力処理に復帰させます。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_ReleaseDC.htm">_WinAPI_ReleaseDC</a></td>
+<td>デバイスコンテキストを解放します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_ScreenToClient.htm">_WinAPI_ScreenToClient</a></td>
+<td>指定されたスクリーン上の点のスクリーン座標をクライアント座標に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SelectObject.htm">_WinAPI_SelectObject</a></td>
+<td>指定されたデバイスコンテキストのオブジェクトを選択します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetBkColor.htm">_WinAPI_SetBkColor</a></td>
+<td>現在の背景色を指定されたカラー値に設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetBkMode.htm">_WinAPI_SetBkMode</a></td>
+<td>指定されたデバイスコンテキストの背景ミックスモードを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetCapture.htm">_WinAPI_SetCapture</a></td>
+<td>現在のスレッドに所属する指定されたウィンドウにマウスキャプチャを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetCursor.htm">_WinAPI_SetCursor</a></td>
+<td>カーソル形状を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetDefaultPrinter.htm">_WinAPI_SetDefaultPrinter</a></td>
+<td>ローカルコンピュータ上の現在のユーザーのデフォルトプリンタを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetDIBits.htm">_WinAPI_SetDIBits</a></td>
+<td>互換性のあるビットマップのピクセルをDIBのカラーデータを使用して設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetEndOfFile.htm">_WinAPI_SetEndOfFile</a></td>
+<td>指定されたファイルの物理ファイルサイズに現在のファイルポインタ位置を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetEvent.htm">_WinAPI_SetEvent</a></td>
+<td>指定されたイベントオブジェクトをシグナル状態に設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetFilePointer.htm">_WinAPI_SetFilePointer</a></td>
+<td>指定されたファイルのファイルポインタを移動します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetFocus.htm">_WinAPI_SetFocus</a></td>
+<td>指定されたウィンドウにキーボードのフォーカスを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetFont.htm">_WinAPI_SetFont</a></td>
+<td>ウィンドウのフォントを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetHandleInformation.htm">_WinAPI_SetHandleInformation</a></td>
+<td>オブジェクトハンドルの特定のプロパティを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetLastError.htm">_WinAPI_SetLastError</a></td>
+<td>呼び出しスレッド用の最後のエラーコードを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetLayeredWindowAttributes.htm">_WinAPI_SetLayeredWindowAttributes</a></td>
+<td>レイヤードウィンドウの属性を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetParent.htm">_WinAPI_SetParent</a></td>
+<td>指定された子ウィンドウの親ウィンドウを変更します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetProcessAffinityMask.htm">_WinAPI_SetProcessAffinityMask</a></td>
+<td>指定されたプロセスのスレッドのプロセッサアフィニティマスクを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetSysColors.htm">_WinAPI_SetSysColors</a></td>
+<td>システムのディスプレイデバイスの情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetTextColor.htm">_WinAPI_SetTextColor</a></td>
+<td>現在のテキストカラーを指定されたカラー値に設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetWindowLong.htm">_WinAPI_SetWindowLong</a></td>
+<td>指定されたウィンドウの情報を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetWindowPlacement.htm">_WinAPI_SetWindowPlacement</a></td>
+<td>ウィンドウの最小化時、最大化時、通常時の位置を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetWindowPos.htm">_WinAPI_SetWindowPos</a></td>
+<td>子ウィンドウ、ポップアップウィンドウ、トップレベルウィンドウのサイズ、位置、Zオーダーを変更します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetWindowRgn.htm">_WinAPI_SetWindowRgn</a></td>
+<td>ウィンドウのウィンドウリージョンを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetWindowsHookEx.htm">_WinAPI_SetWindowsHookEx</a></td>
+<td>フックチェーンにアプリケーション定義のフックプロシージャを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SetWindowText.htm">_WinAPI_SetWindowText</a></td>
+<td>指定されたウィンドウのタイトルバーのテキストを変更します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_ShowCursor.htm">_WinAPI_ShowCursor</a></td>
+<td>カーソルの表示/非表示を切り替えます。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_ShowError.htm">_WinAPI_ShowError</a></td>
+<td>オプションで終了を指定できるエラーメッセージボックスを表示します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_ShowMsg.htm">_WinAPI_ShowMsg</a></td>
+<td>"Information"メッセージボックスを表示します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_ShowWindow.htm">_WinAPI_ShowWindow</a></td>
+<td>指定されたウィンドウの表示状態を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_StringFromGUID.htm">_WinAPI_StringFromGUID</a></td>
+<td>バイナリのGUIDを文字列形式に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SubLangId.htm">_WinAPI_SubLangId</a></td>
+<td>言語IDからサブ言語IDを抽出します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_SystemParametersInfo.htm">_WinAPI_SystemParametersInfo</a></td>
+<td>システム全体のパラメータの1つの値を取得または設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_TwipsPerPixelX.htm">_WinAPI_TwipsPerPixelX</a></td>
+<td>ピクセルの幅をTwip単位で返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_TwipsPerPixelY.htm">_WinAPI_TwipsPerPixelY</a></td>
+<td>ピクセルの高さをTwip単位で返します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_UnhookWindowsHookEx.htm">_WinAPI_UnhookWindowsHookEx</a></td>
+<td>_WinAPI_SetWindowsHookEx関数によってフックチェーンに設置されたフックプロシージャを取り除きます。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_UpdateLayeredWindow.htm">_WinAPI_UpdateLayeredWindow</a></td>
+<td>レイヤード ウィンドウの位置、サイズ、形状、内容、透過度を更新します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_UpdateWindow.htm">_WinAPI_UpdateWindow</a></td>
+<td>ウィンドウにWM_PAINTメッセージを送信することでウィンドウのクライアント領域を更新します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_WaitForInputIdle.htm">_WinAPI_WaitForInputIdle</a></td>
+<td>プロセスが未入力が無い状態でユーザー入力の待機状態になるか、タイムアウトするまで待機します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_WaitForMultipleObjects.htm">_WinAPI_WaitForMultipleObjects</a></td>
+<td>指定されたオブジェクトのひとつ、または全てがシグナル状態になるまで待機します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_WaitForSingleObject.htm">_WinAPI_WaitForSingleObject</a></td>
+<td>指定されたオブジェクトがシグナル状態になるまで待機します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_WideCharToMultiByte.htm">_WinAPI_WideCharToMultiByte</a></td>
+<td>Unicode文字列をマルチバイト文字列に変換します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_WindowFromPoint.htm">_WinAPI_WindowFromPoint</a></td>
+<td>指定された点を含むウィンドウのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_WriteConsole.htm">_WinAPI_WriteConsole</a></td>
+<td>コンソールスクリーンバッファに文字列を書き込みます。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_WriteFile.htm">_WinAPI_WriteFile</a></td>
+<td>ファイルのファイルポインタで指定された位置にデータを書き込みます。<br></td>
+</tr>
+<tr>
+<td><a href="_WinAPI_WriteProcessMemory.htm">_WinAPI_WriteProcessMemory</a></td>
+<td>指定されたプロセスのメモリに書き込みます。<br></td>
+</tr>
+</table>
+</body>

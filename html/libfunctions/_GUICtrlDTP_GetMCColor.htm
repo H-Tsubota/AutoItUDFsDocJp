@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlDTP_GetMCColor</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlDTP_GetMCColor</font>
+<hr size="2">
+<p>指定した色を取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiDateTimePicker.au3&gt;<br>
+_GUICtrlDTP_GetMCColor($hWnd, $iIndex)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iIndex</td>
+   <td>月カレンダーのどの色を取得するかを表します:<br>
+       0 - 月の間の背景色<br>
+       1 - 月にテキスト表示する際に使用される色<br>
+       2 - カレンダータイトルの背景色<br>
+       3 - カレンダータイトルにテキスト表示する際に使用される色<br>
+       4 - 月の背景色<br>
+       5 - 初日と末日のテキスト表示に使用される色</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">指定されたコントロール部分に設定されている色</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>-1</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlDTP_SetMCColor.htm">_GUICtrlDTP_SetMCColor</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiDateTimePicker.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Constants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_DTP</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; DTP関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$iMemo</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><span class="S0"> </span><span class="S1">;AutoItの組み込みコントロールを使用</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hDTP</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUIを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"DateTimePick Get 月 Calendar Color"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hDTP</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlGetHandle</span><span class="S8">(</span><span class="S4">GUICtrlCreateDate</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">6</span><span class="S8">,</span><span class="S0"> </span><span class="S3">190</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iMemo</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateEdit</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">32</span><span class="S8">,</span><span class="S0"> </span><span class="S3">396</span><span class="S8">,</span><span class="S0"> </span><span class="S3">266</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetFont</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S3">9</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Courier New"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 表示形式を設定</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlDTP_SetFormat</span><span class="S8">(</span><span class="S9">$hDTP</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"ddd MMM dd, yyyy hh:mm ttt"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 月カレンダーの背景色を設定</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlDTP_SetMCColor</span><span class="S8">(</span><span class="S9">$hDTP</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$CLR_MONEYGREEN</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; DTP色を取得</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Background between 月s: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"0x"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">Hex</span><span class="S8">(</span><span class="S15">_GUICtrlDTP_GetMCColor</span><span class="S8">(</span><span class="S9">$hDTP</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">),</span><span class="S0"> </span><span class="S3">6</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Text within 月s ......: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"0x"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">Hex</span><span class="S8">(</span><span class="S15">_GUICtrlDTP_GetMCColor</span><span class="S8">(</span><span class="S9">$hDTP</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">),</span><span class="S0"> </span><span class="S3">6</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Title background ........: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"0x"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">Hex</span><span class="S8">(</span><span class="S15">_GUICtrlDTP_GetMCColor</span><span class="S8">(</span><span class="S9">$hDTP</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">),</span><span class="S0"> </span><span class="S3">6</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Title text ..............: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"0x"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">Hex</span><span class="S8">(</span><span class="S15">_GUICtrlDTP_GetMCColor</span><span class="S8">(</span><span class="S9">$hDTP</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">),</span><span class="S0"> </span><span class="S3">6</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Background within 月s : "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"0x"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">Hex</span><span class="S8">(</span><span class="S15">_GUICtrlDTP_GetMCColor</span><span class="S8">(</span><span class="S9">$hDTP</span><span class="S8">,</span><span class="S0"> </span><span class="S3">4</span><span class="S8">),</span><span class="S0"> </span><span class="S3">6</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"Header trailing .........: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"0x"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">Hex</span><span class="S8">(</span><span class="S15">_GUICtrlDTP_GetMCColor</span><span class="S8">(</span><span class="S9">$hDTP</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">),</span><span class="S0"> </span><span class="S3">6</span><span class="S8">))</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIDelete</span><span class="S8">()</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S1">; メモコントロールに1行書き込み</span><br>
+<span class="S5">Func</span><span class="S0"> MemoWrite</span><span class="S8">(</span><span class="S9">$sMessage</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sMessage</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;MemoWrite</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlDTP_GetMCColor.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

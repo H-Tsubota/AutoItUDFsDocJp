@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _MemVirtualAlloc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_MemVirtualAlloc</font>
+<hr size="2">
+<p>呼び出し元プロセスの仮想アドレス空間内ページ領域の予約、コミットをおこないます。<br></p>
+
+<p class="codeheader">
+#Include &lt;Memory.au3&gt;<br>
+_MemVirtualAlloc($pAddress, $iSize, $iAllocation, $iProtect)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$pAddress</td>
+    <td width="85%">欲しい割り当て領域の開始アドレスを指定します。</td>
+  </tr>
+  <tr>
+   <td>$iSize</td>
+   <td>領域サイズをバイト単位で指定します。</td>
+  </tr>
+  <tr>
+   <td>$iAllocation</td>
+   <td>割り当てタイプを指定します。<br>
+       $MEM_COMMIT - 
+	   メモリ内または指定されたページ領域に相当するディスク上のページングファイル内の物理メモリを割り当てます。<br>
+       $MEM_RESERVE - 
+	   物理メモリを割り当てずにプロセスの仮想アドレス空間の特定の範囲を予約します。<br>
+       $MEM_TOP_DOWN - できるだけ上位のアドレスでメモリを割り当てます。</td>
+  </tr>
+  <tr>
+   <td>$iProtect</td>
+   <td>アクセス保護のタイプ<br>
+       $PAGE_READONLY - コミット済みのページ領域に対する読み取りアクセスを有効にします。<br>
+       $PAGE_READWRITE - コミット済みの領域に対する読み取りアクセスと書き込みアクセスを有効にします。<br>
+       $PAGE_EXECUTE - コミット済みの領域に対する実行アクセスを有効にします。<br>
+       $PAGE_EXECUTE_READ - コミット済みの領域に対する実行アクセスと読み取りアクセスを有効にします。<br>
+       $PAGE_EXECUTE_READWRITE - コミット済みのページ領域に対する読み取りアクセス、書き込みアクセス、実行アクセスを有効にします。<br>
+       $PAGE_GUARD - 領域内のページをガードページにします。<br>
+       $PAGE_NOACCESS - コミット済みのページ領域に対する全アクセスを無効します。<br>
+       $PAGE_NOCACHE - コミット済みのページ領域に対するキャッシュを禁止します。
+	</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">メモリアドレスポインタ</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_MemVirtualFree.htm">_MemVirtualFree</a>, <a href="_MemGlobalAlloc.htm">_MemGlobalAlloc</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=VirtualAlloc">VirtualAlloc</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

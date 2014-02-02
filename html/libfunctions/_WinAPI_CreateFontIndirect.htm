@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_CreateFontIndirect</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_CreateFontIndirect</font>
+<hr size="2">
+<p>固有の特性を持つ論理フォントを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_CreateFontIndirect($tLogFont)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$tLogFont</td>
+    <td width="85%">論理フォントの特性を定義する$tagLOGFONT構造体</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">論理フォントのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数は$tagLOGFONT構造体で指定された特性を持つ論理フォントを作成します。<br>
+SelectObject関数使用時にこのフォントが選択されるとGDIのフォントマッパーは論理フォントと既存の物理フォントを一致させようとします。<br>完全一致するものを見つけることに失敗すると要求された特性にできるだけ特性が一致する代わりのものを提供します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagLOGFONT.htm">$tagLOGFONT</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=CreateFontIndirect">CreateFontIndirect</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

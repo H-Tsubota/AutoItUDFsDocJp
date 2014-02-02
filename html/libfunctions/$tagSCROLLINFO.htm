@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagSCROLLINFO</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagSCROLLINFO</font>
+<hr size="2">
+<p>$SBM_SETSCROLLINFOメッセージによって設定、または$SBM_GETSCROLLINFOメッセージによって取得されるスクロールバーパラメータを格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagSCROLLINFO = "uint cbSize;uint fMask;int  nMin;int  nMax;uint nPage;int  nPos;int  nTrackPos"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">cbSize</td>
+    <td width="85%">バイト単位でのこの構造体のサイズを指定します。呼び出し側はこれをDllStructGetSize($tagSCROLLINFO)に設定しなければなりません。</td>
+  </tr>
+  <tr>
+   <td>fMask</td>
+   <td>設定、取得するスクロールバーパラメータを指定します。このメンバーは次の値の組み合わせです:<br>
+       $SIF_ALL - $SIF_PAGE、$SIF_POS、$SIF_RANGE、$SIF_TRACKPOSの組み合わせ。<br>
+       $SIF_DISABLENOSCROLL - この値はスクロールバーのパラメータ設定時のみ使用されます。<br>
+       &nbsp;&nbsp;スクロールバーの新しいパラメータによってスクロールバーが不要になった場合は削除する代わりに無効にしてください。<br>
+       $SIF_PAGE - nPageはスクロールバーのサイズ比例変更用のページサイズを格納します。<br>
+       $SIF_POS - nPosはスクロールバーのつまみ位置を格納しており、ユーザーがつまみをドラッグしている間は更新されません。<br>
+       $SIF_RANGE - nMinとnMaxはスクロール範囲の最小、最大値を格納します。<br>
+       $SIF_TRACKPOS - nTrackPosはユーザーがドラッグ中のスクロールバーつまみの現在位置を格納しています。</td>
+  </tr>
+  <tr>
+   <td>nMin</td>
+   <td>最小スクロール位置を指定します。</td>
+  </tr>
+  <tr>
+   <td>nMax</td>
+   <td>最大スクロール位置を指定します。</td>
+  </tr>
+  <tr>
+   <td>nPage</td>
+   <td>ページサイズを指定します。スクロールバーはこの値をスクロールバーつまみの適切なサイズを決定するために使用します。</td>
+  </tr>
+  <tr>
+   <td>nPos</td>
+   <td>スクロールバーつまみの位置を指定します。</td>
+  </tr>
+  <tr>
+   <td>nTrackPos</td>
+   <td>ユーザーがドラッグ中のスクロールバーつまみの現在位置を指定します。<br>
+   アプリケーションは$SB_THUMBTRACK要求コード処理中にこの値を取得できます。<br>
+   アプリケーションは現在のスクロール位置を設定することはできず、SetScrollInfoはこのメンバーを無視します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+スクロールバー用の$SIF_xxxxxと$SB_xxxxxはWindowsConstants.au3を必要とします。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

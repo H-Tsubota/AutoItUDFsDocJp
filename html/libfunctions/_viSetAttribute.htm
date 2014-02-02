@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _viSetAttribute</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_viSetAttribute</font>
+<hr size="2">
+<p>全てのVISA属性を設定します。またこの関数はVISAの特定の属性を設定するためにも使用できます。この関数は_viSetTimeoutで使用されています。より詳しい情報、VISA属性リストとそれぞれの値についてはVISAのドキュメントを読んでください。<br></p>
+
+<p class="codeheader">
+#include &lt;Visa.au3&gt;<br>
+_viSetAttribute ( $h_session, $i_attribute, $i_value )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$h_session</td>
+    <td width="85%">VISA記述子(文字列)またはVISAセッションハンドル(整数)。<br>
+       詳しくは_viExecCommandの注意を参照。</td>
+  </tr>
+  <tr>
+   <td>$i_attribute</td>
+   <td>
+   変更する属性のインデックス。<br>
+   属性はVISAライブラリで定義されています。<br>
+   このAutoItライブラリではタイムアウト属性($VI_ATTR_TMO_VALUE)とシリアルインターフェイス属性 の定数と値(注意を参照)のみ定義されています。<br>ただし必要な場合には他の有効なインデックスを(整数値)で渡すこともできます。</td>
+  </tr>
+  <tr>
+   <td>$i_value</td>
+   <td>属性の値。整数でなければならず、とり得る値は属性の種類に依存しておりVISAドキュメントで定義されています。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">0を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>DLLが開けない場合-1を、それ以外の場合VISAエラーコード(VISAプログラミングガイドを参照)を表す非ゼロの値を返します</td>
+  </tr>
+</table>エラー時にはこの関数は常に@errorを1に設定します<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+現在の定義済みの属性と値のリストです。<br>
+その他の有効な属性/値も(VISAプログラミングガイド定義された)対応する整数インデックスをこの関数に渡すことで使用できます。<br>
+<br>
+* 属性: $VI_ATTR_TMO_VALUE -> タイムアウト設定<br>
+* 値:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ミリ秒単位のタイムアウト時間または<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"すぐに返す"場合用の$VI_TMO_IMMEDIATE (または 0)  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"タイムアウトなし"の場合用のVI_TMO_INFINITE (または"INF")<br>
+<br>
+* 属性: $VI_ATTR_ASRL_BAUD<br>
+* 値:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任意の有効なボーレート(9600、115200、 etc)<br>
+<br>
+* 属性: $VI_ATTR_ASRL_DATA_BITS<br>
+* 値: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5から8<br>
+<br>
+* 属性: $VI_ATTR_ASRL_PARITY<br>
+* 値:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VI_ASRL_PAR_NONE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VI_ASRL_PAR_ODD<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VI_ASRL_PAR_EVEN<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VI_ASRL_PAR_MARK<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VI_ASRL_PAR_SPACE<br>
+<br>
+* 属性: $VI_ATTR_ASRL_STOP_BITS<br>
+* 値:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VI_ASRL_STOP_ONE <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VI_ASRL_STOP_ONE5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VI_ASRL_STOP_TWO <br>
+<br>
+* 属性: $VI_ATTR_ASRL_FLOW_CNTRL<br>
+* 値:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VI_ASRL_FLOW_NONE<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VI_ASRL_FLOW_XON_XOFF<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VI_ASRL_FLOW_RTS_CTS<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$VI_ASRL_FLOW_DTR_DSR<br>
+<br>
+全てのVISA関数において使用のためにはVISAライブラリ({WINDOWS}\system32内にvisa32.dllがあるかどうかによって確認できます)がインストールされている必要があります。<br>
+GPIBに関連した関数を使用する場合、GPIBカード(National Instruments NI PCI-GPIB カードやAgilent 82350B PCI High-Performance GPIB カードなど)が必要です。<br>
+<br>
+* 一般的なVISA記述子のより詳しい説明については_viExecCommand関数ヘルプの注意を参照してください。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_viSetTimeout.htm">_viSetTimeout</a>, <a href="_viExecCommand.htm">_viExecCommand</a>, <a href="_viOpen.htm">_viOpen</a>, <a href="_viClose.htm">_viClose</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">;- GPIBアドレス3に設定された計測器を扱うとする.</span><br>
+<span class="S1">; 扱う計測器が異なるアドレスの場合は"GPIB::3::0"を対応する記述子に変更</span><br>
+<span class="S1">; _viOpenの呼び出しも同様にする</span><br>
+<span class="S1">; _viSetAttributeの使用法を示す。この例では_viExecCommand操作のGPIBタイムアウトを</span><br>
+<span class="S1">; _viSetTimeoutの代わりに_viSetAttributeを使用して設定する</span><br>
+<br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Visa.au3&gt;</span><br>
+<br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$h_session</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><br>
+<br>
+<span class="S1">; GPIBアドレス3で計測器のIDを要求</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"Step 1"</span><span class="S8">,</span><span class="S7">"Simple GPIB query with explicit TIMEOUT set"</span><span class="S8">)</span><br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$s_answer</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_viExecCommand</span><span class="S8">(</span><span class="S7">"GPIB::3::0"</span><span class="S8">,</span><span class="S7">"*IDN?"</span><span class="S8">,</span><span class="S3">10000</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 10秒でタイムアウト </span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"GPIB QUERY result"</span><span class="S8">,</span><span class="S9">$s_answer</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 回答を表示</span><br>
+<br>
+<span class="S1">; _viSetAttribute関数の最初の使用と同じ:</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"Step 2"</span><span class="S8">,</span><span class="S7">"_vOpen + timeout using _viSetAttribute + GPIB query"</span><span class="S8">)</span><br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$h_instr</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_viOpen</span><span class="S8">(</span><span class="S3">3</span><span class="S8">)</span><br>
+<span class="S1">; ノート - これは: _viSetTimeout($h_instr, 10000) と同じ</span><br>
+<span class="S15">_viSetAttribute</span><span class="S8">(</span><span class="S9">$h_instr</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$VI_ATTR_TMO_VALUE</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10000</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 10000 ms = 10秒</span><br>
+<br>
+<span class="S9">$s_answer</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_viExecCommand</span><span class="S8">(</span><span class="S9">$h_instr</span><span class="S8">,</span><span class="S7">"*IDN?"</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; タイムアウトを設定する必要は無い</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"GPIB QUERY result"</span><span class="S8">,</span><span class="S9">$s_answer</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 回答を表示</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S7">"Step 3"</span><span class="S8">,</span><span class="S7">"Close the Instrument connection using _viClose"</span><span class="S8">)</span><br>
+<span class="S15">_viClose</span><span class="S8">(</span><span class="S9">$h_instr</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 計測器コネクションを閉じる</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_viSetAttribute.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>SQLite user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;SQLite.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="_SQLite_Changes.htm">_SQLite_Changes</a></td>
+<td>最後のトランザクションの(トリガを除く)変更数を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_Close.htm">_SQLite_Close</a></td>
+<td>SQLiteデータベースを閉じます。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_Display2DResult.htm">_SQLite_Display2DResult</a></td>
+<td>フォーマットされた2次元配列をコンソールに表示、または返します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_Encode.htm">_SQLite_Encode</a></td>
+<td>文字列またはバイナリデータをSQLiteクエリで使用できるようにエンコードします。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_ErrCode.htm">_SQLite_ErrCode</a></td>
+<td>最後のエラーコード(数値)を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_ErrMsg.htm">_SQLite_ErrMsg</a></td>
+<td>直近のsqlite3_ * API呼び出しのエラー条件を英語で表記した文字列を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_Escape.htm">_SQLite_Escape</a></td>
+<td>文字列をエスケープします。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_Exec.htm">_SQLite_Exec</a></td>
+<td>SQLiteクエリを実行します。結果は制御しません。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_FetchData.htm">_SQLite_FetchData</a></td>
+<td>_SQLite_Query()に基づくクエリからデータの1行を取り出します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_FetchNames.htm">_SQLite_FetchNames</a></td>
+<td>_SQLite_Query()に基づくクエリのカラム名を読み出します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_GetTable.htm">_SQLite_GetTable</a></td>
+<td>テーブル名と実行されたクエリのデータが格納された1次元配列を渡します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_GetTable2d.htm">_SQLite_GetTable2d</a></td>
+<td>カラム名と実行されたクエリのデータが格納された2次元配列を渡します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_LastInsertRowID.htm">_SQLite_LastInsertRowID</a></td>
+<td>直近にデータベースに挿入された行IDを返します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_LibVersion.htm">_SQLite_LibVersion</a></td>
+<td>ライブラリのバージョン番号を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_Open.htm">_SQLite_Open</a></td>
+<td>SQLiteデータベースを作成/開きます。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_Query.htm">_SQLite_Query</a></td>
+<td>SQLiteクエリを用意します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_QueryFinalize.htm">_SQLite_QueryFinalize</a></td>
+<td>_SQLite_Query()に基づくクエリを終了します。クエリは中断されます。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_QueryReset.htm">_SQLite_QueryReset</a></td>
+<td>_SQLite_Query()に基づくクエリをリセットします。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_QuerySingleRow.htm">_SQLite_QuerySingleRow</a></td>
+<td>指定されたクエリから結果の1行目を読み出します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_SafeMode.htm">_SQLite_SafeMode</a></td>
+<td>SafeModeを有効または無効にします。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_SetTimeout.htm">_SQLite_SetTimeout</a></td>
+<td>ビジーハンドラ用のタイムアウト時間を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_Shutdown.htm">_SQLite_Shutdown</a></td>
+<td>SQLite.dllをアンロードします。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_SQLiteExe.htm">_SQLite_SQLiteExe</a></td>
+<td>SQLite.exeのコマンドを実行します。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_Startup.htm">_SQLite_Startup</a></td>
+<td>SQLite.dllをロードします。<br></td>
+</tr>
+<tr>
+<td><a href="_SQLite_TotalChanges.htm">_SQLite_TotalChanges</a></td>
+<td>全トランザクションの(トリガを含む)全変更数を返します。<br></td>
+</tr>
+</table>
+</body>

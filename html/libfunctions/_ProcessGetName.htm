@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ProcessGetName</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ProcessGetName</font>
+<hr size="2">
+<p>与えたPIDに所属するプロセス名を格納した文字列を返します。<br></p>
+
+<p class="codeheader">
+#include &lt;Process.au3&gt;<br>
+_ProcessGetName ( $iPID )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iPID</td>
+    <td width="85%">現在実行中のプロセスのPID。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">プロセスの名前を返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>空文字列を返し、@errorを設定します。</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>1 - プロセスが存在しません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - プロセスリスト取得エラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 - プロセスが見つかりません</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+ProcessExists()を補足。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="AutoIt3.chm::/html/functions/ProcessExists.htm">ProcessExists</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Process.au3&gt;</span><br>
+<br>
+<span class="S4">Run</span><span class="S8">(</span><span class="S7">"notepad.exe"</span><span class="S8">)</span><br>
+<span class="S4">WinWaitActive</span><span class="S8">(</span><span class="S7">"[CLASS:Notepad]"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">)</span><br>
+<span class="S9">$pid</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">WinGetProcess</span><span class="S8">(</span><span class="S7">"[CLASS:Notepad]"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">)</span><br>
+<span class="S9">$name</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ProcessGetName</span><span class="S8">(</span><span class="S9">$pid</span><span class="S8">)</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Notepad - "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$pid</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$name</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ProcessGetName.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

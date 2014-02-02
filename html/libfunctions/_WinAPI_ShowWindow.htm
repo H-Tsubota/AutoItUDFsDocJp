@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_ShowWindow</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_ShowWindow</font>
+<hr size="2">
+<p>指定されたウィンドウの表示状態を設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_ShowWindow($hWnd [, $iCmdShow = 5])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iCmdShow</td>
+   <td><b>[オプション]</b>ウィンドウがどのように表示されるかを指定します:<br>
+       @SW_HIDE - ウィンドウを非表示にし、他のウィンドウをアクティブ化します<br>
+       @SW_MAXIMIZE - 指定されたウィンドウを最大化します<br>
+       @SW_MINIMIZE - 指定されたウィンドウを最小化し、Zオーダー順で次のトップレベルのウィンドウをアクティブ化します<br>
+       @SW_RESTORE - ウィンドウをアクティブ化し、表示します<br>
+       @SW_SHOW - 現在のサイズと位置でウィンドウをアクティブ化し、表示します<br>
+       @SW_SHOWDEFAULT - STARTUPINFO構造体で指定されたSW_フラグに基づいて表示状態を設定します<br>
+       @SW_SHOWMAXIMIZED - ウィンドウをアクティブ化し、最大化ウィンドウとして表示します<br>
+       @SW_SHOWMINIMIZED - ウィンドウをアクティブ化し、最小化ウィンドウとして表示します<br>
+       @SW_SHOWMINNOACTIVE - 最小化ウィンドウとして表示します<br>
+       @SW_SHOWNA - 現在の状態でウィンドウを表示します<br>
+       @SW_SHOWNOACTIVATE - 最新のサイズと位置でウィンドウを表示します<br>
+       @SW_SHOWNORMAL - ウィンドウをアクティブ化し、表示します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=ShowWindow">ShowWindow</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

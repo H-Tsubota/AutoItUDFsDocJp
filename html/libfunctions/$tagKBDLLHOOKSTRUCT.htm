@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagKBDLLHOOKSTRUCT</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagKBDLLHOOKSTRUCT</font>
+<hr size="2">
+<p>低レベルのキーボード入力イベントの情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagKBDLLHOOKSTRUCT = "dword vkCode;dword scanCode;dword flags;dword time;ulong_ptr dwExtraInfo"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">vkCode</td>
+    <td width="85%">仮想キーコードを指定します。コードは1から254までの範囲内の値です。</td>
+  </tr>
+  <tr>
+   <td>scanCode</td>
+   <td>キーのハードウェアスキャンコードを指定します。</td>
+  </tr>
+  <tr>
+   <td>flags</td>
+   <td>拡張キーフラグ、イベント挿入フラグ、コンテキストコード、状態遷移フラグを指定します。このメンバーは以下のように指定されます。<br>
+   アプリケーションは次の値をキーストロークフラグをテストするために使用できます:<br>
+       $LLKHF_EXTENDED - 拡張キーフラグをテスト<br>
+       $LLKHF_INJECTED - イベント挿入フラグをテスト<br>
+       $LLKHF_ALTDOWN - コンテキストコードをテスト<br>
+       $LLKHF_UP - 状態遷移フラグをテスト<br>
+       &nbsp;&nbsp;0 - 
+	   キーがファンクションキーや数字キーパッド上のキーなどの拡張キーかどうかを指定します<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;キーが拡張キーの場合1、その他の場合0です<br>
+       &nbsp;&nbsp;1 から 3 - 予約済み<br>
+       &nbsp;&nbsp;4 - イベントが挿入されたかを指定します。イベントが挿入された場合1、その他の場合0です<br>
+       &nbsp;&nbsp;5 - 
+	   コンテキストコードを指定します。ALTキーが押されていおる場合1、その他の場合0です<br>
+       &nbsp;&nbsp;6 - 予約済み<br>
+       &nbsp;&nbsp;7 - 遷移状態を指定します。キーが押されている場合0、離されている場合1です</td>
+  </tr>
+  <tr>
+   <td>time</td>
+   <td>このメッセージのタイムスタンプを指定します。GetMessageTimeがこのメッセージに対して返すものと同じです。</td>
+  </tr>
+  <tr>
+   <td>dwExtraInfo</td>
+   <td>メッセージに関連付けられた追加情報を指定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

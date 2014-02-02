@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagNMITEMACTIVATE</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagNMITEMACTIVATE</font>
+<hr size="2">
+<p>ユーザーがアイテムをアクティブ化した際にリストビューコントロールによって送信されます。<br></p>
+
+<p class="codeheader">
+Global Const $tagNMITEMACTIVATE = $tagNMHDR & ";int Index;int SubItem;int NewState;int OldState;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "int Changed;int X;int Y;int lParam;int KeyFlags"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$tagNMHDR</td>
+    <td width="85%">通知メッセージの情報を格納します</td>
+  </tr>
+  <tr>
+   <td>Index</td>
+   <td>リストビューアイテムのインデックス。アイテムインデックスが通知に使用されていない場合、このメンバーは-1になります。</td>
+  </tr>
+  <tr>
+   <td>SubItem</td>
+   <td>サブアイテムの1始まりのインデックス。サブアイテムのインデックスが通知に使用されていない場合、通知がサブアイテムに適用されない場合はこのメンバーはゼロになります。</td>
+  </tr>
+  <tr>
+   <td>NewState</td>
+   <td>新しいアイテムの状態。使用しない通知メッセージではこのメンバーはゼロになります。</td>
+  </tr>
+  <tr>
+   <td>OldState</td>
+   <td>古いアイテムの状態。使用しない通知メッセージではこのメンバーはゼロになります。</td>
+  </tr>
+  <tr>
+   <td>Changed</td>
+   <td>変更されたアイテム属性を表すフラグのセット。<br>
+       通知が使用しない場合、このメンバーはゼロになります。<br>
+       このメンバーは次のフラグの1つまたは組み合わせです:<br>
+       $LVIF_COLUMNS - Columnsが有効です<br>
+       $LVIF_DI_SETITEM - オペレーティングシステムがアイテム情報の要求リストを保持しています<br>
+       $LVIF_GROUPID - GroupIDが有効です<br>
+       $LVIF_IMAGE - Imageが有効です<br>
+       $LVIF_INDENT - Indentが有効です<br>
+       $LVIF_NORECOMPUTE - このコントロールはテキスト情報を取得するためのLVN_GETDISPINFOを発生しません<br>
+       $LVIF_PARAM - Paramが有効です<br>
+       $LVIF_STATE - Stateが有効です<br>
+       $LVIF_TEXT - Textが有効です</td>
+  </tr>
+  <tr>
+   <td>X</td>
+   <td>点のX座標を指定します</td>
+  </tr>
+  <tr>
+   <td>Y</td>
+   <td>点のY座標を指定します</td>
+  </tr>
+  <tr>
+   <td>lParam</td>
+   <td>アイテムのアプリケーション定義の値。使用しない通知メッセージではこのメンバーは定義されません。 </td>
+  </tr>
+  <tr>
+   <td>KeyFlags</td>
+   <td>アクティブ化時に同時に押されていた修飾キー。<br>
+       ゼロまたは次のフラグの組み合わせを格納します:<br>
+       $LVKF_ALT - そのキーが押されています<br>
+       $LVKF_CONTROL - そのキーが押されています<br>
+       $LVKF_SHIFT - そのキーが押されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

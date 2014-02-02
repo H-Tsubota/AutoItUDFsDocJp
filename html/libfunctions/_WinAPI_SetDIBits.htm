@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_SetDIBits</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_SetDIBits</font>
+<hr size="2">
+<p>互換性のあるビットマップのピクセルをDIBのカラーデータを使用して設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_SetDIBits($hDC, $hBmp, $iStartScan, $iScanLines, $pBits, $pBMI [, $iColorUse = 0])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hDC</td>
+    <td width="85%">デバイスコンテキストのハンドル</td>
+  </tr>
+  <tr>
+   <td>$hBmp</td>
+   <td>DIBのカラーデータを使用して変更される互換性のあるビットマップ(DDB)のハンドル。</td>
+  </tr>
+  <tr>
+   <td>$iStartScan</td>
+   <td>pBitsパラメータによって指される配列内のデバイス非依存カラーデータの開始スキャンラインを指定します。</td>
+  </tr>
+  <tr>
+   <td>$iScanLines</td>
+   <td>デバイス非依存カラーデータを格納する配列内のスキャンライン数を指定します。</td>
+  </tr>
+  <tr>
+   <td>$pBits</td>
+   <td>バイト配列として保持されているDIBカラーデータへのポインタ。<br>
+   ビットマップ値のフォーマットはpBMIパラメータに指されている$tagBITMAPINFO構造体のbiBitCountメンバーに依存します。</td>
+  </tr>
+  <tr>
+   <td>$pBMI</td>
+   <td>DIBの情報を格納している$tagBITMAPINFO構造体へのポインタ</td>
+  </tr>
+  <tr>
+   <td>$iColorUse</td>
+   <td><b>[オプション]</b>$tagBITMAPINFO構造体のiColorsメンバーが定義されているかどうか、<br>
+   また定義されている場合にiColorsが明示的な赤、緑、青の(RGB)値とパレットインデックスのどちらを格納しているかを指定します。<br>
+   iColorUseパラメータは次の値のいずれかでなければなりません:<br>
+       0 - カラーテーブルが定義され、RGB値を格納しています<br>
+       1 - カラーテーブルはhDCの論理パレットの16 ビットインデックスの配列から構成されます</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+hDCパラメータによって識別されるデバイスコンテキストはiColorUseが1に設定された場合のみ使用され、それ以外の場合、無視されます。<br>
+hBmpパラメータによって識別されるビットマップはこの関数が呼ばれた時点でデバイスコンテキストに選択されていてはなりません。<br>
+RLE圧縮のビットマップを除いて、スキャンラインはDWORD上に整列してなければなりません。<br>
+ボトムアップDIBの始まりはビットマップの左下隅です。<br>
+トップダウンDIBの始まりはビットマップの左上隅です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagBITMAPINFO.htm">$tagBITMAPINFO</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=SetDIBits">SetDIBits</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

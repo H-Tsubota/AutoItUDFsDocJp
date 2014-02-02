@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUIScrollBars_Init</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUIScrollBars_Init</font>
+<hr size="2">
+<p>ウィンドウのスクロールバーを初期化します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiScrollBars.au3&gt;<br>
+_GUIScrollBars_Init($hWnd[, $iHMax = -1[, $ivMax = -1]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">ウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iHMax</td>
+   <td><b>[オプション]</b>水平スクロールバーの最大サイズ</td>
+  </tr>
+  <tr>
+   <td>$ivMax</td>
+   <td><b>[オプション]</b>垂直スクロールバーの最大サイズ</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;StructureConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIScrollBars.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;ScrollBarConstants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">"MustDeclareVars"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$nFileMenu</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$nExititem</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$GUIMsg</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$h_cGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$h_cGUI2</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$listview</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$button</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"ScrollBar Example"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$WS_MINIMIZEBOX</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_CAPTION</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_POPUP</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_SYSMENU</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_SIZEBOX</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetBkColor</span><span class="S8">(</span><span class="S3">0x88AABB</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$nFileMenu</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateMenu</span><span class="S8">(</span><span class="S7">"File"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$nExititem</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateMenuItem</span><span class="S8">(</span><span class="S7">"Exit"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$nFileMenu</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$listview</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateListView</span><span class="S8">(</span><span class="S7">"col1 &nbsp;|col2|col3 &nbsp;"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">200</span><span class="S8">,</span><span class="S0"> </span><span class="S3">150</span><span class="S8">)</span><span class="S1">;,$LVS_SORTDESCENDING)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$button</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Value?"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">75</span><span class="S8">,</span><span class="S0"> </span><span class="S3">170</span><span class="S8">,</span><span class="S0"> </span><span class="S3">70</span><span class="S8">,</span><span class="S0"> </span><span class="S3">20</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetResizing</span><span class="S8">(</span><span class="S9">$button</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$GUI_DOCKALL</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">30</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">GUICtrlCreateListViewItem</span><span class="S8">(</span><span class="S7">"item"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"|col2|col3"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$listview</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetResizing</span><span class="S8">(</span><span class="S9">$listview</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$GUI_DOCKALL</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$h_cGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Child GUI"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">200</span><span class="S8">,</span><span class="S0"> </span><span class="S3">200</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">200</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_CHILD</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_EX_CLIENTEDGE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"a button"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">90</span><span class="S8">,</span><span class="S0"> </span><span class="S3">20</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetBkColor</span><span class="S8">(</span><span class="S3">0X006400</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetResizing</span><span class="S8">(</span><span class="S9">$h_cGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$GUI_DOCKALL</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISwitch</span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$h_cGUI2</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Child GUI"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">200</span><span class="S8">,</span><span class="S0"> </span><span class="S3">200</span><span class="S8">,</span><span class="S0"> </span><span class="S3">215</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_CHILD</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_EX_CLIENTEDGE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"a button"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">90</span><span class="S8">,</span><span class="S0"> </span><span class="S3">20</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetBkColor</span><span class="S8">(</span><span class="S3">0X006400</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetResizing</span><span class="S8">(</span><span class="S9">$h_cGUI2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$GUI_DOCKALL</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISwitch</span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIRegisterMsg</span><span class="S8">(</span><span class="S9">$WM_SIZE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"WM_SIZE"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIRegisterMsg</span><span class="S8">(</span><span class="S9">$WM_VSCROLL</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"WM_VSCROLL"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIRegisterMsg</span><span class="S8">(</span><span class="S9">$WM_HSCROLL</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"WM_HSCROLL"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIScrollBars_Init</span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIScrollBars_Init</span><span class="S8">(</span><span class="S9">$h_cGUI</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$GUIMsg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$GUIMsg</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$nExititem</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">WEnd</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> WM_SIZE</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Msg</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S12">#forceref $Msg, $wParam</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$index</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$yChar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$xChar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$xClientMax</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$xClient</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$yClient</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ivMax</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S4">UBound</span><span class="S8">(</span><span class="S9">$aSB_WindowInfo</span><span class="S8">)</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S9">$aSB_WindowInfo</span><span class="S8">[</span><span class="S9">$x</span><span class="S8">][</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$hWnd</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$index</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$x</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$xClientMax</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$aSB_WindowInfo</span><span class="S8">[</span><span class="S9">$index</span><span class="S8">][</span><span class="S3">1</span><span class="S8">]</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$xChar</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$aSB_WindowInfo</span><span class="S8">[</span><span class="S9">$index</span><span class="S8">][</span><span class="S3">2</span><span class="S8">]</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$yChar</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$aSB_WindowInfo</span><span class="S8">[</span><span class="S9">$index</span><span class="S8">][</span><span class="S3">3</span><span class="S8">]</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$ivMax</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$aSB_WindowInfo</span><span class="S8">[</span><span class="S9">$index</span><span class="S8">][</span><span class="S3">7</span><span class="S8">]</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S9">$index</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S5">Return</span><span class="S0"> </span><span class="S3">0</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$tSCROLLINFO</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S9">$tagSCROLLINFO</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; クライアント領域のサイズを取得</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$xClient</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$lParam</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x0000FFFF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$yClient</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitShift</span><span class="S8">(</span><span class="S9">$lParam</span><span class="S8">,</span><span class="S0"> </span><span class="S3">16</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$aSB_WindowInfo</span><span class="S8">[</span><span class="S9">$index</span><span class="S8">][</span><span class="S3">4</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$xClient</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$aSB_WindowInfo</span><span class="S8">[</span><span class="S9">$index</span><span class="S8">][</span><span class="S3">5</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$yClient</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 垂直スクロール範囲とページサイズを設定</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"fMask"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$SIF_RANGE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SIF_PAGE</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nMin"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nMax"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$ivMax</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPage"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$yClient</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S9">$yChar</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIScrollBars_SetScrollInfo</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SB_VERT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tSCROLLINFO</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 水平スクロール範囲とページサイズを設定</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"fMask"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$SIF_RANGE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SIF_PAGE</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nMin"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nMax"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$xClientMax</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S9">$xChar</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPage"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$xClient</span><span class="S0"> </span><span class="S8">/</span><span class="S0"> </span><span class="S9">$xChar</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIScrollBars_SetScrollInfo</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SB_HORZ</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tSCROLLINFO</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S9">$GUI_RUNDEFMSG</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;WM_SIZE</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> WM_HSCROLL</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Msg</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S12">#forceref $Msg, $lParam</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$nScrollCode</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x0000FFFF</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$index</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$xChar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$xPos</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$Min</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Max</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Page</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Pos</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TrackPos</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S4">UBound</span><span class="S8">(</span><span class="S9">$aSB_WindowInfo</span><span class="S8">)</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S9">$aSB_WindowInfo</span><span class="S8">[</span><span class="S9">$x</span><span class="S8">][</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$hWnd</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$index</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$x</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$xChar</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$aSB_WindowInfo</span><span class="S8">[</span><span class="S9">$index</span><span class="S8">][</span><span class="S3">2</span><span class="S8">]</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S9">$index</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S5">Return</span><span class="S0"> </span><span class="S3">0</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S1">;~ &nbsp;; 全ての水平スクロールバー情報を取得</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$tSCROLLINFO</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUIScrollBars_GetScrollInfoEx</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SB_HORZ</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$Min</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nMin"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$Max</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nMax"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$Page</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPage"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 比較のために位置をセーブ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$xPos</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$xPos</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$TrackPos</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nTrackPos"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S12">#forceref $Min, $Max</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$nScrollCode</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$SB_LINELEFT</span><span class="S0"> </span><span class="S1">; ユーザーが左矢印をクリック</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$SB_LINERIGHT</span><span class="S0"> </span><span class="S1">; ユーザーが右矢印をクリック</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$SB_PAGELEFT</span><span class="S0"> </span><span class="S1">; ユーザーがスクロールボックス左のスクロールバー軸をクリック</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S9">$Page</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$SB_PAGERIGHT</span><span class="S0"> </span><span class="S1">; ユーザーがスクロールボックス右のスクロールバー軸をクリック</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$Page</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$SB_THUMBTRACK</span><span class="S0"> </span><span class="S1">; ユーザーがスクロールボックスをドラッグ</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TrackPos</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<br>
+<span class="S1">;~ &nbsp;&nbsp;&nbsp;// 位置を設定後に取得</span><br>
+<span class="S1">;~ &nbsp;&nbsp;&nbsp;// &nbsp;&nbsp;Windowsが調整するため、設定された値と同じではない</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"fMask"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SIF_POS</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIScrollBars_SetScrollInfo</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SB_HORZ</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tSCROLLINFO</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIScrollBars_GetScrollInfo</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SB_HORZ</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tSCROLLINFO</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">;// 位置が変更されたら、ウィンドウをスクロールし、更新する</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">&lt;&gt;</span><span class="S0"> </span><span class="S9">$xPos</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S15">_GUIScrollBars_ScrollWindow</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$xChar</span><span class="S0"> </span><span class="S8">*</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$xPos</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S9">$Pos</span><span class="S8">),</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S9">$GUI_RUNDEFMSG</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;WM_HSCROLL</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> WM_VSCROLL</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Msg</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S12">#forceref $Msg, $wParam, $lParam</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$nScrollCode</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x0000FFFF</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$index</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$yChar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$yPos</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$Min</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Max</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Page</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Pos</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TrackPos</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S4">UBound</span><span class="S8">(</span><span class="S9">$aSB_WindowInfo</span><span class="S8">)</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S9">$aSB_WindowInfo</span><span class="S8">[</span><span class="S9">$x</span><span class="S8">][</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$hWnd</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$index</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$x</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$yChar</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$aSB_WindowInfo</span><span class="S8">[</span><span class="S9">$index</span><span class="S8">][</span><span class="S3">3</span><span class="S8">]</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S9">$index</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S5">Return</span><span class="S0"> </span><span class="S3">0</span><br>
+<br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 全ての垂直スクロールバー情報を取得</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$tSCROLLINFO</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUIScrollBars_GetScrollInfoEx</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SB_VERT</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$Min</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nMin"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$Max</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nMax"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$Page</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPage"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 比較のために位置をセーブ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$yPos</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$yPos</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$TrackPos</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nTrackPos"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$nScrollCode</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$SB_TOP</span><span class="S0"> </span><span class="S1">; ユーザーがキーボードのHOMEキーを押した</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Min</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$SB_BOTTOM</span><span class="S0"> </span><span class="S1">; ユーザーがキーボードのENDキーを押した</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Max</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$SB_LINEUP</span><span class="S0"> </span><span class="S1">; ユーザーが上矢印をクリック</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$SB_LINEDOWN</span><span class="S0"> </span><span class="S1">; ユーザーが下矢印をクリック</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$SB_PAGEUP</span><span class="S0"> </span><span class="S1">; ユーザーがスクロールボックス上のスクロールバー軸をクリック</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S9">$Page</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$SB_PAGEDOWN</span><span class="S0"> </span><span class="S1">; ユーザーがスクロールボックス下のスクロールバー軸をクリック</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$Page</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$SB_THUMBTRACK</span><span class="S0"> </span><span class="S1">; ユーザーがスクロールボックスをドラッグ</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TrackPos</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S1">;~ &nbsp;&nbsp;&nbsp;// 位置を設定後に取得</span><br>
+<span class="S1">;~ &nbsp;&nbsp;&nbsp;// &nbsp;&nbsp;Windowsが調整するため、設定された値と同じではない</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"fMask"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SIF_POS</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIScrollBars_SetScrollInfo</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SB_VERT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tSCROLLINFO</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIScrollBars_GetScrollInfo</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$SB_VERT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tSCROLLINFO</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">;// 位置が変更されたら、ウィンドウをスクロールし、更新する</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tSCROLLINFO</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"nPos"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$Pos</span><span class="S0"> </span><span class="S8">&lt;&gt;</span><span class="S0"> </span><span class="S9">$yPos</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUIScrollBars_ScrollWindow</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$yChar</span><span class="S0"> </span><span class="S8">*</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$yPos</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S9">$Pos</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$yPos</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$Pos</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S9">$GUI_RUNDEFMSG</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;WM_VSCROLL</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUIScrollBars_Init.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ColorSetRGB</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ColorSetRGB</font>
+<hr size="2">
+<p>処理用のRGB色(COLORREF)を返します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Color.au3&gt;<br>
+_ColorSetRGB($aColor)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$aColor</td>
+    <td width="85%">0-255の範囲の値の配列:<br>
+       [0] 赤色成分<br>
+       [1] 緑色成分<br>
+       [2] 青色成分</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">処理用のRGB色を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@errorを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>1 無効な配列</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 無効なカラー値</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+@extendedは変更されません。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_ColorGetRGB.htm">_ColorGetRGB</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Color.au3&gt;</span><br>
+<br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$aColor</span><span class="S8">[</span><span class="S3">3</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[</span><span class="S3">0x80</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x90</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0xff</span><span class="S8">]</span><br>
+<br>
+<span class="S9">$nColor</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ColorSetRGB</span><span class="S8">(</span><span class="S0"> </span><span class="S9">$aColor</span><span class="S0"> </span><span class="S8">)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S0"> </span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"AutoIt"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">" Red="</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">Hex</span><span class="S8">(</span><span class="S9">$aColor</span><span class="S8">[</span><span class="S3">0</span><span class="S8">],</span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" Blue="</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">Hex</span><span class="S8">(</span><span class="S9">$aColor</span><span class="S8">[</span><span class="S3">1</span><span class="S8">],</span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" Green="</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">Hex</span><span class="S8">(</span><span class="S9">$aColor</span><span class="S8">[</span><span class="S3">2</span><span class="S8">],</span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"Color="</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">Hex</span><span class="S8">(</span><span class="S9">$nColor</span><span class="S8">))</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ColorSetRGB.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

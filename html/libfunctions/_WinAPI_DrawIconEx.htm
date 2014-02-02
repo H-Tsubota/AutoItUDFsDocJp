@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_DrawIconEx</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_DrawIconEx</font>
+<hr size="2">
+<p>指定されたデバイスコンテキストにアイコンまたはカーソルを描画します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_DrawIconEx($hDC, $iX, $iY, $hIcon [, $iWidth = 0 [, $iHeight = 0 [, $iStep = 0 [, $hBrush = 0 [, $iFlags = 3]]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hDC</td>
+    <td width="85%">アイコンまたはカーソルが描画されるデバイスコンテキストのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iX</td>
+   <td>アイコンの左上隅のX座標</td>
+  </tr>
+  <tr>
+   <td>$iY</td>
+   <td>アイコンの左上隅のY座標</td>
+  </tr>
+  <tr>
+   <td>$hIcon</td>
+   <td>描画されるアイコンのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iWidth</td>
+   <td><b>[オプション]</b>アイコンまたはカーソルの論理幅を指定します。<br>
+   このパラメータがゼロでiFlagsパラメータが"デフォルトサイズ"の場合、<br>
+   この関数は幅を設定するために$SM_CXICONまたは$SM_CXCURSORのシステムメトリック値を使用します。<br>
+   このパラメータがゼロで"デフォルトサイズ"が使用されていない場合、この関数は実際のリソースの幅を使用します。</td>
+  </tr>
+  <tr>
+   <td>$iHeight</td>
+   <td><b>[オプション]</b>アイコンまたはカーソルの論理高さを指定します。<br>
+   このパラメータがゼロでiFlagsパラメータが"デフォルトサイズ"の場合、<br>
+   この関数は高さを設定するために$SM_CYICONまたは$SM_CYCURSORのシステムメトリック値を使用します。<br>
+   このパラメータがゼロで"デフォルトサイズ"が使用されていない場合、この関数は実際のリソースの高さを使用します。</td>
+  </tr>
+  <tr>
+   <td>$iStep</td>
+   <td><b>[オプション]</b>hIconでアニメーションカーソルが指定された場合、描画するフレームのインデックスを指定します。<br>
+   hIconがアニメーションカーソルでない場合、このパラメータは無視されます。</td>
+  </tr>
+  <tr>
+   <td>$hBrush</td>
+   <td><b>[オプション]</b>システムがちらつき防止描画で使用するブラシのハンドル。<br>
+hBrushが有効なブラシのハンドルだった場合、システムは指定されたブラシを使用して背景にオフスクリーンビットマップを作成し、<br>
+ビットマップにアイコンまたはカーソルを描画し、その後にhDCで識別されるデバイスコンテキストにビットマップをコピーします。<br>
+   hBrushが0の場合、システムはアイコンまたはカーソルを直接デバイスコンテキストに描画します。</td>
+  </tr>
+  <tr>
+   <td>$iFlags</td>
+   <td><b>[オプション]</b>描画フラグを指定します。このパラメータは次の値のいずれかです:<br>
+       1 - マスクを使用してアイコン、カーソルを描画します<br>
+       2 - 画像を使用してアイコン、カーソルを描画します<br>
+       3 - マスクと画像を使用してアイコン、カーソルを描画します<br>
+       4 - ユーザーが指定した画像ではなくシステムデフォルト画像を使用してアイコン、カーソルを描画します<br>
+       5 - iWidth、iWidthパラメータがゼロに設定されていた場合にカーソル、<br>
+	  アイコン用にシステムメトリック値で指定された幅、高さを使用してアイコン、カーソルを描画します。<br>
+	   このフラグが指定されずにiWidthとiWidthがゼロに設定されていた場合、この関数は実際のリソースのサイズを使用します。<br>
+       6 - 非ミラーアイコンとしてアイコンを描画します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_DrawIcon.htm">_WinAPI_DrawIcon</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=DrawIconEx">DrawIconEx</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

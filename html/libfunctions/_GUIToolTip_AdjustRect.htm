@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUIToolTip_AdjustRect</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUIToolTip_AdjustRect</font>
+<hr size="2">
+<p>ウィンドウ長方形からテキスト表示長方形を計算します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiToolTip.au3&gt;<br>
+_GUIToolTip_AdjustRect($hWnd, ByRef $tRect[, $fLarger = True])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$tRect</td>
+   <td>ウィンドウまたはテキスト表示長方形を保持する$tagRECT構造体</td>
+  </tr>
+  <tr>
+   <td>$fLarger</td>
+   <td><b>[オプション]</b>どの処理が実行されるかを指定する値。<br>
+   Trueの場合、$tRectはテキスト表示長方形を表し、対応するウィンドウ長方形を受け取ります。<br>
+   Falseの場合、$tRectはウィンドウ長方形を表し、対応するテキスト表示長方形を受け取ります。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+成功: $tagRECT構造体<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+ツールチップウィンドウの長方形はツールチップの文字列に外接するテキスト表示長方形よりも少しだけ大きくなります。<br>
+ウィンドウの起点もテキスト表示長方形の起点と比較して左上にずれます。<br>
+テキスト表示長方形を配置するには対応するウィンドウ長方形を計算し、その長方形を使ってツールチップを配置します。<br>
+$TTM_ADJUSTRECTハンドルがこの計算結果です。<br>
+$fLargerがTrueの場合、$TTM_ADJUSTRECTにツールチップのテキスト表示長方形の位置とサイズをいれると<br>
+指定された位置にテキストを表示するために必要なツールチップウィンドウの位置とサイズが返されます。<br>
+$fLargerがFalseの場合、ツールチップのウィンドウ長方形をいれると$TTM_ADJUSTRECTにそのテキスト長方形の<br>
+位置とサイズが返されます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

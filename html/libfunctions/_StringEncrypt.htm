@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _StringEncrypt</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_StringEncrypt</font>
+<hr size="2">
+<p>RC4ベースの文字列暗号化関数。<br></p>
+
+<p class="codeheader">
+#Include &lt;String.au3&gt;<br>
+_StringEncrypt($i_Encrypt, $s_EncryptText, $s_EncryptPassword [, $i_EncryptLevel = 1])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$i_Encrypt</td>
+    <td width="85%">1で暗号化、0で復号化。</td>
+  </tr>
+  <tr>
+   <td>$s_EncryptText</td>
+   <td>暗号化/復号化するテキスト。</td>
+  </tr>
+  <tr>
+   <td>$s_EncryptPassword</td>
+   <td>暗号化/復号化で使用するパスワード。</td>
+  </tr>
+  <tr>
+   <td>$i_EncryptLevel</td>
+   <td><b>[オプション]</b>暗号化/復号化のレベル。デフォルト=1</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">暗号化/復号化された文字列。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>1</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+警告: 暗号化レベルが高すぎる場合、暗号化文字列が長すぎる場合、この関数の処理には非常に長い時間がかかります!<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;String.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">"MustDeclareVars"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$WinMain</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$EditText</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$InputPass</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$InputLevel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$UpDownLevel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$EncryptButton</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$DecryptButton</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$string</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUI と文字列変数</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$WinMain</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">'Encryption tool'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ウィンドウ作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$EditText</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateEdit</span><span class="S8">(</span><span class="S7">''</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">380</span><span class="S8">,</span><span class="S0"> </span><span class="S3">350</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; メインエディット作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$InputPass</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateInput</span><span class="S8">(</span><span class="S7">''</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">360</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">20</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x21</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 隠蔽/中央揃え入力のパスワードボックス作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$InputLevel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateInput</span><span class="S8">(</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">110</span><span class="S8">,</span><span class="S0"> </span><span class="S3">360</span><span class="S8">,</span><span class="S0"> </span><span class="S3">50</span><span class="S8">,</span><span class="S0"> </span><span class="S3">20</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0x2001</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$UpDownLevel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlSetLimit</span><span class="S8">(</span><span class="S4">GUICtrlCreateUpdown</span><span class="S8">(</span><span class="S9">$InputLevel</span><span class="S8">),</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; Up|Down機能でレベルを入力</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$EncryptButton</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">'Encrypt'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">170</span><span class="S8">,</span><span class="S0"> </span><span class="S3">360</span><span class="S8">,</span><span class="S0"> </span><span class="S3">105</span><span class="S8">,</span><span class="S0"> </span><span class="S3">35</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 暗号化ボタン</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$DecryptButton</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">'Decrypt'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">285</span><span class="S8">,</span><span class="S0"> </span><span class="S3">360</span><span class="S8">,</span><span class="S0"> </span><span class="S3">105</span><span class="S8">,</span><span class="S0"> </span><span class="S3">35</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 復号化ボタン</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlCreateLabel</span><span class="S8">(</span><span class="S7">'Password'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">385</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlCreateLabel</span><span class="S8">(</span><span class="S7">'Level'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">110</span><span class="S8">,</span><span class="S0"> </span><span class="S3">385</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; なにがなにかわかるようにテキストラベル</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ウィンドウ表示</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$EncryptButton</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">(</span><span class="S6">@SW_DISABLE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WinMain</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 何も変更できないようにする</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$string</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlRead</span><span class="S8">(</span><span class="S9">$EditText</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 後のためにエディットボックスを保存</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$EditText</span><span class="S8">,</span><span class="S0"> </span><span class="S7">'Please wait while the text is Encrypted/Decrypted.'</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; メッセージ表示</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$EditText</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_StringEncrypt</span><span class="S8">(</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$string</span><span class="S8">,</span><span class="S0"> </span><span class="S4">GUICtrlRead</span><span class="S8">(</span><span class="S9">$InputPass</span><span class="S8">),</span><span class="S0"> </span><span class="S4">GUICtrlRead</span><span class="S8">(</span><span class="S9">$InputLevel</span><span class="S8">)))</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; 符号化呼び出し。エディットボックスに暗号化された文字列を設定</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; 1/0 で暗号化/復号化を指定して符号化開始</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; 先ほどエディットボックスから保存した文字列を符号化する</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; パスワードボックスとレベルボックスを読み込む</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">(</span><span class="S6">@SW_ENABLE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WinMain</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; ウィンドウを元に戻す</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$DecryptButton</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">(</span><span class="S6">@SW_DISABLE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WinMain</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 何も変更できないようにする</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$string</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlRead</span><span class="S8">(</span><span class="S9">$EditText</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 後のためにエディットボックスを保存</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$EditText</span><span class="S8">,</span><span class="S0"> </span><span class="S7">'Please wait while the text is Encrypted/Decrypted.'</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; メッセージ表示</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$EditText</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_StringEncrypt</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$string</span><span class="S8">,</span><span class="S0"> </span><span class="S4">GUICtrlRead</span><span class="S8">(</span><span class="S9">$InputPass</span><span class="S8">),</span><span class="S0"> </span><span class="S4">GUICtrlRead</span><span class="S8">(</span><span class="S9">$InputLevel</span><span class="S8">)))</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; 符号化呼び出し。エディットボックスに暗号化された文字列を設定</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; 1/0 で暗号化/復号化を指定して符号化開始</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; 先ほどエディットボックスから保存した文字列を符号化する</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">; パスワードボックスとレベルボックスを読み込む</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">(</span><span class="S6">@SW_ENABLE</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WinMain</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; ウィンドウを元に戻す</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">WEnd</span><span class="S0"> </span><span class="S1"> ; ウィンドウを閉じるまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_StringEncrypt.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

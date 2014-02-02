@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_EnumDisplayDevices</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_EnumDisplayDevices</font>
+<hr size="2">
+<p>システムのディスプレイデバイスの情報を取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_EnumDisplayDevices($sDevice, $iDevNum)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sDevice</td>
+    <td width="85%">デバイス名。<br>
+	空白の場合、この関数はiDevNumに基づいてマシン上のディスプレイアダプタ情報を返します。</td>
+  </tr>
+  <tr>
+   <td>$iDevNum</td>
+   <td>関心のあるディスプレイデバイスを指定するゼロ始まりのインデックス値</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">次のフォーマットの配列:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aDevice[0] - True</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aDevice[1] - アダプタデバイスまたはモニタデバイスのどちらか</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aDevice[2] - アダプタまたはモニタどちらかの説明</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aDevice[3] - デバイスの状態フラグ:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 1 - デバイスはデスクトップの一部です</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 2 - メインのデスクトップがデバイス上にあります</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 4 - リモートで描画をおこなっているプリケーションのミラーに使用されている擬似デバイスを表します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 8 - デバイスはVGA互換です</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>16 - デバイスを取り外せます; デバイスはメインディスプレイではありません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>32 - デバイスはサポートしている出力デバイスより多くのディスプレイモードを持っています</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aDevice[4] - プラグアンドプレイ識別子の文字列 (Windows 98/ME)</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=EnumDisplayDevices">EnumDisplayDevices</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_Au3Check_Parameters= -d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WinAPI.au3&gt;</span><br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$aDevice</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$text</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$aDevice</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WinAPI_EnumDisplayDevices</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S5">Not</span><span class="S0"> </span><span class="S9">$aDevice</span><span class="S8">[</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$text</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"Successful? "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aDevice</span><span class="S8">[</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$text</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"Device (Adapter or Monitor): "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aDevice</span><span class="S8">[</span><span class="S3">1</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$text</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"Description (Adapter or Monitor): "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aDevice</span><span class="S8">[</span><span class="S3">2</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$text</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"Device State Flag: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aDevice</span><span class="S8">[</span><span class="S3">3</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">if</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$aDevice</span><span class="S8">[</span><span class="S3">3</span><span class="S8">],</span><span class="S0"> </span><span class="S3">32</span><span class="S8">)</span><span class="S0"> </span><span class="S5">then</span><span class="S0"> </span><span class="S9">$text</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"- The device has more display modes than its output devices support"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">if</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$aDevice</span><span class="S8">[</span><span class="S3">3</span><span class="S8">],</span><span class="S0"> </span><span class="S3">16</span><span class="S8">)</span><span class="S0"> </span><span class="S5">then</span><span class="S0"> </span><span class="S9">$text</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"- The device is removable; it cannot be the primary display"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">if</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$aDevice</span><span class="S8">[</span><span class="S3">3</span><span class="S8">],</span><span class="S0"> </span><span class="S3">8</span><span class="S8">)</span><span class="S0"> </span><span class="S5">then</span><span class="S0"> </span><span class="S9">$text</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"- The device is VGA compatible"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">if</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$aDevice</span><span class="S8">[</span><span class="S3">3</span><span class="S8">],</span><span class="S0"> </span><span class="S3">4</span><span class="S8">)</span><span class="S0"> </span><span class="S5">then</span><span class="S0"> </span><span class="S9">$text</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"- Represents a pseudo device used to mirror application drawing for remoting"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">if</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$aDevice</span><span class="S8">[</span><span class="S3">3</span><span class="S8">],</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S5">then</span><span class="S0"> </span><span class="S9">$text</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"- The primary desktop is on the device"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">if</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$aDevice</span><span class="S8">[</span><span class="S3">3</span><span class="S8">],</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S5">then</span><span class="S0"> </span><span class="S9">$text</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S6">@TAB</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"- The device is part of the desktop"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$text</span><span class="S0"> </span><span class="S8">&amp;=</span><span class="S0"> </span><span class="S7">"Plug and Play identifier string: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$aDevice</span><span class="S8">[</span><span class="S3">4</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$text</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$i</span><span class="S0"> </span><span class="S8">+=</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">WEnd</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WinAPI_EnumDisplayDevices.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

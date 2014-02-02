@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WordDocAdd</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WordDocAdd</font>
+<hr size="2">
+<p>新しい空のドキュメントを表すオブジェクト変数を返します。<br></p>
+
+<p class="codeheader">
+#include &lt;Word.au3&gt; <br>
+_WordDocAdd ( ByRef $o_object [, $i_DocumentType = 0 [, $s_Template = "" [, $b_NewTemplate = 0]]] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">Word.Applicationオブジェクトのオブジェクト変数</td>
+  </tr>
+  <tr>
+   <td>$i_DocumentType</td>
+   <td><b>[オプション]</b> 新しいドキュメントの種類を指定します<br>
+       0 = (デフォルト) 空ドキュメント<br>
+       1 = ウェブページ<br>
+       2 = Eメールメッセージ (現在、機能していない)<br>
+       3 = フレームセット<br>
+       4 = XMLドキュメント</td>
+  </tr>
+  <tr>
+   <td>$s_Template</td>
+   <td><b>[オプション]</b> 新しいドキュメントに使用するテンプレートの名前を指定します<br>
+       "" = (デフォルト) 通常のテンプレートが使用されます</td>
+  </tr>
+  <tr>
+   <td>$b_NewTemplate</td>
+   <td><b>[オプション]</b> ドキュメントをテンプレートとして開くかどうかを指定します<br>
+       0 = (デフォルト) テンプレートとして開きません<br>
+       1 = テンプレートとして開きます</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">Word.Applicationを指すオブジェクト変数、ドキュメントオブジェクトを返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>$_WordStatus_Success = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_GeneralError = 一般的なエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_InvalidDataType = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_InvalidObjectType = 無効なオブジェクト型</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの数を格納</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WordDocClose.htm">_WordDocClose</a>, <a href="_WordDocOpen.htm">_WordDocOpen</a>, <a href="_WordDocSave.htm">_WordDocSave</a>, <a href="_WordDocSaveAs.htm">_WordDocSaveAs</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - 空のWordウィンドウを作成し新しい空のドキュメントを追加</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Word.au3&gt;</span><br>
+<span class="S9">$oWordApp</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordCreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">""</span><span class="S8">)</span><br>
+<span class="S9">$oDoc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordDocAdd</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oWordApp</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WordDocAdd.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

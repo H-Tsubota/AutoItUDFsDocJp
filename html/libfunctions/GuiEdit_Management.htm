@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>GuiEdit user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;GuiEdit.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_AppendText.htm">_GUICtrlEdit_AppendText</a></td>
+<td>テキストを追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_BeginUpdate.htm">_GUICtrlEdit_BeginUpdate</a></td>
+<td>EndUpdate関数が呼ばれるまでコントロールの更新を停止します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_CanUndo.htm">_GUICtrlEdit_CanUndo</a></td>
+<td>エディットコントロールのアンドゥキューでなにか変化があったかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_CharFromPos.htm">_GUICtrlEdit_CharFromPos</a></td>
+<td>クライアント領域の指定された点に最も近い文字の情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_Create.htm">_GUICtrlEdit_Create</a></td>
+<td>エディットコントロールを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_Destroy.htm">_GUICtrlEdit_Destroy</a></td>
+<td>エディットコントロールを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_EmptyUndoBuffer.htm">_GUICtrlEdit_EmptyUndoBuffer</a></td>
+<td>エディットコントロールの取り消しフラグをリセットします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_EndUpdate.htm">_GUICtrlEdit_EndUpdate</a></td>
+<td>BeginUpdate関数によってオフにされているスクリーン再描画を有効にします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_Find.htm">_GUICtrlEdit_Find</a></td>
+<td>検索ダイアログを初期化します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_FmtLines.htm">_GUICtrlEdit_FmtLines</a></td>
+<td>エディットコントロールにソフト改行文字が含まれているかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_GetFirstVisibleLine.htm">_GUICtrlEdit_GetFirstVisibleLine</a></td>
+<td>複数行のエディットコントロールで最上部の表示行のゼロ始まりのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_GetLimitText.htm">_GUICtrlEdit_GetLimitText</a></td>
+<td>エディットコントロールでの現在のテキスト制限を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_GetLine.htm">_GUICtrlEdit_GetLine</a></td>
+<td>エディットコントロールからテキスト行を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_GetLineCount.htm">_GUICtrlEdit_GetLineCount</a></td>
+<td>行数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_GetMargins.htm">_GUICtrlEdit_GetMargins</a></td>
+<td>左余白と右余白の幅を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_GetModify.htm">_GUICtrlEdit_GetModify</a></td>
+<td>エディットコントロールの変更フラグの状態を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_GetPasswordChar.htm">_GUICtrlEdit_GetPasswordChar</a></td>
+<td>ユーザーがテキストを入力した際にエディットコントロールが表示するパスワード文字を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_GetRECT.htm">_GUICtrlEdit_GetRECT</a></td>
+<td>エディットコントロールのフォーマット済み長方形を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_GetRECTEx.htm">_GUICtrlEdit_GetRECTEx</a></td>
+<td>エディットコントロールのフォーマット済み長方形を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_GetSel.htm">_GUICtrlEdit_GetSel</a></td>
+<td>現在の選択部の開始文字位置、終了文字位置を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_GetText.htm">_GUICtrlEdit_GetText</a></td>
+<td>エディットコントロールからテキストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_GetTextLen.htm">_GUICtrlEdit_GetTextLen</a></td>
+<td>エディットコントロールの全テキストの長さを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_HideBalloonTip.htm">_GUICtrlEdit_HideBalloonTip</a></td>
+<td>エディットコントロールに関連付けられた全てのバルーンチップを非表示にします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_InsertText.htm">_GUICtrlEdit_InsertText</a></td>
+<td>テキストを挿入します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_LineFromChar.htm">_GUICtrlEdit_LineFromChar</a></td>
+<td>指定された文字番号が含まれる行番号を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_LineIndex.htm">_GUICtrlEdit_LineIndex</a></td>
+<td>指定された行の最初の文字の文字番号を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_LineLength.htm">_GUICtrlEdit_LineLength</a></td>
+<td>行の長さを文字数単位で取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_LineScroll.htm">_GUICtrlEdit_LineScroll</a></td>
+<td>テキストをスクロールします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_PosFromChar.htm">_GUICtrlEdit_PosFromChar</a></td>
+<td>エディットコントロール内の指定された文字のクライアント領域座標を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_ReplaceSel.htm">_GUICtrlEdit_ReplaceSel</a></td>
+<td>現在の選択部を置換します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_Scroll.htm">_GUICtrlEdit_Scroll</a></td>
+<td>テキストを垂直にスクロールします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_SetLimitText.htm">_GUICtrlEdit_SetLimitText</a></td>
+<td>テキスト制限を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_SetMargins.htm">_GUICtrlEdit_SetMargins</a></td>
+<td>左余白と右余白の幅を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_SetModify.htm">_GUICtrlEdit_SetModify</a></td>
+<td>変更フラグを設定またはクリアします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_SetPasswordChar.htm">_GUICtrlEdit_SetPasswordChar</a></td>
+<td>エディットコントロールのパスワード文字を設定または削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_SetReadOnly.htm">_GUICtrlEdit_SetReadOnly</a></td>
+<td>読み取り専用属性($ES_READONLY)を設定または解除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_SetRECT.htm">_GUICtrlEdit_SetRECT</a></td>
+<td>複数行のエディットコントロールのフォーマット済み長方形を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_SetRectEx.htm">_GUICtrlEdit_SetRECTEx</a></td>
+<td>複数行のエディットコントロールのフォーマット済み長方形を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_SetRECTNP.htm">_GUICtrlEdit_SetRECTNP</a></td>
+<td>複数行のエディットコントロールのフォーマット済み長方形を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_SetRectNPEx.htm">_GUICtrlEdit_SetRectNPEx</a></td>
+<td>複数行のエディットコントロールのフォーマット済み長方形を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_SetSel.htm">_GUICtrlEdit_SetSel</a></td>
+<td>文字の一定範囲を選択します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_SetTabStops.htm">_GUICtrlEdit_SetTabStops</a></td>
+<td>タブストップを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_SetText.htm">_GUICtrlEdit_SetText</a></td>
+<td>テキストを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_ShowBalloonTip.htm">_GUICtrlEdit_ShowBalloonTip</a></td>
+<td>エディットコントロールに関連付けられたバルーンチップを表示します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlEdit_Undo.htm">_GUICtrlEdit_Undo</a></td>
+<td>コントロールのアンドゥキューにある最後のエディットコントロール操作を取り消します。<br></td>
+</tr>
+</table>
+</body>

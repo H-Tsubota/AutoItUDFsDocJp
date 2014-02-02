@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlToolbar_Create</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlToolbar_Create</font>
+<hr size="2">
+<p>ツールバーコントロールを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiToolBar.au3&gt;<br>
+_GUICtrlToolbar_Create($hWnd[, $iStyle = 0x00000800[, $iExStyle = 0x00000000]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">親ウィンドウまたはオーナーウィンドウのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iStyle</td>
+   <td><b>[オプション]</b>コントロールのスタイル:<br>
+       $BTNS_AUTOSIZE - 
+	   コントロールが標準的な幅をボタンに設定しないよう指定します。<br>
+	   代わりにボタンのテキストと画像の幅に基づいてボタンの幅を計算します。<br>
+	   $BTNS_BUTTON - 
+	   標準的なボタンを作成します。<br>
+       $BTNS_CHECK - 
+	   ユーザーがクリックするたびに押した状態/押してない状態が切り替わる2状態を持つ押しボタンを作成します。<br>
+		ボタンは押された状態の際に異なる背景色になります。<br>
+       $BTNS_CHECKGROUP - 
+	   オプションボタンのように同じグループの違うボタンが押されるまで押された状態が維持されるボタンを作成します。<br>
+	   $BTNS_CHECKと$BTNS_GROUPの組み合わせと同じです。<br>
+	   
+       $BTNS_DROPDOWN - 
+	   ボタンがクリックされた際にリストを表示するドロップダウンスタイルのボタンを作成します。<br>
+	   通常のボタンで使用される$WM_COMMANDメッセージの代わりに、ドロップダウンボタンは$TBN_DROPDOWNメッセージを送信します。<br>
+	   アプリケーションは　オプションのリストを表示する通知ハンドラを持つことができます。<br>
+	   ツールバーに$TBSTYLE_EX_DRAWDDARROWS拡張スタイルが設定されている場合、ドロップダウンボタンの右側の別セクションにドロップダウン用矢印が表示され、<br>
+	   矢印がクリックされると$TBN_DROPDOWN通知が送信されます。<br>
+	   関連するボタンがクリックされると$WM_COMMANDが送信されます。<br>	   
+	   $BTNS_GROUP - 
+	   $BTNS_CHECKと組み合わせると、同じグループの違うボタンが押されるまで押された状態が維持されるボタンを作成します。<br>
+	   $BTNS_NOPREFIX - 
+	   ボタンテキストに関連するアクセラレータ接頭辞を付けないように指定します。<br>
+	   $BTNS_SEP - 
+	   ボタングループ間に小さい隙間を空けるためのセパレータを作成します。<br>
+	   このスタイルが設定されたボタンはユーザー入力を受け付けません。<br>
+	   $BTNS_SHOWTEXT - 
+	   ボタンテキストが表示されるように指定します。
+	   全てのボタンにはテキストを設定することができますが、$BTNS_SHOWTEXTボタンスタイルを設定したボタンのみがそれを表示します。<br>
+	   このボタンスタイルは$TBSTYLE_LISTスタイルと$TBSTYLE_EX_MIXEDBUTTONS拡張スタイルとともに使用される必要があります。<br>
+	   $BTNS_SHOWTEXTスタイルの設定されていないボタンにテキストを設定した場合、<br>
+	   ツールバーコントロールはカーソルがボタン上に来た際に自動的にそのテキストをツールチップ上に表示します。<br>
+	   この機能によってアプリケーションでツールバー用に$TBN_GETINFOTIP メッセージを処理する必要がなくなります。<br>
+	   $BTNS_WHOLEDROPDOWN - 
+	   ボタンにドロップダウン用の矢印を設定します。ただし場所は別セクションではありません。<br>
+	   このスタイルが設定されたボタンの動作は$TBSTYLE_EX_DRAWDDARROWS拡張スタイルが設定されているかどうかに関係なく同じです。</td>
+  </tr>
+  <tr>
+   <td></td>
+   <td>$TBSTYLE_ALTDRAG - 
+		ALTキーを押しながらドラッグすることでユーザーがツールバーのボタン位置を変更できるようにします。<br>
+		このスタイルが指定されていない場合、ユーザーはボタンのドラッグ中にSHIFTキーを押すことになります。<br>
+		ツールバーボタンのドラッグを有効にするには$CCS_ADJUSTABLEスタイルが指定されていなければならないことに注意してください。<br>       
+	   $TBSTYLE_CUSTOMERASE - 
+	   ツールバーが$WM_ERASEBKGNDメッセージを処理する際に$NM_CUSTOMDRAWメッセージを発生するようにします。<br>
+       $TBSTYLE_FLAT - 平らなツールバーを作成します<br>
+       $TBSTYLE_LIST - ビットマップの隣にボタンテキストを持つ平らなツールバーを作成します<br>
+       $TBSTYLE_REGISTERDROP - カーソルがツールバーボタン上を通過した際にドロップターゲットオブジェクトを要求するための$TBN_GETOBJECT通知メッセージを
+	   発生するようにします。<br>
+       $TBSTYLE_TOOLTIPS - アプリケーションがツールバー内のボタンの説明テキストを表示するために使用できるツールチップコントロールを作成します。<br>
+       $TBSTYLE_TRANSPARENT - 
+	   透明なツールバーを作成します。透明なツールバーではツールバーは透明ですがボタンは不透明です。<br>
+	   ボタンテキストはボタンビットマップの下に表示されます。<br>
+	   再描画の問題を防ぐにはこのスタイルをツールバーの表示前に設定しておく必要があります。<br>
+       $TBSTYLE_WRAPABLE - 
+	   複数行のボタン配置をできるツールバーを作成します。<br>
+	   ツールバーが全てのボタンを1行で配置するには狭すぎるようになるとツールバーのボタンに対して次行への"丸め込み"がおこなわれます。<br>
+	   丸め込まれる際は最右端のセパレータ、バー上にセパレータがない場合は最右端のボタンで改行がおこなわれます。<br>
+	   ツールバーが垂直レバーコントロールの一部の場合、垂直ツールバーを表示する際にはこのスタイルを設定する必要があります。</td>
+  </tr>
+  <tr>
+   <td></td>
+   <td>デフォルト: $TBSTYLE_FLAT<br>
+       強制 : $WS_CHILD、 $WS_CLIPSIBLINGS、 $WS_VISIBLE</td>
+  </tr>
+  <tr>
+   <td>$iExStyle</td>
+   <td><b>[オプション]</b>コントロールの拡張スタイル:<br>
+       $TBSTYLE_EX_DRAWDDARROWS - 
+	   ボタンが別にドロップダウン用矢印を持てるようにします。<br>
+	   $BTNS_DROPDOWNスタイルが設定されたボタンはボタン右側に別セクションのドロップダウン矢印と共に描画されます。<br>
+	   矢印がクリックされるとボタンの矢印部分のみが押し下げられ、ツールバーコントロールはアプリケーションがドロップダウンメニューを表示するように$TBN_DROPDOWN通知を送信します。<br>
+	   ボタンのメイン部分が押されるとツールバーコントロールは$WM_COMMANDメッセージをボタンのIDとともに送信します。<br>
+	   $TBSTYLE_EX_HIDECLIPPEDBUTTONS - 部分的にクリップボタンを非表示<br>
+	   $TBSTYLE_EX_DOUBLEBUFFER - ツールバーを二重にバッファします<br>
+	   $TBSTYLE_EX_MIXEDBUTTONS - 
+	   全てのボタンにテキスト設定できるようになり、$BTNS_SHOWTEXTボタンスタイル設定されているボタンでそれを表示できるようにします。
+	   $TBSTYLE_LISTスタイルも設定する必要があります。<br>
+	   通常、ボタンがテキスト表示をおこなわない場合はツールチップに表示するために$TBN_GETINFOTIPを制御しなければなりません。<br>
+	   $TBSTYLE_EX_MIXEDBUTTONS拡張スタイルを設定することで　ボタンに設定されているものの表示はされないテキストが自動的にボタンのツールチップテキストとして使用されます。<br>
+	   $TBN_GETINFOTIPを制御する必要があるのはツールチップテキストの指定をより柔軟におこなう必要がある場合だけです。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">ツールバーコントロールのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlToolbar_Destroy.htm">_GUICtrlToolbar_Destroy</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiToolbar.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Constants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_TB</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; 関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iMemo</span><br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S9">$iItem</span><span class="S0"> </span><span class="S1">; 通知に関連付けられたボタンのコマンド識別子</span><br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S5">Enum</span><span class="S0"> </span><span class="S9">$idNew</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1000</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idOpen</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idSave</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idHelp</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aSize</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUIを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Toolbar"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">600</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hToolbar</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlToolbar_Create</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$aSize</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlToolbar_GetMaxSize</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$iMemo</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateEdit</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aSize</span><span class="S8">[</span><span class="S3">1</span><span class="S8">]</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">20</span><span class="S8">,</span><span class="S0"> </span><span class="S3">596</span><span class="S8">,</span><span class="S0"> </span><span class="S3">396</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$aSize</span><span class="S8">[</span><span class="S3">1</span><span class="S8">]</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">20</span><span class="S8">),</span><span class="S0"> </span><span class="S9">$WS_VSCROLL</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetFont</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S3">9</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Courier New"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIRegisterMsg</span><span class="S8">(</span><span class="S9">$WM_NOTIFY</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_WM_NOTIFY"</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 標準的なシステムのビットマップを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddBitmap</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$IDB_STD_LARGE_COLOR</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ボタンを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idNew</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_FILENEW</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idOpen</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_FILEOPEN</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idSave</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_FILESAVE</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButtonSep</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idHelp</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_HELP</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S1">; メモ帳にメッセージを書き込む</span><br>
+<span class="S5">Func</span><span class="S0"> MemoWrite</span><span class="S8">(</span><span class="S9">$sMessage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">""</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICtrlSetData</span><span class="S8">(</span><span class="S9">$iMemo</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sMessage</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;MemoWrite</span><br>
+<br>
+<span class="S1">; WM_NOTIFYイベントハンドラ</span><br>
+<span class="S5">Func</span><span class="S0"> _WM_NOTIFY</span><span class="S8">(</span><span class="S9">$hWndGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$MsgID</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$wParam</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S12">#forceref $hWndGUI, $MsgID, $wParam</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$tNMHDR</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$event</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hwndFrom</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$code</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i_idNew</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$dwFlags</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lResult</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idFrom</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i_idOld</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$tNMTOOLBAR</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tNMTBHOTITEM</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tNMHDR</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S9">$tagNMHDR</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hwndFrom</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMHDR</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"hWndFrom"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$idFrom</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMHDR</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"IDFrom"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$code</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMHDR</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Code"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$hwndFrom</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$hToolbar</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$code</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$NM_LDOWN</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">;----------------------------------------------------------------------------------------------</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"$NM_LDOWN: Clicked Item: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iItem</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" at index: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_GUICtrlToolbar_CommandToIndex</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iItem</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">;----------------------------------------------------------------------------------------------</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$TBN_HOTITEMCHANGE</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$tNMTBHOTITEM</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructCreate</span><span class="S8">(</span><span class="S9">$tagNMTBHOTITEM</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$lParam</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$i_idOld</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMTBHOTITEM</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"idOld"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$i_idNew</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMTBHOTITEM</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"idNew"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$iItem</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$i_idNew</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$dwFlags</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tNMTBHOTITEM</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"dwFlags"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S4">BitAND</span><span class="S8">(</span><span class="S9">$dwFlags</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$HICF_LEAVING</span><span class="S8">)</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$HICF_LEAVING</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"$HICF_LEAVING: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$i_idOld</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S9">$i_idNew</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$idNew</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">;----------------------------------------------------------------------------------------------</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"$TBN_HOTITEMCHANGE: $idNew"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">;----------------------------------------------------------------------------------------------</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$idOpen</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">;----------------------------------------------------------------------------------------------</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"$TBN_HOTITEMCHANGE: $idOpen"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">;----------------------------------------------------------------------------------------------</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$idSave</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">;----------------------------------------------------------------------------------------------</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"$TBN_HOTITEMCHANGE: $idSave"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">;----------------------------------------------------------------------------------------------</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$idHelp</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">;----------------------------------------------------------------------------------------------</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MemoWrite</span><span class="S8">(</span><span class="S7">"$TBN_HOTITEMCHANGE: $idHelp"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S1">;----------------------------------------------------------------------------------------------</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S9">$GUI_RUNDEFMSG</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_WM_NOTIFY</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlToolbar_Create.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

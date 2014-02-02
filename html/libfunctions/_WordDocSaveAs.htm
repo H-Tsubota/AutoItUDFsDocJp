@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WordDocSaveAs</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WordDocSaveAs</font>
+<hr size="2">
+<p>指定したドキュメントを新しい名前、形式で保存します。<br></p>
+
+<p class="codeheader">
+#include &lt;Word.au3&gt; <br>
+_WordDocSaveAs ( ByRef $o_object [, $s_FilePath = "" [, $i_Format = 0 [, $b_ReadOnlyRecommended = 0 [, $b_AddToRecentFiles = 0 [, $b_LockComments = 0 [, $s_Password = "" [, $s_WritePassword = ""]]]]]]] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">ドキュメントオブジェクトまたはWord.Applicationのオブジェクト変数</td>
+  </tr>
+  <tr>
+   <td>$s_FilePath</td>
+   <td><b>[オプション]</b> 保存するドキュメントのフルファイルパス。 (注意を参照)<br>
+       "" = (デフォルト) ドキュメントが以前に保存されたことがない場合、デフォルトの名前(例えばDocument1.doc)が使用されます。</td>
+  </tr>
+  <tr>
+   <td>$i_Format</td>
+   <td><b>[オプション]</b> ドキュメントの保存形式<br>
+       0 = (デフォルト) Microsoft Word形式<br>
+       1 = Microsoft Word テンプレート形式<br>
+       2 = Microsoft Windows テキスト形式<br>
+       3 = 改行を維持したMicrosoft Windowsテキスト形式<br>
+       4 = Microsoft DOSテキスト形式<br>
+       5 = 改行を維持したMicrosoft DOSテキスト形式<br>
+       6 = リッチテキスト形式 (RTF)<br>
+       7 = Unicodeテキスト形式またはEncodedテキスト形式<br>
+       8 = 標準HTML形式<br>
+       9 = Webアーカイブ形式<br>
+       10 = フィルタリング済みHTML形式<br>
+       11 = 拡張マークアップ言語(XML)形式</td>
+  </tr>
+  <tr>
+   <td>$b_ReadOnlyRecommended</td>
+   <td><b>[オプション]</b> ドキュメントを開く際にMicrosoft Wordが読み取り専用を推奨するかどうか指定します。 <br>
+       0 = (デフォルト) 読み取り専用を推奨しません<br>
+       1 = 読み取り専用を推奨します</td>
+  </tr>
+  <tr>
+   <td>$b_AddToRecentFiles</td>
+   <td><b>[オプション]</b> ファイル名をファイルメニュー下部の最近使用したファイルのリストに追加するかどうか指定します。<br>
+       0 = (デフォルト) 追加しません<br>
+       1 = 追加します</td>
+  </tr>
+  <tr>
+   <td>$b_LockComments</td>
+   <td><b>[オプション]</b> ドキュメントのコメントをロックするかどうか指定します。<br>
+       0 = (デフォルト) コメントをロックしません<br>
+       1 = コメントをロックします</td>
+  </tr>
+  <tr>
+   <td>$s_Password</td>
+   <td><b>[オプション]</b> ドキュメントを開くためのパスワード文字列。 (注意を参照)</td>
+  </tr>
+  <tr>
+   <td>$s_WritePassword</td>
+   <td><b>[オプション]</b> ドキュメントの変更を保存するためのパスワード文字列。 (注意を参照)</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>$_WordStatus_Success = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_GeneralError = 一般的なエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_InvalidDataType = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$_WordStatus_InvalidObjectType = 無効なオブジェクト型</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの数を格納</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+指定された名前のドキュメントが既に存在する場合、ドキュメントはユーザーに対する警告なしに上書きされます。<br>
+ファイルを保存できず、WordErrorHandlerが登録されていない場合、スクリプトは停止します。<br>
+<br>
+アプリケーション内にハードコーディングされたパスワードを使用しないでください。パスワードが処理で必要な場合はユーザーにパスワードを求め、変数に保存し、その変数をコード内で使用してください。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WordDocAdd.htm">_WordDocAdd</a>, <a href="_WordDocClose.htm">_WordDocClose</a>, <a href="_WordDocOpen.htm">_WordDocOpen</a>, <a href="_WordDocSave.htm">_WordDocSave</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - 新しい空のドキュメントでWordウィンドウを作成。テキストを追加</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 保存操作を行い、終了</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Word.au3&gt;</span><br>
+<span class="S9">$oWordApp</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordCreate</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S9">$oDoc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_WordDocGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oWordApp</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">)</span><br>
+<span class="S9">$oDoc</span><span class="S8">.</span><span class="S14">Range</span><span class="S8">.</span><span class="S14">Text</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"This is some text to insert."</span><br>
+<span class="S15">_WordDocSaveAs</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oDoc</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@ScriptDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Test.doc"</span><span class="S8">)</span><br>
+<span class="S15">_WordQuit</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oWordApp</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_WordDocSaveAs.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

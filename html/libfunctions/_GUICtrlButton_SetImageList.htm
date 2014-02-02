@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlButton_SetImageList</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlButton_SetImageList</font>
+<hr size="2">
+<p>ボタンコントロールに画像リストを割り当てます。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiButton.au3&gt;<br>
+_GUICtrlButton_SetImageList($hWnd, $hImage[, $nAlign = 0[, $iLeft = 1[, $iTop = 1[, $iRight = 1[, $iBottom = 1]]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$hImage</td>
+   <td>画像リストのハンドル。<br>
+       &nbsp;&nbsp;全ての状態に使用される単一画像または次にリストアップする各状態に対応する個々の画像を格納していなければなりません:<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;1 - ノーマル<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;2 - ホット<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;3 - 押されています<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;4 - 無効<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;5 - デフォルト<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;6 - スタイラスホット (タブレットコンピュータのみ)</td>
+  </tr>
+  <tr>
+   <td>$nAlign</td>
+   <td><b>[オプション]</b>使用される位置あわせを指定します。このパラメータは次の値のいずれかです:<br>
+       &nbsp;&nbsp;0 - 画像を左余白に揃えます<br>
+       &nbsp;&nbsp;1 - 画像を右余白に揃えます<br>
+       &nbsp;&nbsp;2 - 画像を上余白に揃えます<br>
+       &nbsp;&nbsp;3 - 画像を下余白に揃えます<br>
+       &nbsp;&nbsp;4 - 画像を中央に揃えます</td>
+  </tr>
+  <tr>
+   <td>$iLeft</td>
+   <td><b>[オプション]</b>アイコンの左余白</td>
+  </tr>
+  <tr>
+   <td>$iTop</td>
+   <td><b>[オプション]</b>アイコンの上余白</td>
+  </tr>
+  <tr>
+   <td>$iRight</td>
+   <td><b>[オプション]</b>アイコンの右余白</td>
+  </tr>
+  <tr>
+   <td>$iBottom</td>
+   <td><b>[オプション]</b>アイコンの下余白</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+必須OS: Windows XP以降<br>
+<br>
+画像が複数はいっている画像リストはテーマが使用されている場合、1番目の画像のみ表示します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlButton_GetImageList.htm">_GUICtrlButton_GetImageList</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=BCM_SETIMAGELIST">BCM_SETIMAGELIST</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiButton.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiImageList.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">"MustDeclareVars"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$y</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">70</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iIcon</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">125</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$btn</span><span class="S8">[</span><span class="S3">6</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$rdo</span><span class="S8">[</span><span class="S3">6</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$chk</span><span class="S8">[</span><span class="S3">6</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$hImageSmall</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Buttons"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">510</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hImage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUIImageList_Create</span><span class="S8">(</span><span class="S3">32</span><span class="S8">,</span><span class="S0"> </span><span class="S3">32</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">,</span><span class="S0"> </span><span class="S3">6</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">6</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">11</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">,</span><span class="S0"> </span><span class="S5">True</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hImageSmall</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUIImageList_Create</span><span class="S8">(</span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">,</span><span class="S0"> </span><span class="S3">6</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">6</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">11</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImageSmall</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$btn</span><span class="S8">[</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Button1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">90</span><span class="S8">,</span><span class="S0"> </span><span class="S3">50</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlButton_SetImageList</span><span class="S8">(</span><span class="S9">$btn</span><span class="S8">[</span><span class="S3">0</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$hImage</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$rdo</span><span class="S8">[</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateRadio</span><span class="S8">(</span><span class="S7">"Radio Button1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">120</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">120</span><span class="S8">,</span><span class="S0"> </span><span class="S3">25</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlButton_SetImageList</span><span class="S8">(</span><span class="S9">$rdo</span><span class="S8">[</span><span class="S3">0</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$hImageSmall</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$chk</span><span class="S8">[</span><span class="S3">0</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateCheckbox</span><span class="S8">(</span><span class="S7">"Check Button1"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">260</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S3">120</span><span class="S8">,</span><span class="S0"> </span><span class="S3">25</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlButton_SetImageList</span><span class="S8">(</span><span class="S9">$chk</span><span class="S8">[</span><span class="S3">0</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$hImageSmall</span><span class="S8">)</span><br>
+<br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">5</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$btn</span><span class="S8">[</span><span class="S9">$x</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateButton</span><span class="S8">(</span><span class="S7">"Button"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">10</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$y</span><span class="S8">,</span><span class="S0"> </span><span class="S3">90</span><span class="S8">,</span><span class="S0"> </span><span class="S3">50</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUICtrlButton_SetImageList</span><span class="S8">(</span><span class="S9">$btn</span><span class="S8">[</span><span class="S9">$x</span><span class="S8">],</span><span class="S0"> _GetImageListHandle</span><span class="S8">(</span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iIcon</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">,</span><span class="S0"> </span><span class="S5">True</span><span class="S8">),</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$rdo</span><span class="S8">[</span><span class="S9">$x</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateRadio</span><span class="S8">(</span><span class="S7">"Radio Button"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">120</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$y</span><span class="S8">,</span><span class="S0"> </span><span class="S3">120</span><span class="S8">,</span><span class="S0"> </span><span class="S3">25</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUICtrlButton_SetImageList</span><span class="S8">(</span><span class="S9">$rdo</span><span class="S8">[</span><span class="S9">$x</span><span class="S8">],</span><span class="S0"> _GetImageListHandle</span><span class="S8">(</span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iIcon</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">),</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$chk</span><span class="S8">[</span><span class="S9">$x</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateCheckbox</span><span class="S8">(</span><span class="S7">"Check Button"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">260</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$y</span><span class="S8">,</span><span class="S0"> </span><span class="S3">120</span><span class="S8">,</span><span class="S0"> </span><span class="S3">25</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUICtrlButton_SetImageList</span><span class="S8">(</span><span class="S9">$chk</span><span class="S8">[</span><span class="S9">$x</span><span class="S8">],</span><span class="S0"> _GetImageListHandle</span><span class="S8">(</span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iIcon</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">),</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S9">$y</span><span class="S0"> </span><span class="S8">+=</span><span class="S0"> </span><span class="S3">60</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">While</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Switch</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">Case</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">ExitLoop</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S5">EndSwitch</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">WEnd</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Exit</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<br>
+<span class="S1">; ボタンに画像リストを使用して画像を設定、テキストを設定</span><br>
+<span class="S5">Func</span><span class="S0"> _GetImageListHandle</span><span class="S8">(</span><span class="S9">$sFile</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$nIconID</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$fLarge</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$iSize</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">16</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S9">$fLarge</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S9">$iSize</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">32</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hImage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUIImageList_Create</span><span class="S8">(</span><span class="S9">$iSize</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iSize</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S4">StringUpper</span><span class="S8">(</span><span class="S4">StringMid</span><span class="S8">(</span><span class="S9">$sFile</span><span class="S8">,</span><span class="S0"> </span><span class="S4">StringLen</span><span class="S8">(</span><span class="S9">$sFile</span><span class="S8">)</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">2</span><span class="S8">))</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"BMP"</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddBitmap</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sFile</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sFile</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$nIconID</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$fLarge</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">EndIf</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Return</span><span class="S0"> </span><span class="S9">$hImage</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_GetImageListHandle</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlButton_SetImageList.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

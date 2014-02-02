@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ProcessGetPriority</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ProcessGetPriority</font>
+<hr size="2">
+<p>開いているプロセスの優先度を取得します。<br></p>
+
+<p class="codeheader">
+#include &lt;Process.au3&gt;<br>
+_ProcessGetPriority ($i_PID)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$i_PID</td>
+    <td width="85%">調べるプロセスのプロセスID (Int)。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">プロセスの優先度を表す整数が返されます。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>0 - アイドル/低</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - 通常以下 (Windows 95/98/MEではサポートとされていません)</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - 通常</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 -  通常以上 (Windows 95/98/MEではサポートとされていません)</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 - 高</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>5 - リアルタイム</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>-1を返し@Errorを1に設定します</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="AutoIt3.chm::/html/functions/ProcessSetPriority.htm">ProcessSetPriority</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S7">&lt;process.au3&gt;</span><br>
+<br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$i_Priority_Level</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i_Notepad_PID</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$i_ArrayItem</span><br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$a_RunLevels</span><span class="S8">[</span><span class="S3">3</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">4</span><span class="S8">]</span><span class="S0"> </span><span class="S1">;優先度:低、通常、高</span><br>
+<span class="S1">;このAutoItスクリプトエンジンのインスタンスの優先度を取得</span><br>
+<span class="S9">$i_Priority_Level</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ProcessGetPriority</span><span class="S0"> </span><span class="S8">(</span><span class="S6">@AutoItPID</span><span class="S8">)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"AutoIt Script"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Should be 2: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$i_Priority_Level</span><span class="S8">)</span><br>
+<span class="S9">$i_Notepad_PID</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">Run</span><span class="S8">(</span><span class="S6">@ComSpec</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">' /k notepad.exe'</span><span class="S8">,</span><span class="S0"> </span><span class="S7">''</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@SW_HIDE</span><span class="S8">)</span><br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$i_ArrayItem</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S3">2</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">ProcessSetPriority</span><span class="S8">(</span><span class="S9">$i_Notepad_PID</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$a_RunLevels</span><span class="S8">[</span><span class="S9">$i_ArrayItem</span><span class="S8">])</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$i_Priority_Level</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ProcessGetPriority</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$i_Notepad_PID</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Notepad Priority"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Should be "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$a_RunLevels</span><span class="S8">[</span><span class="S9">$i_ArrayItem</span><span class="S8">]</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">": "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$i_Priority_Level</span><span class="S8">)</span><br>
+<span class="S5">Next</span><br>
+<span class="S4">ProcessClose</span><span class="S8">(</span><span class="S7">'notepad.exe'</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ProcessGetPriority.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

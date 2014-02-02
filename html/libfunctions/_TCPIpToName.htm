@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _TCPIpToName</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_TCPIpToName</font>
+<hr size="2">
+<p>IPアドレスを解決してホスト名を取得します。<br></p>
+
+<p class="codeheader">
+#include &lt;iNet.au3&gt;<br>
+_TCPIpToName ( $sIp [,$iOption = 0 [, $hDll_Ws2_32 = "Ws2_32.dll" ]] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sIp</td>
+    <td width="85%">ドット形式(v4)のIPアドレス</td>
+  </tr>
+  <tr>
+   <td>$iOption</td>
+   <td><b>[オプション]</b>デフォルトは0。<br>
+       0 = ホスト名を文字列で返します<br>
+       1 = ホスト名を配列で返します(注意を参照)</td>
+  </tr>
+  <tr>
+   <td>$hDll_Ws2_32</td>
+   <td><b>[オプション]</b>Ws2_32.dllをハンドルします。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">ホスト名または配列(注意を参照)</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>""</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 = 正常終了。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 = inet_addr DllCall Failed</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 = inet_addr Failed</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 = gethostbyaddr DllCall 失敗</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 = gethostbyaddr 失敗、WSAGetLastError = @Extended</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>5 = gethostbyaddr 失敗、WSAGetLastError 失敗</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>6 = strlen/sZStringRead 失敗</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>7 = 別名配列の読み込みエラー</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+WSAStartup(TCPStartupによる処理)の成功が必要です。<br>
+$iOption = 1の場合、返される配列は次のようになります。<br>
+&nbsp;&nbsp;&nbsp; $aResult[0] = 要素数<br>
+&nbsp;&nbsp;&nbsp; $aResult[1] = "ホスト名"<br>
+&nbsp;&nbsp;&nbsp; $aResult[2] = "別名 1"<br>
+&nbsp;&nbsp;&nbsp; $aResult[3] = "別名 2"<br>
+&nbsp;&nbsp;&nbsp; ...<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="AutoIt3.chm::/html/functions/TCPStartup.htm">TCPStartup</a>, <a href="AutoIt3.chm::/html/functions/TCPNameToIP.htm">TCPNameToIP</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; 例 1</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;inet.au3&gt;</span><br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$sResult</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sIp</span><br>
+<span class="S4">TCPStartup</span><span class="S8">()</span><br>
+<span class="S9">$sIp</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">TCPNameToIP</span><span class="S8">(</span><span class="S7">"hiddensoft.com"</span><span class="S8">)</span><br>
+<span class="S9">$sResult</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_TCPIpToName</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$sIp</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_TCPIpToName()"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"@error = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"@extended = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@extended</span><span class="S8">)</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"hiddensoft.com realy is:"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sResult</span><span class="S8">)</span><br>
+<span class="S5">EndIf</span><br>
+<br>
+<span class="S1">; 例 2</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;array.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;inet.au3&gt;</span><br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$aResult</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sIp</span><br>
+<span class="S4">TCPStartup</span><span class="S8">()</span><br>
+<span class="S9">$sIp</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GetIP</span><span class="S8">()</span><br>
+<span class="S9">$aResult</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_TCPIpToName</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$sIp</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"_TCPIpToName()"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"@error = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"@extended = "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@extended</span><span class="S8">)</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$aResult</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Local Hostname(s)"</span><span class="S8">)</span><br>
+<span class="S5">EndIf</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_TCPIpToName.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_GetDIBits</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_GetDIBits</font>
+<hr size="2">
+<p>指定されたビットマップのビットを取得し、DIBとしてバッファにコピーします。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_GetDIBits($hDC, $hBmp, $iStartScan, $iScanLines, $pBits, $pBI, $iUsage)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hDC</td>
+    <td width="85%">デバイスコンテキストのハンドル</td>
+  </tr>
+  <tr>
+   <td>$hBmp</td>
+   <td>ビットマップのハンドル。互換性のあるビットマップ(DDB)でなければなりません。</td>
+  </tr>
+  <tr>
+   <td>$iStartScan</td>
+   <td>取得する最初のスキャンラインを指定します。</td>
+  </tr>
+  <tr>
+   <td>$iScanLines</td>
+   <td>取得するスキャンラインの数を指定します。</td>
+  </tr>
+  <tr>
+   <td>$pBits</td>
+   <td>ビットマップデータを受け取るバッファへのポインタ。<br>
+   このパラメータが0の場合、この関数はビットマップのサイズとフォーマットを<br>
+   pBIパラメータによって指されている$tagBITMAPINFO構造体に渡します。</td>
+  </tr>
+  <tr>
+   <td>$pBI</td>
+   <td>DIBデータの要求フォーマットを指定する$tagBITMAPINFO構造体へのポインタ</td>
+  </tr>
+  <tr>
+   <td>$iUsage</td>
+   <td>$tagBITMAPINFO構造体のbmiColorsメンバーのフォーマットを指定します。<br>
+   次の値のいずれかでなければなりません:<br>
+       $DIB_PAL_COLORS - カラーテーブルは現在のパレットの16 ビットインデックスの配列から構成されます<br>
+       $DIB_RGB_COLORS - カラーテーブルは赤、緑、青の値そのものから構成されます</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">pBitsが0でなく関数が成功している場合、返し値はビットマップからコピーされたスキャンラインの数になります。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>またpBitsが0でGetDIBitsが構造体の取得に成功している場合、返し値はTrueです。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="$tagBITMAPINFO.htm">$tagBITMAPINFO</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GetDIBits">GetDIBits</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

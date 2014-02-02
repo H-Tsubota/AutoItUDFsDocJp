@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlToolbar_AddButton</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlToolbar_AddButton</font>
+<hr size="2">
+<p>ボタンを追加します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiToolBar.au3&gt;<br>
+_GUICtrlToolbar_AddButton($hWnd, $iID, $iImage[, $iString = 0[, $iStyle = 0[, $iState = 4[, $iParam = 0]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iID</td>
+   <td>コマンドID</td>
+  </tr>
+  <tr>
+   <td>$iImage</td>
+   <td>ボタン画像のゼロ始まりのインデックス。<br>
+このパラメータを-1に設定するとコントロールは画像インデックスが必要な場合に$TBN_GETDISPINFO通知を送信して画像インデックスを取得します。<br>
+-2に設定するとボタンが画像を持たないことを意味し、ボタンの配置はテキスト用スペースのみ考慮しておこなわれます。<br>
+ボタンがセパレータの場合、このパラメータはピクセル単位でのセパレータの幅です。</td>
+  </tr>
+  <tr>
+   <td>$iString</td>
+   <td><b>[オプション]</b>AddStringで設定されたボタン文字列のゼロ始まりのインデックス</td>
+  </tr>
+  <tr>
+   <td>$iStyle</td>
+   <td><b>[オプション]</b>ボタンのスタイル。次のものの組み合わせです:<br>
+       $BTNS_AUTOSIZE - ツールバーコントロールはボタンに標準の幅を割り当てません<br>
+       $BTNS_BUTTON - 標準的なボタン<br>
+       $BTNS_CHECK - 押した状態/押してない状態を切り替えます<br>
+       $BTNS_CHECKGROUP - グループの他のボタンが押されるまで押された状態を維持するボタン<br>
+       $BTNS_DROPDOWN - リストを表示できるドロップダウンスタイルのボタンを作成します<br>
+       $BTNS_GROUP - グループの他のボタンが押されるまで押された状態を維持するボタン<br>
+       $BTNS_NOPREFIX - ボタンテキストにアクセラレータの接頭辞を表示しません<br>
+       $BTNS_SEP - セパレータを作成<br>
+       $BTNS_SHOWTEXT - ボタンテキストが表示されるように指定します<br>
+       $BTNS_WHOLEDROPDOWN - ボタンにドロップダウン用の矢印が表示されるように指定します</td>
+  </tr>
+  <tr>
+   <td>$iState</td>
+   <td><b>[オプション]</b>ボタンの状態。次のものの組み合わせです:<br>
+       $TBSTATE_CHECKED - ボタンに$TBSTYLE_CHECKスタイルが設定され、クリックされた状態になります<br>
+       $TBSTATE_PRESSED - ボタンがクリックされた状態になります<br>
+       $TBSTATE_ENABLED - ボタンがユーザー入力を受け入れる様にします<br>
+       $TBSTATE_HIDDEN - ボタンは非表示になり、ユーザー入力を受け入れません<br>
+       $TBSTATE_INDETERMINATE - ボタンがグレイアウトします<br>
+       $TBSTATE_WRAP - ボタンの後ろで改行します<br>
+       $TBSTATE_ELLIPSES - ボタンテキストが切り捨てられ、省略記号が表示されます<br>
+       $TBSTATE_MARKED - ボタンに印が付きます</td>
+  </tr>
+  <tr>
+   <td>$iParam</td>
+   <td><b>[オプション]</b>アプリケーション定義の値</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlToolbar_DeleteButton.htm">_GUICtrlToolbar_DeleteButton</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiToolbar.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Constants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_TB</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; 関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hToolbar</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S5">Enum</span><span class="S0"> </span><span class="S9">$idNew</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">1000</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idOpen</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idSave</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idHelp</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUIを作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Toolbar"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hToolbar</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlToolbar_Create</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 標準的なシステムのビットマップを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddBitmap</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$IDB_STD_LARGE_COLOR</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ボタンを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idNew</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_FILENEW</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idOpen</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_FILEOPEN</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idSave</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_FILESAVE</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButtonSep</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_AddButton</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$idHelp</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$STD_HELP</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlToolbar_AddButton.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

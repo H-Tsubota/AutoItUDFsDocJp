@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_LoadImage</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_LoadImage</font>
+<hr size="2">
+<p>アイコン、カーソル、ビットマップをロードします。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_LoadImage($hInstance, $sImage, $iType, $iXDesired, $iYDesired, $iLoad)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hInstance</td>
+    <td width="85%">ロードされる画像を格納しているモジュールのインスタンスを表します。<br>
+	OEMイメージをロードする場合はこのパラメータをゼロに設定してください。</td>
+  </tr>
+  <tr>
+   <td>$sImage</td>
+   <td>ロードする画像を表します。
+   $hInstanceパラメータが0でなく$iLoadパラメータに$LR_LOADFROMFILEが含まれていない場合、<br>
+   $sImageは$hInstanceモジュール内の画像リソースの名前を格納している文字列です。<br>
+$hInstanceが0で$LR_LOADFROMFILEが指定されていない場合、<br>
+このパラメータの下位ワードはロードするOEMイメージの識別子でなければなりません。</td>
+  </tr>
+  <tr>
+   <td>$iType</td>
+   <td>ロードされる画像の種類を指定します。このパラメータは次の値のいずれかです:<br>
+       $IMAGE_BITMAP - ビットマップをロードします<br>
+       $IMAGE_CURSOR - カーソルをロードします<br>
+       $IMAGE_ICON - アイコンをロードします</td>
+  </tr>
+  <tr>
+   <td>$iXDesired</td>
+   <td>アイコンまたはカーソルの幅をピクセル単位で指定します。<br>
+   この値が0で、$iLoadがLR_DEFAULTSIZEの場合、この関数はSM_CXICONまたはSM_CXCURSORのシステムメトリックスと値を
+   使って幅の設定をおこないます。<br>
+   このパラメータが0で、LR_DEFAULTSIZEが使用されていない場合、この関数は実際のリソースの幅を使用します。</td>
+  </tr>
+  <tr>
+   <td>$iYDesired</td>
+	<td>アイコンまたはカーソルの高さをピクセル単位で指定します。<br>
+   この値が0で、$iLoadがLR_DEFAULTSIZEの場合、この関数はSM_CYICONまたはSM_CYCURSORのシステムメトリックスと値を
+   使って高さの設定をおこないます。<br>
+   このパラメータが0で、LR_DEFAULTSIZEが使用されていない場合、この関数は実際のリソースの高さを使用します。</td>
+  </tr>
+  <tr>
+   <td>$iLoad</td>
+   <td>次の値の組み合わせを指定します:<br>
+       $LR_DEFAULTCOLOR - デフォルトフラグ<br>
+       $LR_CREATEDIBSECTION - 
+	   $iTypeに$IMAGE_BITMAPが指定されている場合、この関数が互換性のあるビットマップではなくDIBセクションビットマップを返すようにします。<br>
+	   このフラグはビットマップをディスプレイデバイスの色とマッピングせずにロードするために使用されます。<br>
+       $LR_DEFAULTSIZE - 
+	   $iXDesired、$iYDesiredの値が0に設定されている場合にカーソル、アイコンのシステムメトリック値によって指定された幅、高さを使用します。<br>
+	   このフラグを設定されず、$iXDesired、$iYDesiredの値が0に設定されている場合、この関数は実際のリソースのサイズを使用します。<br>
+	   リソースが複数の画像を格納している場合、この関数は最初の画像のサイズを使用します。<br>
+       $LR_LOADFROMFILE - 
+	   $sImageパラメータで指定されたファイルから画像をロードします。<br>
+	   このフラグが設定されていない場合、$sImageはリソースの名前になります。<br>
+       $LR_LOADMAP3DCOLORS - 
+	   画像のカラーテーブルを検索し、次のグレーの色合いを対応する3D色で置き換えます:<br>
+       &nbsp;暗いグレー: RGB(128,128,128) COLOR_3DSHADOW<br>
+       &nbsp;グレー : RGB(192,192,192) COLOR_3DFACE<br>
+       &nbsp;明るいグレー: RGB(223,223,223) COLOR_3DLIGHT<br>
+	   $LR_LOADTRANSPARENT - 
+	   画像の最初のピクセルのカラー値を取得し、カラーテーブルの対応するエントリーをデフォルトのウィンドウカラーで置き換えます。<br>
+	   そのエントリーを使用している画像内のピクセルは全てデフォルトのウィンドウカラーになります。<br>
+	   この値は対応するカラーテーブルをもっている画像のみに適用されます。<br>
+	   $iLoadが$LR_LOADTRANSPARENTと$LR_LOADMAP3DCOLORSの両方の値を含んでいる場合、$LRLOADTRANSPARENTが優先されます。<br>
+	   ただし、カラーテーブルのエントリーはCOLOR_WINDOWではなくCOLOR_3DFACEで置き換えられます。<br>
+       $LR_MONOCHROME - 白黒の画像をロードします。<br>
+       $LR_SHARED - 
+	   画像が複数回ロードされた場合、画像ハンドルを共有します。<br>
+	   LR_SHAREDが設定されていない場合、同じリソースに対する2回目のLoadImageの呼び出しでは画像が再ロードされ、異なるハンドルが返されます。<br>
+	   非標準サイズの画像、ロード後に変更される画像、ファイルからロードされる画像に対しては$LR_SHAREDを使用しないでください。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">新しくロードした画像のハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+定義済み定数用にConstants.au3が必要です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=LoadImage">LoadImage</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

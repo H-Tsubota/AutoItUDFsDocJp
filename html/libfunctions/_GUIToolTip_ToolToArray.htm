@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUIToolTip_ToolToArray</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUIToolTip_ToolToArray</font>
+<hr size="2">
+<p>ToolInfo構造体を配列に変換します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiToolTip.au3&gt;<br>
+_GUIToolTip_ToolToArray($hWnd, ByRef $tToolInfo, $iError)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+   <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr> 
+  <tr>
+    <td width="15%">$tToolInfo</td>
+    <td width="85%">$tagTOOLINFO構造体</td>
+  </tr>
+  <tr>
+   <td>$iError</td>
+   <td>返されるエラーコード</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+成功: 次のフォーマットの配列:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [0] - ツールチップの表示を制御するフラグ:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;    1 - $iIDはツールのID代わりのウィンドウハンドルであることを表します<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;    2 - $iIDで指定されたツール下のウィンドウを中央寄せします<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;    4 - テキストが反対向きに表示されることを表します<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;    8 - コントロールがメッセージを傍受するためにツールのウィンドウをサブクラス化することを表します<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   16 - コントロールを対応するツールの隣に配置します<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   32 - ウィンドウをTTM_TRACKPOSITIONと同じ座標に配置します<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;   64 - コントロールのマウスメッセージを親ウィンドウの前にします<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  128 - コントロールテキスト内のリンクを構文解析します<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [1] - ツールがあるウィンドウのハンドル<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [2] - ツールの識別子<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [3] - 長方形の左上隅のX座標<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [4] - 長方形の左上隅のY座標<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [5] - 長方形の右下隅のX座標<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [6] - 長方形の右下隅のY座標<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [7] - ツールの文字列リソースを格納しているインスタンスのハンドル<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [8] - ツールのテキスト<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [9] - ツールに関連付けられたアプリケーション定義の値<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

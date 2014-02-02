@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _FTP_Command</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_FTP_Command</font>
+<hr size="2">
+<p>FTPサーバーにコマンドを送信します。<br></p>
+
+<p class="codeheader">
+#Include &lt;FTPEx.au3&gt;<br>
+_FTP_Command($l_FTPSession, $s_FTPCommand [, $l_Flags = 0x00000001 [, $l_ExpectResponse = 0 [, $l_Context = 0]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$l_FTPSession</td>
+    <td width="85%">_FTP_Connect()の返し値</td>
+  </tr>
+  <tr>
+   <td>$s_FTPCommand</td>
+   <td>FTPサーバーに送信するコマンド</td>
+  </tr>
+  <tr>
+   <td>$l_Flags</td>
+   <td>	<b>[オプション]</b> $FTP_TRANSFER_TYPE_ASCIIまたは$FTP_TRANSFER_TYPE_BINARY</td>
+  </tr>
+  <tr>
+   <td>$l_ExpectResponse</td>
+   <td>	<b>[オプション]</b>Asyncモードでのレスポンスのためのデータソケット。注意を参照。</td>
+  </tr>
+  <tr>
+   <td>$l_Context</td>
+   <td>	<b>[オプション]</b> この検索と任意のアプリケーションデータを関連付けるアプリケーション定義の値を保持した変数。<br>
+       ステータスコールバック関数を設定するためにアプリケーションが既に_FTP_SetStatusCallback()を呼び終わっている場合のみ使用できます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">識別子を返します。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し、@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+コマンド例: サーバーの構文規則に依存します。<br>
+'type I' 'type A'  'pasv'はバイナリ転送モード、ASCII転送モード、パッシブ転送モード(ファイアーウォールと共に使用)と対応します。<br>
+<br>
+$l_ExpectResponseがTRUEに設定されると、正常なデータソケットが開かれた場合に作成されるハンドルへのポインタが@extendedに代入されます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_FTP_Connect.htm">_FTP_Connect</a>, <a href="_FTP_SetStatusCallback.htm">_FTP_SetStatusCallback</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=FtpCommand">FtpCommand</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

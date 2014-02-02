@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlTreeView_SetBkColor</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlTreeView_SetBkColor</font>
+<hr size="2">
+<p>背景色を設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiTreeView.au3&gt;<br>
+_GUICtrlTreeView_SetBkColor($hWnd, $vRGBColor)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$vRGBColor</td>
+   <td>新しい16進数RGB色</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+以前の16進数RGB色を返します。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlTreeView_GetBkColor.htm">_GUICtrlTreeView_GetBkColor</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiTreeView.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiImageList.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Constants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<br>
+<span class="S9">$Debug_TV</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; 関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S5">Const</span><span class="S0"> </span><span class="S9">$Turquoise</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0x40e0d0</span><br>
+<span class="S5">Global</span><span class="S0"> </span><span class="S5">Const</span><span class="S0"> </span><span class="S9">$Crimson</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0xDC143C</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hTreeView</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$iStyle</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$TVS_EDITLABELS</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TVS_HASBUTTONS</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TVS_HASLINES</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TVS_LINESATROOT</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TVS_DISABLEDRAGDROP</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TVS_SHOWSELALWAYS</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$TVS_CHECKBOXES</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"TreeView Set BkColor"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hTreeView</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateTreeView</span><span class="S8">(</span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">396</span><span class="S8">,</span><span class="S0"> </span><span class="S3">268</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$iStyle</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_EX_CLIENTEDGE</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlTreeView_SetBkColor</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Turquoise</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlTreeView_SetTextColor</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$Crimson</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlTreeView_SetLineColor</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$COLOR_WHITE</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hImage</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUIImageList_Create</span><span class="S8">(</span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S3">16</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">110</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">131</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">165</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">168</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">137</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUIImageList_AddIcon</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">146</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlTreeView_SetNormalImageList</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hImage</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlTreeView_BeginUpdate</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">For</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S3">0</span><span class="S0"> </span><span class="S5">To</span><span class="S0"> </span><span class="S15">_GUIImageList_GetImageCount</span><span class="S8">(</span><span class="S9">$hImage</span><span class="S8">)</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S15">_GUICtrlTreeView_Add</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S4">StringFormat</span><span class="S8">(</span><span class="S7">"[%02d] New Item"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$x</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">1</span><span class="S8">),</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$x</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Next</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlTreeView_EndUpdate</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">4160</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Information"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Back Color: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_GUICtrlTreeView_GetBkColor</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"Text Color: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_GUICtrlTreeView_GetTextColor</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@LF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S0">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="S7">"Line Color: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_GUICtrlTreeView_GetLineColor</span><span class="S8">(</span><span class="S9">$hTreeView</span><span class="S8">))</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIDelete</span><span class="S8">()</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlTreeView_SetBkColor.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IEPropertySet</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IEPropertySet</font>
+<hr size="2">
+<p>ブラウザ、DOM要素の選択されたプロパティを設定します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IEPropertySet ( ByRef $o_object, $s_property, $newvalue )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">InternetExplorer.Applicationのオブジェクト変数</td>
+  </tr>
+  <tr>
+   <td>$s_property</td>
+   <td>プロパティ選択 (注意を参照)</td>
+  </tr>
+  <tr>
+   <td>$newvalue</td>
+   <td>ブラウザプロパティに設定する新しい値</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 ($_IEStatus_InvalidDataType) = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 ($_IEStatus_InvalidObjectType) = 無効なオブジェクト型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>5 ($_IEStatus_InvalidValue) = 無効な値</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+より詳しい情報は<a href="http://msdn.microsoft.com/library/default.asp?url=/workshop/browser/webbrowser/reference/objects/internetexplorer.asp" target="_blank">MSDN</a>を参照。<br>
+<br>
+次の表は使用できる各プロパティの説明です。DOM要素のものとブラウザのものがあります。<br>
+<br>
+<b><u>ブラウザプロパティ</u></b><br>
+<br>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%"><b>プロパティ</b></td>
+    <td width="85%"><b>説明</b></td>
+  </tr>
+  <tr>
+   <td>"addressbar"</td>
+   <td>オブジェクトのアドレスバーの表示/非表示を指定します。</td>
+  </tr>
+  <tr>
+   <td>"contenteditable"</td>
+   <td>オブジェクトがマウス、キーボードで編集できるかどうかを表すブール値を指定します。</td>
+  </tr>
+  <tr>
+   <td>"height"</td>
+   <td>ブラウザメインウィンドウの高さを指定します。</td>
+  </tr>
+  <tr>
+   <td>"innerhtml"</td>
+   <td>要素の開始、終了タグを除く要素のレンダリングHTMLを設定します。</td>
+  </tr>
+  <tr>
+   <td>"innertext"</td>
+   <td>要素のレンダリングテキスト(タグを含まない)を設定します。通常、outertextと同じです。</td>
+  </tr>
+  <tr>
+   <td>"left"</td>
+   <td>ブラウザメインウィンドウの左端のスクリーン座標を指定します。</td>
+  </tr>
+  <tr>
+   <td>"menubar"</td>
+   <td>ブラウザメニューバーの表示/非表示を表すブール値を指定します。</td>
+  </tr>
+  <tr>
+   <td>"offline"</td>
+   <td>ブラウザが現在オフラインモードで動作しているかどうかを表すブール値を指定します。</td>
+  </tr>
+  <tr>
+   <td>"outertext"</td>
+   <td>要素のレンダリングテキスト(タグを含まない)を設定します。通常、innertextと同じです。</td>
+  </tr>
+  <tr>
+   <td>"outerhtml"</td>
+   <td>要素の開始、終了タグを含む要素のレンダリングHTMLを設定します。</td>
+  </tr>
+  <tr>
+   <td>"resizable"</td>
+   <td>オブジェクトがリサイズ可能かどうかを表すブール値を指定します。</td>
+  </tr>
+  <tr>
+   <td>"silent"</td>
+   <td>ブラウザがダイアログボックスを表示可能かどうかを表すブール値を指定します。</td>
+  </tr>
+  <tr>
+   <td>"statusbar"</td>
+   <td>ブラウザのステータスバーが表示されているかどうかを表す値を指定します。</td>
+  </tr>
+  <tr>
+   <td>"statustext"</td>
+   <td>ブラウザのステータスバーのテキストを指定します。</td>
+  </tr>
+  <tr>
+   <td>"theatermode"</td>
+   <td>ブラウザがシアターモードかどうかを表すブール値を指定します。シアターモードではブラウザのメインウィンドウがスクリーン全体を占め、最小限のナビゲーションボタンのみのツールバーが表示されます。</td>
+  </tr>
+  <tr>
+   <td>"title"</td>
+   <td>ドキュメントタイトルを設定します。これはウィンドウタイトルとは異なります。通常、ウィンドウタイトルはドキュメントタイトルから始まりますが、Windowsレジストリで指定された追加テキストがそれに付け加えられます。</td>
+  </tr>
+  <tr>
+   <td>"toolbar"</td>
+   <td>ブラウザツールバーの表示/非表示を表すブール値を指定します。</td>
+  </tr>
+  <tr>
+   <td>"top"</td>
+   <td>ブラウザメインウィンドウの上端のスクリーン座標を指定します。</td>
+  </tr>
+  <tr>
+   <td>"width"</td>
+   <td>ブラウザメインウィンドウの幅を指定します。</td>
+  </tr>
+</table><br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IEPropertyGet.htm">_IEPropertyGet</a>, <a href="_IEAction.htm">_IEAction</a>, <a href="_IEBodyWriteHTML.htm">_IEBodyWriteHTML</a>, <a href="_IEDocInsertHTML.htm">_IEDocInsertHTML</a>, <a href="_IEDocInsertText.htm">_IEDocInsertText</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - 基礎的なサンプルをブラウザで開き、アドレスバーが表示されているかどうかを調べます。</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 表示されていない場合は表示します。</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; さらにステータスバーに表示されているテキストを変更します。</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Example</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"basic"</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S5">Not</span><span class="S0"> </span><span class="S15">_IEPropertyGet</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"statusbar"</span><span class="S8">)</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S15">_IEPropertySet</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"statusbar"</span><span class="S8">,</span><span class="S0"> </span><span class="S5">True</span><span class="S8">)</span><br>
+<span class="S15">_IEPropertySet</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"statustext"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Look What I can Do"</span><span class="S8">)</span><br>
+<span class="S4">Sleep</span><span class="S8">(</span><span class="S3">1000</span><span class="S8">)</span><br>
+<span class="S15">_IEPropertySet</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"statustext"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"I can change the status text"</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IEPropertySet.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _Security__LookupAccountName</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_Security__LookupAccountName</font>
+<hr size="2">
+<p>アカウントとドメイン名に対応するセキュリティ識別子(SID)を取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Security.au3&gt;<br>
+_Security__LookupAccountName($sAccount [, $sSystem = ""])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$sAccount</td>
+    <td width="85%">
+	 	アカウント名を指定します。<br>
+		この関数が目的のドメインからアカウントを発見できるようにドメイン名\ユーザー名形式の完全な文字列を使用してください。
+	</td>
+  </tr>
+  <tr>
+   <td>$sSystem</td>
+   <td><b>[オプション]</b>システム名。この文字列にはリモートコンピュータの名前を使用できます。<br>
+空文字列を使用した場合、アカウント名に対する処理はローカルシステム上で開始されます。 <br>アカウント名がローカルシステム上で解決できない場合、この関数はローカルシステムの信頼するドメインコントローラを使用して アカウント名を解決しようとします。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">次の形式の配列:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aAcct[0] - SID文字列</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aAcct[1] - ドメイン名</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$aAcct[2] - SIDの種類。次の値のいずれか:</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 1 - ユーザーSIDを表します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 2 - グループSIDを表します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 3 - ドメインSIDを表します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 4 - 別名SIDを表します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 5 - 既知のグループのSIDを表します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 6 - 削除済みアカウントのSIDを表します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 7 - 無効なSIDを表します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 8 - 不明なSID型を表します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td> 9 - コンピュータのSIDを表します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@errorを設定します。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_Security__LookupAccountSid.htm">_Security__LookupAccountSid</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=LookupAccountName">LookupAccountName</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

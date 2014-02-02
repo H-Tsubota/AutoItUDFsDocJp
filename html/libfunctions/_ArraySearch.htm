@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ArraySearch</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ArraySearch</font>
+<hr size="2">
+<p>1次元、2次元配列内のエントリーを見つけます。配列をソートする必要がないこと以外は_ArrayBinarySearch()と同様です。<br></p>
+
+<p class="codeheader">
+#Include &lt;Array.au3&gt;<br>
+_ArraySearch(Const ByRef $avArray, $vValue [, $iStart = 0 [, $iEnd = 0 [, $iCase = 0 [, $iPartial = 0 [, $iForward = 1 [, $iSubItem = -1]]]]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$avArray</td>
+    <td width="85%">検索する配列</td>
+  </tr>
+  <tr>
+   <td>$vValue</td>
+   <td>$avArrayから探す値</td>
+  </tr>
+  <tr>
+   <td>$iStart</td>
+   <td><b>[オプション]</b> 配列の検索開始インデックス</td>
+  </tr>
+  <tr>
+   <td>$iEnd</td>
+   <td><b>[オプション]</b> 配列の検索終了インデックス</td>
+  </tr>
+  <tr>
+   <td>$iCase</td>
+   <td><b>[オプション]</b> 1に設定すると、大文字小文字を区別します</td>
+  </tr>
+  <tr>
+   <td>$iPartial</td>
+   <td><b>[オプション]</b> 1に設定すると、部分検索を実行します</td>
+  </tr>
+  <tr>
+   <td>$iForward</td>
+   <td><b>[オプション]</b> 0に設定すると、(先頭から末尾方向の代わりに)配列末尾から先頭に向かって検索します </td>
+  </tr>
+  <tr>
+   <td>$iSubItem</td>
+   <td><b>[オプション]</b> 2次元配列を検索する場合のサブインデックス</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">$vValueが見つかった位置のインデックスを返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>-1。@errorを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>1 - $avArrayは配列ではありません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - $avArrayは1次元配列でも2次元配列はありません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 - $iStartが$iEndよりも大きいです</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>6 - $vValueが配列内に見つかりませんでした</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>7 - $avArrayの次元が高すぎます</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>(3, 5 - 非推奨エラーコード)</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数は_ArrayBinarySearch()より遅いですが、配列の並びを変更できない場合に便利です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_ArrayBinarySearch.htm">_ArrayBinarySearch</a>, <a href="_ArrayFindAll.htm">_ArrayFindAll</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Array.au3&gt;</span><br>
+<br>
+<span class="S1">;===============================================================================</span><br>
+<span class="S1">例1 (1次元配列を使用)</span><br>
+<span class="S1">;===============================================================================</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$avArray</span><span class="S8">[</span><span class="S3">6</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S7">"String0, SubString0"</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S7">"String1, SubString1"</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S7">"String2, SubString2"</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S7">"String3, SubString3"</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S7">"String4, SubString4"</span><span class="S8">,</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S7">"String5, SubString5"</span><span class="S8">]</span><br>
+<br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$avArray</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$avArray"</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$sSearch</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">InputBox</span><span class="S8">(</span><span class="S7">"_ArraySearch() demo"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"String to find?"</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S5">Exit</span><br>
+<br>
+<span class="S9">$iIndex</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ArraySearch</span><span class="S8">(</span><span class="S9">$avArray</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sSearch</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Not Found"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">'"'</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sSearch</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">'" was not found in the array.'</span><span class="S8">)</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Found"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">'"'</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sSearch</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">'" was found in the array at position '</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIndex</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"."</span><span class="S8">)</span><br>
+<span class="S5">EndIf</span><br>
+<br>
+<span class="S1">;===============================================================================</span><br>
+<span class="S1">例2 (2次元配列を使用)</span><br>
+<span class="S1">;===============================================================================</span><br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$avArray</span><span class="S8">[</span><span class="S3">6</span><span class="S8">][</span><span class="S3">2</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S8">[</span><span class="S7">"String0"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"SubString0"</span><span class="S8">],</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S8">[</span><span class="S7">"String1"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"SubString1"</span><span class="S8">],</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S8">[</span><span class="S7">"String2"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"SubString2"</span><span class="S8">],</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S8">[</span><span class="S7">"String3"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"SubString3"</span><span class="S8">],</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S8">[</span><span class="S7">"String4"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"SubString4"</span><span class="S8">],</span><span class="S0"> </span><span class="S8">_</span><br>
+<span class="S8">[</span><span class="S7">"String5"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"SubString5"</span><span class="S8">]]</span><br>
+<br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$avArray</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"$avArray"</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$sSearch</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">InputBox</span><span class="S8">(</span><span class="S7">"_ArraySearch() demo"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"String to find?"</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S5">Exit</span><br>
+<br>
+<span class="S9">$sColumn</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">InputBox</span><span class="S8">(</span><span class="S7">"_ArraySearch() demo"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Column to search?"</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S5">Exit</span><br>
+<span class="S9">$sColumn</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">Int</span><span class="S8">(</span><span class="S9">$sColumn</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$iIndex</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ArraySearch</span><span class="S8">(</span><span class="S9">$avArray</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sSearch</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sColumn</span><span class="S8">)</span><br>
+<span class="S5">If</span><span class="S0"> </span><span class="S6">@error</span><span class="S0"> </span><span class="S5">Then</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Not Found"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">'"'</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sSearch</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">'" was not found on column '</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sColumn</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">'.'</span><span class="S8">)</span><br>
+<span class="S5">Else</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Found"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">'"'</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sSearch</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">'" was found in the array at position '</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$iIndex</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">' on column '</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sColumn</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">'.'</span><span class="S8">)</span><br>
+<span class="S5">EndIf</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ArraySearch.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GDIPlus_BitmapLockBits</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GDIPlus_BitmapLockBits</font>
+<hr size="2">
+<p>読み取り、書き込みのためにビットマップの一部をロックします。<br></p>
+
+<p class="codeheader">
+#Include &lt;GDIPlus.au3&gt;<br>
+_GDIPlus_BitmapLockBits($hBitmap, $iLeft, $iTop, $iWidth, $iHeight [ , $iFlags = $GDIP_ILMREAD [, $iFormat = $GDIP_PXF32RGB ]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hBitmap</td>
+    <td width="85%">Bitmapオブジェクトのハンドル</td>
+  </tr>
+  <tr>
+   <td>$iLeft</td>
+   <td>ロックする長方形の左上隅のX座標</td>
+  </tr>
+  <tr>
+   <td>$iTop</td>
+   <td>ロックする長方形の左上隅のY座標</td>
+  </tr>
+  <tr>
+   <td>$iWidth</td>
+   <td>ロックする長方形の幅</td>
+  </tr>
+  <tr>
+   <td>$iHeight</td>
+   <td>ロックする長方形の高さ</td>
+  </tr>
+  <tr>
+   <td>$iFlags</td>
+   <td><b>[オプション]</b>ロックされたビットマップ部分を読み取り、書き込みを表すフラグと<br>呼び出し側が既にバッファを割り当てているのかを表すフラグ。次のものの組み合わせです:<br>
+       $GDIP_ILMREAD - 画像の一部を読み取りのためにロックします<br>
+       $GDIP_ILMWRITE - 画像の一部を書き込みのためにロックします<br>
+       $GDIP_ILMUSERINPUTBUF - ユーザーによってバッファが割り当てられています</td>
+  </tr>
+  <tr>
+   <td>$iFormat</td>
+   <td><b>[オプション]</b>一時バッファのピクセルデータのフォーマットを指定します。次のうちの1つです:<br>
+       $GDIP_PXF01INDEXED - 1bpp、インデックス済み<br>
+       $GDIP_PXF04INDEXED - 4bpp、インデックス済み<br>
+       $GDIP_PXF08INDEXED - 8bpp、インデックス済み<br>
+       $GDIP_PXF16GRAYSCALE - 16bpp、グレースケール<br>
+       $GDIP_PXF16RGB555 - 16bpp; 各RGB成分5ビット<br>
+       $GDIP_PXF16RGB565 - 16bpp; 赤5ビット、緑6ビット、青5ビット<br>
+       $GDIP_PXF16ARGB1555 - 16bpp; アルファ成分1ビット、各RGB成分5ビット<br>
+       $GDIP_PXF24RGB - 24bpp; 各RGB成分8ビット<br>
+       $GDIP_PXF32RGB - 32bpp; 各RGB成分8ビット、アルファ成分なし<br>
+       $GDIP_PXF32ARGB - 32bpp; アルファ成分、各RGB成分8ビット<br>
+       $GDIP_PXF32PARGB - 32bpp; アルファ成分、各RGB成分8ビット、プリマルチプライ済み</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">$tagGDIPBITMAPDATA構造体</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>@errorが設定されます</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+ロックした部分の処理後は_GDIPlus_BitmapUnlockBitsを呼んでロックされた領域を開放してください。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinAPI_DeleteObject.htm">_WinAPI_DeleteObject</a>, <a href="_GDIPlus_ImageGetPixelFormat.htm">_GDIPlus_ImageGetPixelFormat</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GdipBitmapLockBits">GdipBitmapLockBits</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

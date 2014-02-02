@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlToolbar_SetAnchorHighlight</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlToolbar_SetAnchorHighlight</font>
+<hr size="2">
+<p>アンカーハイライト設定を設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiToolBar.au3&gt;<br>
+_GUICtrlToolbar_SetAnchorHighlight($hWnd, $fAnchor)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$fAnchor</td>
+   <td>アンカーハイライトの設定:<br>
+       &nbsp;True - アンカーハイライトが有効になります<br>
+       False - アンカーハイライトが無効になります</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+成功: 以前のアンカーハイライトの設定<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+アンカーハイライトとは最後にハイライトされたアイテムが他のアイテムがハイライトされるまでハイライトされ続けることを意味します。<br>
+これはカーソルがツールバーを外れた際も動作します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlToolbar_GetAnchorHighlight.htm">_GUICtrlToolbar_GetAnchorHighlight</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiToolbar.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$fEnabled</span><br>
+<span class="S0">&nbsp; &nbsp; </span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">Run</span><span class="S8">(</span><span class="S7">"explorer.exe /root, ,::{20D04FE0-3AEA-1069-A2D8-08002B30309D}"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">WinWaitActive</span><span class="S8">(</span><span class="S7">"My Computer"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hToolbar</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlToolbar_FindToolbar</span><span class="S8">(</span><span class="S7">"[CLASS:CabinetWClass]"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"&amp;File"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$fEnabled</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlToolbar_GetAnchorHighlight</span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Information"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Anchor highlight enabled: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$fEnabled</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlToolbar_SetAnchorHighlight</span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">,</span><span class="S0"> </span><span class="S5">Not</span><span class="S0"> </span><span class="S9">$fEnabled</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Information"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Anchor highlight enabled: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S15">_GUICtrlToolbar_GetAnchorHighlight</span><span class="S8">(</span><span class="S9">$hToolbar</span><span class="S8">))</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlToolbar_SetAnchorHighlight.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

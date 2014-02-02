@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _DateDayOfWeek</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_DateDayOfWeek</font>
+<hr size="2">
+<p>指定した曜日に基づいて、曜日名を返します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Date.au3&gt;<br>
+_DateDayOfWeek($iDayNum [, $iShort = 0])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iDayNum</td>
+    <td width="85%">曜日番号(1 = 日曜日, 7 = 土曜日)</td>
+  </tr>
+  <tr>
+   <td>$iShort</td>
+   <td><b>[オプション]</b>形式:<br>
+       0 - 完全な曜日の名前<br>
+       1 - 曜日の省略名</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">曜日の名前</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>NULL文字列。@ERROR = 1を設定します</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数は英語での曜日名のみ返します。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_DateDaysInMonth.htm">_DateDaysInMonth</a>, <a href="_DateToDayOfWeek.htm">_DateToDayOfWeek</a>, <a href="_DateToDayOfWeekISO.htm">_DateToDayOfWeekISO</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Date.au3&gt;</span><br>
+<br>
+<span class="S1">; 完全な名前を取得</span><br>
+<span class="S9">$sLongDayName</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_DateDayOfWeek</span><span class="S8">(</span><span class="S0"> </span><span class="S6">@WDAY</span><span class="S0"> </span><span class="S8">)</span><br>
+<br>
+<span class="S1">; 短縮名を取得</span><br>
+<span class="S9">$sShortDayName</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_DateDayOfWeek</span><span class="S8">(</span><span class="S0"> </span><span class="S6">@WDAY</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S0"> </span><span class="S8">)</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S0"> </span><span class="S3">4096</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Day of Week"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Today is: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sLongDayName</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" ("</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sShortDayName</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">")"</span><span class="S0"> </span><span class="S8">)</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_DateDayOfWeek.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

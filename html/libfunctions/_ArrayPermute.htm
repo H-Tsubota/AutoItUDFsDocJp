@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ArrayPermute</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ArrayPermute</font>
+<hr size="2">
+<p>配列内の全要素の順列を配列で返します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Array.au3&gt;<br>
+_ArrayPermute(ByRef $avArray [, $sDelim = ""])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$avArray</td>
+    <td width="85%">順列を取得したい配列</td>
+  </tr>
+  <tr>
+   <td>$sDelim</td>
+   <td><b>[オプション]</b> 結果の区切り文字。デフォルトは""で区切り文字なし</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">順列の配列を返します</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>$array[0]には返された文字列の数がはいっています。</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>以降の要素($array[1], $array[2] ... $array[n])には順列がはいっています。</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し、@errorを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>1 - 入力は配列でなければなりません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - $avArrayは1次元配列ではありません</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+入力配列は0始まりでなければいけません。つまり$array[0]には要素の個数をいれてはいけません。Alexander Bogomolnyの作成したアルゴリズムを使用しています。<br>
+<br>
+http://www.bearcave.com/random_hacks/permute.html<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_ArrayCombinations.htm">_ArrayCombinations</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *****************************************************************************</span><br>
+<span class="S1">例1 - 1次元配列を宣言。順列配列を返す</span><br>
+<span class="S1">; *****************************************************************************</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Array.au3&gt;</span><br>
+<br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$aArray</span><span class="S8">[</span><span class="S3">4</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[</span><span class="S3">1</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">3</span><span class="S8">,</span><span class="S0"> </span><span class="S3">4</span><span class="S8">]</span><br>
+<span class="S9">$aNewArray</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ArrayPermute</span><span class="S8">(</span><span class="S9">$aArray</span><span class="S8">,</span><span class="S0"> </span><span class="S7">","</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;デフォルトパラメータを使用</span><br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$aNewArray</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Array Permuted"</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ArrayPermute.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IEDocGetObj</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IEDocGetObj</font>
+<hr size="2">
+<p>任意のDOMオブジェクトを与えると、関連付けられたドキュメントオブジェクトへの参照が返されます。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IEDocGetObj ( ByRef $o_object )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">InternetExplorer.Applicationのオブジェクト変数、ウィンドウ、フレームまたは任意のDOMオブジェクト</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">ドキュメントオブジェクトをポイントするオブジェクト変数が返されます</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 ($_IEStatus_InvalidDataType) = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+任意のDOMオブジェクト(e.g. ブラウザ、ウィンドウ、フレーム、アイフレーム、ドキュメント、ドキュメントエレメント)を与えられると、この関数は関連付けられたドキュメントオブジェクトへの参照を返します。渡されるオブジェクトのタイプをコントロールできない状況で一般的な形式で処理を書く際、特に便利です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+None.
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; Example 1 - AutoItのホームページをブラウザで開き、ドキュメントオブジェクトへの参照を取得後、</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ドキュメントの属性情報を表示</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"http://www.autoitscript.com"</span><span class="S8">)</span><br>
+<span class="S9">$oDoc</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IEDocGetObj</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Document Created Date"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$oDoc</span><span class="S8">.</span><span class="S14">fileCreatedDate</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IEDocGetObj.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

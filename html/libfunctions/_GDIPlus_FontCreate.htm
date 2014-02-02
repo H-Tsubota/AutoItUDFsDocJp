@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GDIPlus_FontCreate</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GDIPlus_FontCreate</font>
+<hr size="2">
+<p>Fontオブジェクトを作成します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GDIPlus.au3&gt;<br>
+_GDIPlus_FontCreate($hFamily, $fSize[, $iStyle = 0[, $iUnit = 3]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hFamily</td>
+    <td width="85%">FontFamilyオブジェクトのハンドル</td>
+  </tr>
+  <tr>
+   <td>$fSize</td>
+   <td>$iUnitパラメータで指定された単位で測ったフォントのサイズ</td>
+  </tr>
+  <tr>
+   <td>$iStyle</td>
+   <td><b>[オプション]</b>書体のスタイル。次のものの組み合わせです:<br>
+       0 - 通常の太さ<br>
+       1 - 太字<br>
+       2 - 斜体<br>
+       4 - 下線付き<br>
+       8 - 取り消し線付き</td>
+  </tr>
+  <tr>
+   <td>$iUnit</td>
+   <td><b>[オプション]</b>フォントサイズの計測単位:<br>
+       0 - ワールド座標系、非物理単位<br>
+       1 - 表示単位系<br>
+       2 - 単位は1ピクセルです<br>
+       3 - 単位は1ポイントまたは1/72インチです<br>
+       4 - 単位は1インチです<br>
+       5 - 単位は1/300インチです<br>
+       6 - 単位は1ミリメートルです</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">Fontオブジェクトのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+Fontオブジェクトの使用後は_GDIPlus_FontDispose関数を呼んでリソースを解放してください。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GDIPlus_FontDispose.htm">_GDIPlus_FontDispose</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GdipCreateFont">GdipCreateFont</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GDIPlus.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hWnd</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hGraphic</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hBrush</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hFormat</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hFamily</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hFont</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tLayout</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUI作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"GDI+"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hWnd</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">WinGetHandle</span><span class="S8">(</span><span class="S7">"GDI+"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 文字列を描画</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_Startup</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGraphic</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_GraphicsCreateFromHWND</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hBrush</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_BrushCreateSolid</span><span class="S0"> </span><span class="S8">(</span><span class="S3">0x7F00007F</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hFormat</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_StringFormatCreate</span><span class="S0"> </span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hFamily</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_FontFamilyCreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"Arial"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hFont</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_FontCreate</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hFamily</span><span class="S8">,</span><span class="S0"> </span><span class="S3">12</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tLayout</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_RectFCreate</span><span class="S0"> </span><span class="S8">(</span><span class="S3">140</span><span class="S8">,</span><span class="S0"> </span><span class="S3">110</span><span class="S8">,</span><span class="S0"> </span><span class="S3">100</span><span class="S8">,</span><span class="S0"> </span><span class="S3">20</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_GraphicsDrawStringEx</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGraphic</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Hello world"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hFont</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tLayout</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hFormat</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hBrush</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; リソースを破棄</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_FontDispose</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hFont</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_FontFamilyDispose</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hFamily</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_StringFormatDispose</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hFormat</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_BrushDispose</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hBrush</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_GraphicsDispose</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$hGraphic</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GDIPlus_Shutdown</span><span class="S0"> </span><span class="S8">()</span><br>
+<br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GDIPlus_FontCreate.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

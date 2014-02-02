@@ -1,0 +1,653 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+  <title>User Defined Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>GuiListView user defined functions Reference</h1>
+<p>下記がAutoItで使用できるユーザー定義関数の完全なリストです。&nbsp;
+詳しい説明についてはユーザー定義関数名をクリックしてください。</p>
+<p>これらの関数を使用する場合、次のコードを追加する必要があります :  <b>#include &lt;GuiListView.au3&gt;</b></p>
+<p>&nbsp;</p>
+
+<table bordercolor="#c0c0c0" cellpadding="5" cellspacing="0" width="100%" border="1">
+<tr>
+  <td height="16" bgcolor="#000099" width="25%"><font color="#ffffff"><b>ユーザー定義関数</b></font></td>
+  <td height="16" bgcolor="#000099" width="75%"><font color="#ffffff"><b>説明</b></font></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_AddArray.htm">_GUICtrlListView_AddArray</a></td>
+<td>配列を使用してコントロールへアイテムを追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_AddColumn.htm">_GUICtrlListView_AddColumn</a></td>
+<td>コントロールに新しい列を追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_AddItem.htm">_GUICtrlListView_AddItem</a></td>
+<td>リストの末尾に新しいアイテムを追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_AddSubItem.htm">_GUICtrlListView_AddSubItem</a></td>
+<td>コントロールに新しいサブアイテムを追加します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_ApproximateViewHeight.htm">_GUICtrlListView_ApproximateViewHeight</a></td>
+<td>指定された数のアイテムを表示するのに必要なおおよその高さを計算します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_ApproximateViewRect.htm">_GUICtrlListView_ApproximateViewRect</a></td>
+<td>指定された数のアイテムを表示するのに必要なおおよそのサイズを計算します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_ApproximateViewWidth.htm">_GUICtrlListView_ApproximateViewWidth</a></td>
+<td>指定された数のアイテムを表示するのに必要なおおよその幅を計算します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_Arrange.htm">_GUICtrlListView_Arrange</a></td>
+<td>アイコン表示のアイテムを整列させます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_BeginUpdate.htm">_GUICtrlListView_BeginUpdate</a></td>
+<td>EndUpdate関数が呼ばれるまでコントロールの更新を無効にします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_CancelEditLabel.htm">_GUICtrlListView_CancelEditLabel</a></td>
+<td>アイテムテキストの編集操作をキャンセルします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_ClickItem.htm">_GUICtrlListView_ClickItem</a></td>
+<td>アイテムをクリックします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_CopyItems.htm">_GUICtrlListView_CopyItems</a></td>
+<td>2つのリストビューコントロール間でアイテムのコピーをおこないます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_Create.htm">_GUICtrlListView_Create</a></td>
+<td>リストビューコントロールを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_CreateDragImage.htm">_GUICtrlListView_CreateDragImage</a></td>
+<td>指定されたアイテムのドラッグ画像リストを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_CreateSolidBitMap.htm">_GUICtrlListView_CreateSolidBitMap</a></td>
+<td>ソリッドカラーのビットマップを作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_DeleteAllItems.htm">_GUICtrlListView_DeleteAllItems</a></td>
+<td>リストビューコントロールから全てのアイテムを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_DeleteColumn.htm">_GUICtrlListView_DeleteColumn</a></td>
+<td>リストビューコントロールから列を取り除きます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_DeleteItem.htm">_GUICtrlListView_DeleteItem</a></td>
+<td>リストビューコントロールからアイテムを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_DeleteItemsSelected.htm">_GUICtrlListView_DeleteItemsSelected</a></td>
+<td>選択されているアイテムを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_Destroy.htm">_GUICtrlListView_Destroy</a></td>
+<td>リストビューコントロールを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_DrawDragImage.htm">_GUICtrlListView_DrawDragImage</a></td>
+<td>ドラッグ画像を描画します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_EditLabel.htm">_GUICtrlListView_EditLabel</a></td>
+<td>指定されたアイテムテキストのその場での編集を開始します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_EnableGroupView.htm">_GUICtrlListView_EnableGroupView</a></td>
+<td>コントロール内のアイテムのグループ表示の有効/無効を切り替えます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_EndUpdate.htm">_GUICtrlListView_EndUpdate</a></td>
+<td>BeginUpdate関数で無効化されているスクリーン再描画を有効にします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_EnsureVisible.htm">_GUICtrlListView_EnsureVisible</a></td>
+<td>リストビューアイテムの全体または一部が表示されていることを保証します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_FindInText.htm">_GUICtrlListView_FindInText</a></td>
+<td>テキスト内に指定されたテキストを含むアイテムを検索します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_FindItem.htm">_GUICtrlListView_FindItem</a></td>
+<td>指定された特性でアイテムを検索します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_FindNearest.htm">_GUICtrlListView_FindNearest</a></td>
+<td>指定された位置に最も近いアイテムを検索します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_FindParam.htm">_GUICtrlListView_FindParam</a></td>
+<td>指定されたlParamのアイテムを検索します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_FindText.htm">_GUICtrlListView_FindText</a></td>
+<td>指定されたテキストを持つアイテムを検索します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetBkColor.htm">_GUICtrlListView_GetBkColor</a></td>
+<td>リストビューコントロールの背景色を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetBkImage.htm">_GUICtrlListView_GetBkImage</a></td>
+<td>コントロールの背景画像を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetCallbackMask.htm">_GUICtrlListView_GetCallbackMask</a></td>
+<td>コントロールからコールバックマスクを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetColumn.htm">_GUICtrlListView_GetColumn</a></td>
+<td>列の属性を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetColumnCount.htm">_GUICtrlListView_GetColumnCount</a></td>
+<td>列の数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetColumnOrder.htm">_GUICtrlListView_GetColumnOrder</a></td>
+<td>列の現在の左から右への順番を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetColumnOrderArray.htm">_GUICtrlListView_GetColumnOrderArray</a></td>
+<td>コントロール内の列の現在の左から右への順番を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetColumnWidth.htm">_GUICtrlListView_GetColumnWidth</a></td>
+<td>レポートまたはリストビューの列の幅を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetCounterPage.htm">_GUICtrlListView_GetCounterPage</a></td>
+<td>表示領域垂直方向に収まるアイテムの数を計算します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetEditControl.htm">_GUICtrlListView_GetEditControl</a></td>
+<td>アイテムテキストの編集に使用されるエディットコントロールのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetExtendedListViewStyle.htm">_GUICtrlListView_GetExtendedListViewStyle</a></td>
+<td>現在使用されている拡張スタイルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetFocusedGroup.htm">_GUICtrlListView_GetFocusedGroup</a></td>
+<td>フォーカスされているグループを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetGroupCount.htm">_GUICtrlListView_GetGroupCount</a></td>
+<td>グループの数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetGroupInfo.htm">_GUICtrlListView_GetGroupInfo</a></td>
+<td>グループ情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetGroupInfoByIndex.htm">_GUICtrlListView_GetGroupInfoByIndex</a></td>
+<td>グループ情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetGroupRect.htm">_GUICtrlListView_GetGroupRect</a></td>
+<td>指定されたグループの長方形を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetGroupViewEnabled.htm">_GUICtrlListView_GetGroupViewEnabled</a></td>
+<td>コントロールのグループ表示が有効かどうかを調べます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetHeader.htm">_GUICtrlListView_GetHeader</a></td>
+<td>ヘッダーコントロールのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetHotCursor.htm">_GUICtrlListView_GetHotCursor</a></td>
+<td>ホットトラッキングが有効時にマウスポインタがアイテムの上にきた場合に使用されるHCURSOR値を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetHotItem.htm">_GUICtrlListView_GetHotItem</a></td>
+<td>ホットアイテムのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetHoverTime.htm">_GUICtrlListView_GetHoverTime</a></td>
+<td>アイテムが選択されるまでにマウスカーソルがそのアイテム上に滞在しなければならない時間の長さを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetImageList.htm">_GUICtrlListView_GetImageList</a></td>
+<td>リストビューアイテムの描画に使用されている画像リストのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetISearchString.htm">_GUICtrlListView_GetISearchString</a></td>
+<td>コントロールのインクリメント検索文字列を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItem.htm">_GUICtrlListView_GetItem</a></td>
+<td>アイテムの属性を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemChecked.htm">_GUICtrlListView_GetItemChecked</a></td>
+<td>リストビューコントロールのアイテムのチェック状態を返します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemCount.htm">_GUICtrlListView_GetItemCount</a></td>
+<td>リストビューコントロール内のアイテムの数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemCut.htm">_GUICtrlListView_GetItemCut</a></td>
+<td>アイテムがカット&amp;ペースト操作用にマークされているかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemDropHilited.htm">_GUICtrlListView_GetItemDropHilited</a></td>
+<td>アイテムがドラッグ&amp;ドロップのターゲットとしてハイライトされているかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemEx.htm">_GUICtrlListView_GetItemEx</a></td>
+<td>アイテムの属性の一部または全てを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemFocused.htm">_GUICtrlListView_GetItemFocused</a></td>
+<td>アイテムがドラッグ&amp;ドロップのターゲットとしてハイライトされているかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemGroupID.htm">_GUICtrlListView_GetItemGroupID</a></td>
+<td>アイテムのグループIDを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemImage.htm">_GUICtrlListView_GetItemImage</a></td>
+<td>アイテムのアイコンのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemIndent.htm">_GUICtrlListView_GetItemIndent</a></td>
+<td>アイテムがインデントされる画像幅数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemParam.htm">_GUICtrlListView_GetItemParam</a></td>
+<td>アイテムのアプリケーション固有の値を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemPosition.htm">_GUICtrlListView_GetItemPosition</a></td>
+<td>アイテムの位置を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemPositionX.htm">_GUICtrlListView_GetItemPositionX</a></td>
+<td>アイテムのX座標を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemPositionY.htm">_GUICtrlListView_GetItemPositionY</a></td>
+<td>アイテムのＹ座標を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemRect.htm">_GUICtrlListView_GetItemRect</a></td>
+<td>アイテムの一部または全体の外接長方形を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemRectEx.htm">_GUICtrlListView_GetItemRectEx</a></td>
+<td>アイテムの全体または一部の外接長方形を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemSelected.htm">_GUICtrlListView_GetItemSelected</a></td>
+<td>アイテムが選択されているかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemSpacing.htm">_GUICtrlListView_GetItemSpacing</a></td>
+<td>コントロール内のアイテム間の間隔を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemSpacingX.htm">_GUICtrlListView_GetItemSpacingX</a></td>
+<td>コントロール内のアイテム間の横の間隔を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemSpacingY.htm">_GUICtrlListView_GetItemSpacingY</a></td>
+<td>コントロール内のアイテム間の縦の間隔を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemState.htm">_GUICtrlListView_GetItemState</a></td>
+<td>リストビューアイテムの状態を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemStateImage.htm">_GUICtrlListView_GetItemStateImage</a></td>
+<td>表示されている状態画像を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemText.htm">_GUICtrlListView_GetItemText</a></td>
+<td>アイテムまたはサブアイテムのテキストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemTextArray.htm">_GUICtrlListView_GetItemTextArray</a></td>
+<td>リストビューアイテムの全テキストを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetItemTextString.htm">_GUICtrlListView_GetItemTextString</a></td>
+<td>リストビューアイテムの全てを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetNextItem.htm">_GUICtrlListView_GetNextItem</a></td>
+<td>指定された状態のアイテムを検索します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetNumberOfWorkAreas.htm">_GUICtrlListView_GetNumberOfWorkAreas</a></td>
+<td>コントロール内の作業領域数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetOrigin.htm">_GUICtrlListView_GetOrigin</a></td>
+<td>コントロールの現在の表示原点を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetOriginX.htm">_GUICtrlListView_GetOriginX</a></td>
+<td>コントロールの現在の水平方向表示原点を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetOriginY.htm">_GUICtrlListView_GetOriginY</a></td>
+<td>コントロールの現在の垂直方向表示原点を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetOutlineColor.htm">_GUICtrlListView_GetOutlineColor</a></td>
+<td>コントロールの境界線の色を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetSelectedColumn.htm">_GUICtrlListView_GetSelectedColumn</a></td>
+<td>選択されている列のインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetSelectedCount.htm">_GUICtrlListView_GetSelectedCount</a></td>
+<td>選択されたアイテムの数を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetSelectedIndices.htm">_GUICtrlListView_GetSelectedIndices</a></td>
+<td>選択されたアイテムのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetSelectionMark.htm">_GUICtrlListView_GetSelectionMark</a></td>
+<td>コントロールから選択マークを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetStringWidth.htm">_GUICtrlListView_GetStringWidth</a></td>
+<td>指定された文字列の幅を判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetSubItemRect.htm">_GUICtrlListView_GetSubItemRect</a></td>
+<td>アイテムの外接長方形の情報を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetTextBkColor.htm">_GUICtrlListView_GetTextBkColor</a></td>
+<td>コントロールのテキスト背景色を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetTextColor.htm">_GUICtrlListView_GetTextColor</a></td>
+<td>コントロールのテキスト色を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetToolTips.htm">_GUICtrlListView_GetToolTips</a></td>
+<td>ツールチップコントロールのハンドルを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetTopIndex.htm">_GUICtrlListView_GetTopIndex</a></td>
+<td>リスト表示、レポート表示の際に最上段に表示されるアイテムのインデックスを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetUnicodeFormat.htm">_GUICtrlListView_GetUnicodeFormat</a></td>
+<td>UNICODE文字フォーマットフラグを取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetView.htm">_GUICtrlListView_GetView</a></td>
+<td>コントロールの現在の表示形式を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetViewDetails.htm">_GUICtrlListView_GetViewDetails</a></td>
+<td>表示モードが詳細モードかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetViewLarge.htm">_GUICtrlListView_GetViewLarge</a></td>
+<td>表示モードがラージアイコンモードかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetViewList.htm">_GUICtrlListView_GetViewList</a></td>
+<td>表示モードがリストモードかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetViewRect.htm">_GUICtrlListView_GetViewRect</a></td>
+<td>コントロール内の全アイテムの外接長方形を取得します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetViewSmall.htm">_GUICtrlListView_GetViewSmall</a></td>
+<td>表示モードがスモールアイコンモードかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_GetViewTile.htm">_GUICtrlListView_GetViewTile</a></td>
+<td>表示モードがタイルモードかどうかを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_HideColumn.htm">_GUICtrlListView_HideColumn</a></td>
+<td>"列幅をゼロにすることで"列を隠します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_HitTest.htm">_GUICtrlListView_HitTest</a></td>
+<td>指定された位置にあるアイテムを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_InsertColumn.htm">_GUICtrlListView_InsertColumn</a></td>
+<td>コントロールに新しい列を挿入します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_InsertGroup.htm">_GUICtrlListView_InsertGroup</a></td>
+<td>グループを挿入します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_InsertItem.htm">_GUICtrlListView_InsertItem</a></td>
+<td>コントロールに新しいアイテムを挿入します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_JustifyColumn.htm">_GUICtrlListView_JustifyColumn</a></td>
+<td>リストビューコントロールの列の位置揃えを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_MapIDToIndex.htm">_GUICtrlListView_MapIDToIndex</a></td>
+<td>アイテムのIDをインデックスにマップします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_MapIndexToID.htm">_GUICtrlListView_MapIndexToID</a></td>
+<td>インデックスをアイテムIDにマップします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_RedrawItems.htm">_GUICtrlListView_RedrawItems</a></td>
+<td>指定範囲のアイテムをコントロールに再描画させます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_RegisterSortCallBack.htm">_GUICtrlListView_RegisterSortCallBack</a></td>
+<td>単純ソートのコールバック関数を登録します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_RemoveAllGroups.htm">_GUICtrlListView_RemoveAllGroups</a></td>
+<td>コントロールから全てのグループを取り除きます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_RemoveGroup.htm">_GUICtrlListView_RemoveGroup</a></td>
+<td>コントロールからグループを削除します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_Scroll.htm">_GUICtrlListView_Scroll</a></td>
+<td>リストビューの内容をスクロールします。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetBkColor.htm">_GUICtrlListView_SetBkColor</a></td>
+<td>コントロールの背景色を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetBkImage.htm">_GUICtrlListView_SetBkImage</a></td>
+<td>コントロールの背景画像を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetCallBackMask.htm">_GUICtrlListView_SetCallBackMask</a></td>
+<td>コントロールのコールバックマスクを変更します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetColumn.htm">_GUICtrlListView_SetColumn</a></td>
+<td>列の属性を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetColumnOrder.htm">_GUICtrlListView_SetColumnOrder</a></td>
+<td>列の左から右への順番を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetColumnOrderArray.htm">_GUICtrlListView_SetColumnOrderArray</a></td>
+<td>コントロール内での列の左から右への順番を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetColumnWidth.htm">_GUICtrlListView_SetColumnWidth</a></td>
+<td>列の幅を変更します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetExtendedListViewStyle.htm">_GUICtrlListView_SetExtendedListViewStyle</a></td>
+<td>拡張スタイルを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetGroupInfo.htm">_GUICtrlListView_SetGroupInfo</a></td>
+<td>グループ情報を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetHotItem.htm">_GUICtrlListView_SetHotItem</a></td>
+<td>ホットアイテムを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetHoverTime.htm">_GUICtrlListView_SetHoverTime</a></td>
+<td>アイテムが選択されるまでにマウスカーソルがそのアイテム上に滞在しなければならない時間の長さを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetIconSpacing.htm">_GUICtrlListView_SetIconSpacing</a></td>
+<td>ラージアイコンスタイルでのアイコンの間隔を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetImageList.htm">_GUICtrlListView_SetImageList</a></td>
+<td>画像リストをコントロールに割り当てます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItem.htm">_GUICtrlListView_SetItem</a></td>
+<td>一部または全てのアイテムの属性を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemChecked.htm">_GUICtrlListView_SetItemChecked</a></td>
+<td>チェック状態を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemCount.htm">_GUICtrlListView_SetItemCount</a></td>
+<td>リストビューコントロールに指定されたアイテムの数分のメモリを割り当てます。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemCut.htm">_GUICtrlListView_SetItemCut</a></td>
+<td>アイテムがカット&amp;ペースト操作用にマークされているかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemDropHilited.htm">_GUICtrlListView_SetItemDropHilited</a></td>
+<td>アイテムがドラッグ&amp;ドロップのターゲットとしてハイライトされているかを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemEx.htm">_GUICtrlListView_SetItemEx</a></td>
+<td>アイテムの属性の一部または全てを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemFocused.htm">_GUICtrlListView_SetItemFocused</a></td>
+<td>アイテムにフォーカスを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemGroupID.htm">_GUICtrlListView_SetItemGroupID</a></td>
+<td>アイテムのグループIDを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemImage.htm">_GUICtrlListView_SetItemImage</a></td>
+<td>コントロール画像リスト内のアイテムアイコンのインデックスを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemIndent.htm">_GUICtrlListView_SetItemIndent</a></td>
+<td>アイテムをインデントする画像幅数を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemParam.htm">_GUICtrlListView_SetItemParam</a></td>
+<td>アイテムに固有の値を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemPosition.htm">_GUICtrlListView_SetItemPosition</a></td>
+<td>アイテムをコントロール内の指定された位置に移動します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemPosition32.htm">_GUICtrlListView_SetItemPosition32</a></td>
+<td>アイテムをコントロール内の指定された位置に移動します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemSelected.htm">_GUICtrlListView_SetItemSelected</a></td>
+<td>アイテムの選択状態を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemState.htm">_GUICtrlListView_SetItemState</a></td>
+<td>コントロール内のアイテムの状態を変更します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemStateImage.htm">_GUICtrlListView_SetItemStateImage</a></td>
+<td>表示される状態画像を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetItemText.htm">_GUICtrlListView_SetItemText</a></td>
+<td>アイテムまたはサブアイテムのテキストを変更します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetOutlineColor.htm">_GUICtrlListView_SetOutlineColor</a></td>
+<td>境界線の色を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetSelectedColumn.htm">_GUICtrlListView_SetSelectedColumn</a></td>
+<td>選択列のインデックスを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetSelectionMark.htm">_GUICtrlListView_SetSelectionMark</a></td>
+<td>コントロールの選択マークを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetTextBkColor.htm">_GUICtrlListView_SetTextBkColor</a></td>
+<td>コントロールでのテキスト背景色を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetTextColor.htm">_GUICtrlListView_SetTextColor</a></td>
+<td>コントロールでのテキストの色を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetToolTips.htm">_GUICtrlListView_SetToolTips</a></td>
+<td>コントロールがツールチップ表示のために使用するツールチップコントロールを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetUnicodeFormat.htm">_GUICtrlListView_SetUnicodeFormat</a></td>
+<td>コントロールのUnicode文字フォーマットフラグを設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetView.htm">_GUICtrlListView_SetView</a></td>
+<td>コントロールの表示を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SetWorkAreas.htm">_GUICtrlListView_SetWorkAreas</a></td>
+<td>コントロール内の作業領域を作成します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SimpleSort.htm">_GUICtrlListView_SimpleSort</a></td>
+<td>リストビューコントロールをソートします(限定版)。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SortItems.htm">_GUICtrlListView_SortItems</a></td>
+<td>ソートのコールバックを開始し、ヘッダーに矢印を設定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_SubItemHitTest.htm">_GUICtrlListView_SubItemHitTest</a></td>
+<td>指定された位置にあるリストビューアイテムまたはサブアイテムを判定します。<br></td>
+</tr>
+<tr>
+<td><a href="_GUICtrlListView_UnRegisterSortCallBack.htm">_GUICtrlListView_UnRegisterSortCallBack</a></td>
+<td>ソート用コールバック関数の登録を解除します。<br></td>
+</tr>
+</table>
+</body>

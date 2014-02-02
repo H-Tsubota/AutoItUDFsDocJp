@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinNet_EnumResource</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinNet_EnumResource</font>
+<hr size="2">
+<p>ネットワークリソースの列挙を継続します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinNet.au3&gt;<br>
+_WinNet_EnumResource($hEnum, ByRef $iCount, $pBuffer, ByRef $iBufSize)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hEnum</td>
+    <td width="85%">列挙インスタンスを識別するハンドル。このハンドルは_WinNet_OpenEnumによって返されます。</td>
+  </tr>
+  <tr>
+   <td>$iCount</td>
+   <td>
+   要求するエントリーの数。要求数が-1の場合、この関数は可能な限り多くのエントリーを返します。<br>
+   この関数が成功すると、返った後にこの変数には実際に読み取れたエントリー数が格納されます。</td>
+  </tr>
+  <tr>
+   <td>$pBuffer</td>
+   <td>列挙結果を受け取るバッファへのポインタ。結果は$tagNETRESOURCE構造体の配列として返されます。<br>
+   このバッファは構造体とそのメンバーが指す文字列を保持するための十分な大きさがなければなりません。<br>
+   このバッファはhEnumによって指定されたハンドルを使用した次の呼び出しまで有効です。<br>
+   配列内の$tagNETRESOURCE構造体の順番は定義されていません。</td>
+  </tr>
+  <tr>
+   <td>$iBufSize</td>
+   <td>バッファのバイト単位でのサイズ。バッファが小さすぎてエントリーを1つも受け取れない場合、このパラメータには必要なバッファのサイズが代入されます。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_WinNet_OpenEnum.htm">_WinNet_OpenEnum</a>, <a href="$tagNETRESOURCE.htm">$tagNETRESOURCE</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=WNetEnumResource">WNetEnumResource</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

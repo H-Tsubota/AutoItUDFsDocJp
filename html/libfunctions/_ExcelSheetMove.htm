@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _ExcelSheetMove</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_ExcelSheetMove</font>
+<hr size="2">
+<p>指定したシートを別の指定したシートの前に移動します。<br></p>
+
+<p class="codeheader">
+#Include &lt;Excel.au3&gt;<br>
+_ExcelSheetMove($oExcel, $vMoveSheet [, $vRelativeSheet = 1 [, $fBefore = True]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$oExcel</td>
+    <td width="85%">_ExcelBookOpen()か_ExcelBookNew()の呼び出しで開かれているExcelオブジェクト</td>
+  </tr>
+  <tr>
+   <td>$vMoveSheet</td>
+   <td>移動させるシートの名前または番号 (文字列または整数)</td>
+  </tr>
+  <tr>
+   <td>$vRelativeSheet</td>
+   <td><b>[オプション]</b>このシートの前または後ろにシートを移動させます(文字列または整数。デフォルトは1番目のシート)</td>
+  </tr>
+  <tr>
+   <td>$fBefore</td>
+   <td><b>[オプション]</b>Trueの場合指定した移動位置シートの前に、Falseの場合後ろに移動シートを移動します(TrueまたはFalse) (デフォルトはTrue)</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0 and sets @error</td>
+  </tr>
+  <tr>
+    <td valign="top">@error:</td>
+    <td>0 - 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 - 指定されたオブジェクトが存在しません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>2 - 指定された番号の移動シートが存在しません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 - 指定された名前の移動シートが存在しません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 - 指定された番号の移動位置シートが存在しません</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>5 - 指定された名前の移動位置シートが存在しません</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *****************************************************************</span><br>
+<span class="S1">; 例 1 - ワークブックを開きオブジェクト識別子取得後、シートのインデックスを使用してシートを移動</span><br>
+<span class="S1">; *****************************************************************</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Excel.au3&gt;</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$oExcel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelBookNew</span><span class="S8">()</span><span class="S0"> </span><span class="S1">;新しいブックを作成して表示</span><br>
+<span class="S15">_ExcelSheetMove</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;2番目のシートを1番目の位置に移動 (整数/インデックスで指定)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Exiting"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Notice How Sheet2 is in the 1st Position"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Now Press OK to Save File and Exit"</span><span class="S8">)</span><br>
+<span class="S15">_ExcelBookSaveAs</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@TempDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Temp.xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 上書き設定でtempディレクトリに保存</span><br>
+<span class="S15">_ExcelBookClose</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 閉じて終わり</span><br>
+<br>
+<span class="S1">; *****************************************************************</span><br>
+<span class="S1">; 例 2 - ワークブックを開きオブジェクト識別子取得後、ワークシート名文字列を参照してシートを移動</span><br>
+<span class="S1">; *****************************************************************</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Excel.au3&gt;</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$oExcel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelBookNew</span><span class="S8">()</span><span class="S0"> </span><span class="S1">;新しいブックを作成して表示</span><br>
+<span class="S15">_ExcelSheetMove</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Sheet2"</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;2番目のシートを1番目の位置に移動 (文字列/名前で指定)</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Exiting"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Notice How Sheet2 is in the 1st Position"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Now Press OK to Save File and Exit"</span><span class="S8">)</span><br>
+<span class="S15">_ExcelBookSaveAs</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@TempDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Temp.xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 上書き設定でtempディレクトリに保存</span><br>
+<span class="S15">_ExcelBookClose</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 閉じて終わり</span><br>
+<br>
+<span class="S1">; ***************************************************************</span><br>
+<span class="S1">; 例 3 - ワークブックを開きオブジェクト識別子取得後、シートのインデックスを使用してシートを移動</span><br>
+<span class="S1">; *****************************************************************</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Excel.au3&gt;</span><br>
+<br>
+<span class="S5">Local</span><span class="S0"> </span><span class="S9">$oExcel</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_ExcelBookNew</span><span class="S8">()</span><span class="S0"> </span><span class="S1">;新しいブックを作成して表示</span><br>
+<span class="S1">;シートを数枚追加。配置変更をおこなう</span><br>
+<span class="S9">$sSheetName4</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"Sheet4"</span><br>
+<span class="S9">$sSheetName5</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"Sheet5"</span><br>
+<span class="S15">_ExcelSheetAddNew</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sSheetName4</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;シートを追加</span><br>
+<span class="S15">_ExcelSheetMove</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sSheetName4</span><span class="S8">,</span><span class="S0"> </span><span class="S3">4</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;$sSheetName4を4番目の位置に移動(Falseなので移動位置シートの後ろ)</span><br>
+<br>
+<span class="S15">_ExcelSheetAddNew</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sSheetName5</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;シートを追加</span><br>
+<span class="S15">_ExcelSheetMove</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sSheetName5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;$sSheetName4を5番目の位置に移動(Falseなので移動位置シートの後ろ)</span><br>
+<br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Show"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Take note of the order of the Worksheets"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Press OK to Continue"</span><span class="S8">)</span><br>
+<br>
+<span class="S15">_ExcelSheetMove</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sSheetName5</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Sheet3"</span><span class="S8">,</span><span class="S0"> </span><span class="S5">True</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;5番目のシートを'Sheet3'という名前のシートの前に移動</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Exiting"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"'"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sSheetName5</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"'"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" when the $fBefore paramter is True (Relative to 'Sheet3')"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Press OK to Continue"</span><span class="S8">)</span><br>
+<span class="S15">_ExcelSheetMove</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$sSheetName5</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Sheet3"</span><span class="S8">,</span><span class="S0"> </span><span class="S5">False</span><span class="S8">)</span><span class="S0"> </span><span class="S1">;5番目のシートを'Sheet3'という名前のシートの前に移動</span><br>
+<span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Exiting"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"'"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$sSheetName5</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"'"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" when the $fBefore paramter is False (Relative to 'Sheet3')"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S6">@CRLF</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"Now Press OK to Save File and Exit"</span><span class="S8">)</span><br>
+<br>
+<span class="S15">_ExcelBookSaveAs</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">,</span><span class="S0"> </span><span class="S6">@TempDir</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\Temp.xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"xls"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 上書き設定でtempディレクトリに保存</span><br>
+<span class="S15">_ExcelBookClose</span><span class="S8">(</span><span class="S9">$oExcel</span><span class="S8">)</span><span class="S0"> </span><span class="S1">; 閉じて終わり</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_ExcelSheetMove.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _PathSplit</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_PathSplit</font>
+<hr size="2">
+<p>パスをドライブ、ディレクトリ、ファイル名、拡張子に分割します。各部分が見つからない場合は空文字列を設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;File.au3&gt;<br>
+_PathSplit($szPath, ByRef $szDrive, ByRef $szDir, ByRef $szFName, ByRef $szExt)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$szPath</td>
+    <td width="85%">分割するパス(UNCサーバー、ドライブ文字を使用できます)</td>
+  </tr>
+  <tr>
+   <td>$szDrive</td>
+   <td>ドライブを保持する文字列</td>
+  </tr>
+  <tr>
+   <td>$szDir</td>
+   <td>ディレクトリを保持する文字列</td>
+  </tr>
+  <tr>
+   <td>$szFName</td>
+   <td>ファイル名を保持する文字列</td>
+  </tr>
+  <tr>
+   <td>$szExt</td>
+   <td>拡張子を保持する文字列</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+5つの要素を持つ配列を返します。0 = 元のパス、1 = ドライブ、2 = ディレクトリ、3 = ファイル名、4 = 拡張子<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+この関数はコマンドライン文字列を入力にとれません。パスのみ処理し、引数のついたパスは処理しません。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_PathFull.htm">_PathFull</a>, <a href="_PathMake.htm">_PathMake</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;file.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;array.au3&gt;</span><br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$szDrive</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$szDir</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$szFName</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$szExt</span><br>
+<span class="S9">$TestPath</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_PathSplit</span><span class="S8">(</span><span class="S6">@ScriptFullPath</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$szDrive</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$szDir</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$szFName</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$szExt</span><span class="S8">)</span><br>
+<span class="S15">_ArrayDisplay</span><span class="S8">(</span><span class="S9">$TestPath</span><span class="S8">,</span><span class="S7">"Demo _PathSplit()"</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_PathSplit.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

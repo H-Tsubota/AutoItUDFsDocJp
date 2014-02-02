@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagSTARTUPINFO</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagSTARTUPINFO</font>
+<hr size="2">
+<p>プロセスのメインウィンドウ作成時にそのウィンドウステーション、デスクトップ、標準ハンドル、外観を指定します。<br></p>
+
+<p class="codeheader">
+Global Const $tagSTARTUPINFO = "int Size;ptr Reserved1;ptr Desktop;ptr Title;int X;int Y;int XSize;int YSize;int XCountChars;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "int YCountChars;int FillAttribute;int Flags;short ShowWindow;short Reserved2;ptr Reserved3;int StdInput;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "int StdOutput;int StdError"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">Size</td>
+    <td width="85%">この構造体のバイト単位でのサイズ</td>
+  </tr>
+  <tr>
+   <td>Reserved1</td>
+   <td>予約済み。ゼロでなければなりません。</td>
+  </tr>
+  <tr>
+   <td>Desktop</td>
+   <td>デスクトップの名前、またはこのプロセスのウィンドウステーションとデスクトップ両方の名前</td>
+  </tr>
+  <tr>
+   <td>Title</td>
+   <td>コンソールプロセスの場合、新しいコンソールが作られた際にタイトルバーに表示されるタイトル</td>
+  </tr>
+  <tr>
+   <td>X</td>
+   <td>
+	Flagsが$STARTF_USEPOSITIONの場合、
+	このメンバーは新しいウィンドウが作成された際のウィンドウの左上隅のピクセル単位でのXオフセットです。</td>
+  </tr>
+  <tr>
+   <td>Y</td>
+   <td>
+	Flagsが$STARTF_USEPOSITIONの場合、
+	このメンバーは新しいウィンドウが作成された際のウィンドウの左上隅のピクセル単位でのYオフセットです。</td>
+  </tr>
+  <tr>
+   <td>XSize</td>
+   <td>
+   Flagsが$STARTF_USESIZEの場合、
+   このメンバーはピクセル単位でのウィンドウの高さです。</td>
+  </tr>
+  <tr>
+   <td>YSize</td>
+   <td>
+    Flagsが$STARTF_USESIZEの場合、
+   このメンバーはピクセル単位でのウィンドウの幅です。</td>
+  </tr>
+  <tr>
+   <td>XCountChars</td>
+   <td>
+    Flagsが$STARTF_USECOUNTCHARSの場合、コンソールプロセスにおいて新しいコンソールウィンドウが作成された際に<br>
+	このメンバーは文字単位でのスクリーンバッファの幅を指定します。</td>
+  </tr>
+  <tr>
+   <td>YCountChars</td>
+   <td>
+    Flagsが$STARTF_USECOUNTCHARSの場合、コンソールプロセスにおいて新しいコンソールウィンドウが作成された際に<br>
+	このメンバーは行単位でのスクリーンバッファの高さを指定します。</td>
+  </tr>
+  <tr>
+   <td>FillAttribute</td>
+   <td>
+	Flagsが$STARTF_USEFILLATTRIBUTEの場合、このメンバーはコンソールアプリケーション<br>において新しいコンソールウィンドウが作成された際の初期テキストと背景色を指定します。
+	</td>
+  </tr>
+  <tr>
+   <td>Flags</td>
+   <td>
+	プロセスがウィンドウを作成する際にどのメンバーが使用されるかを決定します:<br>
+       $STARTF_FORCEONFEEDBACK - 
+	   CreateProcessが呼ばれた後、2秒間カーソルがフィードバックモードになり、バックグラウンド作業中カーソルが表示されます。<br>
+	   その2秒間にプロセスが最初のGUI呼び出しをおこなうと、システムはプロセスにさらに5秒与えます。<br>
+	   その5秒間にプロセスがウィンドウの表示をおこなうと、
+	   システムはウィンドウ描画を完了させるためにプロセスにさらに5秒与えます。<br>
+	   またシステムはプロセスが描画中かどうかにかかわらず、最初のGetMessage呼び出し後にフィードバックモードをオフにします。<br>
+	   $STARTF_FORCEOFFFEEDBACK - 
+	   プロセス開始時にフィードバックカーソルを強制的にオフされることを表します。<br>
+	   通常選択カーソルが表示されます。<br>
+       $STARTF_RUNFULLSCREEN - 
+	   プロセスがウィンドウモードではなくフルスクリーンモードで実行されることを表します。<br>
+	   このフラグはx86コンピュータ上で実行しているコンソールアプリケーションでのみ有効です。<br>
+	   $STARTF_USECOUNTCHARS - XCountCharsとYCountCharsが有効です<br>
+       $STARTF_USEFILLATTRIBUTE - FillAttributeが有効です<br>
+       $STARTF_USEPOSITION - XとYが有効です<br>
+       $STARTF_USESHOWWINDOW - ShowWindowが有効です<br>
+       $STARTF_USESIZE - XSizeとYSizeが有効です<br>
+       $STARTF_USESTDHANDLES - hStdInput、hStdOutput、hStdErrorが有効です</td>
+  </tr>
+  <tr>
+   <td>ShowWindow</td>
+   <td>Flagsが$STARTF_USESHOWWINDOWの場合、このメンバーは任意のSW_定数です。</td>
+  </tr>
+  <tr>
+   <td>Reserved2</td>
+   <td>予約済み。ゼロでなければなりません。</td>
+  </tr>
+  <tr>
+   <td>Reserved3</td>
+   <td>予約済み。ゼロでなければなりません。</td>
+  </tr>
+  <tr>
+   <td>StdInput</td>
+   <td>Flagsが$STARTF_USESTDHANDLESの場合、このメンバーは標準入力ハンドルです。</td>
+  </tr>
+  <tr>
+   <td>StdOutput</td>
+   <td>Flagsが$STARTF_USESTDHANDLESの場合、このメンバーは標準出力ハンドルです。</td>
+  </tr>
+  <tr>
+   <td>StdError</td>
+   <td>Flagsが$STARTF_USESTDHANDLESの場合、このメンバーは標準エラーハンドルです。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

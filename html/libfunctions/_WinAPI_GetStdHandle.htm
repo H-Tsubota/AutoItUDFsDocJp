@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_GetStdHandle</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_GetStdHandle</font>
+<hr size="2">
+<p>標準入力デバイス、標準出力デバイス、標準エラーデバイスのハンドルをハンドルを取得します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_GetStdHandle($iStdHandle)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iStdHandle</td>
+    <td width="85%">ハンドルを返す標準デバイス。次の値のいずれかです:<br>
+       0 - 標準入力デバイスのハンドル<br>
+       1 - 標準出力デバイスのハンドル<br>
+       2 - 標準エラーデバイスのハンドル</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">指定されたデバイスのハンドル</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>-1</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+アプリケーションがSetStdHandleを使用して標準ハンドルの権限を制限していない場合、ハンドルにはGENERIC_READとGENERIC_WRITEのアクセス権限が設定されています。<br>
+アプリケーションが関連付けられた標準ハンドルを持っていない場合、返し値は0です。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GetStdHandle">GetStdHandle</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>

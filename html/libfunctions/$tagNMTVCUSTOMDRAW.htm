@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagNMTVCUSTOMDRAW</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagNMTVCUSTOMDRAW</font>
+<hr size="2">
+<p>ツリービューコントロールのよって送信されたNM_CUSTOMDRAW(ツリービュー)通知メッセージ固有の情報を格納します。<br></p>
+
+<p class="codeheader">
+Global Const $tagNMTVCUSTOMDRAW = $tagNMHDR & ";uint DrawStage;hwnd HDC;int Left;int Top;int Right;int Bottom;" & _<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "ptr ItemSpec;uint ItemState;int ItemParam;int ClrText;int ClrTextBk;int Level"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$tagNMHDR</td>
+    <td width="85%">通知メッセージの情報を格納します</td>
+  </tr>
+  <tr>
+   <td>DrawStage</td>
+   <td>現在の描画ステージ。次のうちの1つです:<br>
+       グローバルな値:<br>
+       &nbsp;&nbsp;$CDDS_POSTERASE - 消去サイクル完了後<br>
+       &nbsp;&nbsp;$CDDS_POSTPAINT - 描画サイクル完了後<br>
+       &nbsp;&nbsp;$CDDS_PREERASE - 消去サイクルが始まる前<br>
+       &nbsp;&nbsp;$CDDS_PREPAINT - 描画サイクルが始まる前<br>
+       アイテム固有の値:<br>
+       &nbsp;&nbsp;$CDDS_ITEM - ItemSpec、ItemState、ItemParamが有効であることを表します<br>
+       &nbsp;&nbsp;$CDDS_ITEMPOSTERASE - 	アイテムが消去された後<br>
+       &nbsp;&nbsp;$CDDS_ITEMPOSTPAINT - アイテムが描画された後<br>
+       &nbsp;&nbsp;$CDDS_ITEMPREERASE - アイテムが消去される前<br>
+       &nbsp;&nbsp;$CDDS_ITEMPREPAINT - アイテムが描画される前<br>
+       &nbsp;&nbsp;$CDDS_SUBITEM - サブアイテムが描画させれようとしている場合、$CDDS_ITEMPREPAINTまたは$CDDS_ITEMPOSTPAINTと組み合わさったフラグ</td>
+  </tr>
+  <tr>
+   <td>HDC</td>
+   <td>コントロールのデバイスコンテキストのハンドル</td>
+  </tr>
+  <tr>
+   <td>Left</td>
+   <td>描画されようとしているバウンディング長方形の左上隅のX座標</td>
+  </tr>
+  <tr>
+   <td>Top</td>
+   <td>描画されようとしているバウンディング長方形の左上隅のY座標</td>
+  </tr>
+  <tr>
+   <td>Right</td>
+   <td>描画されようとしているバウンディング長方形の右下隅のX座標</td>
+  </tr>
+  <tr>
+   <td>Bottom</td>
+   <td>描画されようとしているバウンディング長方形の右下隅のY座標</td>
+  </tr>
+  <tr>
+   <td>ItemSpec</td>
+   <td>アイテム番号</td>
+  </tr>
+  <tr>
+   <td>ItemState</td>
+   <td>現在のアイテム状態。この値は次のものの組み合わせです:<br>
+       &nbsp;&nbsp;$CDIS_CHECKED - アイテムはチェックされています<br>
+       &nbsp;&nbsp;$CDIS_DEFAULT - アイテムはデフォルト状態です<br>
+       &nbsp;&nbsp;$CDIS_DISABLED - アイテムは無効にされています<br>
+       &nbsp;&nbsp;$CDIS_FOCUS - アイテムにフォーカスが合っています<br>
+       &nbsp;&nbsp;$CDIS_GRAYED - アイテムはグレイアウトされています<br>
+       &nbsp;&nbsp;$CDIS_HOT - アイテムに現在ポインタが合っています<br>
+       &nbsp;&nbsp;$CDIS_INDETERMINATE - アイテムは不確定な状態です<br>
+       &nbsp;&nbsp;$CDIS_MARKED - アイテムはマークされています<br>
+       &nbsp;&nbsp;$CDIS_SELECTED - アイテムは選択されています<br>
+       &nbsp;&nbsp;$CDIS_SHOWKEYBOARDCUES - アイテムはキーボードキューです</td>
+  </tr>
+  <tr>
+   <td>ItemParam</td>
+   <td>アプリケーション定義のアイテムデータ</td>
+  </tr>
+  <tr>
+   <td>ClrText</td>
+   <td>コントロールのテキスト前景表示に使用される色</td>
+  </tr>
+  <tr>
+   <td>ClrTextBk</td>
+   <td>コントロールのテキスト背景表示に使用される色</td>
+  </tr>
+  <tr>
+   <td>Level</td>
+   <td>描画されているアイテムのゼロ始まりのレベル</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+$CDxx_ 定数はWindowsConstants.au3を必要とします。<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

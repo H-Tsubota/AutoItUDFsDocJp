@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IETagNameGetCollection</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IETagNameGetCollection</font>
+<hr size="2">
+<p>指定されたタグ名のついたオブジェクト内の全ての要素のコレクションオブジェクト、またはインデックスと対応した要素を返します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IETagNameGetCollection ( ByRef $o_object, $s_TagName [, $i_index = -1] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">InternetExplorer.Applicationのオブジェクト変数、ウィンドウ、フレーム、アイフレーム、またはDOMの任意のオブジェクト</td>
+  </tr>
+  <tr>
+   <td>$s_TagName</td>
+   <td>返されるコレクションのタグ名 (e.g. IMG、TR etc.)</td>
+  </tr>
+  <tr>
+   <td>$i_index</td>
+   <td><b>[オプション]</b>コレクションを返すか、インデックスの要素を返すかを指定します<br>
+       0 または正の整数の場合、そのインデックスのインスタンスを返します<br>
+       -1 = (デフォルト) コレクションを返します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">指定されたタグのコレクションを格納したオブジェクト変数を返します。@EXTENDED = 指定されたタグの数</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 ($_IEStatus_InvalidDataType) = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 ($_IEStatus_InvalidObjectType) = 無効なオブジェクト型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>5 ($_IEStatus_InvalidValue) = 無効な値</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>7 ($_IEStatus_NoMatch) = 一致するものがありません</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+DOMは階層になっています。従って、渡されたオブジェクトがドキュメントオブジェクトの場合、ドキュメント内の指定された要素が返されます。渡されたオブジェクトがドキュメントオブジェクト内のオブジェクト(e.g. TABLEオブジェクト)の場合、そのオブジェクト内の指定された要素のみ返されます。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IETagNameAllGetCollection.htm">_IETagNameAllGetCollection</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - フォームのサンプルをブラウザで開き、全てのINPUTタグのコレクションを取得。</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; フォーム名とそれぞれのタイプを表示</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IE_Example</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"form"</span><span class="S8">)</span><br>
+<span class="S9">$oInputs</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IETagNameGetCollection</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"input"</span><span class="S8">)</span><br>
+<span class="S5">For</span><span class="S0"> </span><span class="S9">$oInput</span><span class="S0"> </span><span class="S5">In</span><span class="S0"> </span><span class="S9">$oInputs</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">MsgBox</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Form Input Type"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Form: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$oInput</span><span class="S8">.</span><span class="S14">form</span><span class="S8">.</span><span class="S14">name</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">" Type: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$oInput</span><span class="S8">.</span><span class="S14">type</span><span class="S8">)</span><br>
+<span class="S5">Next</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IETagNameGetCollection.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GUICtrlEdit_SetRECTEx</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GUICtrlEdit_SetRECTEx</font>
+<hr size="2">
+<p>複数行のエディットコントロールのフォーマット済み長方形を設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GuiEdit.au3&gt;<br>
+_GUICtrlEdit_SetRECTEx($hWnd, $tRect)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hWnd</td>
+    <td width="85%">コントロールのハンドル</td>
+  </tr>
+  <tr>
+   <td>$tRect</td>
+   <td>エディットコントロールのフォーマット済み長方形を格納している$tagRECT構造体</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+なし。<br>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GUICtrlEdit_SetRect.htm">_GUICtrlEdit_SetRect</a>, <a href="$tagRECT.htm">$tagRECT</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S12">#AutoIt3Wrapper_au3check_parameters=-d -w 1 -w 2 -w 3 -w 4 -w 5 -w 6</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiEdit.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiStatusBar.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GuiConstantsEx.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;WindowsConstants.au3&gt;</span><br>
+<br>
+<span class="S4">Opt</span><span class="S8">(</span><span class="S7">'MustDeclareVars'</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$Debug_Ed</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S5">False</span><span class="S0"> </span><span class="S1">; Edit関数に渡されるClassNameを調べる。動作を確認するにはTrueを設定し、他のコントロールのハンドルを使用</span><br>
+<br>
+<span class="S0">_Main</span><span class="S8">()</span><br>
+<br>
+<span class="S5">Func</span><span class="S0"> _Main</span><span class="S8">()</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$StatusBar</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hEdit</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hGUI</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$Wow64</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">""</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">If</span><span class="S0"> </span><span class="S6">@AutoItX64</span><span class="S0"> </span><span class="S5">Then</span><span class="S0"> </span><span class="S9">$Wow64</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S7">"\Wow6432Node"</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$sFile</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">RegRead</span><span class="S8">(</span><span class="S7">"HKEY_LOCAL_MACHINE\SOFTWARE"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S9">$Wow64</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\AutoIt v3\AutoIt"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"InstallDir"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\include\changelog.txt"</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$sFile</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">RegRead</span><span class="S8">(</span><span class="S7">"HKEY_LOCAL_MACHINE\SOFTWARE\AutoIt v3\AutoIt"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"InstallDir"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"\include\changelog.txt"</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Local</span><span class="S0"> </span><span class="S9">$aPartRightSide</span><span class="S8">[</span><span class="S3">6</span><span class="S8">]</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S8">[</span><span class="S3">50</span><span class="S8">,</span><span class="S0"> </span><span class="S3">130</span><span class="S8">,</span><span class="S0"> </span><span class="S3">210</span><span class="S8">,</span><span class="S0"> </span><span class="S3">290</span><span class="S8">,</span><span class="S0"> </span><span class="S3">378</span><span class="S8">,</span><span class="S0"> </span><span class="S8">-</span><span class="S3">1</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$tRect</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; GUI作成</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hGUI</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"Edit Set RECTEx"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$hEdit</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICtrlCreateEdit</span><span class="S8">(</span><span class="S7">""</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">2</span><span class="S8">,</span><span class="S0"> </span><span class="S3">394</span><span class="S8">,</span><span class="S0"> </span><span class="S3">268</span><span class="S8">,</span><span class="S0"> </span><span class="S4">BitOR</span><span class="S8">(</span><span class="S9">$ES_WANTRETURN</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$WS_VSCROLL</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$StatusBar</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlStatusBar_Create</span><span class="S8">(</span><span class="S9">$hGUI</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$aPartRightSide</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlStatusBar_SetIcon</span><span class="S8">(</span><span class="S9">$StatusBar</span><span class="S8">,</span><span class="S0"> </span><span class="S3">5</span><span class="S8">,</span><span class="S0"> </span><span class="S3">97</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"shell32.dll"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlStatusBar_SetText</span><span class="S8">(</span><span class="S9">$StatusBar</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Rect"</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 長方形を取得(別バージョン)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tRect</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlEdit_GetRECTEx</span><span class="S8">(</span><span class="S9">$hEdit</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Left"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Left"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">10</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Top"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Top"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">+</span><span class="S0"> </span><span class="S3">10</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Right"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Right"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">10</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">DllStructSetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Bottom"</span><span class="S8">,</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Bottom"</span><span class="S8">)</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">10</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; テキストを追加</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlEdit_AppendText</span><span class="S8">(</span><span class="S9">$hEdit</span><span class="S8">,</span><span class="S0"> </span><span class="S4">FileRead</span><span class="S8">(</span><span class="S9">$sFile</span><span class="S8">))</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlEdit_LineScroll</span><span class="S8">(</span><span class="S9">$hEdit</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S15">_GUICtrlEdit_GetLineCount</span><span class="S8">(</span><span class="S9">$hEdit</span><span class="S8">)</span><span class="S0"> </span><span class="S8">*</span><span class="S0"> </span><span class="S8">-</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 長方形を設定(別バージョン)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlEdit_SetRECTEx</span><span class="S8">(</span><span class="S9">$hEdit</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$tRect</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; 長方形を取得(別バージョン)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$tRect</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GUICtrlEdit_GetRECTEx</span><span class="S8">(</span><span class="S9">$hEdit</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlStatusBar_SetText</span><span class="S8">(</span><span class="S9">$StatusBar</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Left: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Left"</span><span class="S8">),</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlStatusBar_SetText</span><span class="S8">(</span><span class="S9">$StatusBar</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Topt: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Top"</span><span class="S8">),</span><span class="S0"> </span><span class="S3">2</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlStatusBar_SetText</span><span class="S8">(</span><span class="S9">$StatusBar</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Right: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Right"</span><span class="S8">),</span><span class="S0"> </span><span class="S3">3</span><span class="S8">)</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S15">_GUICtrlStatusBar_SetText</span><span class="S8">(</span><span class="S9">$StatusBar</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Bottom: "</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S4">DllStructGetData</span><span class="S8">(</span><span class="S9">$tRect</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Bottom"</span><span class="S8">),</span><span class="S0"> </span><span class="S3">4</span><span class="S8">)</span><br>
+<br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S1">; ユーザーが終了するまでループ</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S5">Until</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S4">GUIDelete</span><span class="S8">()</span><br>
+<span class="S5">EndFunc</span><span class="S0"> &nbsp;&nbsp;</span><span class="S1">;==&gt;_Main</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GUICtrlEdit_SetRECTEx.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

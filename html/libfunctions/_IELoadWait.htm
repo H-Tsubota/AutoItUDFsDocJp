@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _IELoadWait</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_IELoadWait</font>
+<hr size="2">
+<p>ブラウザがページのロードを完了するまで待機します。<br></p>
+
+<p class="codeheader">
+#include &lt;IE.au3&gt; <br>
+_IELoadWait ( ByRef $o_object [, $i_delay = 0 [, $i_timeout = -1]] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$o_object</td>
+    <td width="85%">InternetExplorer.Applicationのオブジェクト変数またはDOM要素</td>
+  </tr>
+  <tr>
+   <td>$i_delay</td>
+   <td><b>[オプション]</b>現在の状態を調べる間隔。ミリ秒単位。</td>
+  </tr>
+  <tr>
+   <td>$i_timeout</td>
+   <td><b>[オプション]</b>関数を終了するまでの待機時間 (デフォルト = 300000ミリ秒、つまり5分)</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1を返します</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し@ERRORを設定します</td>
+  </tr>
+  <tr>
+    <td valign="top">@Error:</td>
+    <td>0 ($_IEStatus_Success) = 正常終了</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>1 ($_IEStatus_GeneralError) = 一般的なエラー</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>3 ($_IEStatus_InvalidDataType) = 無効なデータ型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>4 ($_IEStatus_InvalidObjectType) = 無効なオブジェクト型</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>6 ($_IEStatus_LoadWaitTimeout) = ロード待機タイムアウト</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>8 ($_IEStatus_AccessIsDenied) = アクセス拒否</td>
+  </tr>
+  <tr>
+    <td valign="top"></td>
+    <td>9 ($_IEStatus_ClientDisconnected) = クライアント切断</td>
+  </tr>
+  <tr>
+    <td valign="top">@Extended:</td>
+    <td>無効なパラメータの番号が格納されています</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+ IE.au3のいくつかの関数は自動的に_IELoadWait()を呼びます(e.g. _IECreate()、 _IENavigate() etc.)。待機をしたくない場合、自分で待機処理を書きたい場合にそれらの関数はほとんどで$f_wait parameterを使ってその機能を停止させることができます。<br>
+<br>
+ドキュメントオブジェクト、DOM要素を渡すと、_IELoadWaitは親ウィンドウを含むコンテナ要素の準備状態が整っているかをチェックします。<br>
+<br>
+ブラウザのスクリプトに対するセキュリティ制限によって_IELoadWaitのページロード完了通知処理とエラー検知処理が誤動作する場合があります。その場合、_IELoadWaitの呼び出しをやめて他の方法によってページのロード完了を保証する必要があります。普通はブラウザのステータスバーのテキストチェックとSleepコマンドを使用するなどの方法をとります。InternetExplorer(ブラウザ)オブジェクト以外のオブジェクトを使って_IELoadWaitを呼び出す関数を使用する場合はブラウザ自身を使って_IELoadWaitを呼び出すことでも上手くいきます(e.g. _IELoadWait($oIE))。<br>
+<br>
+問題を引き起こす最も一般的な原因はページのリダイレクトとフレームに関連したクロスサイトスクリプティングのセキュリティ制限によるものです。いくつかのアプリケーション(e.g. Gmail)に見られるページの再書き込み技術も問題を引き起こすことがあります。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_IELoadWaitTimeout.htm">_IELoadWaitTimeout</a>, <a href="_IECreate.htm">_IECreate</a>, <a href="_IENavigate.htm">_IENavigate</a>, <a href="_IEFormSubmit.htm">_IEFormSubmit</a>, <a href="_IELinkClickByText.htm">_IELinkClickByText</a>, <a href="_IELinkClickByIndex.htm">_IELinkClickByIndex</a>, <a href="_IEImgClick.htm">_IEImgClick</a>, <a href="_IEFormImageClick.htm">_IEFormImageClick</a>, <a href="_IEBodyWriteHTML.htm">_IEBodyWriteHTML</a>, <a href="_IEDocWriteHTML.htm">_IEDocWriteHTML</a>, <a href="_IEAction.htm">_IEAction</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; *******************************************************</span><br>
+<span class="S1">; 例 1 - AutoItのフォーラムページを開き、"View new posts"タブへリンク、</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; エンターキーでリンクをアクティブ化。</span><br>
+<span class="S1">;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 移動前にページロードが完了するのを待つ。</span><br>
+<span class="S1">; *******************************************************</span><br>
+<span class="S1">;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;IE.au3&gt;</span><br>
+<span class="S9">$oIE</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_IECreate</span><span class="S0"> </span><span class="S8">(</span><span class="S7">"http://www.autoitscript.com/forum/index.php"</span><span class="S8">)</span><br>
+<span class="S4">Send</span><span class="S8">(</span><span class="S7">"</span><span class="S10">{TAB 12}</span><span class="S7">"</span><span class="S8">)</span><br>
+<span class="S4">Send</span><span class="S8">(</span><span class="S7">"</span><span class="S10">{ENTER}</span><span class="S7">"</span><span class="S8">)</span><br>
+<span class="S15">_IELoadWait</span><span class="S0"> </span><span class="S8">(</span><span class="S9">$oIE</span><span class="S8">)</span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_IELoadWait.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

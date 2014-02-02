@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _GDIPlus_StringFormatSetAlign</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_GDIPlus_StringFormatSetAlign</font>
+<hr size="2">
+<p>StringFormatオブジェクトのテキスト配置を設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;GDIPlus.au3&gt;<br>
+_GDIPlus_StringFormatSetAlign($hStringFormat,$iFlag)<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$hStringFormat</td>
+    <td width="85%">配置設定をおこなうStringFormatオブジェクト</td>
+  </tr>
+  <tr>
+   <td>$iFlags</td>
+   <td>配置は次のうちのいずれかです:<br>
+       0 - テキストは左揃えになります。<br>
+       1 - テキストは中央揃えになります。<br>
+       2 - テキストは右揃えになります。</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">1</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>0を返し、@errorに1を設定します</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_GDIPlus_StringFormatCreate.htm">_GDIPlus_StringFormatCreate</a>
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=GdipSetStringFormatAlign">GdipSetStringFormatAlign</a>を検索して下さい。
+<p>&nbsp;</p>
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GDIPlus.au3&gt;</span><br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;GUIConstantsEx.au3&gt;</span><br>
+<br>
+<span class="S9">$hWnd</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUICreate</span><span class="S8">(</span><span class="S7">"GDI+ Example"</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S4">GUISetState</span><span class="S8">()</span><br>
+<br>
+<span class="S15">_GDIPlus_Startup</span><span class="S8">()</span><br>
+<span class="S9">$hGraphics</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_GraphicsCreateFromHWND</span><span class="S8">(</span><span class="S9">$hWnd</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_GraphicsClear</span><span class="S8">(</span><span class="S9">$hGraphics</span><span class="S8">)</span><br>
+<br>
+<span class="S9">$hBrush</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_BrushCreateSolid</span><span class="S8">(</span><span class="S3">0xFF009900</span><span class="S8">)</span><br>
+<span class="S9">$hFamily</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_FontFamilyCreate</span><span class="S8">(</span><span class="S7">"Arial"</span><span class="S8">)</span><br>
+<span class="S9">$hFont</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_FontCreate</span><span class="S8">(</span><span class="S9">$hFamily</span><span class="S8">,</span><span class="S0"> </span><span class="S3">36</span><span class="S8">)</span><br>
+<span class="S9">$hLayout</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_RectFCreate</span><span class="S8">(</span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">0</span><span class="S8">,</span><span class="S0"> </span><span class="S3">400</span><span class="S8">,</span><span class="S0"> </span><span class="S3">300</span><span class="S8">)</span><br>
+<span class="S9">$hStringFormat</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S15">_GDIPlus_StringFormatCreate</span><span class="S8">()</span><br>
+<span class="S15">_GDIPlus_StringFormatSetAlign</span><span class="S8">(</span><span class="S9">$hStringFormat</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_GraphicsDrawStringEx</span><span class="S8">(</span><span class="S9">$hGraphics</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"AutoIt Rocks"</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hFont</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hLayout</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hStringFormat</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$hBrush</span><span class="S8">)</span><br>
+<br>
+<span class="S5">Do</span><br>
+<span class="S0">&nbsp; &nbsp; </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S4">GUIGetMsg</span><span class="S8">()</span><br>
+<span class="S5">Until</span><span class="S0"> </span><span class="S9">$msg</span><span class="S0"> </span><span class="S8">=</span><span class="S0"> </span><span class="S9">$GUI_EVENT_CLOSE</span><br>
+<br>
+<br>
+<span class="S15">_GDIPlus_BrushDispose</span><span class="S8">(</span><span class="S9">$hBrush</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_FontFamilyDispose</span><span class="S8">(</span><span class="S9">$hFamily</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_FontDispose</span><span class="S8">(</span><span class="S9">$hFont</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_StringFormatDispose</span><span class="S8">(</span><span class="S9">$hStringFormat</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_GraphicsDispose</span><span class="S8">(</span><span class="S9">$hGraphics</span><span class="S8">)</span><br>
+<span class="S15">_GDIPlus_Shutdown</span><span class="S8">()</span><br>
+<br>
+<br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_GDIPlus_StringFormatSetAlign.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

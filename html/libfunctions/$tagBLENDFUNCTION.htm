@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Keyword $tagBLENDFUNCTION</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Keyword Reference</h1>
+<font size="+1">$tagBLENDFUNCTION</font>
+<hr size="2">
+<p>$tagBLENDFUNCTION構造体はコピー元とコピー先ビットマップを指定することによってブレンディングを制御します。<br></p>
+
+<p class="codeheader">
+Global Const $tagBLENDFUNCTION = "byte Op;byte Flags;byte Alpha;byte Format"<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">Op</td>
+    <td width="85%">コピー元ブレンド操作を指定します</td>
+  </tr>
+  <tr>
+   <td>Flags</td>
+   <td>ゼロでなければなりません</td>
+  </tr>
+  <tr>
+   <td>Alpha</td>
+   <td>コピー元のビットマップ全体に使用するアルファ透過値を指定します。
+	この値は　コピー元ビットマップの各ピクセルのアルファ値と結合されます。
+	0に設定すると画像は透明とみなされます。
+	各ピクセルのアルファ値のみを使用したい時は255(不透明)を設定してください。</td>
+  </tr>
+  <tr>
+   <td>Format</td>
+   <td>
+   このメンバーは　コピー元、コピー先ビットマップの解析方法を制御します:<br>
+   $AC_SRC_ALPHA - このフラグはビットマップがアルファチャンネル(各ピクセルのアルファ値)を持っている場合に設定されます。
+APIは乗算アルファを使用することに注意してください。つまりビットマップの赤、緑、青のチャンネル値はアルファチャンネル値と乗算されなければならないということです。</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+$tagBLENDFUNCTIONと使用されるコピー元ビットマップは32bppでなければなりません<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+</body>
+</html>

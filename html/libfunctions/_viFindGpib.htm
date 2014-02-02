@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _viFindGpib</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_viFindGpib</font>
+<hr size="2">
+<p>GPIBバスでみつかった計測器のVISAリソース記述子の配列を返します。<br></p>
+
+<p class="codeheader">
+#include &lt;Visa.au3&gt;<br>
+_viFindGpib ( ByRef $a_descriptor_list, ByRef $a_idn_list [, $f_show_search_results = 0] )<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$a_descriptor_list (ByRef)</td>
+    <td width="85%">	GPIBバスでみつかった計測器のVISAリソース記述子の配列を返します(詳しくは_viExecCommandの注意を参照)
+	</td>
+  </tr>
+  <tr>
+   <td>$a_idn_list (ByRef)</td>
+   <td>GPIBバスでみつかった計測器のIDNs(i.e 名称)の配列を返します</td>
+  </tr>
+  <tr>
+   <td>$f_show_search_results</td>
+   <td><b>[オプション]</b>1の場合、検索結果を表示するメッセージボックスが表示されます。<br>
+       デフォルトは0で結果が表示されないことを意味しています</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">みつかった計測器の数(0以上)</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>負の値を返し@errorを1に設定します</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+全てのVISA関数において使用のためにはVISAライブラリ({WINDOWS}\system32内にvisa32.dllがあるかどうかによって確認できます)とGPIBカード(National Instruments NI PCI-GPIB カードやAgilent 82350B PCI High-Performance GPIB カードなど)がインストールされている必要があります。<br>
+<br>
+* 一般的なVISA記述子のより詳しい説明については_viExecCommand関数ヘルプの注意を参照してください。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+<a href="_viExecCommand.htm">_viExecCommand</a>, <a href="_viOpen.htm">_viOpen</a>, <a href="_viClose.htm">_viClose</a>, <a href="_viGTL.htm">_viGTL</a>, <a href="_viGpibBusReset.htm">_viGpibBusReset</a>
+<p>&nbsp;</p>
+
+<p><b>例</b></p>
+<p class="codebox">
+<br>
+<span><span class="S1">; この例はGPIBバスの検索を行い、結果をMsgBoxで表示します</span><br>
+<br>
+<span class="S11">#include</span><span class="S0"> </span><span class="S7">&lt;Visa.au3&gt;</span><br>
+<br>
+<span class="S5">Dim</span><span class="S0"> </span><span class="S9">$a_descriptor_list</span><span class="S8">[</span><span class="S3">1</span><span class="S8">],</span><span class="S0"> </span><span class="S9">$a_idn_list</span><span class="S8">[</span><span class="S3">1</span><span class="S8">]</span><br>
+<span class="S15">_viFindGpib</span><span class="S8">(</span><span class="S9">$a_descriptor_list</span><span class="S8">,</span><span class="S0"> </span><span class="S9">$a_idn_list</span><span class="S8">,</span><span class="S0"> </span><span class="S3">1</span><span class="S8">)</span><br>
+<span class="S0"></span></span><br>
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i))
+document.write('<br><OBJECT id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11" width=58 height=57><PARAM name="Command" value="ShortCut"><PARAM name="Button" value="Text:Open this Script"><PARAM name="Item1" value=",Examples\\HelpFile\\_viFindGpib.au3,"></OBJECT>');
+</script>
+<p>&nbsp;</p>
+
+</body>
+</html>

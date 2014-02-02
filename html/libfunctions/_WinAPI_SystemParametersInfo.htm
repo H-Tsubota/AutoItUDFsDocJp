@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Function _WinAPI_SystemParametersInfo</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=shift-jis">
+  <link href="../css/default.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1>Function Reference</h1>
+<font size="+1">_WinAPI_SystemParametersInfo</font>
+<hr size="2">
+<p>システム全体のパラメータの1つの値を取得または設定します。<br></p>
+
+<p class="codeheader">
+#Include &lt;WinAPI.au3&gt;<br>
+_WinAPI_SystemParametersInfo($iAction [, $iParam = 0 [, $vParam = 0 [, $iWinIni = 0]]])<br>
+</p>
+<p>&nbsp;</p>
+
+<p><b>パラメータ</b></p>
+<table border="1" width="100%" cellspacing="0" cellpadding="3" bordercolor="#C0C0C0">
+  <tr>
+    <td width="15%">$iAction</td>
+    <td width="85%">取得または設定されるシステム全体のパラメータ</td>
+  </tr>
+  <tr>
+   <td>$iParam</td>
+   <td><b>[オプション]</b>使用方法とフォーマットが要求または設定されるパラメータに依存するパラメータ</td>
+  </tr>
+  <tr>
+   <td>$vParam</td>
+   <td><b>[オプション]</b>使用方法とフォーマットが要求または設定されるパラメータに依存するパラメータ</td>
+  </tr>
+  <tr>
+   <td>$iWinIni</td>
+   <td><b>[オプション]</b>システムパラメータを設定する場合、ユーザープロファイルを更新するかどうか、<br>
+   また更新する場合は $WM_SETTINGCHANGEメッセージをブロードキャスト送信するかどうかを指定します。<br>
+	ユーザープロファイルを更新しない場合、このパラメータはゼロにできます。<br>
+	それ以外の場合は次の値の組み合わせを使用できます:<br>
+       $SPIF_UPDATEINIFILE - ユーザープロファイルに新しい設定を書き込みます<br>
+       $SPIF_SENDCHANGE - ユーザープロファイルの更新後に$WM_SETTINGCHANGEメッセージをブロードキャスト送信します</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p><b>返し値</b></p>
+<table width="100%">
+  <tr>
+    <td width="10%" valign="top">成功:</td>
+    <td width="90%">True</td>
+  </tr>
+  <tr>
+    <td valign="top">失敗:</td>
+    <td>False</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+
+<p><b>注意</b></p>
+なし。<br>
+<br>
+<p>&nbsp;</p>
+
+<p><b>関連</b></p>
+
+<p>&nbsp;</p>
+
+<p><b>こちらも参照</b></p>
+MSDNライブラリで<a href="http://search.msdn.microsoft.com/search/Default.aspx?brand=msdn&query=SystemParametersInfo">SystemParametersInfo</a>を検索して下さい。
+<p>&nbsp;</p>
+</body>
+</html>
