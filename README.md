@@ -12,11 +12,11 @@ translater :
 H. Tsubota (http://blog.livedoor.jp/blackcode)
 
 ***Japanese***
-これはAutoIt(http://www.autoitscript.com/site/)UDFsのマニュアルの日本語訳です。
+これはAutoIt( http://www.autoitscript.com/site/ )UDFsのマニュアルの日本語訳です。
 AutoItUDFsはAutoIt(Windows用のGUI自動化スクリプト/プラグラミング言語)用のユーザー定義関数ライブラリです。
-http://blog.livedoor.jp/blackcode/archives/1371819.htmlでchmファイル版のこのドキュメントをダウンロードすることができます。
+http://blog.livedoor.jp/blackcode/archives/1371819.html でchmファイル版のこのドキュメントをダウンロードすることができます。
 
-使用の際にはこのプAutoItのライセンス(http://www.autoitscript.com/autoit3/docs/license.htm)をご一読ください。
+使用の際にはこのプAutoItのライセンス( http://www.autoitscript.com/autoit3/docs/license.htm )をご一読ください。
 
 翻訳者：
 H. Tsubota (http://blog.livedoor.jp/blackcode)
